@@ -1,0 +1,224 @@
+# Main GovConnex .gitignore
+# Ignores VSCode, PyCharm IDE settings, and build files for NodeJS and Amplify.
+
+/node_modules
+/.pnp
+.pnp.js
+
+./services/deploy.yaml
+
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+__pycache__
+env
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#amplify
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+*.orig
+wiki/
+
+services/deploy.yaml
+/cli/venv/
+/cli/.~lock.a.rtf#
+/cli/.~lock.s.docx#
+/cli/a.rtf
+/cli/s.docx
+/cli/speech.txt
+/cli/first_speech.txt
+
+services/gcpNLPTest/positive-oven-180713-bcaf30a0855f.json
+*.csv#
+
+services/nswScrapers/nswHansardScraperService/boto3.env
+/cli/createUser/venv/
+
+scrapers/deploy.yaml
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake
+cmake-build-*/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Editor-based Rest Client
+.idea/httpRequests
+
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
+/pythonEnvs/
+
+scrapers/jurisdiction/au/vic/hansardScraper/boto3.env
+
+scrapers/common/autoScraper/boto3.env
+
+scrapers/common/facebookScraper/chromedriver
+
+
+layers/utils/python/__init__.py
+
+scrapers/jurisdiction/au/qld/hansardScraper/2020_07_16_WEEKLY.html
+
+scrapers/jurisdiction/au/qld/hansardScraper/2020_07_16_WEEKLY.pdf
+
+scrapers/jurisdiction/au/qld/hansardScraper/test.html
+
+scrapers/jurisdiction/au/qld/hansardScraperhtml_hansards2020_08_13_DAILY.html
+/scrapers/common/pdfHansardScraper/get_pdf/html_hansards/
+/scrapers/common/pdfHansardScraper/get_pdf/pdf_hansards/
+/scrapers/common/pdfHansardScraper/html_hansards/
+/scrapers/common/pdfHansardScraper/pdf_hansards/
+/scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/
+/scrapers/common/pdfHansardScraper/html_hansards/
+/scrapers/common/pdfHansardScraper/pdf_hansards/
+/scrapers/common/pdfHansardScraper/python/
+/scrapers/common/pdfHansardScraper/get_pdf/html_hansards/
+/scrapers/common/pdfHansardScraper/get_pdf/pdf_hansards/
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA INDP 1 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA INDP 2 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA INDP 3 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA INDP 4 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA OCCP 1 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA OCCP 2 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA OCCP 3 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/Raw Export for Multilevel/WA OCCP 4 Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/WA SED (UR) and QALLP - 1 Digit Level.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/WA ��� INDP 4 Levels.xlsx
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/WA ��� OCCP 4 Levels.xlsx
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/wa_election.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/wa_indp.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/wa_occp.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/WA/wa_religion.csv
+
+*.xlsx
+
+scripts/elasticsearch/profileCRUD/sasocials.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/auSA/sa_indp.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/auSA/sa_occp.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/auSA/sa_pop_total.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/auSA/sa_qallp.csv
+
+scrapers/jurisdiction/au/common/aecCsvScraper/data/auSA/sa_relp.csv
+
+scrapers/common/facebookScraper/python/config.py
+
+scrapers/common/facebookScraper/python/csv_utils.py
+
+scrapers/common/facebookScraper/python/elastic_utils.py
+
+scrapers/common/facebookScraper/python/gvc_comms.py
+
+scrapers/common/facebookScraper/python/s3_utils.py
+
+scrapers/common/facebookScraper/python/utils.py
+/scrapers/common/facebookScraper/python/
+/scrapers/jurisdiction/au/qld/hansardScraper/python/
+/scrapers/jurisdiction/au/federal/hansardScraperService/python/
+/scrapers/common/genericPdfScraper/python/
+
+scrapers/common/genericPdfScraper/output.html
+
+scrapers/common/genericPdfScraper/28-June-2021-Extraordinary-Council-Minutes.pdf
+
+scrapers/common/genericPdfConverter/output.html

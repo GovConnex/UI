@@ -1,0 +1,19 @@
+{
+  "name": "@govconnex/ui-components",
+  "version": "1.0.0",
+  "description": "GovConnex UI Components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GovConnex",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GovConnex/ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GovConnex/ui-components/issues"
+  },
+  "homepage": "https://github.com/GovConnex/ui-components#readme"
+}
