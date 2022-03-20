@@ -1,6 +1,6 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "prepublishOnly": "rollup -c",
@@ -87,7 +87,7 @@
     "react-dom": "^16.13.1",
     "resolve": "^1.22.0",
     "sourcemap-codec": "^1.4.8",
-    "styled-components": "^5.3.3",
+    "styled-components": "5.2.0",
     "supports-color": "^5.5.0",
     "supports-preserve-symlinks-flag": "^1.0.0",
     "tslib": "^2.3.1",
