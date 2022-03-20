@@ -1,6 +1,6 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "prepublishOnly": "rollup -c",
