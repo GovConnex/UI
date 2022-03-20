@@ -1,4 +1,5 @@
-# UI - React Component Libary
+# GovConnex UI
+React Component Libary
 
 ## Usage
 ### Install dependencies
