@@ -1,14 +1,13 @@
 import React from "react";
 import {ThemeProvider as StyledThemeProvider} from "styled-components";
-import {lightTheme} from "./themes/light-theme";
-import {darkTheme} from "./themes/dark-theme";
+import {lightTheme, darkTheme} from "../../themes";
 
 export interface ThemeProviderProps {
-  theme?: "light" | "dark";
+  theme: "light" | "dark";
   children?: any;
 }
 
-const THEMES = {
+export const THEMES = {
   light: lightTheme,
   dark: darkTheme
 }
