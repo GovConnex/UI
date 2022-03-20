@@ -22,5 +22,5 @@ yarn publish
 ## Usage
 ### Install
 ```
-yarn add @govconnex/ui@VERSION
+yarn add @govconnex/ui
 ```
