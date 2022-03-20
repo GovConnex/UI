@@ -1,7 +1,7 @@
 # GovConnex UI
 React Component Libary
 
-## Usage
+## Development
 ### Install dependencies
 ```
 yarn
@@ -17,4 +17,10 @@ yarn test
 ### Publish to NPM
 ```
 yarn publish
+```
+
+## Usage
+### Install
+```
+yarn add @govconnex/ui@VERSION
 ```
