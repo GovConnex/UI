@@ -1,9 +1,9 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
-    "prepublish": "rollup -c",
+    "prepublishOnly": "rollup -c",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
