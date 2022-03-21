@@ -6,7 +6,8 @@
     "prepublishOnly": "rollup -c",
     "test": "jest",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "build": "build-storybook",
+    "new": "plop"
   },
   "author": "GovConnex",
   "license": "ISC",
@@ -36,6 +37,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
     "jest": "^27.5.1",
+    "plop": "^3.0.5",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",

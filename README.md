@@ -10,6 +10,11 @@ yarn
 ```
 yarn start
 ```
+### Create a new component
+```
+yarn new ComponentName
+```
+
 ### Run tests
 ```
 yarn test
