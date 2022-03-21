@@ -1,6 +1,6 @@
 import React from "react";
 import {ThemeProvider as StyledThemeProvider} from "styled-components";
-import {lightTheme, darkTheme} from "../../themes";
+import {lightTheme, darkTheme} from "../../theming";
 
 export interface ThemeProviderProps {
   theme: "light" | "dark";
