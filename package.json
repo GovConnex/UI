@@ -69,7 +69,6 @@
     "escape-string-regexp": "^1.0.5",
     "estree-walker": "^2.0.2",
     "fs.realpath": "^1.0.0",
-    "fsevents": "^2.3.2",
     "function-bind": "^1.1.1",
     "glob": "^7.2.0",
     "has": "^1.0.3",
