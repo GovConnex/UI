@@ -8,7 +8,7 @@ yarn
 ```
 ### Start Storybook
 ```
-yarn storybook
+yarn start
 ```
 ### Run tests
 ```
