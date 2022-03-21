@@ -14,15 +14,14 @@ export default {
 const Template: ComponentStory<typeof {{name}}> = (args) => <{{name}} {...args} />;
 
 
-export const HelloWorld = Template.bind({});
+export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-HelloWorld.args = {
-  label: "Hello world!",
+Example.args = {
 };
 
-HelloWorld.parameters = {
-  design: {
-    type: "figma",
-    url: ""
-  }
+Example.parameters = {
+//  design: {
+//    type: "figma",
+//    url: ""
+//  }
 }

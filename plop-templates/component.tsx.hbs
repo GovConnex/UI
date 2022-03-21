@@ -2,11 +2,11 @@ import React from "react";
 import Styled{{name}} from "./{{name}}.styles";
 
 export interface {{name}}Props {
-  label: string;
+  children?: React.ReactNode;
 }
 
 const {{name}} = (props: {{name}}Props) => {
-  return <Styled{{name}}>{props.label}</Styled{{name}}>;
+  return <Styled{{name}}>{props.children}</Styled{{name}}>;
 };
 
 export default {{name}};
