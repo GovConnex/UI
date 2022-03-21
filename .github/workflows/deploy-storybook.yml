@@ -37,7 +37,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_S3_BUCKET: ${{ steps.env.outputs.bucket }}
         AWS_REGION: ${{ steps.env.outputs.bucket_region }}
-        SOURCE_DIR: 'dist'
+        SOURCE_DIR: 'storybook-static'
 
     - name: Invalidate CloudFront cache
       uses: chetan/invalidate-cloudfront-action@master
