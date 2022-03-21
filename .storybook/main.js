@@ -10,5 +10,6 @@ module.exports = {
     "@react-theming/storybook-addon",
     "storybook-addon-designs"
   ],
-  "framework": "@storybook/react"
+  "framework": "@storybook/react",
+  "staticDirs": ["../static"]
 }
