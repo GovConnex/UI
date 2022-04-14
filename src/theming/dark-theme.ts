@@ -1,7 +1,8 @@
 import baseTheme from "./base-theme";
 import {DefaultTheme} from "styled-components";
 
-export const darkTheme: DefaultTheme = {
+
+export const darkTheme = {
   "name": "Dark theme",
   "palette": {
     "common": {

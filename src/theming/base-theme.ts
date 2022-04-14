@@ -1,21 +1,11 @@
 import {BaseThemeInterface} from "./base-theme.interface";
-
-const baseTheme: BaseThemeInterface = {
+const baseTheme = {
   "breakpoints": {
-    "keys": [
-      "xs",
-      "sm",
-      "md",
-      "lg",
-      "xl"
-    ],
-    "values": {
       "xs": 0,
       "sm": 600,
       "md": 960,
       "lg": 1280,
       "xl": 1920
-    }
   },
   "shadows": [
     "none",
