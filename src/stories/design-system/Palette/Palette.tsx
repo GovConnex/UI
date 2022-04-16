@@ -1,21 +1,29 @@
 import React from "react";
 import figmaTokens from "../../../theming/tokens-figma/tokens.json";
-import StyledPalette, { ColorsContainerRoot, Color, ColorName, ColorDescription, ColorValue } from "./Palette.styles";
+import StyledPalette, {
+  ColorsTable,
+  ColorValue,
+  ColorsTableTbody,
+  ColorsTableRow, ColorValueTd, ColorDescriptionTd, ColorNameTd, SectionHeader
+} from "./Palette.styles";
 
 const ColorsContainer = ({palette: paletteProp}: any) => {
   const palette = organisePalette(paletteProp);
   return (
-    <ColorsContainerRoot>
+    <ColorsTable>
+      <ColorsTableTbody>
       {palette.map(({name, description, value}, index: number) => {
         return (
-          <Color key={index}>
-            <ColorName>{name}</ColorName>
-            <ColorDescription>{description}</ColorDescription>
-            <ColorValue value={value}/>
-          </Color>
+          <ColorsTableRow key={index}>
+            <ColorValueTd><ColorValue value={value}/></ColorValueTd>
+            <ColorNameTd>{name}</ColorNameTd>
+            <ColorDescriptionTd>{description}</ColorDescriptionTd>
+
+          </ColorsTableRow>
         );
       })}
-    </ColorsContainerRoot>
+        </ColorsTableTbody>
+    </ColorsTable>
   );
 }
 
@@ -40,11 +48,17 @@ const Palette = () => {
   const darkThemePalette = figmaTokens.dark.palette;
   const globalPalette = figmaTokens.global.palette;
   return <StyledPalette>
-    <h1>{"Global"}</h1>
+    {/*<iframe*/}
+    {/*  height="1500"*/}
+    {/*  width="1000"*/}
+    {/*  src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/file/bC4hXdr0nQPjm7xZCCzyDg/?node-id=176%3A9554"*/}
+    {/*  allowFullScreen*/}
+    {/*/>*/}
+    <SectionHeader>{"Common"}</SectionHeader>
     <ColorsContainer palette={globalPalette}/>
-    <h1>{"Light theme"}</h1>
+    <SectionHeader>{"Light theme"}</SectionHeader>
     <ColorsContainer palette={lightThemePalette}/>
-    <h1>{"Dark theme"}</h1>
+    <SectionHeader>{"Dark theme"}</SectionHeader>
     <ColorsContainer palette={darkThemePalette}/>
   </StyledPalette>;
 };
