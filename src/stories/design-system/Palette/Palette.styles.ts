@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
-const StyledIntroduction = styled.div`
-
+const StyledPalette = styled.div`
+  color: white;
+  white-space: normal;
 `;
 
-export default StyledIntroduction;
+export const ThemeWrapper = styled.div`
+  display: flex;
+`;
+
+export default StyledPalette;
