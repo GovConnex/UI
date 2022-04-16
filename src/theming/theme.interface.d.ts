@@ -42,6 +42,13 @@ declare module "styled-components" {
       },
       divider: string;
     },
+    breakpoints: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    },
     spacing: {
       xs: string;
       sm: string;
@@ -69,6 +76,23 @@ declare module "styled-components" {
       body2: Typography;
       button: Typography;
       caption: Typography;
+    },
+    opacity: {
+      high: string;
+      medium: string;
+      low: string;
+    },
+    borderRadius: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      round: string;
+    },
+    gradients: {
+      primary: string;
+      secondary: string;
     },
   }
 }
