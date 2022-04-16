@@ -10,15 +10,31 @@ interface Typography {
 }
 
 interface BoxShadow {
-  x: number;
-  y: number;
+  x: string;
+  y: string;
   blur: string;
-  spread: number;
+  spread: string;
   color: string
   type: string;
 }
 
-export interface BaseTheme {
+export interface CommonPalette {
+  black: string;
+  white: string;
+  gray: {
+    25: string;
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    900: string;
+  }
+}
+
+export interface GlobalTheme {
   name: string;
   breakpoints: {
     xs: string;
@@ -73,25 +89,6 @@ export interface BaseTheme {
     snackbar: number;
     tooltip: number;
   },
-  palette: {
-    common: {
-      black: string;
-      white: string;
-      gray: {
-        25: string;
-        50: string;
-        100: string;
-        200: string;
-        300: string;
-        400: string;
-        500: string;
-        600: string;
-        700: string;
-        800: string;
-        900: string;
-      };
-    },
-  },
   boxShadow: {
     xs: BoxShadow;
     sm: BoxShadow;
@@ -99,6 +96,9 @@ export interface BaseTheme {
     lg: BoxShadow;
     xl: BoxShadow;
   },
+  palette: {
+    common: CommonPalette
+  }
 }
 
-export default BaseTheme;
+export default GlobalTheme;

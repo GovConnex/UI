@@ -34,6 +34,7 @@
     "@storybook/theming": "^6.4.19",
     "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
+    "@types/lodash": "^4.14.181",
     "@types/react": "^17.0.34",
     "@types/styled-components": "^5.1.24",
     "babel-jest": "^27.5.1",
@@ -60,6 +61,7 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
+    "lodash": "^4.17.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "token-transformer": "^0.0.20",

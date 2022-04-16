@@ -1,6 +1,5 @@
 import 'styled-components';
-import GlobalTheme from "./global-theme.interface";
-
+import GlobalTheme, {CommonPalette} from "./global-theme.interface";
 
 
 declare module "styled-components" {
@@ -31,11 +30,8 @@ declare module "styled-components" {
         default: string;
         paper: string;
       },
-      gradients: {
-        primary: string;
-        secondary: string;
-      },
       divider: string;
-    },
+      common: CommonPalette;
+    }
   }
 }
