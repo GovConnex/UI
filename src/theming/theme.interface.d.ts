@@ -21,8 +21,9 @@ declare module "styled-components" {
         dark: string;
       }
       text: {
-        primary: string;
-        secondary: string;
+        primary: string; // text color
+        // secondary: str
+        secondary: string; // secondary text color
         disabled: string;
         hint: string;
       },
