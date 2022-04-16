@@ -11,5 +11,8 @@ module.exports = {
     "storybook-addon-designs"
   ],
   "framework": "@storybook/react",
-  "staticDirs": ["../static"]
+  "staticDirs": ["../static"],
+  "typescript": {
+    "check": true,
+  },
 }
