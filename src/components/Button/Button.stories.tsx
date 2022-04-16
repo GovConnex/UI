@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "GovConnex-UI/Button",
+  title: "Components/Button",
   component: Button,
   decorators: [withDesign],
 } as ComponentMeta<typeof Button>;

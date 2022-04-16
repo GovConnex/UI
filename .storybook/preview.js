@@ -2,6 +2,7 @@ import {addDecorator} from "@storybook/react";
 import { withThemes } from '@react-theming/storybook-addon';
 import {lightTheme, darkTheme} from "../src/theming";
 import {ThemeProvider} from "styled-components";
+import {themes} from "@storybook/theming";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -10,6 +11,9 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  docs: {
+    theme: themes.dark,
   },
 }
 
