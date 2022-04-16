@@ -1,7 +1,7 @@
 import React from "react";
 
 const Spacing = () => {
-  return <div>Spacing</div>;
+  return <div></div>;
 };
 
 export default Spacing;
