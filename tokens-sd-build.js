@@ -11,9 +11,6 @@ function getStyleDictionaryConfig(theme) {
                 "files": [{
                     "format": "json/nested",
                     "destination": `${theme}.json`,
-                    "filter": {
-                        "attributes": {"category": 'color'}
-                    }
                 }]
             },
         }
@@ -21,7 +18,7 @@ function getStyleDictionaryConfig(theme) {
 }
 
 
-['base', 'light', 'dark'].map(function (theme) {
+['light', 'dark'].map(function (theme) {
     const StyleDictionary = require('style-dictionary').extend(getStyleDictionaryConfig(theme));
     StyleDictionary.buildPlatform('js');
 });

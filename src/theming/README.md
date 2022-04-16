@@ -5,7 +5,6 @@
 - Margin for typography (`rem`)
 - Padding for typography (`em`)
 - Font size (`rem` or `%`)
-- Root font size (`px`)
 - Line height (`em` or `rem`)
 
 https://www.youtube.com/watch?v=vy-lRUMpEOs
