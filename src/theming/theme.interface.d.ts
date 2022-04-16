@@ -1,19 +1,10 @@
 import 'styled-components';
+import GlobalTheme from "./global-theme.interface";
 
-interface Typography {
-  fontFamily: string;
-  fontWeight: string;
-  lineHeight: string;
-  fontSize: number;
-  letterSpacing: string;
-  paragraphSpacing: number;
-  textDecoration: string;
-  textCase: string;
-}
+
 
 declare module "styled-components" {
-  export interface DefaultTheme {
-    name: string;
+  export interface DefaultTheme extends GlobalTheme {
     palette: {
       primary: {
         main: string;
@@ -40,59 +31,11 @@ declare module "styled-components" {
         default: string;
         paper: string;
       },
+      gradients: {
+        primary: string;
+        secondary: string;
+      },
       divider: string;
-    },
-    breakpoints: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-    },
-    spacing: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-    },
-    sizing: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-    },
-    typography: {
-      h1: Typography;
-      h2: Typography;
-      h3: Typography;
-      h4: Typography;
-      h5: Typography;
-      h6: Typography;
-      subtitle1: Typography;
-      subtitle2: Typography;
-      body1: Typography;
-      body2: Typography;
-      button: Typography;
-      caption: Typography;
-    },
-    opacity: {
-      high: string;
-      medium: string;
-      low: string;
-    },
-    borderRadius: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-      round: string;
-    },
-    gradients: {
-      primary: string;
-      secondary: string;
     },
   }
 }

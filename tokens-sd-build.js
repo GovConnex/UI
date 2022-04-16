@@ -18,7 +18,7 @@ function getStyleDictionaryConfig(theme) {
 }
 
 
-['light', 'dark'].map(function (theme) {
+['global', 'light', 'dark'].map(function (theme) {
     const StyleDictionary = require('style-dictionary').extend(getStyleDictionaryConfig(theme));
     StyleDictionary.buildPlatform('js');
 });
