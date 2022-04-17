@@ -21,20 +21,22 @@ import { Button } from '@govconnex/ui';
 ```
 
 ## Figma Tokens Plugin
-The [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) is used by designers and developers, as it is needed for modifying, and inspecting tokens.
+The [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) is used by designers and developers, as it is needed for modifying, and inspecting tokens in Figma.
 
 ### Setup (developers)
-In Figma Tokens, choose Sync => URL and use ```https://raw.githubusercontent.com/GovConnex/UI/main/src/theming/tokens-figma/tokens.json```
+In Figma Tokens, navigate to Sync => URL => Add new credentials.
+
+Set URL to ```https://raw.githubusercontent.com/GovConnex/UI/main/src/theming/tokens-figma/tokens.json```
 
 This is easier than syncing with GitHub, but is read-only, thus only suitable for developers.
 
 ### Setup (designers)
 
-In Figma Tokens, choose Sync => GitHub.
+In Figma Tokens, navigate to Sync => GitHub => Add new credentials.
 
-Get a Personal Access Token from [GitHub](https://github.com/settings/tokens).
+Get a Personal Access Token from [GitHub](https://github.com/settings/tokens) (give the token ```repo``` access).
 
-Set 'File Path' to ```src/theming/tokens-figma/tokens.json```
+Set File Path to ```src/theming/tokens-figma/tokens.json```
 
 ## Design System Changes
 
