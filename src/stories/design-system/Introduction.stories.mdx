@@ -21,21 +21,28 @@ import { Button } from '@govconnex/ui';
 ```
 
 ## Figma Tokens Plugin
-The [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) should be installed by designers and developers, as it is needed for modifying, and inspecting tokens.
+The [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) is used by designers and developers, as it is needed for modifying, and inspecting tokens.
 
-Design tokens are pushed to the repo via the Figma Tokens Plugin to ```src/theming/tokens-figma/tokens.json``` (set this as the 'File Path' in the Figma Tokens Plugin).
+### Setup (developers)
+In Figma Tokens, choose Sync => URL and use ```https://raw.githubusercontent.com/GovConnex/UI/main/src/theming/tokens-figma/tokens.json```
 
-The Figma tokens are then processed by ```tokens-transform``` and ```style-dictionary``` to produce the final theme JSON, which is consumed by the app.
+This is easier than syncing with GitHub, but is read-only, thus only suitable for developers.
 
-https://docs.tokens.studio/sync/github
+### Setup (designers)
+
+In Figma Tokens, choose Sync => GitHub.
+
+Get a Personal Access Token from [GitHub](https://github.com/settings/tokens).
+
+Set 'File Path' to ```src/theming/tokens-figma/tokens.json```
 
 ## Design System Changes
 
 When adding, removing, or renaming a design token, update the theme interfaces to reflect your changes.
 
-```src/theming/global-theme.interface.ts``` for **global** theme changes
+```src/theming/global-theme.interface.ts``` for **global** theme changes.
 
-```src/theming/theme.interface.d.ts``` for **light/dark** theme changes
+```src/theming/theme.interface.d.ts``` for **light/dark** theme changes.
 
 This provides type safety and helps with code completion.
 
