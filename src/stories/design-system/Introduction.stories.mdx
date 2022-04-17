@@ -40,7 +40,7 @@ Set File Path to ```src/theming/tokens-figma/tokens.json```
 
 ### Design token changes
 
-Design token changes will automatically be added to the Storybook documentation when pushed to the repository.
+The Storybook documentation is updated automatically when design token changes are pushed to the repository.
 
 When adding, removing, or renaming a design token, update the TypeScript theme interfaces to reflect your changes.
 
@@ -49,6 +49,8 @@ When adding, removing, or renaming a design token, update the TypeScript theme i
 ```src/theming/theme.interface.d.ts``` for **light/dark** theme changes.
 
 This provides type safety and helps with code completion.
+
+Note: Changing the value or description of existing tokens doesn't require updates to the TypeScript theme interfaces.
 
 ## Development
 ### Install dependencies
