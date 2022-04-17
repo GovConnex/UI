@@ -20,15 +20,16 @@ import { Button } from '@govconnex/ui';
 // <Button>Click me</Button>
 ```
 
-## Design
-### Figma Tokens Plugin
-Design tokens are pushed to the repo via the [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) to ```src/theming/tokens-figma/tokens.json```
+## Figma Tokens Plugin
+The [Figma Tokens Plugin](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) should be installed by designers and developers, as it is needed for modifying, and inspecting tokens.
+
+Design tokens are pushed to the repo via the Figma Tokens Plugin to ```src/theming/tokens-figma/tokens.json``` (set this as the 'File Path' in the Figma Tokens Plugin).
 
 The Figma tokens are then processed by ```tokens-transform``` and ```style-dictionary``` to produce the final theme JSON, which is consumed by the app.
 
 https://docs.tokens.studio/sync/github
 
-### Design System Changes
+## Design System Changes
 
 When adding, removing, or renaming a design token, update the theme interfaces to reflect your changes.
 
