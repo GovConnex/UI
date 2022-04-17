@@ -21,9 +21,8 @@ declare module "styled-components" {
         dark: string;
       }
       text: {
-        primary: string; // text color
-        // secondary: str
-        secondary: string; // secondary text color
+        primary: string;
+        secondary: string;
         disabled: string;
         hint: string;
       },
@@ -32,7 +31,7 @@ declare module "styled-components" {
         paper: string;
       },
       divider: string;
-      common: CommonPalette;
+      common: CommonPalette; // inherited from global theme
     }
   }
 }
