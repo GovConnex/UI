@@ -38,21 +38,17 @@ Get a Personal Access Token from [GitHub](https://github.com/settings/tokens) (g
 
 Set File Path to ```src/theming/tokens-figma/tokens.json```
 
-## Design System Changes
+### Design token changes
 
-When adding, removing, or renaming a design token, update the theme interfaces to reflect your changes.
+Design token changes will automatically be added to the Storybook documentation when pushed to the repository.
+
+When adding, removing, or renaming a design token, update the TypeScript theme interfaces to reflect your changes.
 
 ```src/theming/global-theme.interface.ts``` for **global** theme changes.
 
 ```src/theming/theme.interface.d.ts``` for **light/dark** theme changes.
 
 This provides type safety and helps with code completion.
-
-If the theme interfaces don't match the Figma tokens structure, the CI/CD pipeline will fail,
-so make sure you're subscribed to notifications for GitHub Actions.
-
-Design system changes will automatically be added to the Storybook documentation.
-
 
 ## Development
 ### Install dependencies
