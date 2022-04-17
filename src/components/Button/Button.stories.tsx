@@ -14,20 +14,20 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 
-export const HelloWorld = Template.bind({});
+export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-HelloWorld.args = {
-  label: "Hello world!",
+Primary.args = {
+  label: "Add Stakeholder",
 };
 
-HelloWorld.parameters = {
+Primary.parameters = {
   design: {
     type: "figma",
     url: "https://www.figma.com/file/bC4hXdr0nQPjm7xZCCzyDg/V2-Mockups?node-id=1370%3A25109"
   }
 }
 
-export const ClickMe = Template.bind({});
-ClickMe.args = {
+export const Secondary = Template.bind({});
+Secondary.args = {
   label: "Click me!",
 };

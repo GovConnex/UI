@@ -6,6 +6,7 @@
     "build:tokens": "./tokens-build.sh",
     "prepublishOnly": "rollup -c",
     "test": "jest",
+    "prestart": "yarn run build:tokens",
     "start": "start-storybook -p 6006",
     "build": "build-storybook",
     "prepare": "yarn run build:tokens",

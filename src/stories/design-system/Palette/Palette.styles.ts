@@ -1,10 +1,8 @@
 import styled from "styled-components";
+import StyledDoc from "../../common/styles";
 
-const StyledPalette = styled.div`
-  font-size: 14px;
-  color: white;
-  white-space: normal;
-  font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif
+const StyledPalette = styled(StyledDoc)`
+  
 `;
 
 export const SectionHeader = styled.h2`
@@ -19,16 +17,18 @@ export const ColorsTable = styled.table`
   //flex-direction: column;
 `;
 
+export const ColorsTableTbody = styled.tbody`
+  //display: flex;
+  //flex-direction: row;
+`;
+
 export const ColorsTableRow = styled.tr`
   //display: flex;
   //flex-direction: row;
   //padding: 1rem 0;
 `;
 
-export const ColorsTableTbody = styled.tbody`
-  //display: flex;
-  //flex-direction: row;
-`;
+
 
 export const ColorsTableTd = styled.td`
   //display: flex;
@@ -40,7 +40,7 @@ export const ColorValueTd = styled(ColorsTableTd)`
   
   //display: flex;
   //flex-direction: row;
-  width: 3rem;
+  width: 2rem;
   //padding: 0;/
   padding-right: .5rem;
 `;
@@ -65,9 +65,9 @@ export const ColorDescriptionTd = styled(ColorsTableTd)`
 
 export const ColorValue = styled.div<{value: string}>`
   background-color: ${props => props.value};
-  height: 3rem;
+  height: 2rem;
   border-radius: 50%;
-  width: 3rem;
+  width: 2rem;
   min-width: 2rem;
   font-size: 12px;
   //margin-top: 5px;
