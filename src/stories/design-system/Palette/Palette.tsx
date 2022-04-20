@@ -1,5 +1,8 @@
 import React from "react";
-import figmaTokens from "../../../theming/tokens-figma/tokens.json";
+import globalTokens from "../../../theming/tokens-style-dictionary/global.json";
+import lightTokens from "../../../theming/tokens-style-dictionary/light.json";
+import darkTokens from "../../../theming/tokens-style-dictionary/dark.json";
+
 import StyledPalette, {
   ColorsTable,
   ColorValue,
@@ -44,9 +47,9 @@ const organisePalette = (palette: any, prevKeys: string[] = []): Array<{name: st
 }
 
 const Palette = () => {
-  const lightThemePalette = figmaTokens.light.palette;
-  const darkThemePalette = figmaTokens.dark.palette;
-  const globalPalette = figmaTokens.global.palette;
+  const lightThemePalette = lightTokens.palette;
+  const darkThemePalette = darkTokens.palette;
+  const globalPalette = globalTokens.palette;
   return <StyledPalette>
     {/*<iframe*/}
     {/*  height="1500"*/}
