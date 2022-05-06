@@ -31,13 +31,6 @@ export interface GlobalTheme {
   //   lg: string;
   //   xl: string;
   // },
-  spacing: {
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
-  },
   // sizing: {
   //   xs: string;
   //   sm: string;
@@ -64,26 +57,21 @@ export interface GlobalTheme {
   //   medium: string;
   //   low: string;
   // },
+  spacing: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  },
   borderRadius: {
     sm: string;
-    // md: string;
-    // lg: string;
-    // round: string;
   },
-  // zIndex: {
-  //   navBar: number;
-  //   drawer: number;
-  //   modal: number;
-  //   snackbar: number;
-  //   tooltip: number;
-  // },
-  // boxShadow: {
-  //   xs: BoxShadow;
-  //   sm: BoxShadow;
-  //   md: BoxShadow;
-  //   lg: BoxShadow;
-  //   xl: BoxShadow;
-  // },
+  borderWidth: {
+    sm: string;
+    md: string;
+    lg: string;
+  }
 }
 
 export default GlobalTheme;
