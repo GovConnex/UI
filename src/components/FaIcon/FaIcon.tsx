@@ -3,9 +3,9 @@ import Icon, { IconProps } from "../Icon/Icon";
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface FontAweIconProps extends Omit<FontAwesomeIconProps, 'icon'> { }
+interface FontAweIconProps extends Omit<FontAwesomeIconProps, "icon"> { }
 
-export interface FaIconProps extends IconProps {
+export interface FaIconProps extends Omit<IconProps, "component"> {
   icon: IconProp;
   faProps?: FontAweIconProps;
 }

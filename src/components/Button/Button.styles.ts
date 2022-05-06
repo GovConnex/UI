@@ -18,7 +18,7 @@ const StyledButton = styled.button<{
   ${props => props.variant === "secondary" ?
     `border: ${props.theme.borderWidth.md} solid ${props.theme.palette.background.dark};`
     :
-    'border: none;'}
+    `border: ${props.theme.borderWidth.md} solid transparent;`}
 
   ${props => props.variant === "nofill" ? `
     background-color: transparent;
