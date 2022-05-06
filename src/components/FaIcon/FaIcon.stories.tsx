@@ -1,30 +1,30 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Input from "./Input";
+import FaIcon from "./FaIcon";
 import { withDesign } from 'storybook-addon-designs';
-import FaIcon from "../FaIcon";
 import { faSearch } from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/Input",
-  component: Input,
+  title: "Components/FaIcon",
+  component: FaIcon,
   decorators: [withDesign],
-} as ComponentMeta<typeof Input>;
+} as ComponentMeta<typeof FaIcon>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const Template: ComponentStory<typeof FaIcon> = (args) => <FaIcon {...args} />;
 
 export const Search = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Search.args = {
-  placeholder: "Search",
-  endAdornment: <FaIcon icon={faSearch} style={{ opacity: "0.4" }} />,
+  icon: faSearch
 };
 
-Search.parameters = {
-  design: {
-    type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=157%3A9356"
+export const SearchLg = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+SearchLg.args = {
+  icon: faSearch,
+  faProps: {
+    size: "lg"
   }
 };

@@ -22,9 +22,11 @@ jobs:
         echo "::set-output name=bucket_region::$BUCKET_REGION"
         echo "::set-output name=dist_id::$DIST_ID"
     - uses: c-hive/gha-yarn-cache@v2
-    
+
     - name: Install packages
-      run: yarn install
+      run: |
+        npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FONTAWESOME_NPM_TOKEN }}
+        yarn install
 
     - name: Build Storybook
       run: yarn build
