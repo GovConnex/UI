@@ -6,4 +6,3 @@ src/theming/tokens-style-dictionary
 src/theming/tokens-output
 
 .env
-.npmrc

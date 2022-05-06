@@ -25,7 +25,7 @@ jobs:
 
     - name: Install packages
       run: |
-        npm config set "//npm.fontawesome.com/:_authToken" "${{ secrets.FONTAWESOME_NPM_TOKEN }}"
+        echo "//npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_NPM_TOKEN }}" >> .npmrc
         yarn install
 
     - name: Build Storybook
