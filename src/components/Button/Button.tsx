@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledButton, StyledAdornment } from "./Button.styles";
 
-export type ButtonVariant = "primary" | "secondary" | "nofill";
+export type ButtonVariant = "primary" | "secondary" | "text";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label?: string;
+  children?: React.ReactNode;
   variant?: ButtonVariant;
   size?: string;
   startAdornment?: React.ReactNode;
@@ -19,15 +19,19 @@ const Button = (props: ButtonProps) => {
       variant={props.variant || "primary"}
       {...props}
     >
-      <StyledAdornment position="start">
-        {props.startAdornment}
-      </StyledAdornment>
+      {props.startAdornment ?
+        <StyledAdornment position="start">
+          {props.startAdornment}
+        </StyledAdornment>
+      : null}
 
-      {props.label}
+      {props.children}
 
-      <StyledAdornment position="end">
-        {props.endAdornment}
-      </StyledAdornment>
+      {props.endAdornment ?
+        <StyledAdornment position="end">
+          {props.endAdornment}
+        </StyledAdornment>
+      : null}
     </StyledButton>
   );
 };

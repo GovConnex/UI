@@ -6,7 +6,6 @@ const StyledIcon = styled.span<{rotate?: number; spin?: number}>`
   text-transform: none;
   text-rendering: optimizelegibility;
   height: 1em;
-  width: 1em;
 
   & > svg {
     vertical-align: -.12em

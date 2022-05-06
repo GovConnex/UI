@@ -20,11 +20,15 @@ const StyledButton = styled.button<{
     :
     `border: ${props.theme.borderWidth.md} solid transparent;`}
 
-  ${props => props.variant === "nofill" ? `
+  ${props => props.variant === "text" ? `
     background-color: transparent;
 
     &:hover {
       background-color: ${props.theme.palette.secondary.extraLight};
+    }
+
+    &:active {
+      background-color: ${props.theme.palette.background.dark}
     }
   ` : `
     background-color: ${props.variant === "primary" ?
