@@ -1,5 +1,8 @@
 export { default as ThemeProvider } from "./ThemeProvider";
 export { default as FaIcon } from "./FaIcon";
+export { default as Chip } from "./Chip";
+export { default as Typography } from "./Typography";
+export { default as DataTable } from "./DataTable";
 export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
 export { default as Button } from "./Button";

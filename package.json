@@ -70,9 +70,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-table": "^7.7.0",
     "token-transformer": "^0.0.20",
     "tslib": "^2.3.1"
   },
