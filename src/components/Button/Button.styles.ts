@@ -12,15 +12,33 @@ const StyledButton = styled.button<{
   cursor: pointer;
   padding: ${props => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
   border-radius: ${props => props.theme.borderRadius.sm};
-  color: ${props => props.variant === "primary"
-    ? props.theme.palette.background.default : props.theme.palette.text.primary};
+  color: ${props => props.theme.palette.text.primary};
+  border: ${props => props.theme.borderWidth.md} solid transparent;
 
-  ${props => props.variant === "secondary" ?
-    `border: ${props.theme.borderWidth.md} solid ${props.theme.palette.background.dark};`
-    :
-    `border: ${props.theme.borderWidth.md} solid transparent;`}
+  ${props => props.variant === "primary" && `
+    color: ${props.theme.palette.background.default};
+    background-color: ${props.theme.palette.primary.main};
 
-  ${props => props.variant === "text" ? `
+    &:hover {
+      background-color: ${props.theme.palette.primary.dark};
+    }
+
+    &:active {
+      box-shadow: ${props.theme.shadow.sm.x}px ${props.theme.shadow.sm.y}px ${props.theme.shadow.sm.blur}px ${props.theme.shadow.sm.spread}px ${props.theme.shadow.sm.color};
+    }
+  `}
+
+  ${props => props.variant === "secondary" && `
+    border: ${props.theme.borderWidth.md} solid ${props.theme.palette.background.dark};
+    background-color: ${props.theme.palette.gray["0"]};
+    box-shadow: ${props.theme.shadow.sm.x}px ${props.theme.shadow.sm.y}px ${props.theme.shadow.sm.blur}px ${props.theme.shadow.sm.spread}px ${props.theme.shadow.sm.color};
+
+    &:hover {
+      background-color: ${props.theme.palette.background.dark};
+    }
+  `}
+
+  ${props => props.variant === "text" && `
     background-color: transparent;
 
     &:hover {
@@ -30,13 +48,6 @@ const StyledButton = styled.button<{
     &:active {
       background-color: ${props.theme.palette.background.dark}
     }
-  ` : `
-    background-color: ${props.variant === "primary" ?
-      props.theme.palette.primary.main : props.theme.palette.gray["0"]};
-
-    &:hover {
-      background-color: ${props.variant === "primary" ?
-        props.theme.palette.primary.dark : props.theme.palette.background.dark};
   `}
 `;
 

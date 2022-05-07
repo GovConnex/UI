@@ -10,10 +10,10 @@ interface Typography {
 }
 
 interface BoxShadow {
-  x: string;
-  y: string;
-  blur: string;
-  spread: string;
+  x: number;
+  y: number;
+  blur: number;
+  spread: number;
   color: string
   type: string;
 }
@@ -71,6 +71,9 @@ export interface GlobalTheme {
     sm: string;
     md: string;
     lg: string;
+  },
+  shadow: {
+    sm: BoxShadow;
   }
 }
 

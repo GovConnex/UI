@@ -10,15 +10,19 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = (props: InputProps) => {
   return (
     <StyledInputContainer fullWidth={!!props.fullWidth}>
-      <StyledAdornment position="start">
-        {props.startAdornment}
-      </StyledAdornment>
+      {props.startAdornment ?
+        <StyledAdornment position="start">
+          {props.startAdornment}
+        </StyledAdornment>
+    : null}
 
       <StyledInput fullWidth={!!props.fullWidth} {...props}></StyledInput>
 
-      <StyledAdornment position="end">
-        {props.endAdornment}
-      </StyledAdornment>
+      {props.endAdornment ?
+        <StyledAdornment position="end">
+          {props.endAdornment}
+        </StyledAdornment>
+      : null}
     </StyledInputContainer>
   );
 };

@@ -75,7 +75,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-table": "^7.7.0",
-    "token-transformer": "^0.0.20",
+    "token-transformer": "^0.0.22",
     "tslib": "^2.3.1"
   },
   "peerDependencies": {
