@@ -7,7 +7,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   endAdornment?: React.ReactNode;
 }
 
-const Input = (props: InputProps) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <StyledInputContainer fullWidth={!!props.fullWidth}>
       {props.startAdornment ?
@@ -16,7 +16,7 @@ const Input = (props: InputProps) => {
         </StyledAdornment>
     : null}
 
-      <StyledInput fullWidth={!!props.fullWidth} {...props}></StyledInput>
+      <StyledInput fullWidth={!!props.fullWidth} ref={ref} {...props}></StyledInput>
 
       {props.endAdornment ?
         <StyledAdornment position="end">
@@ -25,6 +25,6 @@ const Input = (props: InputProps) => {
       : null}
     </StyledInputContainer>
   );
-};
+});
 
 export default Input;

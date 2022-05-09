@@ -12,9 +12,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   disabled?: boolean;
 }
 
-const Button = (props: ButtonProps) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   return (
     <StyledButton
+      ref={ref}
       disabled={!!props.disabled}
       variant={props.variant || "primary"}
       {...props}
@@ -34,6 +35,6 @@ const Button = (props: ButtonProps) => {
       : null}
     </StyledButton>
   );
-};
+});
 
 export default Button;

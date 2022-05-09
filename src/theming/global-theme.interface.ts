@@ -68,6 +68,7 @@ export interface GlobalTheme {
   },
   shadow: {
     sm: BoxShadow;
+    md: BoxShadow[];
   }
 }
 
