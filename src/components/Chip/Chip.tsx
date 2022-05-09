@@ -1,5 +1,5 @@
 import React from "react";
-import StyledChip from "./Chip.styles";
+import StyledChip, { StyledIcon } from "./Chip.styles";
 
 export interface ChipProps {
   label?: string;
@@ -9,7 +9,10 @@ export interface ChipProps {
 }
 
 const Chip = (props: ChipProps) => {
-  return <StyledChip className={props.className}>{props.label}</StyledChip>;
+  return <StyledChip className={props.className}>
+    <StyledIcon>{props.icon}</StyledIcon>
+
+  </StyledChip>;
 };
 
 export default Chip;
