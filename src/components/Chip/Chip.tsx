@@ -1,19 +1,31 @@
 import React from "react";
 import Typography from "../Typography";
-import StyledChip, { StyledIcon } from "./Chip.styles";
+import StyledChip, { StyledAdornment } from "./Chip.styles";
 
 export interface ChipProps {
   label?: string;
   onClick?: () => void;
-  icon?: React.ReactNode;
+  startAdornment?: React.ReactNode;
+  endAdornment?: React.ReactNode;
   className?: string;
 }
 
-const Chip = ({ label, icon, onClick, className }: ChipProps) => {
+const Chip = ({
+  label,
+  startAdornment,
+  endAdornment,
+  onClick,
+  className,
+}: ChipProps) => {
   return (
     <StyledChip className={className} onClick={onClick}>
-      {icon ? <StyledIcon>{icon}</StyledIcon> : null}
-      <Typography variant="textMd">{label}</Typography>
+      {startAdornment ? (
+        <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
+      ) : null}
+      <Typography variant="textSm">{label}</Typography>
+      {endAdornment ? (
+        <StyledAdornment position={"end"}>{endAdornment}</StyledAdornment>
+      ) : null}
     </StyledChip>
   );
 };
