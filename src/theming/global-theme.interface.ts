@@ -39,18 +39,12 @@ export interface GlobalTheme {
   //   xl: string;
   // },
   typography: {
-    display: {
-      lg: Typography;
-      md: Typography;
-      sm: Typography;
-    },
-    text: {
-      md: Typography;
-      sm: Typography;
-    },
-    caption: {
-      sm: Typography;
-    },
+    displaySm: Typography;
+    displayMd: Typography;
+    displayLg: Typography;
+    textSm: Typography;
+    textMd: Typography;
+    captionSm: Typography;
   },
   // opacity: {
   //   high: string;

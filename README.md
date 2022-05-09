@@ -15,7 +15,7 @@ yarn add @govconnex/ui
 
 ```
 # Add fontawesome pro token in npm (does not work in yarn)
-npm config set "//npm.fontawesome.com/:_authToken" ${FONT-AWESOME-PACKAGE-TOKEN}
+npm config set "//npm.fontawesome.com/:_authToken" ${FONT_AWESOME_PACKAGE_TOKEN}
 
 # Install dependencies
 yarn
