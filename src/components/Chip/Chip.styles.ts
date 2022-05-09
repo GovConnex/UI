@@ -13,8 +13,8 @@ const StyledChip = styled.div`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   color: ${({ theme }) => theme.palette.text.primary};
-  display: inline-flex;
-  gap: ${({ theme }) => theme.spacing.xs};
+  display: inline-block;
+  cursor: default;
 `;
 
 export default StyledChip;
