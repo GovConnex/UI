@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Avatar from "./Avatar";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,11 +16,13 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
+  alt: "Cooper Darling-Blair",
+  src: "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/5bbde01153dc9c5087edf407/ba6faad0-1d60-48c9-9bf4-b5be4fddfcaa/128",
 };
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

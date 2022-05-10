@@ -1,20 +1,15 @@
 import React from "react";
 import Typography from "../Typography";
-import StyledAvatar, {
-  StyledAvatarImage,
-  StyledAvatarInitials,
-} from "./Avatar.styles";
+import StyledAvatar, { StyledAvatarImage } from "./Avatar.styles";
 
 export type Variant = "circle" | "square";
-export type Size = "sm" | "md";
+export type Size = "sm" | "md" | "lg" | "xl";
 
 export interface AvatarProps {
   variant?: Variant;
   size?: Size;
   src?: string;
-  /**
-   * The alt text for the image
-   */
+  /** The alt text for the image */
   alt?: string;
   className?: string;
   onClick?: () => void;
@@ -26,21 +21,16 @@ export interface AvatarProps {
 
 const getInitials = (name?: string) => {
   const names = name?.split(" ");
-  const initials = names?.map((name) => name[0].toUpperCase()).join("");
+  const initials = names?.map((name) => name[0]?.toUpperCase())?.join("");
   return initials || "";
-};
-
-const typographyVariants = {
-  sm: "textSm",
-  md: "textMd",
 };
 
 const colourVariants = [
   "#F44336",
   "#E91E63",
-  "#9C27B0",
-  "#673AB7",
-  "#3F51B5",
+  // "#9C27B0",
+  // "#673AB7",
+  // "#3F51B5",
   "#2196F3",
   "#03A9F4",
   "#00BCD4",
@@ -57,19 +47,26 @@ const Avatar = ({
   size = "md",
   alt,
   src,
-  onBlur,
-  onFocus,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
-  className,
+  ...rest
 }: AvatarProps) => {
   const [error, setError] = React.useState(false);
   const showAvatar = src && !error;
+  let initials = getInitials(alt) || "";
+  const colourIndex =
+    ((initials?.charCodeAt(0) || 0) + (initials?.charCodeAt(1) || 0)) %
+    colourVariants.length;
+  const backgroundColor = colourVariants[colourIndex];
   return (
-    <StyledAvatar size={size}>
-      {showAvatar ? <StyledAvatarImage /> : null}
-      {!showAvatar ? <Typography variant={typographyVariants[size]} /> : null}
+    <StyledAvatar
+      backgroundColor={backgroundColor}
+      size={size}
+      variant={variant}
+      {...rest}
+    >
+      {showAvatar ? (
+        <StyledAvatarImage src={src} onError={() => setError(true)} />
+      ) : null}
+      {!showAvatar ? initials || "" : null}
     </StyledAvatar>
   );
 };

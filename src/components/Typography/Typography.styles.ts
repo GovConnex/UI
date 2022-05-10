@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Variants } from "./Typography.types";
 
-const FONT_WEIGHTS = {
+export const FONT_WEIGHTS = {
   Regular: 400,
   Medium: 500,
   "Semi-Bold": 600,

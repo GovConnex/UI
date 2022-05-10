@@ -3,7 +3,7 @@ import { ButtonVariant } from "./Button";
 
 const StyledAdornment = styled.span<{ position: string }>`
   ${props => `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.sm}`};
-`
+`;
 
 const StyledButton = styled.button<{
   disabled: boolean;
