@@ -15,38 +15,38 @@ const StyledButton = styled.button<{
   color: ${props => props.theme.palette.text.primary};
   border: ${props => props.theme.borderWidth.md} solid transparent;
 
-  ${props => props.variant === "primary" && `
-    color: ${props.theme.palette.background.default};
-    background-color: ${props.theme.palette.primary.main};
+  ${({theme, variant}) => variant === "primary" && `
+    color: ${theme.palette.background.default};
+    background-color: ${theme.palette.primary.main};
 
     &:hover {
-      background-color: ${props.theme.palette.primary.dark};
+      background-color: ${theme.palette.primary.dark};
     }
 
     &:active {
-      box-shadow: ${props.theme.shadow.sm.x}px ${props.theme.shadow.sm.y}px ${props.theme.shadow.sm.blur}px ${props.theme.shadow.sm.spread}px ${props.theme.shadow.sm.color};
+      box-shadow: ${theme.shadow.sm.x}px ${theme.shadow.sm.y}px ${theme.shadow.sm.blur}px ${theme.shadow.sm.spread}px ${theme.shadow.sm.color};
     }
   `}
 
-  ${props => props.variant === "secondary" && `
-    border: ${props.theme.borderWidth.md} solid ${props.theme.palette.background.dark};
-    background-color: ${props.theme.palette.gray["0"]};
-    box-shadow: ${props.theme.shadow.sm.x}px ${props.theme.shadow.sm.y}px ${props.theme.shadow.sm.blur}px ${props.theme.shadow.sm.spread}px ${props.theme.shadow.sm.color};
+  ${({theme, variant}) => variant === "secondary" && `
+    border: ${theme.borderWidth.md} solid ${theme.palette.background.dark};
+    background-color: ${theme.palette.gray["0"]};
+    box-shadow: ${theme.shadow.sm.x}px ${theme.shadow.sm.y}px ${theme.shadow.sm.blur}px ${theme.shadow.sm.spread}px ${theme.shadow.sm.color};
 
     &:hover {
-      background-color: ${props.theme.palette.background.dark};
+      background-color: ${theme.palette.background.dark};
     }
   `}
 
-  ${props => props.variant === "text" && `
+  ${({theme, variant}) => variant === "text" && `
     background-color: transparent;
 
     &:hover {
-      background-color: ${props.theme.palette.secondary.extraLight};
+      background-color: ${theme.palette.secondary.extraLight};
     }
 
     &:active {
-      background-color: ${props.theme.palette.background.dark}
+      background-color: ${theme.palette.background.dark}
     }
   `}
 `;
