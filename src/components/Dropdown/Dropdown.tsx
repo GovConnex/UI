@@ -7,13 +7,12 @@ import { StyledDropdown, StyledDropdownOption, StyledAdornment, StyledDropdownHe
 export interface DropdownOption {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
-  onClick?: () => void;
-  text?: string;
+  onClick?: (...args: any[]) => void;
+  text?: string | number;
   category?: string;
 }
 
 export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
   anchorEl: React.RefObject<HTMLElement>;
   options: DropdownOption[];
   placement?: Placement;
@@ -28,9 +27,9 @@ const Dropdown = (props: DropdownProps) => {
     <Popover anchorEl={props.anchorEl} placement={props.placement}>
       <StyledDropdown {...props}>
         {Object.keys(categorisedOptions).map((category, iidx) => (
-          <>
+          <div key={`category-${iidx}`}>
             {category !== "undefined" &&
-              <StyledDropdownHeading key={`heading-${iidx}`}>{category}</StyledDropdownHeading>}
+              <StyledDropdownHeading>{category}</StyledDropdownHeading>}
             {categorisedOptions[category].map((x, idx) => (
               <StyledDropdownOption onClick={x.onClick} key={`item-${idx}`}>
                 {x.startAdornment ?
@@ -48,7 +47,7 @@ const Dropdown = (props: DropdownProps) => {
                 : null}
               </StyledDropdownOption>
             ))}
-          </>
+          </div>
         ))}
       </StyledDropdown>
     </Popover>
