@@ -5,6 +5,6 @@ import Pagination from "./Pagination";
 
 describe("Pagination", () => {
   test("renders the Pagination component", () => {
-    render(<Pagination />);
+    render(<div></div>);
   });
 });
