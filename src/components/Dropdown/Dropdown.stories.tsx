@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Dropdown from "./Dropdown";
 import { withDesign } from 'storybook-addon-designs';
-
 import Button from "../Button";
-import FaIcon from "../FaIcon";
+import Icon from "../Icon";
 import { faUser } from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -22,7 +21,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => {
   return (
     <div>
       <Button ref={exampleRef} onClick={() => setShowDropdown(!showDropdown)}>Toggle dropdown</Button>
-      {showDropdown && <Dropdown {...args} anchorEl={exampleRef}>I'm drop!</Dropdown>}
+      {showDropdown && <Dropdown {...args} onClose={() => setShowDropdown(false)} anchorEl={exampleRef}>I'm drop!</Dropdown>}
     </div>
   );
 }
@@ -32,9 +31,9 @@ export const Example = Template.bind({});
 Example.args = {
   placement: "bottom-start",
   options: [
-    { text: "Dropdown Option", startAdornment: <FaIcon icon={faUser} /> },
-    { text: "Hello", startAdornment: <FaIcon icon={faUser} /> },
-    { text: "Dropdown Option Part 2", startAdornment: <FaIcon icon={faUser} /> },
+    { text: "Dropdown Option", startAdornment: <Icon icon={faUser} /> },
+    { text: "Hello", startAdornment: <Icon icon={faUser} /> },
+    { text: "Dropdown Option Part 2", startAdornment: <Icon icon={faUser} /> },
   ]
 };
 

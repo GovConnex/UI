@@ -6,16 +6,18 @@ import {
 import React, { useState, useRef, useMemo } from "react";
 import Button from "../Button";
 import Dropdown from "../Dropdown";
-import FaIcon from "../FaIcon";
+import Icon from "../Icon";
 import Typography from "../Typography";
 import StyledPagination from "./Pagination.styles";
 
 export interface PaginationItemsPerPageObject {
   value: number;
   label: string | number;
-}
+};
 
-export type PaginationItemsPerPageOption = number | PaginationItemsPerPageObject;
+export type PaginationItemsPerPageOption =
+  | number
+  | PaginationItemsPerPageObject;
 
 export interface PaginationProps {
   totalItems: number;
@@ -24,7 +26,7 @@ export interface PaginationProps {
   onPageChange: (newPage: number) => void;
   onItemsPerPageChange: (newItemsPerPage: number) => void;
   itemsPerPageOptions?: PaginationItemsPerPageOption[];
-}
+};
 
 const Pagination = (props: PaginationProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -37,7 +39,7 @@ const Pagination = (props: PaginationProps) => {
 
   const dropdownOptions = useMemo(() => {
     if (props.itemsPerPageOptions) {
-      return props.itemsPerPageOptions.map(x =>
+      return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
           ? { text: x, onClick: () => setItemsPerPage(x) }
           : { text: x.label, onClick: () => setItemsPerPage(x.value) }
@@ -54,44 +56,55 @@ const Pagination = (props: PaginationProps) => {
 
   return (
     <StyledPagination>
-      <Typography>
-        Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
-      </Typography>
+      <>
+        <div>
+          <Typography>
+            Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
+          </Typography>
 
-      <Button
-        variant="secondary"
-        onClick={() => props.onPageChange(props.page - 1)}
-        disabled={props.page <= 1}
-      >
-        <FaIcon icon={faChevronLeft} />
-      </Button>
+          <Button
+            variant="secondary"
+            onClick={() => props.onPageChange(props.page - 1)}
+            disabled={props.page <= 1}
+          >
+            <Icon icon={faChevronLeft} />
+          </Button>
 
-      <Button
-        variant="secondary"
-        onClick={() => props.onPageChange(props.page + 1)}
-        disabled={
-          props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
-        }
-      >
-        <FaIcon icon={faChevronRight} />
-      </Button>
+          <Button
+            variant="secondary"
+            onClick={() => props.onPageChange(props.page + 1)}
+            disabled={
+              props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
+            }
+          >
+            <Icon icon={faChevronRight} />
+          </Button>
+        </div>
 
-      <Typography>Showing</Typography>
+        <div>
+          <Typography>Showing</Typography>
 
-      <Button
-        variant="secondary"
-        endAdornment={<FaIcon icon={faCaretDown} />}
-        ref={buttonRef}
-        onClick={() => setShowDropdown(!showDropdown)}
-      >
-        <Typography>{props.itemsPerPage}</Typography>
-      </Button>
+          <Button
+            variant="secondary"
+            endAdornment={<Icon icon={faCaretDown} />}
+            ref={buttonRef}
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <Typography>{props.itemsPerPage}</Typography>
+          </Button>
 
-      {showDropdown && (
-        <Dropdown placement="bottom-start" options={dropdownOptions} anchorEl={buttonRef} />
-      )}
+          {showDropdown && (
+            <Dropdown
+              placement="bottom-start"
+              options={dropdownOptions}
+              anchorEl={buttonRef}
+              onClose={() => setShowDropdown(false)}
+            />
+          )}
 
-      <Typography>Items out of {props.totalItems}</Typography>
+          <Typography>Items out of {props.totalItems}</Typography>
+        </div>
+      </>
     </StyledPagination>
   );
 };

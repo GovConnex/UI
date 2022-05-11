@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Input from "./Input";
 import { withDesign } from 'storybook-addon-designs';
-import FaIcon from "../FaIcon";
+import Icon from "../Icon";
 import { faSearch } from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -19,7 +19,7 @@ export const Search = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Search.args = {
   placeholder: "Search",
-  endAdornment: <FaIcon icon={faSearch} style={{ opacity: "0.4" }} />,
+  endAdornment: <Icon icon={faSearch} style={{ opacity: "0.4" }} />,
 };
 
 Search.parameters = {

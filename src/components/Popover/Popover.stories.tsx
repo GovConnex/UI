@@ -6,14 +6,14 @@ import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/Popover",
+  title: "Utils/Popover",
   component: Popover,
   decorators: [withDesign],
 } as ComponentMeta<typeof Popover>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Popover> = (args) => {
-  const exampleRef = React.useRef<HTMLButtonElement>(null);
+  const exampleRef = useRef<HTMLButtonElement>(null);
   const [showPopper, setShowPopper] = useState(false);
 
   return (

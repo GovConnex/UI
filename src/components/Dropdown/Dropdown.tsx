@@ -3,6 +3,7 @@ import { Placement } from "@popperjs/core";
 import _ from "lodash";
 import Popover from "../Popover";
 import { StyledDropdown, StyledAdornment } from "./Dropdown.styles";
+import ClickAwayListener, { OnClickAway } from "../ClickAwayListener";
 import { ListHeading } from "../List";
 import ListItem from "../List/ListItem";
 
@@ -18,6 +19,7 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl: React.RefObject<HTMLElement>;
   options: DropdownOption[];
   placement?: Placement;
+  onClose?: OnClickAway;
 }
 
 const Dropdown = (props: DropdownProps) => {
@@ -45,7 +47,7 @@ const Dropdown = (props: DropdownProps) => {
                 {/*  </StyledAdornment>*/}
                 {/*) : null}*/}
 
-                {x.text}
+                    {x.text}
 
                 {/*{x.endAdornment ? (*/}
                 {/*  <StyledAdornment position="end">*/}
