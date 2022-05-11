@@ -7,8 +7,20 @@ export interface DataCellProps {
   onSelect?: () => void;
 }
 
-const DataTableDataCell = ({ onSelect }: DataCellProps) => {
-  return <GcxDataTableDataCellRoot></GcxDataTableDataCellRoot>;
+// active state: purple border
+
+const DataTableDataCell = ({
+  onSelect,
+  children,
+  className,
+}: DataCellProps) => {
+  return (
+    <>
+      <GcxDataTableDataCellRoot className={className}>
+        {children}
+      </GcxDataTableDataCellRoot>
+    </>
+  );
 };
 
 export default DataTableDataCell;

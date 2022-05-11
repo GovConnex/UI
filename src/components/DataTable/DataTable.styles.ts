@@ -32,16 +32,9 @@ export const GcxDataTableTh = styled.th`
 `;
 
 export const GcxDataTableTd = styled.td`
-  //& > * {
-
-  //}
-
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
   }
-
-  //border: 1px solid #EBEBEB;
-  //border-collapse: collapse;
 `;
 
 export const GcxDataTableDataCellRoot = styled.div`

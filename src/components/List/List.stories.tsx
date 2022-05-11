@@ -1,7 +1,9 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { List, ListItem, ListHeading } from "./List";
-import { withDesign } from 'storybook-addon-designs';
+import { List, ListHeading } from "./List";
+import { withDesign } from "storybook-addon-designs";
+import ListItem from "./ListItem";
+import Icon from "../Icon";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -24,7 +26,7 @@ Example.args = {
       <ListItem button>List Button</ListItem>
       <ListItem button>List Button</ListItem>
     </>
-  )
+  ),
 };
 
 export const Nested = Template.bind({});
@@ -40,7 +42,7 @@ Nested.args = {
         <ListItem>List Item</ListItem>
       </List>
     </>
-  )
+  ),
 };
 
 export const FixedHeight = Template.bind({});
@@ -62,5 +64,5 @@ FixedHeight.args = {
       <ListItem>List Item</ListItem>
       <ListItem>List Item</ListItem>
     </>
-  )
+  ),
 };
