@@ -5,6 +5,7 @@ import Popover from "../Popover";
 import { StyledDropdown, StyledAdornment } from "./Dropdown.styles";
 import { ListHeading, ListItem } from "../List";
 import ClickAwayListener, { OnClickAway } from "../ClickAwayListener";
+import Typography from "../Typography";
 
 export interface DropdownOption {
   startAdornment?: React.ReactNode;
@@ -28,35 +29,33 @@ const Dropdown = (props: DropdownProps) => {
 
   return (
     <ClickAwayListener onClickAway={props.onClose || null}>
-      <span>
-        <Popover anchorEl={props.anchorEl} placement={props.placement}>
-          <StyledDropdown {...props}>
-            {Object.keys(categorisedOptions).map((category, iidx) => (
-              <div key={`category-${iidx}`}>
-                {category !== "undefined" &&
-                  <ListHeading uppercase>{category}</ListHeading>}
-                {categorisedOptions[category].map((x, idx) => (
-                  <ListItem button onClick={x.onClick} key={`item-${idx}`}>
-                    {x.startAdornment ?
-                      <StyledAdornment position="start">
-                        {x.startAdornment}
-                      </StyledAdornment>
-                    : null}
+      <Popover anchorEl={props.anchorEl} placement={props.placement}>
+        <StyledDropdown {...props}>
+          {Object.keys(categorisedOptions).map((category, iidx) => (
+            <React.Fragment key={`category-${iidx}`}>
+              {category !== "undefined" &&
+                <ListHeading uppercase>{category}</ListHeading>}
+              {categorisedOptions[category].map((x, idx) => (
+                <ListItem button onClick={x.onClick} key={`item-${idx}`}>
+                  {x.startAdornment ?
+                    <StyledAdornment position="start">
+                      {x.startAdornment}
+                    </StyledAdornment>
+                  : null}
 
-                    {x.text}
+                  <Typography variant="textSm" style={{marginBottom: 0}}>{x.text}</Typography>
 
-                    {x.endAdornment ?
-                      <StyledAdornment position="end">
-                        {x.endAdornment}
-                      </StyledAdornment>
-                    : null}
-                  </ListItem>
-                ))}
-              </div>
-            ))}
-          </StyledDropdown>
-        </Popover>
-      </span>
+                  {x.endAdornment ?
+                    <StyledAdornment position="end">
+                      {x.endAdornment}
+                    </StyledAdornment>
+                  : null}
+                </ListItem>
+              ))}
+            </React.Fragment>
+          ))}
+        </StyledDropdown>
+      </Popover>
     </ClickAwayListener>
   );
 };
