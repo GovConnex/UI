@@ -25,3 +25,14 @@ Example.parameters = {
   //    url: ""
   //  }
 };
+
+export const Deletable = Template.bind({});
+
+Deletable.args = {
+  label: "Australia",
+  onDelete: () => {
+    console.log("Deleted");
+  },
+};
+
+Deletable.parameters = {};
