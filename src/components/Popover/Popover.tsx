@@ -9,9 +9,9 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
   modifiers?: ReadonlyArray<Modifier<any>>;
   placement?: Placement;
   strategy?: PositioningStrategy;
-}
+};
 
-const Popover = (props: PopoverProps) => {
+const Popover = React.forwardRef<HTMLSpanElement, PopoverProps>((props: PopoverProps, ref) => {
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const { styles, attributes } = usePopper(props.anchorEl.current, popperElement, {
     modifiers: props.modifiers,
@@ -20,14 +20,16 @@ const Popover = (props: PopoverProps) => {
   });
 
   return (
-    <StyledPopover
-      ref={setPopperElement}
-      style={styles.popper}
-      {...attributes.popper}
-    >
-      {props.children}
-    </StyledPopover>
+    <span ref={ref} style={{ display: "contents" }}>
+      <StyledPopover
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+      >
+        {props.children}
+      </StyledPopover>
+    </span>
   );
-};
+});
 
 export default Popover;

@@ -2,19 +2,18 @@ import React from "react";
 import { VariantsProp } from "./Typography.types";
 import { variantComponents } from "./Typography.styles";
 
-export interface TypographyProps {
+export interface TypographyProps extends React.HTMLProps<HTMLElement> {
   children?: React.ReactNode;
   variant?: VariantsProp;
-  className?: string;
 }
 
 const Typography = ({
   children,
   variant = "textMd",
-  className,
+  ...props
 }: TypographyProps) => {
   const VariantComponent = variantComponents[variant];
-  return <VariantComponent className={className}>{children}</VariantComponent>;
+  return <VariantComponent {...props}>{children}</VariantComponent>;
 };
 
 export default Typography;
