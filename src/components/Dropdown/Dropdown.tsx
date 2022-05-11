@@ -2,7 +2,8 @@ import React, { useMemo } from "react";
 import { Placement }from '@popperjs/core';
 import _ from "lodash";
 import Popover from "../Popover";
-import { StyledDropdown, StyledDropdownOption, StyledAdornment, StyledDropdownHeading } from "./Dropdown.styles";
+import { StyledDropdown, StyledAdornment } from "./Dropdown.styles";
+import { ListHeading, ListItem } from "../List";
 
 export interface DropdownOption {
   startAdornment?: React.ReactNode;
@@ -29,9 +30,9 @@ const Dropdown = (props: DropdownProps) => {
         {Object.keys(categorisedOptions).map((category, iidx) => (
           <div key={`category-${iidx}`}>
             {category !== "undefined" &&
-              <StyledDropdownHeading>{category}</StyledDropdownHeading>}
+              <ListHeading>{category}</ListHeading>}
             {categorisedOptions[category].map((x, idx) => (
-              <StyledDropdownOption onClick={x.onClick} key={`item-${idx}`}>
+              <ListItem button onClick={x.onClick} key={`item-${idx}`}>
                 {x.startAdornment ?
                   <StyledAdornment position="start">
                     {x.startAdornment}
@@ -45,7 +46,7 @@ const Dropdown = (props: DropdownProps) => {
                     {x.endAdornment}
                   </StyledAdornment>
                 : null}
-              </StyledDropdownOption>
+              </ListItem>
             ))}
           </div>
         ))}

@@ -38,9 +38,16 @@ Example.args = {
   ]
 };
 
-Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+export const Headings = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Headings.args = {
+  placement: "bottom-start",
+  options: [
+    { text: "Dropdown Option", category: "Animals" },
+    { text: "Dropdown Option", category: "Animals" },
+    { text: "Dropdown Option", category: "Animals" },
+    { text: "Dropdown Option", category: "Animals" },
+    { text: "Dropdown Option", category: "Plants" },
+    { text: "Dropdown Option", category: "Plants" },
+  ]
 };
