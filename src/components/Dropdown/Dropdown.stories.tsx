@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Dropdown from "./Dropdown";
 import { withDesign } from 'storybook-addon-designs';
-
 import Button from "../Button";
 import FaIcon from "../FaIcon";
 import { faUser } from "@fortawesome/pro-solid-svg-icons";
@@ -22,7 +21,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => {
   return (
     <div>
       <Button ref={exampleRef} onClick={() => setShowDropdown(!showDropdown)}>Toggle dropdown</Button>
-      {showDropdown && <Dropdown {...args} anchorEl={exampleRef}>I'm drop!</Dropdown>}
+      {showDropdown && <Dropdown {...args} onClose={() => setShowDropdown(false)} anchorEl={exampleRef}>I'm drop!</Dropdown>}
     </div>
   );
 }

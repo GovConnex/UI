@@ -15,7 +15,9 @@ export interface PaginationItemsPerPageObject {
   label: string | number;
 }
 
-export type PaginationItemsPerPageOption = number | PaginationItemsPerPageObject;
+export type PaginationItemsPerPageOption =
+  | number
+  | PaginationItemsPerPageObject;
 
 export interface PaginationProps {
   totalItems: number;
@@ -37,7 +39,7 @@ const Pagination = (props: PaginationProps) => {
 
   const dropdownOptions = useMemo(() => {
     if (props.itemsPerPageOptions) {
-      return props.itemsPerPageOptions.map(x =>
+      return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
           ? { text: x, onClick: () => setItemsPerPage(x) }
           : { text: x.label, onClick: () => setItemsPerPage(x.value) }
@@ -88,7 +90,12 @@ const Pagination = (props: PaginationProps) => {
       </Button>
 
       {showDropdown && (
-        <Dropdown placement="bottom-start" options={dropdownOptions} anchorEl={buttonRef} />
+        <Dropdown
+          placement="bottom-start"
+          options={dropdownOptions}
+          anchorEl={buttonRef}
+          onClose={() => setShowDropdown(false)}
+        />
       )}
 
       <Typography>Items out of {props.totalItems}</Typography>

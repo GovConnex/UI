@@ -4,6 +4,7 @@ import _ from "lodash";
 import Popover from "../Popover";
 import { StyledDropdown, StyledAdornment } from "./Dropdown.styles";
 import { ListHeading, ListItem } from "../List";
+import ClickAwayListener, { OnClickAway } from "../ClickAwayListener";
 
 export interface DropdownOption {
   startAdornment?: React.ReactNode;
@@ -17,6 +18,7 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl: React.RefObject<HTMLElement>;
   options: DropdownOption[];
   placement?: Placement;
+  onClose?: OnClickAway;
 }
 
 const Dropdown = (props: DropdownProps) => {
@@ -25,33 +27,35 @@ const Dropdown = (props: DropdownProps) => {
   }, [props.options])
 
   return (
-    <Popover anchorEl={props.anchorEl} placement={props.placement}>
-      <StyledDropdown {...props}>
-        {Object.keys(categorisedOptions).map((category, iidx) => (
-          <div key={`category-${iidx}`}>
-            {category !== "undefined" &&
-              <ListHeading>{category}</ListHeading>}
-            {categorisedOptions[category].map((x, idx) => (
-              <ListItem button onClick={x.onClick} key={`item-${idx}`}>
-                {x.startAdornment ?
-                  <StyledAdornment position="start">
-                    {x.startAdornment}
-                  </StyledAdornment>
-                : null}
+    <ClickAwayListener onClickAway={props.onClose || null}>
+      <Popover anchorEl={props.anchorEl} placement={props.placement}>
+        <StyledDropdown {...props}>
+          {Object.keys(categorisedOptions).map((category, iidx) => (
+            <div key={`category-${iidx}`}>
+              {category !== "undefined" &&
+                <ListHeading uppercase>{category}</ListHeading>}
+              {categorisedOptions[category].map((x, idx) => (
+                <ListItem button onClick={x.onClick} key={`item-${idx}`}>
+                  {x.startAdornment ?
+                    <StyledAdornment position="start">
+                      {x.startAdornment}
+                    </StyledAdornment>
+                  : null}
 
-                {x.text}
+                  {x.text}
 
-                {x.endAdornment ?
-                  <StyledAdornment position="end">
-                    {x.endAdornment}
-                  </StyledAdornment>
-                : null}
-              </ListItem>
-            ))}
-          </div>
-        ))}
-      </StyledDropdown>
-    </Popover>
+                  {x.endAdornment ?
+                    <StyledAdornment position="end">
+                      {x.endAdornment}
+                    </StyledAdornment>
+                  : null}
+                </ListItem>
+              ))}
+            </div>
+          ))}
+        </StyledDropdown>
+      </Popover>
+    </ClickAwayListener>
   );
 };
 
