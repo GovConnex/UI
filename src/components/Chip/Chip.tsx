@@ -5,7 +5,6 @@ import StyledChip, {
   StyledChipIcon,
   StyledChipLabel,
 } from "./Chip.styles";
-import FaIcon from "../FaIcon";
 import { faCircleXmark } from "@fortawesome/pro-solid-svg-icons";
 
 export interface ChipProps {

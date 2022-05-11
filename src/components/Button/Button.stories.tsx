@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
 import { withDesign } from 'storybook-addon-designs';
-import FaIcon from "../FaIcon";
+import Icon from "../Icon";
 import { faCoffee, faBook } from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -19,7 +19,7 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   children: "Primary Button",
-  endAdornment: <FaIcon icon={faCoffee} />
+  endAdornment: <Icon icon={faCoffee} />
 };
 
 Primary.parameters = {
@@ -39,10 +39,10 @@ export const Text = Template.bind({});
 Text.args = {
   children: "Text Button",
   variant: "text",
-  startAdornment: <FaIcon icon={faBook} />
+  startAdornment: <Icon icon={faBook} />
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
-  children: <FaIcon icon={faBook} />
+export const IconButton = Template.bind({});
+IconButton.args = {
+  children: <Icon icon={faBook} />
 };

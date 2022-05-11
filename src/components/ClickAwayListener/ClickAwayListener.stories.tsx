@@ -27,10 +27,10 @@ const Template: ComponentStory<typeof ClickAwayListener> = (_) => {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <>
+      <span>
         <Button ref={exampleRef} onClick={handleClick} variant="text">Toggle popper</Button>
         {open && <Popover placement="bottom-start" anchorEl={exampleRef}>I will stay open until you click away!</Popover>}
-      </>
+      </span>
     </ClickAwayListener>
   );
 }

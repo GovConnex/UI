@@ -6,14 +6,14 @@ import {
 import React, { useState, useRef, useMemo } from "react";
 import Button from "../Button";
 import Dropdown from "../Dropdown";
-import FaIcon from "../FaIcon";
+import Icon from "../Icon";
 import Typography from "../Typography";
 import StyledPagination from "./Pagination.styles";
 
 export interface PaginationItemsPerPageObject {
   value: number;
   label: string | number;
-}
+};
 
 export type PaginationItemsPerPageOption =
   | number
@@ -26,7 +26,7 @@ export interface PaginationProps {
   onPageChange: (newPage: number) => void;
   onItemsPerPageChange: (newItemsPerPage: number) => void;
   itemsPerPageOptions?: PaginationItemsPerPageOption[];
-}
+};
 
 const Pagination = (props: PaginationProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -67,7 +67,7 @@ const Pagination = (props: PaginationProps) => {
             onClick={() => props.onPageChange(props.page - 1)}
             disabled={props.page <= 1}
           >
-            <FaIcon icon={faChevronLeft} />
+            <Icon icon={faChevronLeft} />
           </Button>
 
           <Button
@@ -77,7 +77,7 @@ const Pagination = (props: PaginationProps) => {
               props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
             }
           >
-            <FaIcon icon={faChevronRight} />
+            <Icon icon={faChevronRight} />
           </Button>
         </div>
 
@@ -86,7 +86,7 @@ const Pagination = (props: PaginationProps) => {
 
           <Button
             variant="secondary"
-            endAdornment={<FaIcon icon={faCaretDown} />}
+            endAdornment={<Icon icon={faCaretDown} />}
             ref={buttonRef}
             onClick={() => setShowDropdown(!showDropdown)}
           >

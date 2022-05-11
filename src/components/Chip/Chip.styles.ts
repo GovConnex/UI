@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Icon from "../Icon";
-import FaIcon from "../FaIcon";
 import Typography from "../Typography";
 
 export const StyledAdornment = styled.div<{ position: string }>`
@@ -22,7 +21,7 @@ const StyledChip = styled.div`
   cursor: default;
 `;
 
-export const StyledChipIcon = styled(FaIcon)`
+export const StyledChipIcon = styled(Icon)`
   margin-left: ${({ theme }) => theme.spacing.xs};
   background-color: ${({ theme }) => theme.palette.gray[500]};
   border-radius: 50%;
