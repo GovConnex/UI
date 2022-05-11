@@ -56,49 +56,55 @@ const Pagination = (props: PaginationProps) => {
 
   return (
     <StyledPagination>
-      <Typography>
-        Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
-      </Typography>
+      <>
+        <div>
+          <Typography>
+            Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
+          </Typography>
 
-      <Button
-        variant="secondary"
-        onClick={() => props.onPageChange(props.page - 1)}
-        disabled={props.page <= 1}
-      >
-        <FaIcon icon={faChevronLeft} />
-      </Button>
+          <Button
+            variant="secondary"
+            onClick={() => props.onPageChange(props.page - 1)}
+            disabled={props.page <= 1}
+          >
+            <FaIcon icon={faChevronLeft} />
+          </Button>
 
-      <Button
-        variant="secondary"
-        onClick={() => props.onPageChange(props.page + 1)}
-        disabled={
-          props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
-        }
-      >
-        <FaIcon icon={faChevronRight} />
-      </Button>
+          <Button
+            variant="secondary"
+            onClick={() => props.onPageChange(props.page + 1)}
+            disabled={
+              props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
+            }
+          >
+            <FaIcon icon={faChevronRight} />
+          </Button>
+        </div>
 
-      <Typography>Showing</Typography>
+        <div>
+          <Typography>Showing</Typography>
 
-      <Button
-        variant="secondary"
-        endAdornment={<FaIcon icon={faCaretDown} />}
-        ref={buttonRef}
-        onClick={() => setShowDropdown(!showDropdown)}
-      >
-        <Typography>{props.itemsPerPage}</Typography>
-      </Button>
+          <Button
+            variant="secondary"
+            endAdornment={<FaIcon icon={faCaretDown} />}
+            ref={buttonRef}
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <Typography>{props.itemsPerPage}</Typography>
+          </Button>
 
-      {showDropdown && (
-        <Dropdown
-          placement="bottom-start"
-          options={dropdownOptions}
-          anchorEl={buttonRef}
-          onClose={() => setShowDropdown(false)}
-        />
-      )}
+          {showDropdown && (
+            <Dropdown
+              placement="bottom-start"
+              options={dropdownOptions}
+              anchorEl={buttonRef}
+              onClose={() => setShowDropdown(false)}
+            />
+          )}
 
-      <Typography>Items out of {props.totalItems}</Typography>
+          <Typography>Items out of {props.totalItems}</Typography>
+        </div>
+      </>
     </StyledPagination>
   );
 };
