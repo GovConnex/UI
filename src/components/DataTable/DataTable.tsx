@@ -1,9 +1,27 @@
-import React, {useCallback, useEffect, useState} from "react";
-// @ts-ignore
-import {useFlexLayout, usePagination, useResizeColumns, useRowSelect, useSortBy, useTable} from "react-table";
+import React, { useCallback, useEffect, useState } from "react";
+
+import {
+  useFlexLayout,
+  usePagination,
+  useResizeColumns,
+  useRowSelect,
+  useSortBy,
+  useTable,
+  // @ts-ignore
+} from "react-table";
 import classNames from "classnames";
-import {GcxDataTable, GcxDataTableRoot,
-  GcxDataTableTbody, GcxDataTableTd, GcxDataTableTh, GcxDataTableThead, GcxDataTableTr, GcxDataTableWrapper } from "./DataTable.styles";
+import {
+  GcxDataTable,
+  GcxDataTableRoot,
+  GcxDataTableTbody,
+  GcxDataTableTd,
+  GcxDataTableTh,
+  GcxDataTableThead,
+  GcxDataTableTr,
+  GcxDataTableWrapper,
+} from "./DataTable.styles";
+import DataTableDataCell from "./DataTableDataCell";
+import DataTableHeaderCell from "./DataTableHeaderCell";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
@@ -37,7 +55,7 @@ export interface DataTableProps {
   pageSize?: number;
   page: number;
   initialSortBy?: any[];
-  onPaginationChange?: (input: {page: any, pageSize: number}) => void;
+  onPaginationChange?: (input: { page: any; pageSize: number }) => void;
   onSelectedIdsChange?: (ids: string[]) => void;
 }
 
@@ -91,7 +109,7 @@ const DataTable = ({
     useRowSelect,
     (hooks: any) => {
       hooks.visibleColumns.push((columns: any) => [
-        // Let's make a column for selection
+        /// Let's make a column for selection
         // {
         //   id: "selection",
         //   // The header can use the table's getToggleAllRowsSelectedProps method
@@ -115,12 +133,12 @@ const DataTable = ({
         // },
         ...columns,
       ]);
-      hooks.useInstanceBeforeDimensions.push(({headerGroups}: any) => {
+      hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
-        if(selectionGroupHeader) selectionGroupHeader.canResize = false;
-        if(selectionGroupHeader2) selectionGroupHeader2.canResize = false;
+        if (selectionGroupHeader) selectionGroupHeader.canResize = false;
+        if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
       });
     }
     // useResizeColumns
@@ -163,11 +181,15 @@ const DataTable = ({
 
   // if (loading) return <InlineLoading />;
   return (
-    <GcxDataTableRoot className={classNames(className, "govconnex-data-table paper")}>
+    <GcxDataTableRoot
+      className={classNames(className, "govconnex-data-table paper")}
+    >
       <GcxDataTableWrapper className={"govconnex-data-table-wrapper"}>
         <GcxDataTable
           {...getTableProps()}
-          className={"bx--data-table bx--data-table--short bx--data-table--no-border"}
+          className={
+            "bx--data-table bx--data-table--short bx--data-table--no-border"
+          }
         >
           <GcxDataTableThead>
             {headerGroups.map((headerGroup: any) => (
@@ -203,7 +225,9 @@ const DataTable = ({
                         onClick={(e) => {
                           e.preventDefault();
                         }}
-                        className={`resizer ${column.isResizing ? "isResizing" : ""}`}
+                        className={`resizer ${
+                          column.isResizing ? "isResizing" : ""
+                        }`}
                       >
                         <div className={"resizer-panel"} />
                       </div>
@@ -220,7 +244,11 @@ const DataTable = ({
                 <GcxDataTableTr {...row.getRowProps()}>
                   {row.cells.map((cell: any) => {
                     // console.log("CELL", cell);
-                    return <GcxDataTableTd {...cell.getCellProps()}>{cell.render("Cell")}</GcxDataTableTd>;
+                    return (
+                      <GcxDataTableTd {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </GcxDataTableTd>
+                    );
                   })}
                 </GcxDataTableTr>
               );
@@ -229,16 +257,19 @@ const DataTable = ({
         </GcxDataTable>
       </GcxDataTableWrapper>
       {/*<div className={"govconnex-data-table-pagination"}>*/}
-        {/*<Pagination*/}
-        {/*  pageSize={pageSize}*/}
-        {/*  pageSizes={[25, 50, 100]}*/}
-        {/*  page={page}*/}
-        {/*  totalItems={numResults}*/}
-        {/*  onChange={onPaginationChange}*/}
-        {/*/>*/}
+      {/*<Pagination*/}
+      {/*  pageSize={pageSize}*/}
+      {/*  pageSizes={[25, 50, 100]}*/}
+      {/*  page={page}*/}
+      {/*  totalItems={numResults}*/}
+      {/*  onChange={onPaginationChange}*/}
+      {/*/>*/}
       {/*</div>*/}
     </GcxDataTableRoot>
   );
 };
+
+DataTable.DataCell = DataTableDataCell;
+DataTable.HeaderCell = DataTableHeaderCell;
 
 export default DataTable;
