@@ -88,7 +88,7 @@ const Pagination = (props: PaginationProps) => {
       </Button>
 
       {showDropdown && (
-        <Dropdown options={dropdownOptions} anchorEl={buttonRef} />
+        <Dropdown placement="bottom-start" options={dropdownOptions} anchorEl={buttonRef} />
       )}
 
       <Typography>Items out of {props.totalItems}</Typography>
