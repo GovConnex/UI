@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "../Typography";
 import StyledListItem, {
+  StartAdornmentWrapper,
   StyledListItemEnd,
   StyledListItemStart,
 } from "./ListItem.styles";
@@ -37,7 +38,9 @@ export const ListItem: React.FC<ListItemProps> = ({
       <StyledListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography variant={"textSm"}>{children}</Typography>
+        <Typography variant={"textSm"} noMargin>
+          {children}
+        </Typography>
       </StyledListItemStart>
       <StyledListItemEnd>{endAdornment}</StyledListItemEnd>
     </StyledListItem>

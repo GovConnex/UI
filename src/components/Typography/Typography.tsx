@@ -5,6 +5,7 @@ import { variantComponents } from "./Typography.styles";
 export interface TypographyProps extends React.HTMLProps<HTMLElement> {
   children?: React.ReactNode;
   variant?: VariantsProp;
+  noMargin?: boolean;
 }
 
 const Typography = ({

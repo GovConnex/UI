@@ -29,6 +29,14 @@ export const StyledListItem = styled.div<{
 
 export const StyledListItemStart = styled.div`
   margin-right: ${(props) => props.theme.spacing.sm};
+  display: flex;
+  gap: ${(props) => props.theme.spacing.md};
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const StartAdornmentWrapper = styled.div`
+  margin-right: ${(props) => props.theme.spacing.sm};
 `;
 
 export const StyledListItemEnd = styled.div`

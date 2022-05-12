@@ -23,6 +23,7 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
     margin-bottom: ${({ theme }) => theme.typography[key].paragraphSpacing};
     text-decoration: ${({ theme }) => theme.typography[key].textDecoration};
     color: ${({ theme }) => theme.typography[key].color};
+    ${({ noMargin }) => noMargin && "margin: 0;"};
   `;
   return acc;
 }, {} as any);

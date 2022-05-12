@@ -13,7 +13,9 @@ export default {
 } as ComponentMeta<typeof List>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof List> = (args) => <List {...args} />;
+const Template: ComponentStory<typeof List> = (args) => (
+  <List {...args} style={{ maxWidth: 200 }} />
+);
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -36,7 +38,7 @@ Nested.args = {
     <>
       <ListItem>List Item</ListItem>
       <ListItem>List Item</ListItem>
-      <ListHeading>Nested List</ListHeading>
+      <ListHeading uppercase>Nested List</ListHeading>
       <List nested>
         <ListItem>List Item</ListItem>
         <ListItem>List Item</ListItem>
