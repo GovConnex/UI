@@ -3,7 +3,7 @@ import { Placement } from "@popperjs/core";
 import _ from "lodash";
 import Popover from "../Popover";
 import { StyledMenu } from "./Menu.styles";
-import ClickAwayListener, { OnClickAway } from "../ClickAwayListener";
+import ClickAwayListener, { OnClickAway } from "../ClickAwayListener/ClickAwayListener";
 import { MenuListHeading } from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
 
@@ -32,13 +32,13 @@ const Menu = (props: MenuProps) => {
       <Popover anchorEl={props.anchorEl} placement={props.placement}>
         <StyledMenu {...props}>
           {Object.keys(categorisedOptions).map((category, iidx) => (
-            <div key={`category-${iidx}`}>
+            <div key={`category-${iidx}-${new Date().getTime()}`}>
               {category !== "undefined" && <MenuListHeading>{category}</MenuListHeading>}
               {categorisedOptions[category].map((x, idx) => (
                 <MenuListItem
                   button
                   onClick={x.onClick}
-                  key={`item-${idx}`}
+                  key={`item-${idx}-${new Date().getTime()}`}
                   startAdornment={x.startAdornment}
                   endAdornment={x.endAdornment}
                 >

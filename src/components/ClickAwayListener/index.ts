@@ -1,1 +1,1 @@
-export { default, OnClickAway, ClickAwayListenerProps } from "./ClickAwayListener";
+export { default } from "./ClickAwayListener";
