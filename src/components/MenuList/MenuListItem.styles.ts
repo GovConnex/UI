@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledListItem = styled.div<{
+export const StyledMenuListItem = styled.div<{
   button?: boolean;
   selected?: boolean;
 }>`
@@ -9,6 +9,7 @@ export const StyledListItem = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: ${(props) => props.theme.spacing.md};
 
   ${(props) =>
     props.button &&
@@ -22,25 +23,16 @@ export const StyledListItem = styled.div<{
 
   ${(props) =>
     props.selected &&
-    `
-    background-color: ${props.theme.palette.secondary.extraLight};
-  `}
+    `background-color: ${props.theme.palette.secondary.extraLight};`}
 `;
 
-export const StyledListItemStart = styled.div`
-  margin-right: ${(props) => props.theme.spacing.sm};
+export const StyledMenuListItemStart = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.md};
   align-items: center;
   justify-content: space-between;
 `;
 
-export const StartAdornmentWrapper = styled.div`
-  margin-right: ${(props) => props.theme.spacing.sm};
-`;
+export const StyledMenuListItemEnd = styled.div``;
 
-export const StyledListItemEnd = styled.div`
-  margin-left: ${(props) => props.theme.spacing.sm};
-`;
-
-export default StyledListItem;
+export default StyledMenuListItem;

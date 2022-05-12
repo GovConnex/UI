@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/pro-solid-svg-icons";
 import React, { useState, useRef, useMemo } from "react";
 import Button from "../Button";
-import Dropdown from "../Dropdown";
+import Menu from "../Menu";
 import Icon from "../Icon";
 import Typography from "../Typography";
 import StyledPagination from "./Pagination.styles";
@@ -30,10 +30,10 @@ export interface PaginationProps {
 
 const Pagination = (props: PaginationProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const setItemsPerPage = (newItemsPerPage: number) => {
-    setShowDropdown(false);
+    setShowMenu(false);
     props.onItemsPerPageChange(newItemsPerPage);
   };
 
@@ -88,17 +88,17 @@ const Pagination = (props: PaginationProps) => {
             variant="secondary"
             endAdornment={<Icon icon={faCaretDown} />}
             ref={buttonRef}
-            onClick={() => setShowDropdown(!showDropdown)}
+            onClick={() => setShowMenu(!showMenu)}
           >
             <Typography>{props.itemsPerPage}</Typography>
           </Button>
 
-          {showDropdown && (
-            <Dropdown
+          {showMenu && (
+            <Menu
               placement="bottom-start"
               options={dropdownOptions}
               anchorEl={buttonRef}
-              onClose={() => setShowDropdown(false)}
+              onClose={() => setShowMenu(false)}
             />
           )}
 

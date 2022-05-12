@@ -1,12 +1,11 @@
 import React from "react";
 import Typography from "../Typography";
-import StyledListItem, {
-  StartAdornmentWrapper,
-  StyledListItemEnd,
-  StyledListItemStart,
-} from "./ListItem.styles";
+import StyledMenuListItem, {
+  StyledMenuListItemEnd,
+  StyledMenuListItemStart,
+} from "./MenuListItem.styles";
 
-interface ListItemProps {
+interface MenuListItemProps {
   children?: React.ReactNode;
   onClick?: () => void;
   button?: boolean;
@@ -18,7 +17,7 @@ interface ListItemProps {
   className?: string;
 }
 
-export const ListItem: React.FC<ListItemProps> = ({
+export const MenuListItem: React.FC<MenuListItemProps> = ({
   children,
   onClick,
   // checked,
@@ -33,18 +32,17 @@ export const ListItem: React.FC<ListItemProps> = ({
       onClick();
     }
   };
+
   return (
-    <StyledListItem button={button} className={className} onClick={handleClick}>
-      <StyledListItemStart>
+    <StyledMenuListItem button={button} className={className} onClick={handleClick}>
+      <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography variant={"textSm"} noMargin>
-          {children}
-        </Typography>
-      </StyledListItemStart>
-      <StyledListItemEnd>{endAdornment}</StyledListItemEnd>
-    </StyledListItem>
+        <Typography variant={"textSm"} noMargin>{children}</Typography>
+      </StyledMenuListItemStart>
+      <StyledMenuListItemEnd>{endAdornment}</StyledMenuListItemEnd>
+    </StyledMenuListItem>
   );
 };
 
-export default ListItem;
+export default MenuListItem;

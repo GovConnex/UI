@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import { List } from "../List";
+import { MenuList } from "../MenuList";
 
-export const StyledAdornment = styled.span<{ position: string }>`
-  ${props => `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.md}`};
-`
-
-export const StyledDropdown = styled(List)`
+export const StyledMenu = styled(MenuList)`
   padding: ${props => props.theme.spacing.sm};
   border-radius: ${props => props.theme.borderRadius.sm};
   background-color: ${props => props.theme.palette.gray["0"]};

@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
-export const StyledList = styled.div<{ nested?: boolean }>`
+export const StyledMenuList = styled.div`
   overflow: auto;
   position: relative;
-
-  ${props => props.nested && `
-    padding-left: ${props.theme.spacing.sm};
-  `}
 `;
 
-export const StyledListHeading = styled.div<{ sticky?: boolean; uppercase?: boolean; }>`
+export const StyledMenuListHeading = styled.div<{ sticky?: boolean; uppercase?: boolean; }>`
   ${({uppercase}) => uppercase && "text-transform: uppercase;"}
 
   color: ${props => props.theme.palette.text.secondary};
