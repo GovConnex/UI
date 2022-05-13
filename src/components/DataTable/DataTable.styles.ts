@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import Icon from "../Icon";
 
 export const GcxDataTableRoot = styled.div``;
 export const GcxDataTableWrapper = styled.div`
   border: 1px solid #ebebeb;
   border-radius: 5px;
   overflow: hidden;
+  display: inline-table;
 `;
 export const GcxDataTable = styled.table`
   background-color: ${(p) => p.theme.palette.background.default};
@@ -23,7 +25,7 @@ export const GcxDataTableTr = styled.tr`
 
 export const GcxDataTableTh = styled.th`
   text-align: left;
-  padding: ${(p) => p.theme.spacing.md};
+
   border-bottom: 2px solid #ebebeb;
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
@@ -43,4 +45,11 @@ export const GcxDataTableDataCellRoot = styled.div`
 
 export const GcxDataTableHeaderCellRoot = styled.div`
   display: flex;
+  align-items: center;
+  padding: ${(p) => p.theme.spacing.md};
+  color: ${(p) => p.theme.palette.gray[900]};
+`;
+
+export const GcxDataTableHeaderIcon = styled(Icon)`
+  margin-right: ${(p) => p.theme.spacing.md};
 `;

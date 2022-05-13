@@ -27,24 +27,24 @@ import DataTableHeaderCell from "./DataTableHeaderCell";
 
 const uuid = require("uuid/v4");
 
-const SelectionCheckbox = React.forwardRef((props, ref) => {
-  const [id] = useState(uuid());
-  const defaultRef = React.useRef();
-  const resolvedRef = ref || defaultRef;
-  return (
-    <>
-      {/*<Checkbox*/}
-      {/*  ref={resolvedRef}*/}
-      {/*  {...props}*/}
-      {/*  id={"DataTableCheckbox-" + id}*/}
-      {/*  onChange={(...params) => {*/}
-      {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
-      {/*    props.onChange(params[2]);*/}
-      {/*  }}*/}
-      {/*/>*/}
-    </>
-  );
-});
+// const SelectionCheckbox = React.forwardRef((props, ref) => {
+//   const [id] = useState(uuid());
+//   const defaultRef = React.useRef();
+//   const resolvedRef = ref || defaultRef;
+//   return (
+//     <>
+//       {/*<Checkbox*/}
+//       {/*  ref={resolvedRef}*/}
+//       {/*  {...props}*/}
+//       {/*  id={"DataTableCheckbox-" + id}*/}
+//       {/*  onChange={(...params) => {*/}
+//       {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
+//       {/*    props.onChange(params[2]);*/}
+//       {/*  }}*/}
+//       {/*/>*/}
+//     </>
+//   );
+// });
 
 export interface DataTableProps {
   data: any[];

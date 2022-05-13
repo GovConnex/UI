@@ -1,7 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import DataTable from "./DataTable";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
+import DataTableHeaderCell from "./DataTableHeaderCell";
+import {
+  faContactCard,
+  faHeart,
+  faUser,
+} from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -11,25 +17,32 @@ export default {
 } as ComponentMeta<typeof DataTable>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof DataTable> = (args) => <DataTable {...args} />;
-
+const Template: ComponentStory<typeof DataTable> = (args) => (
+  <DataTable {...args} />
+);
 
 const DATA_TABLE_COLUMNS = [
   {
     id: "D00",
-    Header: "Field Name",
-    accessor: "name", // accessor is the "key" in the data
+    Header: DataTableHeaderCell,
+    icon: faUser,
+    displayName: "Name",
+    accessor: "name",
     minWidth: 200,
   },
   {
     id: "D01",
-    Header: "Field Name",
+    Header: DataTableHeaderCell,
+    icon: faHeart,
+    displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
     minWidth: 200,
   },
   {
     id: "D02",
-    Header: "Field Name",
+    Header: DataTableHeaderCell,
+    icon: faContactCard,
+    displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
     minWidth: 200,
   },
@@ -50,19 +63,19 @@ const DATA_TABLE_DATA = [
     name: "Field 3",
     value: "Value 3",
     type: "Type 3",
-  }
+  },
 ];
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   data: DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS
+  columns: DATA_TABLE_COLUMNS,
 };
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
-}
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
+};

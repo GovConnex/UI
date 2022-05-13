@@ -23,9 +23,9 @@ const StyledChip = styled.div`
 
 export const StyledChipIcon = styled(Icon)`
   margin-left: ${({ theme }) => theme.spacing.xs};
-  background-color: ${({ theme }) => theme.palette.gray[500]};
+  color: ${({ theme }) => theme.palette.gray[500]};
   border-radius: 50%;
-  color: white;
+  //color: white;
   width: 12px;
   height: 12px;
 `;
