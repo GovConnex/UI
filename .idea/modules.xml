@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../GovConnex/.idea/GovConnex.iml" filepath="$PROJECT_DIR$/../GovConnex/.idea/GovConnex.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../sd-test/.idea/sd-test.iml" filepath="$PROJECT_DIR$/../sd-test/.idea/sd-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ui-components.iml" filepath="$PROJECT_DIR$/.idea/ui-components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/UI.iml" filepath="$PROJECT_DIR$/.idea/UI.iml" />
     </modules>
   </component>
 </project>

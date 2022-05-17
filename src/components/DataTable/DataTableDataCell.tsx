@@ -1,8 +1,11 @@
-import React from "react";
-import { GcxDataTableDataCellRoot } from "./DataTable.styles";
+import React, { useState } from "react";
+import { DataCellMenu, GcxDataTableDataCellRoot } from "./DataTable.styles";
+import Menu from "../Menu";
+import { MenuOption } from "../Menu/Menu";
 
 export interface DataCellProps {
   children: React.ReactNode;
+  menuOptions?: MenuOption[];
   className?: string;
   onSelect?: () => void;
 }
@@ -11,14 +14,28 @@ export interface DataCellProps {
 
 const DataTableDataCell = ({
   onSelect,
+  menuOptions = [],
   children,
   className,
 }: DataCellProps) => {
+  const anchorEl = React.useRef(null);
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <GcxDataTableDataCellRoot className={className}>
+      <GcxDataTableDataCellRoot
+        ref={anchorEl}
+        className={className}
+        onClick={() => setShowMenu(!showMenu)}
+      >
         {children}
       </GcxDataTableDataCellRoot>
+      {showMenu && menuOptions?.length ? (
+        <DataCellMenu
+          anchorEl={anchorEl}
+          options={menuOptions}
+          onClose={() => setShowMenu(false)}
+        />
+      ) : null}
     </>
   );
 };

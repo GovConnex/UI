@@ -8,6 +8,7 @@ import {
   faHeart,
   faUser,
 } from "@fortawesome/pro-solid-svg-icons";
+import { NameCell, SupportCell, TagCell } from "./DataTable.examples";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -25,26 +26,29 @@ const DATA_TABLE_COLUMNS = [
   {
     id: "D00",
     Header: DataTableHeaderCell,
+    Cell: NameCell,
     icon: faUser,
     displayName: "Name",
     accessor: "name",
-    minWidth: 200,
+    minWidth: 225,
   },
   {
     id: "D01",
     Header: DataTableHeaderCell,
+    Cell: SupportCell,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    minWidth: 200,
+    minWidth: 225,
   },
   {
     id: "D02",
     Header: DataTableHeaderCell,
+    Cell: TagCell,
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    minWidth: 200,
+    minWidth: 225,
   },
 ];
 
