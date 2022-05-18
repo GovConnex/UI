@@ -9,7 +9,7 @@ import React, {
   FunctionComponent,
 } from "react";
 
-type FocusEvents = "focusin" | "focusout";
+type FocusEvents = "focusin" | "focusout" | null;
 type MouseEvents = "click" | "mousedown" | "mouseup";
 type TouchEvents = "touchstart" | "touchend";
 type Events = FocusEvent | MouseEvent | TouchEvent;
@@ -37,9 +37,9 @@ const eventTypeMapping = {
 const ClickAwayListener: FunctionComponent<ClickAwayListenerProps> = ({
   children,
   onClickAway,
-  focusEvent = "focusin",
-  mouseEvent = "click",
-  touchEvent = "touchend",
+  focusEvent = null,
+  mouseEvent = "mousedown",
+  touchEvent = "touchstart",
 }) => {
   const node = useRef<HTMLElement | null>(null);
   const bubbledEventTarget = useRef<EventTarget | null>(null);
@@ -103,19 +103,19 @@ const ClickAwayListener: FunctionComponent<ClickAwayListenerProps> = ({
 
       document.addEventListener(mouseEvent, handleEvents);
       document.addEventListener(touchEvent, handleEvents);
-      document.addEventListener(focusEvent, handleEvents);
+      if (focusEvent) document.addEventListener(focusEvent, handleEvents);
 
       return () => {
         document.removeEventListener(mouseEvent, handleEvents);
         document.removeEventListener(touchEvent, handleEvents);
-        document.removeEventListener(focusEvent, handleEvents);
+        if (focusEvent) document.removeEventListener(focusEvent, handleEvents);
       };
     }
   }, [focusEvent, mouseEvent, onClickAway, touchEvent]);
 
   const mappedMouseEvent = eventTypeMapping[mouseEvent];
   const mappedTouchEvent = eventTypeMapping[touchEvent];
-  const mappedFocusEvent = eventTypeMapping[focusEvent];
+  const mappedFocusEvent = eventTypeMapping[focusEvent || "focusin"];
 
   return React.Children.only(
     cloneElement(children as ReactElement<any>, {
