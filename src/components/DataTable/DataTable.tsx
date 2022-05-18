@@ -182,14 +182,11 @@ const DataTable = ({
   // if (loading) return <InlineLoading />;
   return (
     <GcxDataTableRoot
-      className={classNames(className, "govconnex-data-table paper")}
+      className={classNames(className)}
     >
-      <GcxDataTableWrapper className={"govconnex-data-table-wrapper"}>
+      <GcxDataTableWrapper>
         <GcxDataTable
           {...getTableProps()}
-          className={
-            "bx--data-table bx--data-table--short bx--data-table--no-border"
-          }
         >
           <GcxDataTableThead>
             {headerGroups.map((headerGroup: any) => (
@@ -197,7 +194,6 @@ const DataTable = ({
                 {headerGroup.headers.map((column: any) => (
                   <GcxDataTableTh
                     {...column.getHeaderProps()}
-                    className={"bx--table-header-label d-inline"}
                   >
                     <div {...column.getSortByToggleProps()}>
                       {" "}

@@ -6,9 +6,9 @@ import {
 import React, { useState, useRef, useMemo } from "react";
 import Button from "../Button";
 import Menu from "../Menu";
-import Icon from "../Icon";
 import Typography from "../Typography";
 import StyledPagination from "./Pagination.styles";
+import Icon from "../Icon";
 
 export interface PaginationItemsPerPageObject {
   value: number;

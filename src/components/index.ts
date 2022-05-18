@@ -6,7 +6,10 @@ export { default as Popover } from "./Popover";
 export { default as Chip } from "./Chip";
 export { default as Typography } from "./Typography";
 export { default as DataTable } from "./DataTable";
-export { default as Icon } from "./Icon";
+export { default as SvgIcon } from "./SvgIcon";
+export {
+  FontAwesomeIcon
+} from "@fortawesome/react-fontawesome";
 export { default as Input } from "./Input";
 export { default as Button } from "./Button";
 export { default as Menu } from "./Menu";

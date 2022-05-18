@@ -7,20 +7,19 @@ export interface DataCellProps {
   children: React.ReactNode;
   menuOptions?: MenuOption[];
   className?: string;
-  onSelect?: () => void;
+  onChange?: (option: MenuOption) => void;
 }
 
 // active state: purple border
 
 const DataTableDataCell = ({
-  onSelect,
+  onChange,
   menuOptions = [],
   children,
   className,
 }: DataCellProps) => {
   const anchorEl = React.useRef(null);
   const [showMenu, setShowMenu] = useState(false);
-
 
   return (
     <>
@@ -35,7 +34,7 @@ const DataTableDataCell = ({
         <DataCellMenu
           placement="bottom"
           anchorEl={anchorEl}
-          onOptionSelect={onSelect}
+          onOptionSelect={onChange}
           options={menuOptions}
           onClose={() => setShowMenu(false)}
         />
