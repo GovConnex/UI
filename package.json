@@ -1,6 +1,6 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.21",
+  "version": "0.0.26",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
@@ -26,6 +26,7 @@
     "@fortawesome/pro-thin-svg-icons": "^6.1.1",
     "@react-theming/storybook-addon": "^1.1.5",
     "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
     "@storybook/addon-actions": "^6.4.19",
