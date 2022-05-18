@@ -43,7 +43,7 @@ export const GcxDataTableTd = styled.td`
 
 // Data cell styles
 
-export const GcxDataTableDataCellRoot = styled.div<{ menuShown: boolean }>`
+export const GcxDataTableDataCellRoot = styled.div`
   display: flex;
   height: 100%;
   align-items: center;

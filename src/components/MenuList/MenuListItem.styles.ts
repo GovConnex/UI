@@ -16,7 +16,7 @@ export const StyledMenuListItem = styled.div<{
     `
     cursor: pointer;
 
-    &:hover {
+    &:hover, &.cursor {
       background-color: ${props.theme.palette.secondary.extraLight};
     }
   `}

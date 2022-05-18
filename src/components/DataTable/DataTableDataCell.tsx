@@ -20,6 +20,8 @@ const DataTableDataCell = ({
 }: DataCellProps) => {
   const anchorEl = React.useRef(null);
   const [showMenu, setShowMenu] = useState(false);
+
+
   return (
     <>
       <GcxDataTableDataCellRoot
@@ -31,7 +33,9 @@ const DataTableDataCell = ({
       </GcxDataTableDataCellRoot>
       {showMenu && menuOptions?.length ? (
         <DataCellMenu
+          placement="bottom"
           anchorEl={anchorEl}
+          onOptionSelect={onSelect}
           options={menuOptions}
           onClose={() => setShowMenu(false)}
         />

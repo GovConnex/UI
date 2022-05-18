@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { MenuList } from "../MenuList";
 
-export const StyledMenu = styled(MenuList)`
+export const StyledMenuList = styled(MenuList)`
   padding: ${props => props.theme.spacing.sm};
   border-radius: ${props => props.theme.borderRadius.sm};
   background-color: ${props => props.theme.palette.gray["0"]};
