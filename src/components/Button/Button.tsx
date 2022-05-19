@@ -21,7 +21,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       {...props}
     >
       {props.startAdornment ?
-        <StyledAdornment position="start">
+        <StyledAdornment>
           {props.startAdornment}
         </StyledAdornment>
       : null}
@@ -29,7 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       {props.children}
 
       {props.endAdornment ?
-        <StyledAdornment position="end">
+        <StyledAdornment>
           {props.endAdornment}
         </StyledAdornment>
       : null}

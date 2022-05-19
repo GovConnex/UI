@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { ButtonVariant } from "./Button";
 
-const StyledAdornment = styled.span<{ position: string }>`
-  ${props => `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.sm}`};
-`;
+const StyledAdornment = styled.span``;
 
 const StyledButton = styled.button<{
   disabled: boolean;
@@ -14,6 +12,8 @@ const StyledButton = styled.button<{
   border-radius: ${props => props.theme.borderRadius.sm};
   color: ${props => props.theme.palette.text.primary};
   border: ${props => props.theme.borderWidth.md} solid transparent;
+  display: flex;
+  gap: ${props => props.theme.spacing.sm};
 
   ${({theme, variant}) => variant === "primary" && `
     color: ${theme.palette.background.default};
