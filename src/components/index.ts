@@ -1,6 +1,7 @@
 export { default as ThemeProvider } from "./ThemeProvider";
 export { default as Portal } from "./Portal";
 export { default as Modal } from "./Modal";
+export { default as Checkbox } from "./Checkbox";
 export { default as ClickAwayListener } from "./ClickAwayListener";
 export { default as Avatar } from "./Avatar";
 export { default as Pagination } from "./Pagination";
