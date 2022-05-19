@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const StyledMenuListItem = styled.div<{
-  button?: boolean;
-  selected?: boolean;
-}>`
+export const StyledList = styled.div`
+  overflow: auto;
+  position: relative;
+`;
+
+export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean }>`
   background-color: ${(props) => props.theme.palette.background.default};
   padding: ${(props) => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
   border-radius: ${(props) => props.theme.borderRadius.sm};
@@ -12,9 +14,7 @@ export const StyledMenuListItem = styled.div<{
   justify-content: space-between;
   gap: ${(props) => props.theme.spacing.md};
 
-  ${(props) =>
-    props.button &&
-    `
+  ${props => props.button && `
     cursor: pointer;
 
     &:hover {
@@ -27,13 +27,9 @@ export const StyledMenuListItem = styled.div<{
     `background-color: ${props.theme.palette.secondary.extraLight};`}
 `;
 
-export const StyledMenuListItemStart = styled.div`
+export const StyledListItemStart = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.md};
   align-items: center;
   justify-content: space-between;
 `;
-
-export const StyledMenuListItemEnd = styled.div``;
-
-export default StyledMenuListItem;
