@@ -27,24 +27,24 @@ import DataTableHeaderCell from "./DataTableHeaderCell";
 
 const uuid = require("uuid/v4");
 
-const SelectionCheckbox = React.forwardRef((props, ref) => {
-  const [id] = useState(uuid());
-  const defaultRef = React.useRef();
-  const resolvedRef = ref || defaultRef;
-  return (
-    <>
-      {/*<Checkbox*/}
-      {/*  ref={resolvedRef}*/}
-      {/*  {...props}*/}
-      {/*  id={"DataTableCheckbox-" + id}*/}
-      {/*  onChange={(...params) => {*/}
-      {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
-      {/*    props.onChange(params[2]);*/}
-      {/*  }}*/}
-      {/*/>*/}
-    </>
-  );
-});
+// const SelectionCheckbox = React.forwardRef((props, ref) => {
+//   const [id] = useState(uuid());
+//   const defaultRef = React.useRef();
+//   const resolvedRef = ref || defaultRef;
+//   return (
+//     <>
+//       {/*<Checkbox*/}
+//       {/*  ref={resolvedRef}*/}
+//       {/*  {...props}*/}
+//       {/*  id={"DataTableCheckbox-" + id}*/}
+//       {/*  onChange={(...params) => {*/}
+//       {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
+//       {/*    props.onChange(params[2]);*/}
+//       {/*  }}*/}
+//       {/*/>*/}
+//     </>
+//   );
+// });
 
 export interface DataTableProps {
   data: any[];
@@ -182,14 +182,11 @@ const DataTable = ({
   // if (loading) return <InlineLoading />;
   return (
     <GcxDataTableRoot
-      className={classNames(className, "govconnex-data-table paper")}
+      className={classNames(className)}
     >
-      <GcxDataTableWrapper className={"govconnex-data-table-wrapper"}>
+      <GcxDataTableWrapper>
         <GcxDataTable
           {...getTableProps()}
-          className={
-            "bx--data-table bx--data-table--short bx--data-table--no-border"
-          }
         >
           <GcxDataTableThead>
             {headerGroups.map((headerGroup: any) => (
@@ -197,7 +194,6 @@ const DataTable = ({
                 {headerGroup.headers.map((column: any) => (
                   <GcxDataTableTh
                     {...column.getHeaderProps()}
-                    className={"bx--table-header-label d-inline"}
                   >
                     <div {...column.getSortByToggleProps()}>
                       {" "}

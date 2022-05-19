@@ -1,31 +1,18 @@
 import React from "react";
-import StyledIcon from "./Icon.styles";
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { SizeProp, RotateProp } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/pro-solid-svg-icons";
+import { far } from "@fortawesome/pro-regular-svg-icons";
+import { fal } from "@fortawesome/pro-light-svg-icons";
+import { fad } from "@fortawesome/pro-duotone-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
-export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
-  icon: React.ReactNode;
-  rotate?: RotateProp;
-  size?: SizeProp;
-}
+library.add(fas, far, fal, fad);
 
-const isFaProps = (
-  props: FontAwesomeIconProps | IconProps
-): props is FontAwesomeIconProps => {
-  return !React.isValidElement(props.icon);
-};
-
-const Icon = (props: FontAwesomeIconProps | IconProps) => {
-  return isFaProps(props) ? (
-    <FontAwesomeIcon {...props} />
-  ) : (
-    <StyledIcon {...props} rotate={props.rotate} size={props.size}>
-      {props.icon}
-    </StyledIcon>
-  );
+const Icon = (props: FontAwesomeIconProps) => {
+  return <FontAwesomeIcon {...props} />;
 };
 
 export default Icon;

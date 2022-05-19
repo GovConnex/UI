@@ -1,24 +1,44 @@
-import React from "react";
-import { GcxDataTableDataCellRoot } from "./DataTable.styles";
+import React, { useState } from "react";
+import { DataCellMenu, GcxDataTableDataCellRoot } from "./DataTable.styles";
+import Menu from "../Menu";
+import { MenuOption } from "../Menu/Menu";
 
 export interface DataCellProps {
   children: React.ReactNode;
+  menuOptions?: MenuOption[];
   className?: string;
-  onSelect?: () => void;
+  onChange?: (option: MenuOption) => void;
 }
 
 // active state: purple border
 
 const DataTableDataCell = ({
-  onSelect,
+  onChange,
+  menuOptions = [],
   children,
   className,
 }: DataCellProps) => {
+  const anchorEl = React.useRef(null);
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <>
-      <GcxDataTableDataCellRoot className={className}>
+      <GcxDataTableDataCellRoot
+        ref={anchorEl}
+        className={className}
+        onClick={() => setShowMenu(!showMenu)}
+      >
         {children}
       </GcxDataTableDataCellRoot>
+      {showMenu && menuOptions?.length ? (
+        <DataCellMenu
+          placement="bottom"
+          anchorEl={anchorEl}
+          onOptionSelect={onChange}
+          options={menuOptions}
+          onClose={() => setShowMenu(false)}
+        />
+      ) : null}
     </>
   );
 };

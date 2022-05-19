@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import Typography from "../Typography";
 import StyledMenuListItem, {
@@ -7,10 +8,11 @@ import StyledMenuListItem, {
 
 interface MenuListItemProps {
   children?: React.ReactNode;
-  onClick?: () => void;
+  onSelect?: () => void;
   button?: boolean;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
+  cursor?: boolean;
 
   // checked?: boolean;
   disabled?: boolean;
@@ -19,7 +21,8 @@ interface MenuListItemProps {
 
 export const MenuListItem: React.FC<MenuListItemProps> = ({
   children,
-  onClick,
+  onSelect,
+  cursor,
   // checked,
   disabled,
   className,
@@ -28,13 +31,15 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   endAdornment,
 }) => {
   const handleClick = () => {
-    if (!disabled && onClick) {
-      onClick();
+    if (!disabled && onSelect) {
+      onSelect();
     }
   };
 
   return (
-    <StyledMenuListItem button={button} className={className} onClick={handleClick}>
+    <StyledMenuListItem button={button} className={classNames(className, {
+      cursor
+    })} onClick={handleClick}>
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
