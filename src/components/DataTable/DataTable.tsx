@@ -155,7 +155,7 @@ const DataTable = ({
         onChangeSort([{...sortBy[0], ...column}]);
       }
     }
-  }, [onChangeSort, sortBy]);
+  }, [onChangeSort, sortBy, columns]);
 
   const onPaginationChange = useCallback(
     (pageInfo) => {
