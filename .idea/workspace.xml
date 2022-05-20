@@ -7,7 +7,6 @@
       <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/EntitiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/EntitiesList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/dataTableConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/dataTableConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/graphql/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/graphql/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DataTable/DataTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataTable/DataTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
