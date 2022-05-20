@@ -150,9 +150,12 @@ const DataTable = ({
 
   useEffect(() => {
     if (onChangeSort) {
-      onChangeSort(sortBy);
+      if(sortBy.length > 0) {
+        const column = columns.find((c) => c.id === sortBy[0].id);
+        onChangeSort([{...sortBy[0], ...column}]);
+      }
     }
-  }, [onChangeSort, sortBy]);
+  }, [onChangeSort, sortBy, columns]);
 
   const onPaginationChange = useCallback(
     (pageInfo) => {

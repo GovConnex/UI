@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2db2ba6-b9bc-427a-b454-88ab53e59580" name="Changes" comment="data table wip">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/entity-attribute.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/entity-attribute.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/entity.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/entity.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/EntitiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/EntitiesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/dataTableConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated/organisms/EntitiesList/dataTableConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GovConnex/webapp/src/graphql/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/../GovConnex/webapp/src/graphql/queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataTable/DataTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataTable/DataTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/types/entity-table-settings.entity.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GovConnex/api/nestApp/src/features/entity/types/entity-type-settings.entity.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/DataTable/DataTableDataCell.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -45,7 +50,7 @@
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;\\\\wsl$\\Ubuntu\\home\\josh\\Development\\UI\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/joshuatruscott/dev/projects/GovConnex/node_modules/typescript/lib&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -57,6 +62,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../GovConnex/webapp/src/components/deprecated" />
     </key>
   </component>
   <component name="RunManager">
@@ -202,6 +210,9 @@
       <workItem from="1652831805535" duration="26113000" />
       <workItem from="1652920746242" duration="24000" />
       <workItem from="1652920783244" duration="924000" />
+      <workItem from="1653002803638" duration="77000" />
+      <workItem from="1653002884191" duration="85000" />
+      <workItem from="1653002985177" duration="14352000" />
     </task>
     <task id="LOCAL-00001" summary="data table">
       <created>1652759797568</created>
