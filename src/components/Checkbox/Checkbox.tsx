@@ -3,7 +3,6 @@ import React from "react";
 import Icon from "../Icon";
 import Typography from "../Typography";
 import {
-  StyledCheckboxContainer,
   StyledCheckboxLabel,
   StyledFakeCheckbox,
   StyledCheckbox,
@@ -17,19 +16,17 @@ export interface CheckboxProps {
 
 const Checkbox = (props: CheckboxProps) => {
   return (
-    <StyledCheckboxContainer>
-      <StyledCheckboxLabel>
-        <StyledCheckbox
-          type="checkbox"
-          onChange={props.onChange}
-          checked={props.checked}
-        />
-        <StyledFakeCheckbox checked={props.checked}>
-          {props.checked ? <Icon icon={faCheck} size="sm" /> : null}
-        </StyledFakeCheckbox>
-        <Typography noMargin>{props.label}</Typography>
-      </StyledCheckboxLabel>
-    </StyledCheckboxContainer>
+    <StyledCheckboxLabel>
+      <StyledCheckbox
+        type="checkbox"
+        onChange={props.onChange}
+        checked={props.checked}
+      />
+      <StyledFakeCheckbox checked={props.checked}>
+        {props.checked ? <Icon icon={faCheck} size="sm" /> : null}
+      </StyledFakeCheckbox>
+      <Typography noMargin>{props.label}</Typography>
+    </StyledCheckboxLabel>
   );
 };
 

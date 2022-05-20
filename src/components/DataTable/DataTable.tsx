@@ -156,7 +156,6 @@ const DataTable = ({
 
   const onPaginationChange = useCallback(
     (pageInfo) => {
-      console.log("ONCHANGE pageInfo", pageInfo);
       if (manualPagination) {
         onPaginationChangeProp(pageInfo);
       } else {
@@ -168,8 +167,6 @@ const DataTable = ({
   );
 
   useEffect(() => {
-    console.log("selectedRowIds", selectedRowIds);
-
     const selectedRowsStillPresent = Object.keys(selectedRowIds).every(
       (rowIndex: any) => data[rowIndex]
     );
@@ -239,7 +236,6 @@ const DataTable = ({
               return (
                 <GcxDataTableTr {...row.getRowProps()}>
                   {row.cells.map((cell: any) => {
-                    // console.log("CELL", cell);
                     return (
                       <GcxDataTableTd {...cell.getCellProps()}>
                         {cell.render("Cell")}

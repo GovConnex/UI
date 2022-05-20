@@ -13,7 +13,6 @@ export interface HeaderCellProps {
 }
 
 const DataTableHeaderCell = ({ column }: any) => {
-  // console.log("PROPS", props);
   return (
     <GcxDataTableHeaderCellRoot>
       <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} />

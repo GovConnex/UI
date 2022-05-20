@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const StyledList = styled.div`
-  overflow: auto;
-  position: relative;
+export const StyledList = styled.div<{ scroll?: boolean }>`
+  ${({scroll}) => scroll && `
+    overflow: auto;
+    position: relative;
+  `}
 `;
 
 export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean }>`
