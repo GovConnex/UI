@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledModal = styled.div`
   z-index: 999;
   max-width: 100%;
-  width: 729px;
+  width: 940px;
   position: absolute;
   top: 50%;
   left: 50%;

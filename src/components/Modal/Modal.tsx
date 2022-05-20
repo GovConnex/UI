@@ -21,8 +21,8 @@ export interface ModalProps {
   onSubmit?: () => void;
   title?: string;
   footerComponent?: React.ReactNode;
+  enableClickAway?: boolean;
   disablePortal?: boolean;
-  disableClickAway?: boolean;
   disableScrollLock?: boolean;
 };
 
@@ -70,7 +70,7 @@ const Modal = (props: ModalProps) => {
           </StyledMobileModal>
         ) : (
           <ClickAwayListener
-            onClickAway={props.disableClickAway ? () => null : props.onClose}
+            onClickAway={props.enableClickAway ? () => null : props.onClose}
           >
             <StyledModal>
               {props.title ? (

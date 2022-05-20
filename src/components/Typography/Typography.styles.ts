@@ -12,10 +12,7 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
   // @ts-ignore
   acc[key] = styled(Variants[key])`
     font-family: ${({ theme }) => theme.typography[key].fontFamily};
-    font-weight: ${({ theme }) =>
-      FONT_WEIGHTS[
-        theme.typography[key].fontWeight as keyof typeof FONT_WEIGHTS
-      ]};
+    font-weight: ${({ theme }) => FONT_WEIGHTS[theme.typography[key].fontWeight as keyof typeof FONT_WEIGHTS]};
     line-height: ${({ theme }) => theme.typography[key].lineHeight};
     font-size: ${({ theme }) => theme.typography[key].fontSize};
     letter-spacing: ${({ theme }) => theme.typography[key].letterSpacing};

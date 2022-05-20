@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const StyledCheckboxContainer = styled.span``;
-
 export const StyledCheckbox = styled.input`
   top: 0;
   left: 0;
@@ -39,4 +37,5 @@ export const StyledCheckboxLabel = styled.label`
   display: flex;
   cursor: pointer;
   gap: ${props => props.theme.spacing.md};
+  position: relative;
 `;
