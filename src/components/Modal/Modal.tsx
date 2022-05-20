@@ -70,7 +70,7 @@ const Modal = (props: ModalProps) => {
           </StyledMobileModal>
         ) : (
           <ClickAwayListener
-            onClickAway={props.enableClickAway ? () => null : props.onClose}
+            onClickAway={props.enableClickAway ? props.onClose : () => null}
           >
             <StyledModal>
               {props.title ? (
