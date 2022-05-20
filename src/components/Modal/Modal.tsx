@@ -43,7 +43,7 @@ const Modal = (props: ModalProps) => {
 
   return (
     <Portal container={containerId} disablePortal={props.disablePortal}>
-      <ScrollWrapper disableScrollLock={props.disableScrollLock}>
+      <ScrollWrapper disableScrollLock={!fullscreen && props.disableScrollLock}>
         {fullscreen ? (
           <StyledMobileModal>
             <StyledModalHead>
@@ -60,13 +60,15 @@ const Modal = (props: ModalProps) => {
               </Button>
             </StyledModalHead>
 
-            <StyledModalContent>{props.children}</StyledModalContent>
+            <StyledModalContent>
+              {props.children}
 
-            {props.footerComponent ? (
-              <StyledModalFeet>
-                <span>{props.footerComponent}</span>
-              </StyledModalFeet>
-            ) : null}
+              {props.footerComponent ? (
+                <StyledModalFeet>
+                  <span>{props.footerComponent}</span>
+                </StyledModalFeet>
+              ) : null}
+            </StyledModalContent>
           </StyledMobileModal>
         ) : (
           <ClickAwayListener
