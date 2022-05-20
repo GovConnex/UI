@@ -8,6 +8,8 @@ export const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
 
   background-color: ${props => props.theme.palette.background.default};
   border: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
@@ -26,6 +28,7 @@ export const StyledModalHead = styled.div`
 export const StyledModalContent = styled.div`
   background-color: ${props => props.theme.palette.background.default};
   padding: ${props => props.theme.spacing.md};
+  flex-grow: 1;
 `;
 
 export const StyledModalFeet = styled.div`
