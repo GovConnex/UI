@@ -26,10 +26,6 @@ export const StyledModalHead = styled.div`
 export const StyledModalContent = styled.div`
   background-color: ${props => props.theme.palette.background.default};
   padding: ${props => props.theme.spacing.md};
-  max-height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  position: relative;
 `;
 
 export const StyledModalFeet = styled.div`
@@ -37,7 +33,6 @@ export const StyledModalFeet = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${props => props.theme.spacing.md};
-  margin: -${props => props.theme.spacing.md};
   border-top: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
 
   > div {

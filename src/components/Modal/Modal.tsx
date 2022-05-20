@@ -60,15 +60,13 @@ const Modal = (props: ModalProps) => {
               </Button>
             </StyledModalHead>
 
-            <StyledModalContent>
-              {props.children}
+            <StyledModalContent>{props.children}</StyledModalContent>
 
-              {props.footerComponent ? (
-                <StyledModalFeet>
-                  <span>{props.footerComponent}</span>
-                </StyledModalFeet>
-              ) : null}
-            </StyledModalContent>
+            {props.footerComponent ? (
+              <StyledModalFeet>
+                <span>{props.footerComponent}</span>
+              </StyledModalFeet>
+            ) : null}
           </StyledMobileModal>
         ) : (
           <ClickAwayListener
