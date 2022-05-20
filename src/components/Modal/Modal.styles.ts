@@ -52,6 +52,8 @@ export const StyledMobileModal = styled.div`
   margin-top: env(safe-area-inset-top);
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
 
   background-color: ${props => props.theme.palette.background.default};
   border: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
