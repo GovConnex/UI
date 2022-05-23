@@ -28,14 +28,17 @@ export const GcxDataTableTh = styled.th`
   text-align: left;
 
   border-bottom: 1px solid #ebebeb;
+
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
   }
+
   //border-collapse: collapse;
 `;
 
 export const GcxDataTableTd = styled.td`
   height: 45px;
+
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
   }
@@ -43,7 +46,7 @@ export const GcxDataTableTd = styled.td`
 
 // Data cell styles
 
-export const GcxDataTableDataCellRoot = styled.div`
+export const GcxDataTableDataCellRoot = styled.div<{ hasDropdown: boolean }>`
   display: flex;
   height: 100%;
   align-items: center;
@@ -51,10 +54,12 @@ export const GcxDataTableDataCellRoot = styled.div`
   gap: ${(p) => p.theme.spacing.md};
   padding: ${(p) => p.theme.spacing.md};
 
+  ${(p) => p.hasDropdown && `
+  cursor: pointer;
   &:active {
-    outline: ${({ theme }) =>
-      `${theme.palette.primary.main} solid ${theme.borderWidth.lg}`};
+    outline: ${p.theme.palette.primary.main} solid ${p.theme.borderWidth.lg};
   }
+  `}
 `;
 
 export const DataCellMenu = styled(Menu)`
