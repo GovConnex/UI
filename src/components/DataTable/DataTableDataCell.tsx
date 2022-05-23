@@ -24,6 +24,7 @@ const DataTableDataCell = ({
   return (
     <>
       <GcxDataTableDataCellRoot
+        hasDropdown={!!menuOptions.length}
         ref={anchorEl}
         className={className}
         onClick={() => setShowMenu(!showMenu)}
