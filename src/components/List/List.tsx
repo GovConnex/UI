@@ -34,7 +34,7 @@ export const ListItem = (props: ListItemProps) => {
         {props.startAdornment}
         <Typography variant={variant} noMargin>{props.children}</Typography>
       </StyledListItemStart>
-      <span>{props.endAdornment}</span>
+      {props.endAdornment ? <span>{props.endAdornment}</span> : null}
     </StyledListItem>
   );
 };
