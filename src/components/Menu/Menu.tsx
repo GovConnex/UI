@@ -1,17 +1,17 @@
-import React, {useMemo} from "react";
-import {Placement} from "@popperjs/core";
+import React, { useMemo } from "react";
+import { Placement } from "@popperjs/core";
 import _ from "lodash";
 import Popover from "../Popover";
-import {StyledMenuList} from "./Menu.styles";
-import ClickAwayListener, {OnClickAway} from "../ClickAwayListener/ClickAwayListener";
-import {MenuListHeading} from "../MenuList";
+import { StyledMenuList } from "./Menu.styles";
+import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
+import { MenuListHeading } from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
-import {useKey} from "rooks";
+import { useKey } from "rooks";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
-  onSelect?: (option: MenuOption) => void;
+  onSelect?: (option?: MenuOption) => void;
   text?: string | number;
   category?: string;
 }
@@ -25,69 +25,73 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Menu = ({
-                anchorEl,
-                options,
-                placement = "bottom-start",
-                onClose,
-                onOptionSelect,
-                ...rest
+  anchorEl,
+  options,
+  placement = "bottom-start",
+  onClose,
+  onOptionSelect,
+  ...rest
 }: MenuProps) => {
-
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
-  useKey(
-    ["ArrowDown"],
-    (e) => {
-      e.preventDefault();
-      setSelectedIndex((selectedIndex + 1) % options.length);
-    },
-  );
-
-  useKey(
-    ["ArrowUp"],
-    (e) => {
-      e.preventDefault();
-      setSelectedIndex((selectedIndex - 1) % options.length);
-    },
-  );
-
-  useKey(
-    ["Enter"],
-    (e) => {
-      e.preventDefault();
-    },
-  );
-
-  useKey(
-    ["Escape"],
-    (e) => {
-      e.preventDefault();
-      onClose && onClose();
-    },
-  );
-
-
-  const categorisedOptions = useMemo(() => {
-    return _.groupBy(options, "category");
+  const sortedOptions = useMemo(() => {
+    return _.toArray(_.sortBy(options, ["category"]));
   }, [options]);
 
+  useKey(["ArrowDown"], (e) => {
+    e.preventDefault();
+    setSelectedIndex((selectedIndex + 1) % sortedOptions.length);
+  });
+
+  useKey(["ArrowUp"], (e) => {
+    e.preventDefault();
+
+    if (selectedIndex > 0) {
+      setSelectedIndex((selectedIndex - 1) % sortedOptions.length);
+    } else {
+      setSelectedIndex(sortedOptions.length - 1);
+    }
+  });
+
+  useKey(["Enter"], (e) => {
+    e.preventDefault();
+
+    const option = options[selectedIndex];
+
+    if (option) {
+      onOptionSelect && onOptionSelect(option);
+      option.onSelect && option.onSelect(option);
+      onClose && onClose();
+    }
+  });
+
+  useKey(["Escape"], (e) => {
+    e.preventDefault();
+    onClose && onClose();
+  });
 
   return (
     <ClickAwayListener onClickAway={onClose || null}>
       <Popover anchorEl={anchorEl} placement={placement}>
         <StyledMenuList {...rest}>
-          {Object.keys(categorisedOptions).map((category, iidx) => (
-            <div key={`category-${iidx}-${new Date().getTime()}`}>
-              {category !== "undefined" && <MenuListHeading>{category}</MenuListHeading>}
-              {categorisedOptions[category].map((x, idx) => (
+          {sortedOptions.map((option, idx, array) => {
+            const prev = array[idx - 1] || null;
+
+            return (
+              <span key={`item-${idx}-${new Date().getTime()}`}>
+                {prev === null || prev.category !== option.category ? (
+                  <MenuListHeading>{option.category}</MenuListHeading>
+                ) : null}
+
                 <MenuListItem
                   button
                   onSelect={() => {
                     if (onOptionSelect) {
-                      onOptionSelect(x);
+                      onOptionSelect(option);
                     }
-                    if(x.onSelect) {
-                      x.onSelect(x);
+
+                    if (option.onSelect) {
+                      option.onSelect(option);
                     }
 
                     if (onClose) {
@@ -95,15 +99,14 @@ const Menu = ({
                     }
                   }}
                   cursor={idx === selectedIndex}
-                  key={`item-${iidx}-${idx}`}
-                  startAdornment={x.startAdornment}
-                  endAdornment={x.endAdornment}
+                  startAdornment={option.startAdornment}
+                  endAdornment={option.endAdornment}
                 >
-                  {x.text}
+                  {option.text}
                 </MenuListItem>
-              ))}
-            </div>
-          ))}
+              </span>
+            );
+          })}
         </StyledMenuList>
       </Popover>
     </ClickAwayListener>
