@@ -20,33 +20,35 @@ import {
   GcxDataTableThead,
   GcxDataTableTr,
   GcxDataTableWrapper,
+  Resizer, ResizerDrag,
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
 import Pagination from "../Pagination";
+import Icon from "../Icon";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
 const uuid = require("uuid/v4");
 
-// const SelectionCheckbox = React.forwardRef((props, ref) => {
-//   const [id] = useState(uuid());
-//   const defaultRef = React.useRef();
-//   const resolvedRef = ref || defaultRef;
-//   return (
-//     <>
-//       {/*<Checkbox*/}
-//       {/*  ref={resolvedRef}*/}
-//       {/*  {...props}*/}
-//       {/*  id={"DataTableCheckbox-" + id}*/}
-//       {/*  onChange={(...params) => {*/}
-//       {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
-//       {/*    props.onChange(params[2]);*/}
-//       {/*  }}*/}
-//       {/*/>*/}
-//     </>
-//   );
-// });
+const SelectionCheckbox = React.forwardRef((props, ref) => {
+  const [id] = useState(uuid());
+  const defaultRef = React.useRef();
+  const resolvedRef = ref || defaultRef;
+  return (
+    <>
+      {/*<Checkbox*/}
+      {/*  ref={resolvedRef}*/}
+      {/*  {...props}*/}
+      {/*  id={"DataTableCheckbox-" + id}*/}
+      {/*  onChange={(...params) => {*/}
+      {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
+      {/*    props.onChange(params[2]);*/}
+      {/*  }}*/}
+      {/*/>*/}
+    </>
+  );
+});
 
 export interface DataTableProps {
   data: any[];
@@ -112,27 +114,27 @@ const DataTable = ({
     (hooks: any) => {
       hooks.visibleColumns.push((columns: any) => [
         /// Let's make a column for selection
-        // {
-        //   id: "selection",
-        //   // The header can use the table's getToggleAllRowsSelectedProps method
-        //   // to render a checkbox
-        //   Header: ({getToggleAllRowsSelectedProps}: any) => (
-        //     <div>
-        //       <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
-        //     </div>
-        //   ),
-        //   // The cell can use the individual row's getToggleRowSelectedProps method
-        //   // to the render a checkbox
-        //   Cell: ({row}: any) => (
-        //     <div>
-        //       <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
-        //     </div>
-        //   ),
-        //   defaultCanSort: false,
-        //   maxWidth: 0,
-        //   minWidth: 40,
-        //   width: 40,
-        // },
+        {
+          id: "selection",
+          // The header can use the table's getToggleAllRowsSelectedProps method
+          // to render a checkbox
+          Header: ({getToggleAllRowsSelectedProps}: any) => (
+            <div>
+              <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
+            </div>
+          ),
+          // The cell can use the individual row's getToggleRowSelectedProps method
+          // to the render a checkbox
+          Cell: ({row}: any) => (
+            <div>
+              <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+          defaultCanSort: false,
+          maxWidth: 0,
+          minWidth: 40,
+          width: 40,
+        },
         ...columns,
       ]);
       hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
@@ -200,35 +202,19 @@ const DataTable = ({
                     <div {...column.getSortByToggleProps()}>
                       {" "}
                       {column.render("Header")}
-                      {/*{column.id !== "PROFILE_IMAGE" && column.canSort ? (*/}
-                      {/*  <>*/}
-                      {/*    {column.isSorted ? (*/}
-                      {/*      <Icon*/}
-                      {/*        color={"palette.primary.main"}*/}
-                      {/*        icon={column.isSortedDesc ? "chevron-up" : "chevron-down"}*/}
-                      {/*        style={{*/}
-                      {/*          marginRight: 15,*/}
-                      {/*          height: 12,*/}
-                      {/*          display: "inline",*/}
-                      {/*        }}*/}
-                      {/*      />*/}
-                      {/*    ) : null}*/}
-                      {/*  </>*/}
-                      {/*) : null}*/}
+
                     </div>
 
                     {column.canResize ? (
-                      <div
+                      <Resizer
                         {...column.getResizerProps()}
                         onClick={(e) => {
                           e.preventDefault();
                         }}
-                        className={`resizer ${
-                          column.isResizing ? "isResizing" : ""
-                        }`}
+                        className={column.isResizing ? "isResizing" : ""}
                       >
-                        <div className={"resizer-panel"} />
-                      </div>
+                        <ResizerDrag />
+                      </Resizer>
                     ) : null}
                   </GcxDataTableTh>
                 ))}
