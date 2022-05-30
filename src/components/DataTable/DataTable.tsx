@@ -259,8 +259,8 @@ const DataTable = ({
         itemsPerPageOptions={[25, 50, 100]}
         page={page}
         totalItems={numResults || 0}
-        onItemsPerPageChange={setDataTablePageSize}
-        onPageChange={onPaginationChange}
+        onItemsPerPageChange={(newPageSize) => onPaginationChange({ page, pageSize: newPageSize})}
+        onPageChange={(newPage) => onPaginationChange({ page: newPage, pageSize})}
       />
       {/*</div>*/}
     </GcxDataTableRoot>
