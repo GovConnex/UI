@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Icon from "../Icon";
 import Menu from "../Menu";
+import Pagination from "../Pagination";
 
 export const GcxDataTableRoot = styled.div``;
 export const GcxDataTableWrapper = styled.div`
@@ -76,4 +77,8 @@ export const GcxDataTableHeaderCellRoot = styled.div`
 export const GcxDataTableHeaderIcon = styled(Icon)`
   color: ${(p) => p.theme.palette.text.secondary};
   margin-right: ${(p) => p.theme.spacing.md};
+`;
+
+export const GcxDataTablePagination = styled(Pagination)`
+  margin-top: ${(p) => p.theme.spacing.md};
 `;
