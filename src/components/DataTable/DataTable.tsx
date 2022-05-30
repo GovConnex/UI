@@ -12,6 +12,7 @@ import {
 import classNames from "classnames";
 import {
   GcxDataTable,
+  GcxDataTablePagination,
   GcxDataTableRoot,
   GcxDataTableTbody,
   GcxDataTableTd,
@@ -22,6 +23,7 @@ import {
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
+import Pagination from "../Pagination";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
@@ -252,13 +254,14 @@ const DataTable = ({
         </GcxDataTable>
       </GcxDataTableWrapper>
       {/*<div className={"govconnex-data-table-pagination"}>*/}
-      {/*<Pagination*/}
-      {/*  pageSize={pageSize}*/}
-      {/*  pageSizes={[25, 50, 100]}*/}
-      {/*  page={page}*/}
-      {/*  totalItems={numResults}*/}
-      {/*  onChange={onPaginationChange}*/}
-      {/*/>*/}
+      <GcxDataTablePagination
+        itemsPerPage={pageSize}
+        itemsPerPageOptions={[25, 50, 100]}
+        page={page}
+        totalItems={numResults || 0}
+        onItemsPerPageChange={setDataTablePageSize}
+        onPageChange={onPaginationChange}
+      />
       {/*</div>*/}
     </GcxDataTableRoot>
   );
