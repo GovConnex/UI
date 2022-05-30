@@ -25,10 +25,12 @@ export interface PaginationProps {
   page: number;
   onPageChange: (newPage: number) => void;
   onItemsPerPageChange: (newItemsPerPage: number) => void;
-  itemsPerPageOptions?: PaginationItemsPerPageOption[];
+  itemsPerPageOptions?: (PaginationItemsPerPageOption | number)[];
+  className?: string;
 };
 
 const Pagination = (props: PaginationProps) => {
+  console.log("Pagination props", props);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -42,7 +44,7 @@ const Pagination = (props: PaginationProps) => {
       return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
           ? { text: x, onClick: () => setItemsPerPage(x) }
-          : { text: x.label, onClick: () => setItemsPerPage(x.value) }
+          : { text: x.label || x.value, onClick: () => setItemsPerPage(x.value) }
       );
     } else {
       return [
@@ -55,7 +57,7 @@ const Pagination = (props: PaginationProps) => {
   }, [props.itemsPerPageOptions]);
 
   return (
-    <StyledPagination>
+    <StyledPagination className={props.className}>
       <>
         <div>
           <Typography>

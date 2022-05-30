@@ -75,6 +75,9 @@ export const Example = Template.bind({});
 Example.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
+  pageSize: 25,
+  page: 1,
+  numResults: 100
 };
 
 Example.parameters = {
