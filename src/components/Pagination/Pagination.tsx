@@ -43,15 +43,15 @@ const Pagination = (props: PaginationProps) => {
     if (props.itemsPerPageOptions) {
       return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
-          ? { text: x, onClick: () => setItemsPerPage(x) }
-          : { text: x.label || x.value, onClick: () => setItemsPerPage(x.value) }
+          ? { text: x, onSelect: () => setItemsPerPage(x) }
+          : { text: x.label || x.value, onSelect: () => setItemsPerPage(x.value) }
       );
     } else {
       return [
-        { text: 10, onClick: () => setItemsPerPage(10) },
-        { text: 25, onClick: () => setItemsPerPage(25) },
-        { text: 50, onClick: () => setItemsPerPage(50) },
-        { text: 100, onClick: () => setItemsPerPage(100) },
+        { text: 10, onSelect: () => setItemsPerPage(10) },
+        { text: 25, onSelect: () => setItemsPerPage(25) },
+        { text: 50, onSelect: () => setItemsPerPage(50) },
+        { text: 100, onSelect: () => setItemsPerPage(100) },
       ];
     }
   }, [props.itemsPerPageOptions]);
