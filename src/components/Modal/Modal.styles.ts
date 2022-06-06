@@ -29,7 +29,6 @@ export const StyledModalContent = styled.div`
   background-color: ${props => props.theme.palette.background.default};
   padding: ${props => props.theme.spacing.md};
   flex-grow: 1;
-  height: 28em;
 `;
 
 export const StyledModalFeet = styled.div`
