@@ -1,4 +1,7 @@
 # GovConnex UI
+
+[![npm](https://img.shields.io/npm/v/@govconnex/ui)](https://www.npmjs.com/package/@govconnex/ui)
+
 React Component Libary
 
 ## Usage
