@@ -29,6 +29,7 @@ const DATA_TABLE_COLUMNS = [
     Cell: NameCell,
     icon: faUser,
     displayName: "Name",
+    canResize: true,
     accessor: "name",
     minWidth: 225,
   },
@@ -36,6 +37,7 @@ const DATA_TABLE_COLUMNS = [
     id: "D01",
     Header: DataTableHeaderCell,
     Cell: SupportCell,
+    canResize: true,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
@@ -46,6 +48,7 @@ const DATA_TABLE_COLUMNS = [
     Header: DataTableHeaderCell,
     Cell: TagCell,
     icon: faContactCard,
+    canResize: true,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
     minWidth: 225,
