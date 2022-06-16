@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    // Default
     "target": "es6",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "resolveJsonModule": true,
-    // Added
     "jsx": "react",
     "module": "ESNext",
-    "declaration": true,
     "declarationDir": "types",
     "sourceMap": true,
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "dist",
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": true
   }
 }
+
