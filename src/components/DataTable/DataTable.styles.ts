@@ -26,9 +26,10 @@ export const GcxDataTableTr = styled.tr`
 `;
 
 export const GcxDataTableTh = styled.th`
+  user-select: none;
   text-align: left;
-
   border-bottom: 1px solid #ebebeb;
+  position: relative;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
@@ -79,6 +80,32 @@ export const GcxDataTableHeaderIcon = styled(Icon)`
   margin-right: ${(p) => p.theme.spacing.md};
 `;
 
+export const GcxDataTableHeaderSortIcon = styled(Icon)`
+  color: ${(p) => p.theme.palette.text.secondary};
+  margin-left: ${(p) => p.theme.spacing.md};
+`;
+
 export const GcxDataTablePagination = styled(Pagination)`
   margin-top: ${(p) => p.theme.spacing.md};
+`;
+
+export const ResizerDrag = styled.div`
+  width: 5px;
+  height: 100%;
+  z-index: 1;
+`;
+
+export const Resizer = styled.div`
+  cursor: col-resize;
+  position: absolute;
+  padding-right: 10px;
+  padding-left: 10px;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  z-index: 1;
+  
+  &:hover ${ResizerDrag} {
+    background-color: ${(p) => p.theme.palette.primary.main};
+  }
 `;
