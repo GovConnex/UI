@@ -1,4 +1,3 @@
-
 function getStyleDictionaryConfig(theme) {
     return {
         "source": [
