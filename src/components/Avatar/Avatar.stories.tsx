@@ -21,8 +21,8 @@ Example.args = {
 };
 
 Example.parameters = {
-  //  design: {
-  //    type: "figma",
-  //    url: ""
-  //  }
+   design: {
+     type: "figma",
+     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/GovConnex-Component-Library?node-id=167%3A66750"
+   }
 };
