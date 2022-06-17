@@ -12,15 +12,22 @@ const packageJson = require("./package.json");
 
 export default [
   {
-    input: "src/index.ts",
+    input: [
+      "src/index.ts",
+      "src/hooks/index.ts"
+    ],
     output: [
       {
-        file: packageJson.main,
+        dir: "dist",
+        preserveModules: true,
+        preserveModulesRoot: 'src',
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: "dist",
+        preserveModules: true,
+        preserveModulesRoot: 'src',
         format: "esm",
         sourcemap: true,
       },

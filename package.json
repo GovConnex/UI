@@ -1,6 +1,7 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.47",
+  "type": "module",
+  "version": "0.0.52",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
@@ -69,6 +70,19 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/esm/index.js",
+      "require": "./dist/hooks/cjs/index.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
