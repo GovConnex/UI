@@ -30,3 +30,20 @@ FontAwesomeSearch.args = {
   icon: faSearch,
   size: "lg",
 };
+
+
+
+
+HeartSvg.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=463%3A21035"
+  }
+ }
+
+ FontAwesomeSearch.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=463%3A21035"
+  }
+ }
