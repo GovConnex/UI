@@ -98,7 +98,6 @@ const Pagination = (props: PaginationProps) => {
           {showMenu && (
             <Menu
               placement="bottom-start"
-              options={dropdownOptions}
               anchorEl={buttonRef}
               onClose={() => setShowMenu(false)}
             />

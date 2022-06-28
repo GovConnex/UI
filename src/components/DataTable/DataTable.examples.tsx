@@ -4,7 +4,6 @@ import Avatar from "../Avatar";
 import Typography from "../Typography";
 import styled from "styled-components";
 import Chip from "../Chip";
-import { MenuOption } from "../Menu/Menu";
 
 export const NameCell = () => {
   return (
@@ -29,28 +28,9 @@ const Dot = styled.div<{ color?: string }>`
   border-radius: 50%;
 `;
 
-const MENU_OPTIONS: MenuOption[] = [
-  {
-    text: "Very High",
-    startAdornment: <Dot />,
-  },
-  {
-    text: "High",
-    startAdornment: <Dot />,
-  },
-  {
-    text: "Neutral",
-    startAdornment: <Dot />,
-  },
-  {
-    text: "Low",
-    startAdornment: <Dot />,
-  },
-];
-
 export const SupportCell = () => {
   return (
-    <DataTableDataCell menuOptions={MENU_OPTIONS}>
+    <DataTableDataCell>
       <Dot />
       <Typography variant={"textMd"}>Very High</Typography>
     </DataTableDataCell>

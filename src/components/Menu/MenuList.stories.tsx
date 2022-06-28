@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { MenuList, MenuListHeading } from "./MenuList";
 import { withDesign } from "storybook-addon-designs";
-import MenuListItem from "./MenuListItem";
+import MenuItem from "./MenuItem";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,11 +19,11 @@ Example.args = {
   style: { maxWidth: "200px" },
   children: (
     <>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem button>MenuList Button</MenuListItem>
-      <MenuListItem button>MenuList Button</MenuListItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem button>MenuList Button</MenuItem>
+      <MenuItem button>MenuList Button</MenuItem>
     </>
   ),
 };
@@ -34,22 +34,22 @@ FixedHeight.args = {
   children: (
     <>
       <MenuListHeading>Not Sticky Heading</MenuListHeading>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
       <MenuListHeading sticky>Sticky Heading</MenuListHeading>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
+      <MenuItem>MenuList Item</MenuItem>
     </>
   ),
 };

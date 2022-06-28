@@ -4,9 +4,9 @@ import Typography from "../Typography";
 import StyledMenuListItem, {
   StyledMenuListItemEnd,
   StyledMenuListItemStart,
-} from "./MenuListItem.styles";
+} from "./MenuItem.styles";
 
-interface MenuListItemProps {
+export interface MenuItemProps {
   children?: React.ReactNode;
   onSelect?: () => void;
   button?: boolean;
@@ -19,7 +19,7 @@ interface MenuListItemProps {
   className?: string;
 }
 
-export const MenuListItem: React.FC<MenuListItemProps> = ({
+export const MenuItem: React.FC<MenuItemProps> = ({
   children,
   onSelect,
   cursor,
@@ -50,4 +50,4 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   );
 };
 
-export default MenuListItem;
+export default MenuItem;

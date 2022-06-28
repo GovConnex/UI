@@ -6,6 +6,7 @@ import Button from "../Button";
 import Icon from "../Icon";
 import { faUser } from "@fortawesome/pro-solid-svg-icons";
 import styled from "styled-components";
+import MenuItem from "./MenuItem";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -22,7 +23,9 @@ const Template: ComponentStory<typeof Menu> = (args) => {
   return (
     <div>
       <Button ref={exampleRef} onClick={() => setShowMenu(!showMenu)}>Toggle menu</Button>
-      {showMenu && <Menu {...args} onClose={() => setShowMenu(false)} anchorEl={exampleRef} />}
+      {showMenu && <Menu {...args} onClose={() => setShowMenu(false)} anchorEl={exampleRef}>
+        <MenuItem>Test</MenuItem>
+      </Menu>}
     </div>
   );
 }
@@ -38,12 +41,6 @@ export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   placement: "bottom-start",
-  options: [
-    { text: "Menu Option", startAdornment: <GreenDot /> },
-    { text: "Hello", startAdornment: <GreenDot />, endAdornment: <Icon icon={faUser} />  },
-    { text: "Menu Option Part 2", startAdornment: <GreenDot /> },
-    { text: "Menu Option Part 2: 2", startAdornment: <GreenDot />, endAdornment: <Icon icon={faUser} /> },
-  ]
 };
 
 Example.parameters = {
@@ -57,12 +54,4 @@ export const Headings = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Headings.args = {
   placement: "bottom-start",
-  options: [
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Plants" },
-    { text: "Menu Option", category: "Plants" },
-  ]
 };
