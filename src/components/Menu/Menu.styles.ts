@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MenuList } from "../MenuList";
+import {MenuList} from "./MenuList";
 
 export const StyledMenuList = styled(MenuList)`
   padding: ${props => props.theme.spacing.sm};

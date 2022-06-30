@@ -15,6 +15,5 @@ export {
 } from "@fortawesome/react-fontawesome";
 export { default as Input } from "./Input";
 export { default as Button } from "./Button";
-export { default as Menu } from "./Menu";
-export * from "./MenuList";
+export { default as Menu, MenuList, MenuItem, MenuListHeading } from "./Menu";
 export * from "./List";
