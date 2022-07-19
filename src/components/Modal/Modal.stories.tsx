@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Modal from "./Modal";
+import { Modal } from "./Modal";
 import { withDesign } from 'storybook-addon-designs';
 import Button from "../Button";
 

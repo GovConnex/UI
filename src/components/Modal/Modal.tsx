@@ -1,6 +1,9 @@
 import React from "react";
 import {
   StyledModal,
+  StyledModalFeet,
+  StyledModalHead,
+  StyledModalContent,
   StyledMobileModal,
 } from "./Modal.styles";
 import Portal from "../Portal";
@@ -52,4 +55,4 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-export default Modal;
+export { Modal, StyledModalContent, StyledModalHead, StyledModalFeet };
