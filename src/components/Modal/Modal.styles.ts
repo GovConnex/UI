@@ -37,11 +37,6 @@ export const StyledModalFeet = styled.div`
   align-items: center;
   padding: ${props => props.theme.spacing.md};
   border-top: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
-
-  > div {
-    display: flex;
-    gap: ${props => props.theme.spacing.md};
-  }
 `;
 
 export const StyledMobileModal = styled.div`

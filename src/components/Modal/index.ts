@@ -1,1 +1,1 @@
-export { default } from "./Modal";
+export { Modal, StyledModalContent, StyledModalHead, StyledModalFeet } from "./Modal";
