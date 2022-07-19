@@ -1,11 +1,11 @@
 {
   "name": "@govconnex/ui",
   "type": "module",
-  "version": "0.0.52",
+  "version": "0.0.57",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
-    "prepublishOnly": "rollup -c",
+    "prepublishOnly": "rm -rf dist && rollup -c",
     "test": "jest",
     "prestart": "yarn run build:tokens",
     "start": "start-storybook -p 6006",
