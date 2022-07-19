@@ -1,7 +1,7 @@
 {
   "name": "@govconnex/ui",
   "type": "module",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
@@ -75,11 +75,6 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./hooks": {
-      "import": "./dist/hooks/esm/index.js",
-      "require": "./dist/hooks/cjs/index.js",
-      "types": "./dist/hooks/index.d.ts"
     },
     "./package.json": "./package.json"
   },
