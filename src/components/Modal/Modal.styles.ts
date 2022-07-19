@@ -17,33 +17,6 @@ export const StyledModal = styled.div`
   filter: ${props => props.theme.shadow.md.map(x => `drop-shadow(${x.x}px ${x.y}px ${x.blur}px ${x.color}) `)};
 `;
 
-export const StyledModalHead = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${props => props.theme.spacing.md};
-  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
-`;
-
-export const StyledModalContent = styled.div`
-  background-color: ${props => props.theme.palette.background.default};
-  padding: ${props => props.theme.spacing.md};
-  flex-grow: 1;
-`;
-
-export const StyledModalFeet = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${props => props.theme.spacing.md};
-  border-top: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
-
-  > div {
-    display: flex;
-    gap: ${props => props.theme.spacing.md};
-  }
-`;
-
 export const StyledMobileModal = styled.div`
   z-index: 999;
   width: 100%;

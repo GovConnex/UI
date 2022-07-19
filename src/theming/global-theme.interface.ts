@@ -1,7 +1,7 @@
 interface Typography {
   fontFamily: string;
   fontWeight: string;
-  lineHeight: string;
+  lineHeight: number;
   fontSize: string;
   letterSpacing: string;
   paragraphSpacing: string;
