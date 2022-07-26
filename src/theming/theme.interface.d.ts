@@ -1,55 +1,21 @@
 import 'styled-components';
-import GlobalTheme, {CommonPalette} from "./global-theme.interface";
+import GlobalTheme, {CommonGradient} from "./global-theme.interface";
 
 
 declare module "styled-components" {
   export interface DefaultTheme extends GlobalTheme {
-    palette: {
-      primary: {
-        main: string;
-        light: string;
-        dark: string;
-        extraLight: string;
-      },
-      secondary: {
-        main: string;
-        light: string;
-        lighter: string;
-        extraLight: string;
-      },
-      // error: {
-      //   main: string;
-      //   light: string;
-      //   dark: string;
-      // },
-      text: {
+    primary: {
+      brand: CommonGradient;
+      neutral: CommonGradient;
+      base: {
         primary: string;
-        secondary: string;
-        tertiary: string;
-      },
-
-      background: {
-        default: string;
-        paper: string;
-        dark: string;
-      },
-      border: string;
-      gray: {
-        0: string;
-        100: string;
-        200: string;
-        300: string;
-        400: string;
-        500: string;
-        700: string;
-        900: string;
-      },
-      brand: {
-        100: string;
-        400: string;
-        500: string;
-        800: string;
+        white: string;
+        black: string;
       }
+    }
+    secondary: {
+      green: CommonGradient;
+      blue: CommonGradient;
     }
   }
 }

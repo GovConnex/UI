@@ -9,6 +9,13 @@ interface Typography {
   textCase: string;
 }
 
+interface TypographySize {
+  lg: Typography;
+  md: Typography;
+  sm: Typography;
+  xs: Typography;
+}
+
 interface BoxShadow {
   x: number;
   y: number;
@@ -18,48 +25,29 @@ interface BoxShadow {
   type: string;
 }
 
-export interface CommonPalette {
-
-}
-
 export interface GlobalTheme {
   name: string;
-  // breakpoints: {
-  //   xs: string;
-  //   sm: string;
-  //   md: string;
-  //   lg: string;
-  //   xl: string;
-  // },
-  // sizing: {
-  //   xs: string;
-  //   sm: string;
-  //   md: string;
-  //   lg: string;
-  //   xl: string;
-  // },
   typography: {
-    displaySm: Typography;
-    displayMd: Typography;
-    displayLg: Typography;
-    textSm: Typography;
-    textMd: Typography;
-    captionSm: Typography;
+    display: TypographySize;
+    body: TypographySize;
+    heading: TypographySize;
+    label: TypographySize;
   },
-  // opacity: {
-  //   high: string;
-  //   medium: string;
-  //   low: string;
-  // },
   spacing: {
+    xxs: string;
     xs: string;
     sm: string;
     md: string;
     lg: string;
     xl: string;
+    xxl: string;
   },
   borderRadius: {
+    xs: string;
     sm: string;
+    md: string;
+    lg: string;
+    xl: string;
   },
   borderWidth: {
     sm: string;
@@ -67,9 +55,25 @@ export interface GlobalTheme {
     lg: string;
   },
   shadow: {
-    sm: BoxShadow;
-    md: BoxShadow[];
+    xs: BoxShadow;
+    sm: BoxShadow[];
+    md: BoxShadow;
+    lg: BoxShadow;
+    xl: BoxShadow;
   }
+}
+
+export interface CommonGradient {
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
 }
 
 export default GlobalTheme;
