@@ -16,7 +16,7 @@ export const StyledCheckbox = styled.input`
 export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
   width: 16px;
   height: 16px;
-  border-radius: ${props => props.theme.borderRadius.sm};
+  border-radius: ${props => props.theme.borderRadius.md};
   align-items: center;
   justify-content: center;
   display: flex;
