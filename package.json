@@ -1,6 +1,5 @@
 {
   "name": "@govconnex/ui",
-  "type": "module",
   "version": "0.0.59",
   "description": "GovConnex UI - React Component Library",
   "scripts": {

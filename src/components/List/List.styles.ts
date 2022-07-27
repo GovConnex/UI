@@ -8,7 +8,7 @@ export const StyledList = styled.div<{ scroll?: boolean }>`
 `;
 
 export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean }>`
-  background-color: ${(props) => props.theme.palette.background.default};
+  background-color: ${(props) => props.theme.primary.base.white};
   padding: ${(props) => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
   border-radius: ${(props) => props.theme.borderRadius.sm};
   display: flex;
@@ -20,13 +20,13 @@ export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean 
     cursor: pointer;
 
     &:hover {
-      background-color: ${props.theme.palette.secondary.extraLight};
+      background-color: ${props.theme.primary.neutral["100"]};
     }
   `}
 
   ${(props) =>
     props.selected &&
-    `background-color: ${props.theme.palette.secondary.extraLight};`}
+    `background-color: ${props.theme.primary.neutral["100"]};`}
 `;
 
 export const StyledListItemStart = styled.div`

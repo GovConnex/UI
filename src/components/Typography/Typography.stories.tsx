@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Typography> = (args) => <Typography {...ar
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  variant: "textMd",
+  variant: "body",
 };
 
 Example.parameters = {

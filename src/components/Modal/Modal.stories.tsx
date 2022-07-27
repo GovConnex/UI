@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Modal } from "./Modal";
+import { Modal, StyledModalContent } from "./Modal";
 import { withDesign } from 'storybook-addon-designs';
 import Button from "../Button";
 
@@ -21,7 +21,9 @@ const Template: ComponentStory<typeof Modal> = (args) => {
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal {...args} open={open} onClose={handleClose} enableClickAway>
-        {args.children}
+        <StyledModalContent>
+          {args.children}
+        </StyledModalContent>
       </Modal>
       {/* <div style={{ height: "300em" }} /> */}
     </div>

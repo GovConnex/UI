@@ -8,12 +8,14 @@ declare module "styled-components" {
       brand: CommonGradient;
       neutral: CommonGradient;
       base: {
-        primary: string;
+        brand: string;
         white: string;
         black: string;
       }
     }
     secondary: {
+      red: CommonGradient;
+      yellow: CommonGradient;
       green: CommonGradient;
       blue: CommonGradient;
     }

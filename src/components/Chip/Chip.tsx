@@ -3,7 +3,6 @@ import Typography from "../Typography";
 import StyledChip, {
   StyledAdornment,
   StyledChipIcon,
-  StyledChipLabel,
 } from "./Chip.styles";
 import { faCircleXmark } from "@fortawesome/pro-solid-svg-icons";
 
@@ -29,7 +28,7 @@ const Chip = ({
       {startAdornment ? (
         <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
       ) : null}
-      <StyledChipLabel variant="textSm">{label}</StyledChipLabel>
+      <Typography variant="label" size="md" noMargin>{label}</Typography>
       {endAdornment ? (
         <StyledAdornment position={"end"}>{endAdornment}</StyledAdornment>
       ) : null}

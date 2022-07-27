@@ -20,15 +20,14 @@ export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
   align-items: center;
   justify-content: center;
   display: flex;
-  color: ${props => props.theme.palette.background.default};
+  color: ${props => props.theme.primary.base.white};
   border: ${props => props.theme.borderWidth.md} solid transparent;
 
   ${({checked, theme}) => checked ? `
-    background-color: ${theme.palette.primary.main};
+    background-color: ${theme.primary.base.brand};
   ` : `
-    color: ${theme.palette.background.dark};
-    background-color: ${theme.palette.background.default};
-    border: ${theme.borderWidth.md} solid ${theme.palette.background.dark};
+    background-color: ${theme.primary.base.white};
+    border: ${theme.borderWidth.md} solid ${theme.primary.neutral["200"]};
   `}
 `;
 

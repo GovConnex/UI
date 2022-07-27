@@ -8,9 +8,9 @@ export const StyledMenuList = styled.div`
 export const StyledMenuListHeading = styled.div<{ sticky?: boolean; uppercase?: boolean; }>`
   ${({uppercase}) => uppercase && "text-transform: uppercase;"}
 
-  color: ${props => props.theme.palette.text.secondary};
-  padding: ${props => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
-  font-size: ${props => props.theme.typography.textSm.fontSize};
+  color: ${props => props.theme.primary.base.black};
+  padding: ${props => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
+  font-size: ${props => props.theme.typography.body.sm.fontSize};
 
   ${props => props.sticky && `
     top: 0;

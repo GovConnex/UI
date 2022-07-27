@@ -43,7 +43,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography variant={"textSm"} noMargin>{children}</Typography>
+        <Typography variant={"body"} size="sm" noMargin>{children}</Typography>
       </StyledMenuListItemStart>
       <StyledMenuListItemEnd>{endAdornment}</StyledMenuListItemEnd>
     </StyledMenuListItem>

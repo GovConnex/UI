@@ -11,7 +11,7 @@ export const GcxDataTableWrapper = styled.div`
   display: inline-table;
 `;
 export const GcxDataTable = styled.table`
-  background-color: ${(p) => p.theme.palette.background.default};
+  background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
 `;
 
@@ -34,8 +34,6 @@ export const GcxDataTableTh = styled.th`
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
   }
-
-  //border-collapse: collapse;
 `;
 
 export const GcxDataTableTd = styled.td`
@@ -54,13 +52,13 @@ export const GcxDataTableDataCellRoot = styled.div<{ hasDropdown: boolean }>`
   align-items: center;
   box-sizing: border-box;
   gap: ${(p) => p.theme.spacing.md};
-  padding: ${(p) => p.theme.spacing.md};
+  padding: ${(p) => p.theme.spacing.sm};
 
   ${(p) => p.hasDropdown && `
-  cursor: pointer;
-  &:active {
-    outline: ${p.theme.palette.primary.main} solid ${p.theme.borderWidth.lg};
-  }
+    cursor: pointer;
+    &:active {
+      outline: ${p.theme.primary.base.brand} solid ${p.theme.borderWidth.lg};
+    }
   `}
 `;
 
@@ -71,17 +69,17 @@ export const DataCellMenu = styled(Menu)`
 export const GcxDataTableHeaderCellRoot = styled.div`
   display: flex;
   align-items: center;
-  padding: ${(p) => p.theme.spacing.md};
-  color: ${(p) => p.theme.palette.gray[900]};
+  padding: ${(p) => p.theme.spacing.sm};
+  color: ${(p) => p.theme.primary.base.black};
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`
-  color: ${(p) => p.theme.palette.text.secondary};
+  color: ${(p) => p.theme.primary.neutral["800"]};
   margin-right: ${(p) => p.theme.spacing.md};
 `;
 
 export const GcxDataTableHeaderSortIcon = styled(Icon)`
-  color: ${(p) => p.theme.palette.text.secondary};
+  color: ${(p) => p.theme.primary.neutral["800"]};
   margin-left: ${(p) => p.theme.spacing.md};
 `;
 
@@ -104,8 +102,8 @@ export const Resizer = styled.div`
   right: -10px;
   bottom: 0;
   z-index: 1;
-  
+
   &:hover ${ResizerDrag} {
-    background-color: ${(p) => p.theme.palette.primary.main};
+    background-color: ${(p) => p.theme.primary.base.brand};
   }
 `;

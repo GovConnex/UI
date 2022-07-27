@@ -1,28 +1,34 @@
-interface Typography {
+export interface Typography {
   fontFamily: string;
   fontWeight: string;
-  lineHeight: number;
+  lineHeight: string;
   fontSize: string;
-  letterSpacing: string;
-  paragraphSpacing: string;
-  textDecoration: string;
-  textCase: string;
 }
 
-interface TypographySize {
+export interface TypographySize {
   lg: Typography;
   md: Typography;
   sm: Typography;
-  xs: Typography;
+  xs?: Typography;
 }
 
-interface BoxShadow {
+export interface BoxShadow {
   x: number;
   y: number;
   blur: number;
   spread: number;
   color: string
   type: string;
+}
+
+export interface Spacing {
+  xxs: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  xxl: string;
 }
 
 export interface GlobalTheme {
@@ -33,15 +39,7 @@ export interface GlobalTheme {
     heading: TypographySize;
     label: TypographySize;
   },
-  spacing: {
-    xxs: string;
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
-    xxl: string;
-  },
+  spacing: Spacing;
   borderRadius: {
     xs: string;
     sm: string;
@@ -54,9 +52,9 @@ export interface GlobalTheme {
     md: string;
     lg: string;
   },
-  shadow: {
+  boxShadow: {
     xs: BoxShadow;
-    sm: BoxShadow[];
+    sm: BoxShadow;
     md: BoxShadow;
     lg: BoxShadow;
     xl: BoxShadow;
