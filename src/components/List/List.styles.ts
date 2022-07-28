@@ -9,12 +9,12 @@ export const StyledList = styled.div<{ scroll?: boolean }>`
 
 export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean }>`
   background-color: ${(props) => props.theme.primary.base.white};
-  padding: ${(props) => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
+  padding: ${(props) => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
   border-radius: ${(props) => props.theme.borderRadius.sm};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
 
   ${props => props.button && `
     cursor: pointer;
@@ -31,7 +31,7 @@ export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean 
 
 export const StyledListItemStart = styled.div`
   display: flex;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
   align-items: center;
   justify-content: space-between;
 `;

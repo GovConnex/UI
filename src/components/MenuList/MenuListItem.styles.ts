@@ -10,7 +10,7 @@ export const StyledMenuListItem = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
 
   ${(props) =>
     props.button &&
@@ -29,7 +29,7 @@ export const StyledMenuListItem = styled.div<{
 
 export const StyledMenuListItemStart = styled.div`
   display: flex;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
   align-items: center;
   justify-content: space-between;
 `;

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const StyledAdornment = styled.span<{ position: string }>`
-  ${props => `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.sm}`};
+  ${props => `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
+  display: flex;
+  align-items: center;
 `
 
 const StyledInputContainer = styled.div<{ fullWidth: boolean }>`
