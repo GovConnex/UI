@@ -10,7 +10,7 @@ export const StyledAdornment = styled.div<{ position: string }>`
 `;
 
 const StyledChip = styled.div`
-  background-color: ${({ theme }) => theme.primary.neutral[200]};
+  background-color: ${({ theme }) => theme.primary.neutral["100"]};
   padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.xs};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   color: ${({ theme }) => theme.primary.base.black};

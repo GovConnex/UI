@@ -35,6 +35,6 @@ export const StyledCheckboxLabel = styled.label`
   align-items: center;
   display: flex;
   cursor: pointer;
-  gap: ${props => props.theme.spacing.sm};
+  gap: ${props => props.theme.spacing.xs};
   position: relative;
 `;

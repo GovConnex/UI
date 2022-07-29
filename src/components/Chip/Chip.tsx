@@ -28,7 +28,7 @@ const Chip = ({
       {startAdornment ? (
         <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
       ) : null}
-      <Typography variant="label" size="md" noMargin>{label}</Typography>
+      <Typography variant="body" size="md" noMargin>{label}</Typography>
       {endAdornment ? (
         <StyledAdornment position={"end"}>{endAdornment}</StyledAdornment>
       ) : null}
