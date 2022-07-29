@@ -15,6 +15,7 @@ export const StyledListItem = styled.div<{ button?: boolean; selected?: boolean 
   align-items: center;
   justify-content: space-between;
   gap: ${(props) => props.theme.spacing.sm};
+  font-size: ${(props) => props.theme.typography.display.sm.fontSize};
 
   ${props => props.button && `
     cursor: pointer;
