@@ -61,7 +61,6 @@ export const TagCell = () => {
   return (
     <DataTableDataCell>
       <Chip
-        label={"Tammy Ester"}
         startAdornment={
           <Avatar
             alt={"Cooper Darling-Blair"}
@@ -72,7 +71,9 @@ export const TagCell = () => {
             size={"sm"}
           />
         }
-      />
+      >
+        Tammy Ester
+      </Chip>
     </DataTableDataCell>
   );
 };

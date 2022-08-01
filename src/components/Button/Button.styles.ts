@@ -5,7 +5,6 @@ import { Spacing } from "../../theming/global-theme.interface";
 const StyledAdornment = styled.span``;
 
 const StyledButton = styled.button<{
-  disabled: boolean;
   variant: ButtonVariant;
   size: keyof Spacing;
 }>`
@@ -16,7 +15,13 @@ const StyledButton = styled.button<{
   display: flex;
   gap: ${props => props.theme.spacing.sm};
 
-  ${({theme, disabled}) => disabled ? `background-color: ${theme.primary.neutral["400"]};` : ''}
+  &:disabled {
+    background-color: ${props => props.theme.primary.neutral["300"]};
+  }
+
+  &:disabled:hover {
+    background-color: ${props => props.theme.primary.neutral["300"]};
+  }
 
   ${({theme, variant}) => variant === "primary" && `
     color: ${theme.primary.neutral["50"]};

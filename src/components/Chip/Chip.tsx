@@ -6,29 +6,25 @@ import StyledChip, {
 } from "./Chip.styles";
 import { faCircleXmark } from "@fortawesome/pro-solid-svg-icons";
 
-export interface ChipProps {
-  label?: string;
-  onClick?: () => void;
+export interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
   onDelete?: () => void;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
-  className?: string;
 }
 
 const Chip = ({
-  label,
+  children,
   startAdornment,
   endAdornment,
-  onClick,
   onDelete,
-  className,
+  ...props
 }: ChipProps) => {
   return (
-    <StyledChip className={className} onClick={onClick}>
+    <StyledChip {...props}>
       {startAdornment ? (
         <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
       ) : null}
-      <Typography variant="body" size="md" noMargin>{label}</Typography>
+      <Typography variant="body" size="md" noMargin>{children}</Typography>
       {endAdornment ? (
         <StyledAdornment position={"end"}>{endAdornment}</StyledAdornment>
       ) : null}
