@@ -7,7 +7,9 @@ export const StyledModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate3d(-50%, -51%, 0);
+  -moz-transform: translate3d(-50%, -51%, 0);
+  transform: translate3d(-50%, -51%, 0);
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.primary.base.white};
