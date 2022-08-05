@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const StyledModalBack = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+`;
+
 export const StyledModal = styled.div`
   z-index: 999;
   max-width: 100%;
@@ -7,13 +16,13 @@ export const StyledModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -51%, 0);
-  -moz-transform: translate3d(-50%, -51%, 0);
-  transform: translate3d(-50%, -51%, 0);
+  -webkit-transform: translate3d(-50%, calc(-50%, + .5px), 0);
+  -moz-transform: translate3d(-50%, calc(-50% + .5px), 0);
+  transform: translate3d(-50%, calc(-50% + .5px), 0);
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.primary.base.white};
-  border: ${({theme}) => `${theme.borderWidth.md} solid ${theme.primary.neutral["200"]}`};
+  border: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
   border-radius: ${props => props.theme.borderRadius.sm};
   filter: ${({theme: {boxShadow: {md}}}) => `drop-shadow(${md.x}px ${md.y}px ${md.blur}px ${md.color})`};
 `;
@@ -25,7 +34,7 @@ export const StyledModalHead = styled.div`
   border-top-right-radius: ${props => props.theme.borderRadius.sm};
   padding: ${props => props.theme.spacing.sm};
   border-top-left-radius: ${props => props.theme.borderRadius.sm};
-  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid ${theme.primary.neutral["200"]}`};
+  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
 `;
 
 export const StyledModalContent = styled.div`
@@ -42,7 +51,7 @@ export const StyledModalFeet = styled.div`
   padding: ${props => props.theme.spacing.sm};
   border-bottom-right-radius: ${props => props.theme.borderRadius.sm};
   border-bottom-left-radius: ${props => props.theme.borderRadius.sm};
-  border-top: ${({theme}) => `${theme.borderWidth.md} solid ${theme.primary.neutral["200"]}`};
+  border-top: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7}`};
 `;
 
 export const StyledMobileModal = styled.div`
@@ -57,6 +66,6 @@ export const StyledMobileModal = styled.div`
   flex-direction: column;
 
   background-color: ${props => props.theme.primary.base.white};
-  border: ${({theme}) => `${theme.borderWidth.sm} solid ${theme.primary.neutral["200"]}`};
+  border: ${({theme}) => `${theme.borderWidth.sm} solid #E6E6E7`};
   border-radius: ${props => props.theme.borderRadius.sm};
 `;

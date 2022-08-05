@@ -1,6 +1,7 @@
 import React from "react";
 import {
   StyledModal,
+  StyledModalBack,
   StyledModalFeet,
   StyledModalHead,
   StyledModalContent,
@@ -42,13 +43,15 @@ const Modal = (props: ModalProps) => {
             {props.children}
           </StyledMobileModal>
         ) : (
-          <ClickAwayListener
-            onClickAway={props.enableClickAway ? props.onClose : () => null}
-          >
-            <StyledModal>
-              {props.children}
-            </StyledModal>
-          </ClickAwayListener>
+            <StyledModalBack>
+              <ClickAwayListener
+                onClickAway={props.enableClickAway ? props.onClose : () => null}
+              >
+                <StyledModal>
+                  {props.children}
+                </StyledModal>
+              </ClickAwayListener>
+            </StyledModalBack>
         )}
       </ScrollWrapper>
     </Portal>
