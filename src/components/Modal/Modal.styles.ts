@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const StyledModalBack = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 999;
 `;
 
 export const StyledModal = styled.div`
-  z-index: 999;
+  z-index: 1000;
   max-width: 100%;
   width: 940px;
   position: fixed;
