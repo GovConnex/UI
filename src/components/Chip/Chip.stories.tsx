@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  label: "Australia",
+  children: "Australia",
 };
 
 Example.parameters = {
@@ -29,7 +29,7 @@ Example.parameters = {
 export const Deletable = Template.bind({});
 
 Deletable.args = {
-  label: "Australia",
+  children: "Australia",
   onDelete: () => {
     console.log("Deleted");
   },

@@ -1,33 +1,47 @@
 import styled from "styled-components";
 
-export const StyledModal = styled.div`
+export const StyledModalBack = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
   z-index: 999;
+`;
+
+export const StyledModal = styled.div`
+  z-index: 1000;
   max-width: 100%;
   width: 940px;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate3d(-50%, calc(-50%, + .5px), 0);
+  -moz-transform: translate3d(-50%, calc(-50% + .5px), 0);
+  transform: translate3d(-50%, calc(-50% + .5px), 0);
   display: flex;
   flex-direction: column;
-
-  background-color: ${props => props.theme.palette.background.default};
-  border: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
+  background-color: ${props => props.theme.primary.base.white};
+  border: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
   border-radius: ${props => props.theme.borderRadius.sm};
-  filter: ${props => props.theme.shadow.md.map(x => `drop-shadow(${x.x}px ${x.y}px ${x.blur}px ${x.color}) `)};
+  filter: ${({theme: {boxShadow: {md}}}) => `drop-shadow(${md.x}px ${md.y}px ${md.blur}px ${md.color})`};
 `;
 
 export const StyledModalHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.theme.spacing.md};
-  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
+  border-top-right-radius: ${props => props.theme.borderRadius.sm};
+  padding: ${props => props.theme.spacing.sm};
+  border-top-left-radius: ${props => props.theme.borderRadius.sm};
+  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
 `;
 
 export const StyledModalContent = styled.div`
-  background-color: ${props => props.theme.palette.background.default};
-  padding: ${props => props.theme.spacing.md};
+  background-color: ${props => props.theme.primary.base.white};
+  border-radius: ${props => props.theme.borderRadius.sm};
+  padding: ${props => props.theme.spacing.sm};
   flex-grow: 1;
 `;
 
@@ -35,13 +49,10 @@ export const StyledModalFeet = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.theme.spacing.md};
-  border-top: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
-
-  > div {
-    display: flex;
-    gap: ${props => props.theme.spacing.md};
-  }
+  padding: ${props => props.theme.spacing.sm};
+  border-bottom-right-radius: ${props => props.theme.borderRadius.sm};
+  border-bottom-left-radius: ${props => props.theme.borderRadius.sm};
+  border-top: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7}`};
 `;
 
 export const StyledMobileModal = styled.div`
@@ -55,7 +66,7 @@ export const StyledMobileModal = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${props => props.theme.palette.background.default};
-  border: ${({theme}) => `${theme.borderWidth.md} solid ${theme.palette.background.dark}`};
+  background-color: ${props => props.theme.primary.base.white};
+  border: ${({theme}) => `${theme.borderWidth.sm} solid #E6E6E7`};
   border-radius: ${props => props.theme.borderRadius.sm};
 `;

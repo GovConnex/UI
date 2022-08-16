@@ -32,7 +32,7 @@ const Menu = ({
   onOptionSelect,
   ...rest
 }: MenuProps) => {
-  const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
 
   const sortedOptions = useMemo(() => {
     return _.toArray(_.sortBy(options, ["category"]));
@@ -79,9 +79,8 @@ const Menu = ({
 
             return (
               <span key={`item-${idx}-${new Date().getTime()}`}>
-                {prev === null || prev.category !== option.category ? (
-                  <MenuListHeading>{option.category}</MenuListHeading>
-                ) : null}
+                {prev === null || prev.category !== option.category &&
+                  <MenuListHeading>{option.category}</MenuListHeading>}
 
                 <MenuListItem
                   button

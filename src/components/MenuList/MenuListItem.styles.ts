@@ -4,13 +4,13 @@ export const StyledMenuListItem = styled.div<{
   button?: boolean;
   selected?: boolean;
 }>`
-  background-color: ${(props) => props.theme.palette.background.default};
-  padding: ${(props) => `${props.theme.spacing.sm} ${props.theme.spacing.md}`};
-  border-radius: ${(props) => props.theme.borderRadius.sm};
+  background-color: ${(props) => props.theme.primary.base.white};
+  padding: ${(props) => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
+  border-radius: ${(props) => props.theme.borderRadius.xs};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
 
   ${(props) =>
     props.button &&
@@ -18,18 +18,18 @@ export const StyledMenuListItem = styled.div<{
     cursor: pointer;
 
     &:hover, &.cursor {
-      background-color: ${props.theme.palette.secondary.extraLight};
+      background-color: ${props.theme.primary.neutral["100"]};
     }
   `}
 
   ${(props) =>
     props.selected &&
-    `background-color: ${props.theme.palette.secondary.extraLight};`}
+    `background-color: ${props.theme.primary.neutral["100"]};`}
 `;
 
 export const StyledMenuListItemStart = styled.div`
   display: flex;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
   align-items: center;
   justify-content: space-between;
 `;

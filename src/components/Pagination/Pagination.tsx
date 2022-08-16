@@ -60,7 +60,7 @@ const Pagination = (props: PaginationProps) => {
     <StyledPagination className={props.className}>
       <>
         <div>
-          <Typography>
+          <Typography noMargin>
             Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
           </Typography>
 
@@ -84,7 +84,7 @@ const Pagination = (props: PaginationProps) => {
         </div>
 
         <div>
-          <Typography>Showing</Typography>
+          <Typography noMargin>Showing</Typography>
 
           <Button
             variant="secondary"
@@ -92,7 +92,7 @@ const Pagination = (props: PaginationProps) => {
             ref={buttonRef}
             onClick={() => setShowMenu(!showMenu)}
           >
-            <Typography>{props.itemsPerPage}</Typography>
+            <Typography noMargin>{props.itemsPerPage}</Typography>
           </Button>
 
           {showMenu && (
@@ -104,7 +104,7 @@ const Pagination = (props: PaginationProps) => {
             />
           )}
 
-          <Typography>Items out of {props.totalItems}</Typography>
+          <Typography noMargin>Items out of {props.totalItems}</Typography>
         </div>
       </>
     </StyledPagination>

@@ -10,8 +10,9 @@ import StyledPalette, {
   ColorsTableRow, ColorValueTd, ColorDescriptionTd, ColorNameTd, SectionHeader
 } from "./Palette.styles";
 
-const ColorsContainer = ({palette: paletteProp}: any) => {
-  const palette = organisePalette(paletteProp);
+const ColorsContainer = ({palette: paletteProps}: any) => {
+  const palette = organisePalette(paletteProps);
+
   return (
     <ColorsTable>
       <ColorsTableTbody>
@@ -33,6 +34,7 @@ const ColorsContainer = ({palette: paletteProp}: any) => {
 const organisePalette = (palette: any, prevKeys: string[] = []): Array<{name: string; value: string; description: string}> => {
   const keys = Object.keys(palette);
   let results: any = [];
+
   for(let i = 0; i < keys.length; i++) {
     const key = keys[i];
     const {value, description} = palette[key];
@@ -47,9 +49,9 @@ const organisePalette = (palette: any, prevKeys: string[] = []): Array<{name: st
 }
 
 const Palette = () => {
-  const lightThemePalette = lightTokens.palette;
-  const darkThemePalette = darkTokens.palette;
-  const globalPalette = globalTokens.palette;
+  const lightThemePalette = lightTokens;
+  // const darkThemePalette = darkTokens.palette;
+  const globalPalette = {primary: globalTokens.primary, secondary: globalTokens.secondary};
   return <StyledPalette>
     {/*<iframe*/}
     {/*  height="1500"*/}
@@ -61,8 +63,8 @@ const Palette = () => {
     <ColorsContainer palette={globalPalette}/>
     <SectionHeader>{"Light theme"}</SectionHeader>
     <ColorsContainer palette={lightThemePalette}/>
-    <SectionHeader>{"Dark theme"}</SectionHeader>
-    <ColorsContainer palette={darkThemePalette}/>
+    {/* <SectionHeader>{"Dark theme"}</SectionHeader> */}
+    {/* <ColorsContainer palette={darkThemePalette}/> */}
   </StyledPalette>;
 };
 

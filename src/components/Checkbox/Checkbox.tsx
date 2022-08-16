@@ -23,9 +23,9 @@ const Checkbox = (props: CheckboxProps) => {
         checked={props.checked}
       />
       <StyledFakeCheckbox checked={props.checked}>
-        {props.checked ? <Icon icon={faCheck} size="sm" /> : null}
+        {props.checked ? <Icon icon={faCheck} size="xs" /> : null}
       </StyledFakeCheckbox>
-      <Typography noMargin>{props.label}</Typography>
+      <Typography variant="label" size="md" noMargin>{props.label}</Typography>
     </StyledCheckboxLabel>
   );
 };

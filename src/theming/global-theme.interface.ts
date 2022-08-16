@@ -1,15 +1,18 @@
-interface Typography {
+export interface Typography {
   fontFamily: string;
   fontWeight: string;
   lineHeight: string;
   fontSize: string;
-  letterSpacing: string;
-  paragraphSpacing: string;
-  textDecoration: string;
-  textCase: string;
 }
 
-interface BoxShadow {
+export interface TypographySize {
+  lg: Typography;
+  md: Typography;
+  sm: Typography;
+  xs?: Typography;
+}
+
+export interface BoxShadow {
   x: number;
   y: number;
   blur: number;
@@ -18,58 +21,57 @@ interface BoxShadow {
   type: string;
 }
 
-export interface CommonPalette {
-
+export interface Spacing {
+  xxs: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  xxl: string;
 }
 
 export interface GlobalTheme {
   name: string;
-  // breakpoints: {
-  //   xs: string;
-  //   sm: string;
-  //   md: string;
-  //   lg: string;
-  //   xl: string;
-  // },
-  // sizing: {
-  //   xs: string;
-  //   sm: string;
-  //   md: string;
-  //   lg: string;
-  //   xl: string;
-  // },
   typography: {
-    displaySm: Typography;
-    displayMd: Typography;
-    displayLg: Typography;
-    textSm: Typography;
-    textMd: Typography;
-    captionSm: Typography;
+    display: TypographySize;
+    body: TypographySize;
+    heading: TypographySize;
+    label: TypographySize;
   },
-  // opacity: {
-  //   high: string;
-  //   medium: string;
-  //   low: string;
-  // },
-  spacing: {
+  spacing: Spacing;
+  borderRadius: {
     xs: string;
     sm: string;
     md: string;
     lg: string;
     xl: string;
   },
-  borderRadius: {
-    sm: string;
-  },
   borderWidth: {
     sm: string;
     md: string;
     lg: string;
   },
-  shadow: {
+  boxShadow: {
+    xs: BoxShadow;
     sm: BoxShadow;
-    md: BoxShadow[];
+    md: BoxShadow;
+    lg: BoxShadow;
+    xl: BoxShadow;
   }
+}
+
+export interface CommonGradient {
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
 }
 
 export default GlobalTheme;

@@ -16,19 +16,18 @@ export const StyledCheckbox = styled.input`
 export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
   width: 16px;
   height: 16px;
-  border-radius: ${props => props.theme.borderRadius.sm};
+  border-radius: ${props => props.theme.borderRadius.xs};
   align-items: center;
   justify-content: center;
   display: flex;
-  color: ${props => props.theme.palette.background.default};
+  color: ${props => props.theme.primary.base.white};
   border: ${props => props.theme.borderWidth.md} solid transparent;
 
   ${({checked, theme}) => checked ? `
-    background-color: ${theme.palette.primary.main};
+    background-color: ${theme.primary.base.brand};
   ` : `
-    color: ${theme.palette.background.dark};
-    background-color: ${theme.palette.background.default};
-    border: ${theme.borderWidth.md} solid ${theme.palette.background.dark};
+    background-color: ${theme.primary.base.white};
+    border: ${theme.borderWidth.md} solid ${theme.primary.neutral["200"]};
   `}
 `;
 
@@ -36,6 +35,6 @@ export const StyledCheckboxLabel = styled.label`
   align-items: center;
   display: flex;
   cursor: pointer;
-  gap: ${props => props.theme.spacing.md};
+  gap: ${props => props.theme.spacing.xs};
   position: relative;
 `;

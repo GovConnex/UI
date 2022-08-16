@@ -12,22 +12,15 @@ const packageJson = require("./package.json");
 
 export default [
   {
-    input: [
-      "src/index.ts",
-      "src/hooks/index.ts"
-    ],
+    input: "src/index.ts",
     output: [
       {
-        dir: "dist",
-        preserveModules: true,
-        preserveModulesRoot: 'src',
+        file: packageJson.exports["."].require,
         format: "cjs",
         sourcemap: true,
       },
       {
-        dir: "dist",
-        preserveModules: true,
-        preserveModulesRoot: 'src',
+        file: packageJson.exports["."].import,
         format: "esm",
         sourcemap: true,
       },
@@ -43,9 +36,9 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/esm/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.css$/, "styled-components"],
-  },
+  }
 ];

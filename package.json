@@ -1,11 +1,11 @@
 {
   "name": "@govconnex/ui",
   "type": "module",
-  "version": "0.0.52",
+  "version": "0.0.76",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
-    "prepublishOnly": "rollup -c",
+    "prepublishOnly": "rm -rf dist && rollup -c",
     "test": "jest",
     "prestart": "yarn run build:tokens",
     "start": "start-storybook -p 6006",
@@ -76,11 +76,6 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./hooks": {
-      "import": "./dist/hooks/esm/index.js",
-      "require": "./dist/hooks/cjs/index.js",
-      "types": "./dist/hooks/index.d.ts"
-    },
     "./package.json": "./package.json"
   },
   "dependencies": {
@@ -89,8 +84,6 @@
     "@popperjs/core": "^2.11.5",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-popper": "^2.3.0",
     "react-table": "^7.7.0",
@@ -100,6 +93,7 @@
   },
   "peerDependencies": {
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": ">= 3"
   },
   "repository": {

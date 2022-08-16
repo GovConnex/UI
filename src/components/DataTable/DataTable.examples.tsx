@@ -17,7 +17,7 @@ export const NameCell = () => {
         variant={"square"}
         size={"lg"}
       />
-      <Typography variant={"textMd"}>Cooper Darling-Blair</Typography>
+      <Typography variant="body" size="md" noMargin>Cooper Darling-Blair</Typography>
     </DataTableDataCell>
   );
 };
@@ -52,7 +52,7 @@ export const SupportCell = () => {
   return (
     <DataTableDataCell menuOptions={MENU_OPTIONS}>
       <Dot />
-      <Typography variant={"textMd"}>Very High</Typography>
+      <Typography variant="body" size="md" noMargin>Very High</Typography>
     </DataTableDataCell>
   );
 };
@@ -61,7 +61,6 @@ export const TagCell = () => {
   return (
     <DataTableDataCell>
       <Chip
-        label={"Tammy Ester"}
         startAdornment={
           <Avatar
             alt={"Cooper Darling-Blair"}
@@ -72,7 +71,9 @@ export const TagCell = () => {
             size={"sm"}
           />
         }
-      />
+      >
+        Tammy Ester
+      </Chip>
     </DataTableDataCell>
   );
 };
