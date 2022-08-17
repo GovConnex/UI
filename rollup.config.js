@@ -34,11 +34,12 @@ export default [
       terser(),
       json()
     ],
+    external: ["styled-components", "react", "react-dom"],
   },
   {
     input: "dist/esm/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/, "styled-components"],
+    external: [/\.css$/, "styled-components", "react", "react-dom"],
   }
 ];
