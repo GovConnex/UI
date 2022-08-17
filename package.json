@@ -1,7 +1,6 @@
 {
   "name": "@govconnex/ui",
-  "type": "module",
-  "version": "0.0.77",
+  "version": "0.0.78",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
