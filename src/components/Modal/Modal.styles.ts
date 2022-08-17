@@ -5,6 +5,7 @@ export const StyledModalBack = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
+  display: flex;
   left: 0;
   top: 0;
   z-index: 999;
@@ -14,12 +15,7 @@ export const StyledModal = styled.div`
   z-index: 1000;
   max-width: 100%;
   width: 940px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate3d(-50%, calc(-50%, + .5px), 0);
-  -moz-transform: translate3d(-50%, calc(-50% + .5px), 0);
-  transform: translate3d(-50%, calc(-50% + .5px), 0);
+  margin: auto;
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.primary.base.white};
@@ -58,7 +54,7 @@ export const StyledModalFeet = styled.div`
 export const StyledMobileModal = styled.div`
   z-index: 999;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   margin-top: env(safe-area-inset-top);
   top: 0;
