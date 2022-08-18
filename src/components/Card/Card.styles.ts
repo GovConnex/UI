@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledCard = styled.div<{
-  focused: boolean
+  focused: boolean;
 }>`
   background: ${(props) => props.theme.core?.background?.bgPrimary};
   padding: ${(props) =>
@@ -9,6 +9,7 @@ const StyledCard = styled.div<{
       props.focused ? ` - ${props.theme.borderWidth.md}` : ""
     })`};
   margin-bottom: ${(props) => props.theme.spacing.xs};
+  transition: border 300ms ease-in-out;
   border: ${(props) =>
     props.focused ? props.theme.borderWidth.lg : props.theme.borderWidth.md}
     solid
