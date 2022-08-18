@@ -9,14 +9,14 @@ const StyledCard = styled.div<{
       props.focused ? ` - ${props.theme.borderWidth.md}` : ""
     })`};
   margin-bottom: ${(props) => props.theme.spacing.xs};
-  transition: border 300ms ease-in-out;
-  border: ${(props) =>
-    props.focused ? props.theme.borderWidth.lg : props.theme.borderWidth.md}
-    solid
-    ${(props) =>
-      props.focused
-        ? props.theme.core?.border?.borderFocus
-        : props.theme.core?.border?.borderLight};
+  transition: border-color 300ms ease-out;
+  border-width: ${(props) =>
+    props.focused ? props.theme.borderWidth.lg : props.theme.borderWidth.md};
+  border-style: solid;
+  border-color: ${(props) =>
+    props.focused
+      ? props.theme.core?.border?.borderFocus
+      : props.theme.core?.border?.borderLight};
   border-radius: ${(props) => props.theme.borderRadius.sm};
 
   &:hover {
