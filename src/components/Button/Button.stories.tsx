@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 import Icon from "../Icon";
 import { faCoffee, faBook } from "@fortawesome/pro-solid-svg-icons";
 
@@ -19,30 +19,31 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   children: "Primary Button",
-  endAdornment: <Icon icon={faCoffee} />
+  endAdornment: <Icon icon={faCoffee} />,
 };
 
 Primary.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/GovConnex-Component-Library?node-id=48%3A73369"
-  }
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/GovConnex-Component-Library?node-id=48%3A73369",
+  },
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   children: "Secondary Button",
-  variant: "secondary"
+  variant: "secondary",
 };
 
 export const Text = Template.bind({});
 Text.args = {
   children: "Text Button",
   variant: "text",
-  startAdornment: <Icon icon={faBook} />
+  startAdornment: <Icon icon={faBook} />,
 };
 
 export const IconButton = Template.bind({});
 IconButton.args = {
-  children: <Icon icon={faBook} />
+  iconOnly: true,
+  children: <Icon icon={faBook} />,
 };
