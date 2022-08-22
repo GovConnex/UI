@@ -33,7 +33,7 @@ const StyledButton = styled.button<{
       `
       : ""}
 
-  &:active:not(:disabled) {
+  &:focus:not(:disabled) {
     outline: ${({ theme }) =>
       `${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};`}
     outline-offset: ${({ theme }) => `${theme.borderWidth.lg};`}
@@ -49,7 +49,7 @@ const StyledButton = styled.button<{
       background-color: ${theme.extended.state.primaryHover};
     }
 
-    &:active {
+    &:focus {
       background-color: ${theme.extended.state.primaryHover};
     }
 
@@ -69,7 +69,7 @@ const StyledButton = styled.button<{
       background-color: ${theme.extended.state.secondaryHover};
     }
 
-    &:active {
+    &:focus {
       background-color: ${theme.extended.state.secondaryBase};
     }
 
