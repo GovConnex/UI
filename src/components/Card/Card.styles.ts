@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shadowFromProp } from "../style-utils";
 
 const StyledCard = styled.div<{
   focused: boolean;
@@ -17,11 +18,13 @@ const StyledCard = styled.div<{
     props.focused
       ? props.theme.core?.border?.borderFocus
       : props.theme.core?.border?.borderLight};
-  border-radius: ${(props) => props.theme.borderRadius.sm};
+  border-radius: ${(props) => props.theme.borderRadius.xs};
+  box-shadow: ${(props) =>
+    props.focused ? shadowFromProp(props.theme.boxShadow.sm) : "none"};
 
   &:hover {
-    box-shadow: ${(props) =>
-      `${props.theme.boxShadow.xs.x}px ${props.theme.boxShadow.xs.y}px ${props.theme.boxShadow.xs.blur}px ${props.theme.boxShadow.xs.spread}px ${props.theme.boxShadow.xs.color};`}
+    box-shadow: ${(props) => shadowFromProp(props.theme.boxShadow.xs)};
+  }
 `;
 
 export default StyledCard;
