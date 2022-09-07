@@ -31,7 +31,20 @@ FontAwesomeSearch.args = {
   size: "lg",
 };
 
+export const FontAwesomeSearch2X = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+FontAwesomeSearch2X.args = {
+  icon: faSearch,
+  size: "2x",
+};
 
+
+export const FontAwesomeSearch3X = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+FontAwesomeSearch3X.args = {
+  icon: faSearch,
+  size: "3x",
+};
 
 
 HeartSvg.parameters = {
