@@ -23,6 +23,18 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
     text-decoration: ${({ theme, size }) => theme.typography[key][size].textDecoration};
     color: ${({ theme, size }) => theme.typography[key][size].color};
     ${({ noMargin }) => noMargin && "margin: 0;"};
+
+    & p {
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      margin-top: inherit;
+      margin-bottom: inherit;
+      text-decoration: inherit;
+      color: inherit;
+    }
   `;
   return acc;
 }, {} as any);
