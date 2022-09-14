@@ -1,26 +1,39 @@
 import styled from "styled-components";
-import { ButtonVariant, ButtonShape } from "./Button";
+import { ButtonVariant, ButtonShape, ButtonSize } from "./Button";
 import { Spacing } from "../../theming/global-theme.interface";
+import Typography from "../Typography";
 
-const StyledAdornment = styled.span``;
+const StyledAdornment = styled.span`
+  display: flex;
+  align-items: bottom;
+  justify-content: center;
+  margin-bottom: 1px;
+`;
+
+const buttonVerticalPaddingMap = {
+  sm: "3px",
+  md: "7px",
+  lg: "9.5px",
+};
 
 const StyledButton = styled.button<{
   variant: ButtonVariant;
   iconOnly?: boolean;
   iconOnlySize: keyof Spacing;
   shape: ButtonShape;
-  size: keyof Spacing;
+  size: ButtonSize;
 }>`
+  align-items: center;
   cursor: pointer;
   padding: ${(props) =>
-    `${props.theme.spacing[props.size]} ${props.theme.spacing.md}`};
+    `${buttonVerticalPaddingMap[props.size]} ${props.theme.spacing.md}`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly
       ? props.theme.borderRadius.xs
       : "100%"};
   border: 0 solid transparent;
   display: flex;
-  gap: ${(props) => props.theme.spacing.sm};
+  gap: 12px;
 
   ${({ iconOnly, theme, iconOnlySize }) =>
     iconOnly
@@ -92,4 +105,8 @@ const StyledButton = styled.button<{
   `}
 `;
 
-export { StyledButton, StyledAdornment };
+const StyledTypography = styled(Typography)`
+  cursor: pointer;
+`;
+
+export { StyledButton, StyledAdornment, StyledTypography };

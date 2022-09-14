@@ -73,6 +73,7 @@ declare module "styled-components" {
         infoLight: string,
         successLight: string,
         warningLight: string
+        errorLight: string
       }
     }
   }

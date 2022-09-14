@@ -35,6 +35,20 @@ Secondary.args = {
   variant: "secondary",
 };
 
+export const PrimaryLg = Template.bind({});
+PrimaryLg.args = {
+  children: "Primary Lg Button",
+  size: "lg",
+  variant: "primary",
+};
+
+export const PrimarySm = Template.bind({});
+PrimarySm.args = {
+  children: "Primary Sm Button",
+  size: "sm",
+  variant: "primary",
+};
+
 export const Text = Template.bind({});
 Text.args = {
   children: "Text Button",
