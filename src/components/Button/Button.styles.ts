@@ -33,7 +33,7 @@ const StyledButton = styled.button<{
   border: 0 solid transparent;
   display: flex;
   gap: 12px;
-  text-decoration: none;
+  text-decoration: none !important;
   height: ${(props) => heightMap[props.size]};
 
   & * {
