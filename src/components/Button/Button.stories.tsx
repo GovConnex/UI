@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
 import { withDesign } from "storybook-addon-designs";
@@ -14,6 +14,16 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const LinkTemplate: ComponentStory<typeof Button> = (args) => (
+  <Button
+    as={(props: PropsWithChildren<unknown>) => (
+      <a href="" {...props}>
+        {props.children}
+      </a>
+    )}
+    {...args}
+  />
+);
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -51,6 +61,13 @@ PrimarySm.args = {
 
 export const Text = Template.bind({});
 Text.args = {
+  children: "Text Button",
+  variant: "text",
+  startAdornment: <Icon icon={faBook} />,
+};
+
+export const ButtonAsALink = LinkTemplate.bind({});
+ButtonAsALink.args = {
   children: "Text Button",
   variant: "text",
   startAdornment: <Icon icon={faBook} />,
