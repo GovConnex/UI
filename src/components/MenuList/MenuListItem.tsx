@@ -1,3 +1,4 @@
+import { faSpaghettiMonsterFlying } from "@fortawesome/pro-solid-svg-icons";
 import classNames from "classnames";
 import React from "react";
 import Typography from "../Typography";
@@ -17,6 +18,7 @@ interface MenuListItemProps {
   // checked?: boolean;
   disabled?: boolean;
   className?: string;
+  'data-cy'?: string;
 }
 
 export const MenuListItem: React.FC<MenuListItemProps> = ({
@@ -29,6 +31,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   button,
   startAdornment,
   endAdornment,
+  ...props
 }) => {
   const handleClick = () => {
     if (!disabled && onSelect) {
@@ -37,7 +40,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   };
 
   return (
-    <StyledMenuListItem button={button} className={classNames(className, {
+    <StyledMenuListItem data-cy={props['data-cy']} button={button} className={classNames(className, {
       cursor
     })} onClick={handleClick}>
       <StyledMenuListItemStart>

@@ -14,6 +14,7 @@ export interface MenuOption {
   onSelect?: (option?: MenuOption) => void;
   text?: string | number;
   category?: string;
+  'data-cy'?: string;
 }
 
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -83,6 +84,7 @@ const Menu = ({
                   <MenuListHeading>{option.category}</MenuListHeading>}
 
                 <MenuListItem
+                  data-cy={option['data-cy']}
                   button
                   onSelect={() => {
                     if (onOptionSelect) {

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import { Spacing, TypographySize } from "../../theming/global-theme.interface";
-import { StyledButton, StyledAdornment, StyledTypography } from "./Button.styles";
+import {
+  StyledButton,
+  StyledAdornment,
+  StyledTypography,
+} from "./Button.styles";
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
 export type ButtonSize = "sm" | "md" | "lg";
@@ -16,6 +20,7 @@ export interface ButtonProps
   shape?: ButtonShape;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
+  as?: string | ComponentType<any>;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

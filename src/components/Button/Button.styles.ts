@@ -10,10 +10,10 @@ const StyledAdornment = styled.span`
   margin-bottom: 1px;
 `;
 
-const buttonVerticalPaddingMap = {
-  sm: "3px",
-  md: "7px",
-  lg: "9.5px",
+const heightMap = {
+  sm: "24px",
+  md: "32px",
+  lg: "40px",
 };
 
 const StyledButton = styled.button<{
@@ -25,8 +25,7 @@ const StyledButton = styled.button<{
 }>`
   align-items: center;
   cursor: pointer;
-  padding: ${(props) =>
-    `${buttonVerticalPaddingMap[props.size]} ${props.theme.spacing.md}`};
+  padding: ${(props) => `0 ${props.theme.spacing.md}`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly
       ? props.theme.borderRadius.xs
@@ -34,6 +33,12 @@ const StyledButton = styled.button<{
   border: 0 solid transparent;
   display: flex;
   gap: 12px;
+  text-decoration: none !important;
+  height: ${(props) => heightMap[props.size]};
+
+  & * {
+    line-height: ${(props) => heightMap[props.size]};
+  }
 
   ${({ iconOnly, theme, iconOnlySize }) =>
     iconOnly
@@ -45,6 +50,14 @@ const StyledButton = styled.button<{
       padding: 0;
       `
       : ""}
+
+  &:active {
+    text-decoration: none;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
 
   &:focus:not(:disabled) {
     outline: ${({ theme }) =>
