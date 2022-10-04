@@ -14,6 +14,7 @@ export interface MenuOption {
   onSelect?: (option?: MenuOption) => void;
   text?: string | number;
   category?: string;
+  style?: React.CSSProperties;
   'data-cy'?: string;
 }
 
@@ -86,6 +87,7 @@ const Menu = ({
                 <MenuListItem
                   data-cy={option['data-cy']}
                   button
+                  style={option.style}
                   onSelect={() => {
                     if (onOptionSelect) {
                       onOptionSelect(option);

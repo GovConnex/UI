@@ -1,4 +1,3 @@
-import { faSpaghettiMonsterFlying } from "@fortawesome/pro-solid-svg-icons";
 import classNames from "classnames";
 import React from "react";
 import Typography from "../Typography";
@@ -7,7 +6,7 @@ import StyledMenuListItem, {
   StyledMenuListItemStart,
 } from "./MenuListItem.styles";
 
-interface MenuListItemProps {
+interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   onSelect?: () => void;
   button?: boolean;
@@ -40,7 +39,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   };
 
   return (
-    <StyledMenuListItem data-cy={props['data-cy']} button={button} className={classNames(className, {
+    <StyledMenuListItem {...props} data-cy={props['data-cy']} button={button} className={classNames(className, {
       cursor
     })} onClick={handleClick}>
       <StyledMenuListItemStart>
