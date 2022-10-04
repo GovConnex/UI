@@ -11,7 +11,7 @@ import {
   LockIcon,
 } from "./IssueCard.styles";
 import React, { useState, useRef, Ref } from "react";
-import { Button, SvgIcon as Icon, Menu } from "../";
+import { Button, SvgIcon as Icon, Menu, Portal } from "../";
 import { MenuOption } from "../Menu/Menu";
 
 interface IssueUserLinkUser {
@@ -44,6 +44,7 @@ export interface IssueCardProps {
   leaveIssue: () => void;
   deleteIssue: () => void;
   maxAvatars: number;
+  menuContainer?: string | HTMLElement | null;
 }
 
 const IssueCard = ({
@@ -55,6 +56,7 @@ const IssueCard = ({
   leaveIssue,
   deleteIssue,
   maxAvatars = 4,
+  menuContainer,
 }: IssueCardProps) => {
   const { id, title, description, userLinks, shared } = issue;
   const [isMenuShown, setMenuShown] = useState(false);
@@ -116,55 +118,59 @@ const IssueCard = ({
         </Actions>
         {isMenuShown && (
           <div onClick={(e) => e.preventDefault()}>
-            <Menu
-              data-cy="issue-card-menu"
-              placement="bottom-end"
-              options={
-                [
-                  (accessLevel === "member" || accessLevel === "admin") && {
-                    id: "mute",
-                    "data-cy": "issue-card-mute",
-                    text: issue.notificationsEnabled ? "Mute" : "Unmute",
-                    startAdornment: (
-                      <Icon
-                        icon={
-                          issue.notificationsEnabled
-                            ? "fa-solid fa-bell-slash"
-                            : "fa-solid fa-bell"
-                        }
-                      />
-                    ),
-                    onSelect: toggleNotifications,
-                  },
-                  (accessLevel === "member" || accessLevel === "admin") && {
-                    id: "edit",
-                    "data-cy": "issue-card-edit",
-                    text: "Edit",
-                    startAdornment: <Icon icon={"pen"} />,
-                    onSelect: editIssue,
-                  },
-                  (accessLevel === "member" || accessLevel === "admin") && {
-                    id: "leave",
-                    "data-cy": "issue-card-leave",
-                    text: "Leave",
-                    startAdornment: (
-                      <Icon icon={"fa-solid fa-person-to-door"} />
-                    ),
-                    onSelect: leaveIssue,
-                  },
-                  accessLevel === "admin" && {
-                    id: "leave",
-                    "data-cy": "issue-card-delete",
-                    text: "Delete",
-                    startAdornment: <Icon icon={"trash"} />,
-                    onSelect: deleteIssue,
-                  },
-                ].filter((item) => !!item) as MenuOption[]
-              }
-              onClose={() => setMenuShown(false)}
-              onOptionSelect={(option) => option?.onSelect && option.onSelect()}
-              anchorEl={menuRef}
-            />
+            <Portal container={menuContainer} disablePortal={!menuContainer}>
+              <Menu
+                data-cy="issue-card-menu"
+                placement="bottom-end"
+                options={
+                  [
+                    (accessLevel === "member" || accessLevel === "admin") && {
+                      id: "mute",
+                      "data-cy": "issue-card-mute",
+                      text: issue.notificationsEnabled ? "Mute" : "Unmute",
+                      startAdornment: (
+                        <Icon
+                          icon={
+                            issue.notificationsEnabled
+                              ? "fa-solid fa-bell-slash"
+                              : "fa-solid fa-bell"
+                          }
+                        />
+                      ),
+                      onSelect: toggleNotifications,
+                    },
+                    (accessLevel === "member" || accessLevel === "admin") && {
+                      id: "edit",
+                      "data-cy": "issue-card-edit",
+                      text: "Edit",
+                      startAdornment: <Icon icon={"pen"} />,
+                      onSelect: editIssue,
+                    },
+                    (accessLevel === "member" || accessLevel === "admin") && {
+                      id: "leave",
+                      "data-cy": "issue-card-leave",
+                      text: "Leave",
+                      startAdornment: (
+                        <Icon icon={"fa-solid fa-person-to-door"} />
+                      ),
+                      onSelect: leaveIssue,
+                    },
+                    accessLevel === "admin" && {
+                      id: "leave",
+                      "data-cy": "issue-card-delete",
+                      text: "Delete",
+                      startAdornment: <Icon icon={"trash"} />,
+                      onSelect: deleteIssue,
+                    },
+                  ].filter((item) => !!item) as MenuOption[]
+                }
+                onClose={() => setMenuShown(false)}
+                onOptionSelect={(option) =>
+                  option?.onSelect && option.onSelect()
+                }
+                anchorEl={menuRef}
+              />
+            </Portal>
           </div>
         )}
       </Top>
