@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Input from "./Input";
 import { withDesign } from 'storybook-addon-designs';
 import Icon from "../Icon";
-import { faSearch } from "@fortawesome/pro-solid-svg-icons";
+import { faSearch } from "@fortawesome/pro-solid-svg-icons"; // [TODO/FLAG] should be importing this through <Icon> not the lib its using
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
