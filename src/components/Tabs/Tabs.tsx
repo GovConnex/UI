@@ -111,7 +111,7 @@ const Tabs = (props: TabsProps) => {
 export interface TabProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-  * Value of the current tab (this is also used as the key)
+  * Value of the current tab 
   */
   value: string, 
   /**
@@ -127,7 +127,7 @@ export interface TabProps
 /**
  * 
  * `Tabs.Tab` is a tab cell
- * @param {value} value of the current tab (this is also used as the key)
+ * @param {value} value of the current tab 
  * @param {string} label rendered on tab
  * @param {React.ReactNode} startAdornment a react node to render on the left side/start of the tab
  * 
