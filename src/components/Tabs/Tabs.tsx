@@ -70,7 +70,7 @@ const Tabs = (props: TabsProps) => {
     offset: number
   }>({ width: 0, offset: 0 })
   
-  // handel a new selection
+  // handle a new selection
   function updateSelected(value: string, index: number) {
     const collection = TabsRef.current?.children
     if (!collection) return
