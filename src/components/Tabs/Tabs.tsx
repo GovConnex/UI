@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import {BottomHighlight, StyledTabs} from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
+import {uniqueId} from "lodash";
 
 
 // Helpers
@@ -59,7 +60,7 @@ export interface TabsProps {
 
 const Tabs = (props: TabsProps) => {
   const TabsRef = React.useRef<HTMLDivElement>(null);
-  
+  console.log("also fired")
   // set defaults 
   const [selected, setSelected] = useState<{
     value: string | undefined,
@@ -78,18 +79,17 @@ const Tabs = (props: TabsProps) => {
     const selectedWidth = collection[index].getBoundingClientRect().width
     const bottomBarOffset = getOffsetWidth(index, collection)
 
-    setBottomBarParts({ width: selectedWidth, offset: bottomBarOffset })
     setSelected({ value: value, index: index })
+    setBottomBarParts({ width: selectedWidth, offset: bottomBarOffset })
+    console.log("fired")
   }
 
   // on layout set selected tab
   useLayoutEffect(() => {
-    document.onreadystatechange = () => {
-      const collection = TabsRef.current?.children
-      if(!collection) return
-      if(!props.value) return
-      updateSelected(props.value, getIndexOfCollectionValue(props.value, collection))
-    };
+    const collection = TabsRef.current?.children
+    if(!collection) return
+    if(!props.value) return
+    updateSelected(props.value, getIndexOfCollectionValue(props.value, collection))
   }, [])
 
 
@@ -99,11 +99,11 @@ const Tabs = (props: TabsProps) => {
       {props.children instanceof Array ? props.children?.map((v, i) => (
         React.cloneElement(v, {
           onClick: () => { updateSelected(v.props.value, i) },
-          selected: selected.value === v.props.value, key: i
+          selected: selected.value === v.props.value, key: uniqueId()
         })
       )) : props.children}
 
-      <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
+     <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
     </StyledTabs>
   );
 };
