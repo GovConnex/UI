@@ -91,7 +91,7 @@ const Tabs = (props: TabsProps) => {
       {props.children instanceof Array
         ? props.children?.map((v, i) =>
             React.cloneElement(v, {
-              onClick: () => { updateSelected(v.props.value, i); },
+              onClick: () => { updateSelected(v.props.value, i); v.props.onClick && v.props.onClick(); },
               selected: selected.value === v.props.value,
               key: uniqueId(),
             })
