@@ -60,7 +60,7 @@ export interface TabsProps {
 
 const Tabs = (props: TabsProps) => {
   const TabsRef = React.useRef<HTMLDivElement>(null);
-  console.log("also fired")
+  
   // set defaults 
   const [selected, setSelected] = useState<{
     value: string | undefined,
@@ -81,7 +81,6 @@ const Tabs = (props: TabsProps) => {
 
     setSelected({ value: value, index: index })
     setBottomBarParts({ width: selectedWidth, offset: bottomBarOffset })
-    console.log("fired")
   }
 
   // on layout set selected tab
