@@ -12,7 +12,7 @@ import { uniqueId } from "lodash";
 function getIndexOfCollectionValue( value: string, collection: HTMLCollection | undefined) {
   if (!collection) return 0;
   for (let i = 0; i < collection.length; i++) {
-    if (collection[i].getAttribute("value") == value) {
+    if (collection[i].getAttribute("value") === value) {
       return i;
     }
   }
@@ -26,7 +26,7 @@ function getOffsetWidth(selectedIndex: number, collection: HTMLCollection) {
   let offset = 0;
   for (let i = 0; i <= selectedIndex - 1; i++) {
     const w = collection[i].getBoundingClientRect().width;
-    w != undefined ? (offset += w) : 0;
+    offset += w
   }
   return offset;
 }
@@ -60,8 +60,7 @@ const Tabs = (props: TabsProps) => {
   // set defaults
   const [selected, setSelected] = useState<{
     value: string | undefined;
-    index: number;
-  }>({ value: props.value, index: 0 });
+  }>({ value: props.value});
   const [bottomBarParts, setBottomBarParts] = useState<{
     width: number;
     offset: number;
@@ -75,7 +74,7 @@ const Tabs = (props: TabsProps) => {
     const bottomBarWidth = collection[index].getBoundingClientRect().width;
     const bottomBarOffset = getOffsetWidth(index, collection);
 
-    setSelected({ value: value, index: index });
+    setSelected({ value: value});
     setBottomBarParts({ width: bottomBarWidth, offset: bottomBarOffset });
   }
 
