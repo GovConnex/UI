@@ -1,5 +1,4 @@
 export { default as ThemeProvider } from "./ThemeProvider";
-export { default as Eleme } from "./Eleme";
 export { default as IssueCard } from "./IssueCard";
 export { Grid, GridCell } from "./Grid";
 export { default as PageHeader } from "./PageHeader";
