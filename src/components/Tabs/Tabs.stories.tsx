@@ -13,12 +13,9 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Tabs> = (args) => {
-  return(
-    <Tabs >
-      <Tabs.Tab startAdornment={<Icon icon={["fas","coffee"]}/>}>test</Tabs.Tab>
-      <Tabs.Tab disabled>test2</Tabs.Tab>
-      <Tabs.Tab>sdf</Tabs.Tab>
-      <Tabs.Tab>tesdgsst2</Tabs.Tab>
+  return (
+    <Tabs value={args.value} >
+      {args.children}
     </Tabs>
   )
 };
@@ -26,11 +23,18 @@ const Template: ComponentStory<typeof Tabs> = (args) => {
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
+  value: "tab1",
+  children: [
+    <Tabs.Tab label="Normal tab" value="tab1" />,
+    <Tabs.Tab label="Tab with icon" value="tab2" startAdornment={<Icon icon={["fas", "coffee"]} />} />,
+    <Tabs.Tab disabled label="Disabled tab" value="tab3" />,
+    <Tabs.Tab label="Another tab" value="tab4" />,
+  ]
 };
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/pQqcx1z6rSV8MVmokydQMr/%F0%9F%93%90-Bipartisan-Design-System?node-id=83%3A9542"
+  }
 };

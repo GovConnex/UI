@@ -1,75 +1,143 @@
-import React, { createRef, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import {BottomHighlight, StyledTabs} from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
-import Icon from "../Icon";
+
+
+// Helpers
+
+/**
+* `getIndexOfCollectionValue` returns the index of a collection with value x
+* for example the index of a child component
+*/
+function getIndexOfCollectionValue(value:string, collection: HTMLCollection | undefined){
+  if(!collection) return 0
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].getAttribute('value') == value ){
+      return i 
+    }
+  }
+  return 0
+}
+
+/**
+* `getOffsetWidth` returns the sum of collection widths to the left of a given index 
+*/
+function getOffsetWidth(selectedIndex:number, collection: HTMLCollection){
+  let offset = 0 
+  for (let i = 0; i <= selectedIndex -1; i++) {
+    const  w = collection[i].getBoundingClientRect().width
+    w != undefined ? offset += w : 0
+  }
+  return offset
+}
+
+
+// UI
 
 export interface TabsProps {
-  children?: React.ReactElement[];
+  /**
+  * Any react element
+  */
+  children?: React.ReactNode;
+  /**
+  * The value of the currently selected `Tab`.
+  */
+  value?: string;
 };
+
+
+/**
+ * 
+ * `Tabs` is a shell for Tab that has a bottom bar to let the user 
+ *  know what current `Tab` they are on 
+ * @param {React.ReactNode} children takes any react element
+ * @param {string} value the value of the currently selected tab
+ * 
+ */
+
 
 const Tabs = (props: TabsProps) => {
   const TabsRef = React.useRef<HTMLDivElement>(null);
-  const [selected, setSelected] = useState(0)
-  const [selectedWidth, setSW] = useState(0)
-  const [bottomBarOffset, setBBO] = useState(0)
+  
+  // set defaults 
+  const [selected, setSelected] = useState<{
+    value: string | undefined,
+    index: number
+  }>({ value: props.value, index: 0 })
+  const [bottomBarParts, setBottomBarParts] = useState<{
+    width: number,
+    offset: number
+  }>({ width: 0, offset: 0 })
+  
+  // handel a new selection
+  function updateSelected(value: string, index: number) {
+    const collection = TabsRef.current?.children
+    if (!collection) return
 
+    const selectedWidth = collection[index].getBoundingClientRect().width
+    const bottomBarOffset = getOffsetWidth(index, collection)
+
+    setBottomBarParts({ width: selectedWidth, offset: bottomBarOffset })
+    setSelected({ value: value, index: index })
+  }
+
+  // on layout set selected tab
   useLayoutEffect(() => {
-    // getOffset returns the sum of <Tab> widths the left of the current selected <Tab>
-    function getOffset(){
-      let offset = 0 
-      for (let i = 0; i <= selected -1; i++) {
-        const  w = TabsRef.current?.children?.[i].getBoundingClientRect().width
-        w != undefined ? offset += w : 0
-      }
-      return offset
-    }
-    
-    // set the selected width
-    const selectedWidth = TabsRef.current?.children?.[selected].getBoundingClientRect().width
-    selectedWidth != undefined && setSW(selectedWidth)
-    
-    // set the bottom bar offset 
-    const bottomBarOffset = getOffset()
-    setBBO(bottomBarOffset)
-    
-    // Because the width changes afer text is loaded, we need to reset it on document state change. 
     document.onreadystatechange = () => {
-      const selectedWidth = TabsRef.current?.children?.[selected].getBoundingClientRect().width
-      selectedWidth != undefined &&  setSW(selectedWidth)
-      const bottomBarOffset = getOffset()
-      setBBO(bottomBarOffset)
+      const collection = TabsRef.current?.children
+      if(!collection) return
+      if(!props.value) return
+      updateSelected(props.value, getIndexOfCollectionValue(props.value, collection))
     };
-  }, [document, selected])
+  }, [])
 
 
   return (
     <StyledTabs ref={TabsRef}>
-      {props.children?.map((v, i) => (
-        React.cloneElement(v, { onClick: () => { setSelected(i) }, selected: selected == i, key: i })
-      ))}
-      <BottomHighlight offset={bottomBarOffset} width={selectedWidth} />
+
+      {props.children instanceof Array ? props.children?.map((v, i) => (
+        React.cloneElement(v, {
+          onClick: () => { updateSelected(v.props.value, i) },
+          selected: selected.value === v.props.value, key: i
+        })
+      )) : props.children}
+
+      <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
     </StyledTabs>
   );
 };
 
 
-
-
 export interface TabProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  disabled?: boolean,
-  selected?: boolean,
-  startAdornment?: React.ReactNode;
+  /**
+  * Value of the current tab (this is also used as the key)
+  */
+  value: string, 
+  /**
+  * Label rendered on tab
+  */
+  label: string,
+  /**
+  * Accepts a react node to render on the left side/start of the tab
+  */
+  startAdornment?: React.ReactElement;
 };
 
-  
-Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({selected = false, ...props }, ref) => {
-
+/**
+ * 
+ * `Tabs.Tab` is a tab cell
+ * @param {value} value of the current tab (this is also used as the key)
+ * @param {string} label rendered on tab
+ * @param {React.ReactNode} startAdornment a react node to render on the left side/start of the tab
+ * 
+ */  
+Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({ ...props }, ref) => {
   return (
-    <StyledTab selected={selected} ref={ref} {...props}>
+    <StyledTab selected={false} ref={ref} {...props}>
       {props.startAdornment ? props.startAdornment : null}
       <StyledTypography>
-        {props.children}
+        {props.label}
       </StyledTypography>
     </StyledTab>
   )

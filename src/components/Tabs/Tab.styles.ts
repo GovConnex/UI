@@ -17,10 +17,14 @@ const StyledTab = styled.button<{
         cursor: not-allowed;
       }
     cursor: pointer;
+    gap:${({theme}) => theme.spacing.xs};
+    display:flex;
+    align-items:center;
+    justify-conent:center;
 `;
 
 const StyledTypography = styled(Typography)`
-      
+      margin-bottom:0;
 `
 
 export {StyledTypography, StyledTab}
