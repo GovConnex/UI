@@ -64,7 +64,7 @@ const Tabs = (props: TabsProps) => {
   // set defaults 
   const [selected, setSelected] = useState<{
     value: string | undefined,
-    index: number
+    index: number,
   }>({ value: props.value, index: 0 })
   const [bottomBarParts, setBottomBarParts] = useState<{
     width: number,
@@ -76,11 +76,11 @@ const Tabs = (props: TabsProps) => {
     const collection = TabsRef.current?.children
     if (!collection) return
 
-    const selectedWidth = collection[index].getBoundingClientRect().width
+    const bottomBarWidth = collection[index].getBoundingClientRect().width
     const bottomBarOffset = getOffsetWidth(index, collection)
 
-    setSelected({ value: value, index: index })
-    setBottomBarParts({ width: selectedWidth, offset: bottomBarOffset })
+    setSelected({ value: value, index: index})
+    setBottomBarParts({ width: bottomBarWidth, offset: bottomBarOffset })
   }
 
   // on layout set selected tab
@@ -98,11 +98,12 @@ const Tabs = (props: TabsProps) => {
       {props.children instanceof Array ? props.children?.map((v, i) => (
         React.cloneElement(v, {
           onClick: () => { updateSelected(v.props.value, i) },
-          selected: selected.value === v.props.value, key: uniqueId()
+          selected: selected.value === v.props.value, key: uniqueId(),
         })
       )) : props.children}
 
      <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
+     
     </StyledTabs>
   );
 };
