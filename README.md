@@ -9,7 +9,7 @@ React Component Libary
 ### Install
 
 ```
-yarn add @govconnex/ui
+yarn add @govconnex/ui styled-components
 ```
 
 ## Development
