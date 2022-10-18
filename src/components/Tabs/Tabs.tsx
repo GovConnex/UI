@@ -52,6 +52,7 @@ export interface TabsProps {
  *  know what current `Tab` they are on 
  * @param {React.ReactNode} children takes any react element
  * @param {string} value the value of the currently selected tab
+ * @see https://ui.govconnex.com/?path=/story/components-tabs--example
  * 
  */
 
