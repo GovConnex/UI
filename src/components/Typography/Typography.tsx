@@ -3,12 +3,23 @@ import { VariantsProp } from "./Typography.types";
 import { variantComponents } from "./Typography.styles";
 
 export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "size"> {
+  /**
+   * The content of the component.
+   */
   children?: React.ReactNode;
   variant?: VariantsProp;
   noMargin?: boolean;
-  size?: string;
+  size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 }
 
+
+ 
+ /**
+  *
+  * `Typography` 
+  * @see [Typography](https://ui.govconnex.com/?path=/story/components-typography--example)
+  * 
+  */
 const Typography = ({
   children,
   variant = "body",
@@ -20,3 +31,4 @@ const Typography = ({
 };
 
 export default Typography;
+
