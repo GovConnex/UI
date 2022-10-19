@@ -23,6 +23,6 @@ Example.args = {
 Example.parameters = {
  design: {
    type: "figma",
-   url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=11%3A38"
+   url:"https://www.figma.com/file/pQqcx1z6rSV8MVmokydQMr/%F0%9F%93%90-Bipartisan-Design-System?node-id=3%3A1478"
  }
 }
