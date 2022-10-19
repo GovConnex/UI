@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, cloneElement, ReactElement, ReactNode } from "react";
 import { BottomHighlight, StyledTabs } from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
 import { uniqueId } from "lodash";
@@ -50,7 +50,7 @@ export interface TabsProps {
  *  know what current `Tab` they are on
  * @param {React.ReactNode} children takes any react element
  * @param {string} value the value of the currently selected tab
- * @see https://ui.govconnex.com/?path=/story/components-tabs--example
+ * @see [Tabs](https://ui.govconnex.com/?path=/story/components-tabs--example)
  *
  */
 
@@ -60,7 +60,7 @@ const Tabs = (props: TabsProps) => {
   // set defaults
   const [selected, setSelected] = useState<{
     value: string | undefined;
-  }>({ value: props.value});
+  }>({ value: props.value });
   const [bottomBarParts, setBottomBarParts] = useState<{
     width: number;
     offset: number;
@@ -74,7 +74,7 @@ const Tabs = (props: TabsProps) => {
     const bottomBarWidth = collection[index].getBoundingClientRect().width;
     const bottomBarOffset = getOffsetWidth(index, collection);
 
-    setSelected({ value: value});
+    setSelected({ value: value });
     setBottomBarParts({ width: bottomBarWidth, offset: bottomBarOffset });
   }
 
@@ -83,21 +83,27 @@ const Tabs = (props: TabsProps) => {
     const collection = TabsRef.current?.children;
     if (!collection) return;
     if (!props.value) return;
-    updateSelected( props.value, getIndexOfCollectionValue(props.value, collection));
+    updateSelected(
+      props.value,
+      getIndexOfCollectionValue(props.value, collection)
+    );
   }, []);
 
   return (
     <StyledTabs ref={TabsRef}>
-      {props.children instanceof Array
-        ? props.children?.map((v, i) =>
-            React.cloneElement(v, {
-              onClick: () => { updateSelected(v.props.value, i); v.props.onClick && v.props.onClick(); },
-              selected: selected.value === v.props.value,
-              key: uniqueId(),
-            })
-          )
-        : props.children}
-
+      {React.Children.map(props.children, (child, i) => {
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            onClick: () => {
+              updateSelected(child.props.value, i);
+              child.props.onClick && child.props.onClick();
+            },
+            selected: selected.value === child.props?.value,
+            key: uniqueId(),
+          } as {onClick:React.DOMAttributes<HTMLButtonElement>, selected:boolean, key:string} );
+        }
+        return child;
+      })}
       <BottomHighlight
         offset={bottomBarParts.offset}
         width={bottomBarParts.width}

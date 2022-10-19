@@ -5,7 +5,9 @@ import Tabs from "./Tabs";
 
 describe("Tabs", () => {
   test("renders the Tabs component with no children", () => {
-    render(<Tabs />);
+    render(<Tabs>
+      <div>test</div>
+    </Tabs>);
   });
   test("renders the Tabs component with children", () => {
     render(<Tabs>
