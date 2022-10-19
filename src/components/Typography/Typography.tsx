@@ -9,11 +9,9 @@ export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "siz
   children?: React.ReactNode;
   variant?: VariantsProp;
   noMargin?: boolean;
-  size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+  size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs'| string;
 }
 
-
- 
  /**
   *
   * `Typography` 
