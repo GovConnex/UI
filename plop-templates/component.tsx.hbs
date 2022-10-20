@@ -2,9 +2,19 @@ import React from "react";
 import Styled{{name}} from "./{{name}}.styles";
 
 export interface {{name}}Props {
+  /**
+  * content of the {{name}}
+  */
   children?: React.ReactNode;
 };
 
+/**
+ * 
+ * `{{name}}` Describe what it does
+ *
+ * Component Demo: [{{name}}](https://ui.govconnex.com/?path=/story/components-{{name}}--example)
+ * 
+ */
 const {{name}} = (props: {{name}}Props) => {
   return <Styled{{name}}>{props.children}</Styled{{name}}>;
 };
