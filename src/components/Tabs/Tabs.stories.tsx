@@ -25,10 +25,10 @@ export const Example = Template.bind({});
 Example.args = {
   value: "tab1",
   children: [
-    <Tabs.Tab label="Normal tab" value="tab1" />,
-    <Tabs.Tab label="Tab with icon" value="tab2" startAdornment={<Icon icon={["fas", "coffee"]} />} />,
-    <Tabs.Tab disabled label="Disabled tab" value="tab3" />,
-    <Tabs.Tab label="Another tab" value="tab4" />,
+    <Tabs.Tab key="1" label="Normal tab" value="tab1" />,
+    <Tabs.Tab key="2" label="Tab with icon" value="tab2" startAdornment={<Icon icon={["fas", "coffee"]} />} />,
+    <Tabs.Tab key="3"  disabled label="Disabled tab" value="tab3" />,
+    <Tabs.Tab onClick={()=>console.log("test")} key="4" label="Another tab" value="tab4" />,
   ]
 };
 
