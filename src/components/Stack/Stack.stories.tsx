@@ -20,7 +20,6 @@ export default {
   argTypes: {
     direction: {
       options: ["row", "row-reverse", "column", "column-reverse"],
-      // control: { type: "radio" },
     },
     alignItems: {
       options: [
@@ -32,7 +31,6 @@ export default {
         "initial",
         "inherit",
       ],
-      // control: { type: "multi-select" },
     },
     justifyContent: {
       options: [
@@ -45,7 +43,6 @@ export default {
         "initial",
         "inherit",
       ],
-      // control: { type: "radio" },
     },
     gap: {
       options: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"],
