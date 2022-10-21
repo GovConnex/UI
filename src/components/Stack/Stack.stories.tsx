@@ -2,11 +2,9 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Stack from "./Stack";
 import { withDesign } from "storybook-addon-designs";
-import Input from "../Input";
-import Button from "../Button";
+import Card from "../Card";
 // @ts-ignore
 import mdx from './Stack.mdx';
-import Card from "../Card";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -59,9 +57,9 @@ export default {
 const Template: ComponentStory<typeof Stack> = (args) => {
   return (
     <Stack {...args}>
-      <Card>Test</Card>
-      <Card>Test</Card>
-      <Card>Test</Card>
+      <Card>Item 1</Card>
+      <Card>Item 2</Card>
+      <Card>Item 3</Card>
     </Stack>
   );
 };
