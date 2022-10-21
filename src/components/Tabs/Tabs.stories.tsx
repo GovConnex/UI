@@ -14,7 +14,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Tabs> = (args) => {
   return (
-    <Tabs value={args.value} >
+    <Tabs {...args} >
       {args.children}
     </Tabs>
   )

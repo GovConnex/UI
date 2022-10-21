@@ -1,0 +1,27 @@
+import { Story, Props, Source, Preview } from '@storybook/addon-docs';
+import Stack from '../Stack';
+
+# Stack
+[Source code](https://github.com/GovConnex/UI/tree/main/src/components/Stack)
+
+## Overview
+`Stack` manages layout of its children along vertical or horizontal axis
+
+## Usage
+
+Here is a simple example of how to use `Stack`
+```jsx
+<Stack direction="row" gap="md">
+  Your content
+</Stack>
+```
+
+## Responsive values
+
+You can change `direction`, `gap`, `alignItems`, and `justifyContent` based on govconnex theme breakpoints.
+
+```jsx
+<Stack direction={sm:"column",md:"column"} gap={md:"sm"}>
+  Your content
+</Stack>
+```
