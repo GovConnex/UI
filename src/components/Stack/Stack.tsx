@@ -23,7 +23,7 @@ export type alignItemProps =
   | { sm?: alignItemValues; md?: alignItemValues; lg?: alignItemValues }
   | alignItemValues;
 
-export type justifyConentValues =
+export type justifyContentValues =
   | "flex-start"
   | "flex-end"
   | "center"
@@ -34,11 +34,11 @@ export type justifyConentValues =
   | "inherit";
 export type justifyContentProps =
   | {
-      sm?: justifyConentValues;
-      md?: justifyConentValues;
-      lg?: justifyConentValues;
+      sm?: justifyContentValues;
+      md?: justifyContentValues;
+      lg?: justifyContentValues;
     }
-  | justifyConentValues;
+  | justifyContentValues;
 
 export type gapProps =
   | { sm?: keyof Spacing; md?: keyof Spacing; lg?: keyof Spacing }
