@@ -59,7 +59,6 @@ export default {
 const Template: ComponentStory<typeof Stack> = (args) => {
   return (
     <Stack {...args}>
-      {/* <div style={{padding:"30px", backgroundColor:""}}>item</div> */}
       <Card>Test</Card>
       <Card>Test</Card>
       <Card>Test</Card>
@@ -68,10 +67,7 @@ const Template: ComponentStory<typeof Stack> = (args) => {
 };
 
 export const Example = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-  // direction: {sm:"column"},
-};
+
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
@@ -79,9 +75,3 @@ Breakpoints.args = {
   gap: {sm:"md",md:"sm"},
 };
 
-Example.parameters = {
-   design: {
-     type: "figma",
-     url: ""
-   }
-};
