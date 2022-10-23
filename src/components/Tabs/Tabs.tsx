@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, cloneElement, ReactElement, ReactNode } from "react";
+import React, { useLayoutEffect, useState,useEffect } from "react";
 import { BottomHighlight, StyledTabs } from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
 import { uniqueId } from "lodash";
@@ -88,6 +88,7 @@ const Tabs = (props: TabsProps) => {
       getIndexOfCollectionValue(props.value, collection)
     );
   }, []);
+
 
   return (
     <StyledTabs ref={TabsRef}>

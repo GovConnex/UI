@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledTabs = styled.div`
     display:flex;
     position: relative;
+    overflow:scroll;
 `;
 
 const BottomHighlight = styled.span<{

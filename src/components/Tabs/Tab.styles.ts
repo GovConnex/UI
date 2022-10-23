@@ -11,7 +11,7 @@ ${({ theme, selected }) =>
     height: 40px;
     border: 0 solid transparent;
     position: relative;
-    display:inline-block;
+    white-space: nowrap;
     color: ${selected ? theme.core.content.contentPrimary : theme.core.content.contentTertiary};
     background-color:${theme.core.background.bgPrimary};
     &:disabled {
