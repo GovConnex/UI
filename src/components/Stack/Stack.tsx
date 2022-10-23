@@ -44,7 +44,7 @@ export type gapProps =
   | { sm?: keyof Spacing; md?: keyof Spacing; lg?: keyof Spacing }
   | keyof Spacing;
 
-export interface StackProps {
+export interface StackProps  extends React.HTMLAttributes<HTMLDivElement>   {
   /**
    * content of the Stack
    */
