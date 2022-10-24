@@ -35,22 +35,32 @@ function getOffsetWidth(selectedIndex: number, collection: HTMLCollection) {
 
 export interface TabsProps {
   /**
-   * Any react element
+   * The content of `Tabs`.
    */
   children?: React.ReactNode;
   /**
    * The value of the currently selected `Tab`.
    */
   value?: string;
+  /**
+   * Gives you access to the value prop of `Tab` on change.
+   */
+  onChange?:(e:string) => void;
 }
+
 
 /**
  *
- * `Tabs` is a shell for Tab that has a bottom bar to let the user
- *  know what current `Tab` they are on
- * @param {React.ReactNode} children takes any react element
- * @param {string} value the value of the currently selected tab
- * @see [Tabs](https://ui.govconnex.com/?path=/story/components-tabs--example)
+ * `Tabs` is a shell for Tab that has a bottom bar to let the user know what current `Tab` they are on
+ *
+ * 
+ * Demo: 
+ * 
+ *  - [Stack](https://ui.govconnex.com/?path=/story/components-Stack--example)
+ * 
+ * Docs: 
+ * 
+ *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-Stack--example/)
  *
  */
 
@@ -97,6 +107,7 @@ const Tabs = (props: TabsProps) => {
           return React.cloneElement(child, {
             onClick: () => {
               updateSelected(child.props.value, i);
+             props.onChange && props.onChange(child.props.value);
               child.props.onClick && child.props.onClick();
             },
             selected: selected.value === child.props?.value,
