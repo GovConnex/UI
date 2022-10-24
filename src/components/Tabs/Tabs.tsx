@@ -56,11 +56,11 @@ export interface TabsProps {
  * 
  * Demo: 
  * 
- *  - [Stack](https://ui.govconnex.com/?path=/story/components-Tab--example)
+ *  - [Stack](https://ui.govconnex.com/?path=/story/components-tabs--example)
  * 
  * Docs: 
  * 
- *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-Tab--example/)
+ *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-tabs--example/)
  *
  */
 
