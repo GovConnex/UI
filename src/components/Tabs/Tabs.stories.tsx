@@ -3,13 +3,26 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Tabs from "./Tabs";
 import { withDesign } from 'storybook-addon-designs';
 import Icon from "../Icon";
+// @ts-ignore
+import mdx from './Tabs.mdx';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/Tabs",
   component: Tabs,
   decorators: [withDesign],
-} as ComponentMeta<typeof Tabs>;
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+  argTypes: {
+    value: {
+      options: ["tab1", "tab2","tab2", "tab3", "tab4"],
+      control: { type: 'select' },
+    },
+  },
+} as ComponentMeta<typeof Tabs>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Tabs> = (args) => {
@@ -23,7 +36,8 @@ const Template: ComponentStory<typeof Tabs> = (args) => {
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  value: "tab1",
+  value:"tab1",
+  onChange: (e: any) => {console.log(e)},
   children: [
     <Tabs.Tab key="1" label="Normal tab" value="tab1" />,
     <Tabs.Tab key="2" label="Tab with icon" value="tab2" startAdornment={<Icon icon={["fas", "coffee"]} />} />,
