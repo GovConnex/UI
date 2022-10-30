@@ -5,8 +5,6 @@ import { addCustomStyles } from "../../primitives/styleFunctions";
 const StyledBox = styled.div<any>((props) => 
     addCustomStyles(props)
 )
-// const StyledBox = styled.div<{cs:any}>(({cs}) => 
-//     addCustomStyles(cs)
-// )
+
 
 export default StyledBox;

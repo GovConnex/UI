@@ -1,42 +1,31 @@
 import React from "react";
+import { cs } from "../../primitives/styleFunctions";
 import StyledBox from "./Box.styles";
 
 
-export type widthValues = number | string
-export type widthProps = {sm?:widthValues; md?: widthValues; lg?:widthValues} | widthValues;
-
-export type customStyles = {width?:widthProps}
-
-
-export interface BoxProps {
+// we may want to introduce a "as" prop instead of baking in the div element
+export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-  * @ignore content of the Box
-  */
+   * @ignore content of the Box
+   */
   children?: React.ReactNode;
 
-  cs?: any;
-};
+  /**
+   * add custom styles through `cs`
+   */
+  cs?: cs;
+}
 
 /**
- * 
- * `Box` Describe what it does
+ *
+ * `Box` is a extendable div component 
  *
  * Component Demo: [Box](https://ui.govconnex.com/?path=/story/components-Box--example)
- * 
+ *
  */
 
 const Box = React.forwardRef<any, BoxProps>(({ ...props }, ref) => (
-  <StyledBox
-  onClick={()=>{}}
-    ref={ref}
-    padding="20px"
-    backgroundColor="core.primary"
-    cs={{ paddingBottom: "spacing.sm",
-    //  backgroundColor:"blue", 
-     sm: { padding: "spacing.md", color:'green' },
-     md: { padding: "spacing.md", color:'black' }
-     }}
-  >
+  <StyledBox ref={ref} {...props}>
     {props.children}
   </StyledBox>
 ));

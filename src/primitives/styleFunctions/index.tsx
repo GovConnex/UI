@@ -1,15 +1,26 @@
+import type * as CSS from 'csstype';
+
+type breakpoints = {
+  sm?: CSS.Properties;
+  md?: CSS.Properties;
+  lg?: CSS.Properties;
+};
+
+export type cs = CSS.Properties | breakpoints;
+
+
 export const values: any = {
-  sm: 599, // tablet
+  sm: 0, // tablet
   md: 600, // small laptop
-  lg: 1360, // desktop
+  lg: 1360, // desktop 1360
 };
 
 const defaultBreakpoints = {
   keys: ["sm", "md", "lg",],
-  up: (key: any) => `@media (max-width:${values[key]}px)`,
+  up: (key: any) => `@media (min-width:${values[key]}px)`,
 };
 
-// takes in theme and a possible path and returns a true them path or the original path value 
+// takes in theme and a possible path and returns a true theme path or the original path value 
 function getValueFromPath(theme: any, path: string) {
   // check if value has a path
   if (path.split(".").length <= 1) {
@@ -30,7 +41,7 @@ function getValueFromPath(theme: any, path: string) {
  * takes in props and returns styles to be injected into styled-components 
  */
 const passCustomStyles = (props: any) => {
-  const { props: cs, theme = {} } = props || {};
+  const { props:cs, theme = {} } = props || {};
 
   if (!cs) {
     return null;
@@ -61,9 +72,9 @@ const passCustomStyles = (props: any) => {
       }
      return 
     });
+    console.log(css)
     return css;
   }
-
   return traverse(cs);
 };
 
