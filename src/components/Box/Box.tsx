@@ -1,5 +1,5 @@
 import React from "react";
-import { cs } from "../../core/styleFunctions";
+import { customStyles } from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
 
 
@@ -13,7 +13,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * add custom styles through `cs`
    */
-  cs?: cs;
+  cs?: customStyles;
 }
 
 /**
@@ -24,7 +24,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  */
 
-const Box = React.forwardRef<any, BoxProps>(({ ...props }, ref) => (
+const Box = React.forwardRef<HTMLDivElement, BoxProps>(({ ...props }, ref) => (
   <StyledBox ref={ref} {...props}>
     {props.children}
   </StyledBox>

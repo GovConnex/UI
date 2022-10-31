@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  cs:{paddingBottom:"spacing.lg", paddingTop:"spacing.lg",paddingLeft:"spacing.lg"},
+  cs:{padding:"30px", paddingTop:"spacing.lg",paddingLeft:"spacing.lg"},
   children:<Typography variant="heading" size="lg">Child in box</Typography>,
   onClick:() => {console.log("test")}
 };

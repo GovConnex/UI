@@ -1,26 +1,27 @@
-import type * as CSS from 'csstype';
+import type * as CSS from "csstype";
+import { DefaultTheme } from "styled-components";
 
 type breakpoints = {
   sm?: CSS.Properties;
   md?: CSS.Properties;
   lg?: CSS.Properties;
 };
+type keysTypes = "sm" | "md" | "lg"; 
 
-export type cs = CSS.Properties | breakpoints;
+export type customStyles = CSS.Properties | breakpoints;
 
-
-export const values: any = {
+const values: { sm: number; md: number; lg: number } = {
   sm: 0, // tablet
   md: 600, // small laptop
   lg: 1360, // desktop 1360
 };
 
 const defaultBreakpoints = {
-  keys: ["sm", "md", "lg",],
-  up: (key: any) => `@media (min-width:${values[key]}px)`,
+  keys: ["sm", "md", "lg"],
+  up: (key: keysTypes) => `@media (min-width:${values[key]}px)`,
 };
 
-// takes in theme and a possible path and returns a true theme path or the original path value 
+// takes in theme and a possible path and returns a true theme path or the original path value
 function getValueFromPath(theme: any, path: string) {
   // check if value has a path
   if (path.split(".").length <= 1) {
@@ -36,12 +37,12 @@ function getValueFromPath(theme: any, path: string) {
   }, theme);
 }
 
-
 /**
- * takes in props and returns styles to be injected into styled-components 
+ * takes in props and returns styles to be injected into styled-components
  */
-const experimental_passCustomStyles = (props: any) => {
-  const { props:cs, theme = {} } = props || {};
+const experimental_passCustomStyles = (args: {cs?:customStyles, theme:DefaultTheme}) => {
+  const {cs, theme = {} as DefaultTheme } = args || {};
+
 
   if (!cs) {
     return null;
@@ -56,12 +57,18 @@ const experimental_passCustomStyles = (props: any) => {
       // remove theme and children
       if (t != "theme" && t != "children") {
         if (typeof v === "object") {
-            // if a key is a breakpoint then add the bp to css
+          // if a key is a breakpoint then add the bp to css
           if (defaultBreakpoints.keys.includes(t)) {
-            const bp = defaultBreakpoints.up(t); //[TODO] order can differ and cause problems 
-            css = { ...css, [bp]: experimental_passCustomStyles({ props: v, theme }) };
+            const bp = defaultBreakpoints.up(t as keysTypes); //[TODO] order can differ and cause problems
+            css = {
+              ...css,
+              [bp]: experimental_passCustomStyles({ cs: v, theme }),
+            };
           } else {
-            css = { ...css, ...experimental_passCustomStyles({ props: v, theme }) };
+            css = {
+              ...css,
+              ...experimental_passCustomStyles({ cs: v, theme }),
+            };
           }
         }
         // add the values to newStyle
@@ -70,7 +77,7 @@ const experimental_passCustomStyles = (props: any) => {
           css = { ...css, [t]: getValueFromPath(theme, v) };
         }
       }
-     return 
+      return;
     });
     return css;
   }
@@ -78,9 +85,7 @@ const experimental_passCustomStyles = (props: any) => {
 };
 
 // Pass the theme for styled-components
-export function addCustomStyles(props: any) {
+export function addCustomStyles(props: {cs?:customStyles, theme:DefaultTheme}) {
   // @ts-ignore
-  return ({ theme }) => experimental_passCustomStyles({ props, theme });
+  return experimental_passCustomStyles(props);
 }
-
-
