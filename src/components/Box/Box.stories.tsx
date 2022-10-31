@@ -18,8 +18,8 @@ export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   cs:{paddingBottom:"spacing.lg", paddingTop:"spacing.lg",paddingLeft:"spacing.lg"},
-  children:<Typography variant="heading" size="lg">Page Header</Typography>,
-  onClick:() => {console.log("tets")}
+  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  onClick:() => {console.log("test")}
 };
 
 Example.parameters = {

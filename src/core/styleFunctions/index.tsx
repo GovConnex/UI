@@ -40,7 +40,7 @@ function getValueFromPath(theme: any, path: string) {
 /**
  * takes in props and returns styles to be injected into styled-components 
  */
-const passCustomStyles = (props: any) => {
+const experimental_passCustomStyles = (props: any) => {
   const { props:cs, theme = {} } = props || {};
 
   if (!cs) {
@@ -59,9 +59,9 @@ const passCustomStyles = (props: any) => {
             // if a key is a breakpoint then add the bp to css
           if (defaultBreakpoints.keys.includes(t)) {
             const bp = defaultBreakpoints.up(t); //[TODO] order can differ and cause problems 
-            css = { ...css, [bp]: passCustomStyles({ props: v, theme }) };
+            css = { ...css, [bp]: experimental_passCustomStyles({ props: v, theme }) };
           } else {
-            css = { ...css, ...passCustomStyles({ props: v, theme }) };
+            css = { ...css, ...experimental_passCustomStyles({ props: v, theme }) };
           }
         }
         // add the values to newStyle
@@ -80,7 +80,7 @@ const passCustomStyles = (props: any) => {
 // Pass the theme for styled-components
 export function addCustomStyles(props: any) {
   // @ts-ignore
-  return ({ theme }) => passCustomStyles({ props, theme });
+  return ({ theme }) => experimental_passCustomStyles({ props, theme });
 }
 
 
