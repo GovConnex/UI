@@ -72,7 +72,6 @@ const passCustomStyles = (props: any) => {
       }
      return 
     });
-    console.log(css)
     return css;
   }
   return traverse(cs);
