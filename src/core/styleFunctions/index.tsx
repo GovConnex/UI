@@ -58,7 +58,7 @@ const passCustomStyles = (props: any) => {
         if (typeof v === "object") {
             // if a key is a breakpoint then add the bp to css
           if (defaultBreakpoints.keys.includes(t)) {
-            const bp = defaultBreakpoints.up(t);
+            const bp = defaultBreakpoints.up(t); //[TODO] order can differ and cause problems 
             css = { ...css, [bp]: passCustomStyles({ props: v, theme }) };
           } else {
             css = { ...css, ...passCustomStyles({ props: v, theme }) };

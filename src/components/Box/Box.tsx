@@ -1,5 +1,5 @@
 import React from "react";
-import { cs } from "../../primitives/styleFunctions";
+import { cs } from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
 
 
