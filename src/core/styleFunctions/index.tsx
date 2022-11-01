@@ -71,7 +71,7 @@ const experimental_passCustomStyles = (args: {cs?:customStyles, theme:DefaultThe
             };
           }
         }
-        // add the values to newStyle
+        // add the values to new css
         if (typeof v === "string") {
           // asume its a css style
           css = { ...css, [t]: getValueFromPath(theme, v) };
