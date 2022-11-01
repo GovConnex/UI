@@ -20,7 +20,13 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * `Box` is a extendable div component 
  *
- * Component Demo: [Box](https://ui.govconnex.com/?path=/story/components-Box--example)
+ * Demo: 
+ * 
+ *  - [Box](https://ui.govconnex.com/?path=/story/components-box--example)
+ * 
+ * Docs: 
+ * 
+ *  - [Box Docs](https://ui.govconnex.com/?path=/docs/components-box--example/)
  *
  */
 
