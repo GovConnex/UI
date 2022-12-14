@@ -1,10 +1,11 @@
 import React from "react";
 import { customStyles } from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
+import type * as CSS from "csstype";
+import GlobalTheme, { Spacing } from "../../theming/global-theme.interface";
 
 
-// we may want to introduce a "as" prop instead of baking in the div element
-export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface BoxProps extends React.HTMLAttributes<HTMLElement>{
   /**
    * @ignore content of the Box
    */
@@ -14,8 +15,17 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
    * add custom styles through `cs`
    */
   cs?: customStyles;
+  
 }
 
+// CHANGE: add a new interface
+export interface tes {
+  pt: number | keyof Spacing;
+  pb: number | keyof Spacing;
+}
+
+export interface LP extends tes, BoxProps {}
+ 
 /**
  *
  * `Box` is a extendable div component 
@@ -30,10 +40,17 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  */
 
-const Box = React.forwardRef<HTMLDivElement, BoxProps>(({ ...props }, ref) => (
-  <StyledBox ref={ref} {...props}>
-    {props.children}
-  </StyledBox>
-));
+const Box = React.forwardRef<HTMLDivElement,LP>(function Box(
+  props: LP,
+  ref
+) {
+
+  // WARN does not pass onClick, etc. to the div element
+  return (
+    <StyledBox ref={ref} cs={{...props}}>
+      {props.children}
+    </StyledBox>
+  );
+});
 
 export default Box;

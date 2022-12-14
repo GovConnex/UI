@@ -19,6 +19,11 @@ export interface TypographyProps
   variant?: VariantsProp;
 
   /**
+   * The text color
+   */
+  color?: string;
+
+  /**
    * If `true`, all margin is set to 0 
    */
   noMargin?: boolean;
@@ -30,21 +35,28 @@ export interface TypographyProps
 }
 
 
- /**
- * 
- * `Typography` 
+/**
  *
- * Component Demo: [Typography](https://ui.govconnex.com/?path=/story/components-typography--example)
+ * `Typography`
+ *
+ * Demo: 
  * 
+ *  - [Typography](https://ui.govconnex.com/?path=/story/components-typography--example)
+ * 
+ * Docs: 
+ * 
+ *  - [Typography Docs](https://ui.govconnex.com/?path=/docs/components-typography--example/)
+ *
  */
 const Typography = ({
   children,
   variant = "body",
   size = "md",
+  color, 
   ...props
 }: TypographyProps) => {
   const VariantComponent = variantComponents[variant];
-  return <VariantComponent size={size} {...props}>{children}</VariantComponent>;
+  return <VariantComponent color={color} size={size} {...props}>{children}</VariantComponent>;
 };
 
 export default Typography;

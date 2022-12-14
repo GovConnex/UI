@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { getValueFromPath } from "../../core/styleFunctions";
 import { Variants } from "./Typography.types";
 
 export const FONT_WEIGHTS = {
@@ -21,7 +22,7 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
     margin-top: 0;
     margin-bottom: ${({ theme, size }) => theme.typography[key][size].paragraphSpacing};
     text-decoration: ${({ theme, size }) => theme.typography[key][size].textDecoration};
-    color: ${({ theme, size }) => theme.typography[key][size].color};
+    color: ${({ theme, color }) => color ? getValueFromPath(theme, color) : "inherit"};
     ${({ noMargin }) => noMargin && "margin: 0;"};
 
     & p {

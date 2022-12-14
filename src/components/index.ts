@@ -1,4 +1,6 @@
 export { default as ThemeProvider } from "./ThemeProvider";
+export { default as Accordion } from "./Accordion";
+export { default as Stepper } from "./Stepper";
 export { default as Box } from "./Box";
 export { default as Stack } from "./Stack";
 export { default as IssueCard } from "./IssueCard";

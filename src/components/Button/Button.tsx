@@ -21,10 +21,11 @@ export interface ButtonProps
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   as?: string | ComponentType<any>;
+  title?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, shape, size, iconOnly, ...props }, ref) => {
+  ({ variant, shape, size, iconOnly, title,  ...props }, ref) => {
     const typographyMap: Record<ButtonSize, keyof TypographySize> = {
       lg: "md",
       md: "sm",
@@ -56,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           props.children
         ) : (
           <StyledTypography variant="label" size={typographyMap[size || "md"]}>
-            {props.children}
+            {props.children || title}
           </StyledTypography>
         )}
 

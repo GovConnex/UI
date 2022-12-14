@@ -24,16 +24,43 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  cs:{padding:"30px", paddingTop:"spacing.lg",paddingLeft:"spacing.lg"},
   children:<Typography variant="heading" size="lg">Child in box</Typography>,
   onClick:() => {console.log("test")}
 };
 
 
+export const Theme = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Theme.args = {
+  backgroundColor:"theme.brand.300",
+  cs:{border:"1px solid theme.brand.300"},
+  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  onClick:() => {console.log("test")}
+};
+
+export const Padding = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Padding.args = {
+  pt:7,
+  pb:"sm",
+  // pt:"spacing.md",
+  // px:3,
+  // cs:{padding:"spacing.xl"},
+  width:"100%",
+  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  onClick:() => {console.log("test")}
+};
+
+
+
+
+
+
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
-  cs: {backgroundColor:"primary.brand.900", md:{backgroundColor:"primary.brand.300"}},
+  md:{padding:"spacing.xl"},
+  cs: {sm:{backgroundColor:"primary.brand.300"}},
   children:<Typography variant="heading" size="lg">Child in box</Typography>,
 };
 
