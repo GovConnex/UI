@@ -178,9 +178,6 @@ const IssueCard = ({
                   ].filter((item) => !!item) as MenuOption[]
                 }
                 onClose={() => setMenuShown(false)}
-                onOptionSelect={(option) =>
-                  option?.onSelect && option.onSelect()
-                }
                 anchorEl={menuRef}
               />
             </Portal>
