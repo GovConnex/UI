@@ -45,6 +45,8 @@ export interface IssueCardProps {
   deleteIssue: () => void;
   maxAvatars: number;
   menuContainer?: string | HTMLElement | null;
+  pinned: boolean;
+  togglePinned: () => void;
 }
 
 const IssueCard = ({
@@ -57,6 +59,8 @@ const IssueCard = ({
   deleteIssue,
   maxAvatars = 4,
   menuContainer,
+  pinned,
+  togglePinned,
 }: IssueCardProps) => {
   const { id, title, description, userLinks, shared } = issue;
   const [isMenuShown, setMenuShown] = useState(false);
@@ -124,10 +128,19 @@ const IssueCard = ({
                 placement="bottom-end"
                 options={
                   [
+                    {
+                      id: pinned ? "unpin" : "pin",
+                      "data-cy": pinned ? "issue-card-unpin" : "issue-card-pin",
+                      text: pinned ? "Unpin Issue" : "Pin Issue",
+                      startAdornment: (
+                        <Icon icon={"fa-solid fa-thumbtack"} />
+                      ),
+                      onSelect: togglePinned,
+                    },
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "mute",
                       "data-cy": "issue-card-mute",
-                      text: issue.notificationsEnabled ? "Mute" : "Unmute",
+                      text: issue.notificationsEnabled ? "Mute Issue" : "Unmute Issue",
                       startAdornment: (
                         <Icon
                           icon={
@@ -142,14 +155,14 @@ const IssueCard = ({
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "edit",
                       "data-cy": "issue-card-edit",
-                      text: "Edit",
+                      text: "Edit Issue",
                       startAdornment: <Icon icon={"pen"} />,
                       onSelect: editIssue,
                     },
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "leave",
                       "data-cy": "issue-card-leave",
-                      text: "Leave",
+                      text: "Leave Issue",
                       startAdornment: (
                         <Icon icon={"fa-solid fa-person-to-door"} />
                       ),
@@ -158,7 +171,7 @@ const IssueCard = ({
                     accessLevel === "admin" && {
                       id: "leave",
                       "data-cy": "issue-card-delete",
-                      text: "Delete",
+                      text: "Delete Issue",
                       startAdornment: <Icon icon={"trash"} />,
                       onSelect: deleteIssue,
                     },

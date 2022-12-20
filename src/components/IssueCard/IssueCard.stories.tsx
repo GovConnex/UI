@@ -112,6 +112,7 @@ AdminHasUsersLockedSilenced.args = {
 export const LotsOfMembers = Template.bind({});
 LotsOfMembers.args = {
   accessLevel: "admin",
+  pinned: true,
   issue: {
     id: "123123123",
     title: "My test issue",
