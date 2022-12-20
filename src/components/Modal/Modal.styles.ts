@@ -17,7 +17,6 @@ export const StyledModal = styled.div`
   // width: 940px;
   margin: auto;
   display: flex;
-  overflow: hidden;
   flex-direction: column;
   background-color: ${props => props.theme.primary.base.white};
   border: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
@@ -48,6 +47,8 @@ export const StyledModalFeet = styled.div`
   align-items: center;
   padding: ${props => props.theme.spacing.sm};
   background-color: ${props => props.theme.primary.neutral["100"]};
+  border-bottom-right-radius: ${props => props.theme.borderRadius.sm};
+  border-bottom-left-radius: ${props => props.theme.borderRadius.sm};
 `;
 
 export const StyledMobileModal = styled.div`

@@ -1,39 +1,31 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Accordion from "./Accordion";
+import DropdownController from "./DropdownController";
 import { withDesign } from 'storybook-addon-designs';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/Accordion",
-  component: Accordion,
+  title: "Components/DropdownController",
+  component: DropdownController,
   decorators: [withDesign],
-} as ComponentMeta<typeof Accordion>;
+} as ComponentMeta<typeof DropdownController>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Accordion> = (args) => 
-(
-  <div>
-
-<Accordion {...args} />
-<Accordion {...args} />
-  </div>
-)
-;
+const Template: ComponentStory<typeof DropdownController> = (args) => <DropdownController {...args} />;
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  label: "Accordion Label",
-
-  children: (
+  rootButton: () => (
     <div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt,
-        nisl eget aliquam tincidunt, nisl nisl aliquet nisl, nec
-      </p>
+      Test
     </div>
   ),
+  overlay: (toggleVis) => (
+    <div onClick={()=> toggleVis()}>
+      MenuItem
+    </div>
+  )
 };
 
 Example.parameters = {

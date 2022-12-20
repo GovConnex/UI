@@ -26,6 +26,10 @@ export const Example = Template.bind({});
 Example.args = {
   label: "Checkbox"
 };
+export const CheckOnly = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+CheckOnly.args = {
+};
 
 Example.parameters = {
  design: {

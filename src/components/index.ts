@@ -1,4 +1,7 @@
 export { default as ThemeProvider } from "./ThemeProvider";
+export { default as Radio } from "./Radio";
+export { default as DropdownController } from "./DropdownController";
+export { default as Select } from "./Select";
 export { default as Accordion } from "./Accordion";
 export { default as Stepper } from "./Stepper";
 export { default as Box } from "./Box";
