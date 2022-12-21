@@ -5,8 +5,6 @@ const StyledRadio = styled.input
 -webkit-appearance: none;
 appearance: none;
 margin: 0;
-width: 20px;
-height: 20px;
 min-width: 20px;
 min-height: 20px;
 border: 1px solid ${theme.primary.neutral[200]};
@@ -69,10 +67,8 @@ border-radius: ${theme.borderRadius.sm};
 border-color:${theme.primary.neutral[200]};
 border-style:solid;
 border-width:1px;
-` : ""}
-
-
 padding: ${theme.spacing.sm};
+` : ""}
 
 ${checked && variant === "card" ? `
     border-color:${theme.primary.brand[500]};
@@ -91,6 +87,10 @@ justify-content: ${variant === "default" ? "start" : "space-between"}};
 const RadioTextWrapper = styled.span(({ theme }) => `
 display: flex;
 flex-direction: column;
+
+white-space: nowrap;
+overflow: hidden;
+margin-right: ${theme.spacing.md};
 ` );
 
 export { StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper };

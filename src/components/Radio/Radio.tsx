@@ -21,25 +21,25 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
   label?: string;
 
   /**
-   * renders a text bellow the label 
+   * renders a text bellow the label
    */
   description?: string;
 
 };
 
 /**
- * 
+ *
  * `Radio` renders a radio button
  *
  * Component Demo: [Radio](https://ui.govconnex.com/?path=/story/components-Radio--example)
- * 
+ *
  */
 const Radio = (props: RadioProps) => {
-  const {checked=false,variant="default",label, description, ...rest } = props;
+  const {checked,variant="default",label, description, ...rest } = props;
 
   return (
     <RadioLabel variant={variant}>
-      <RadioWrapper checked={checked} variant={variant}>
+      <RadioWrapper checked={!!checked} variant={variant}>
         {label ? (
           <RadioTextWrapper>
             <Typography variant="label">{label}</Typography>

@@ -2,24 +2,24 @@ import styled from "styled-components";
 
 const StyledAdornment = styled.span<{ position: string, disabled: Boolean }>(({ theme, position, disabled }) => ({
   [position]: theme.spacing.sm,
+  paddingTop: theme.spacing.xs,
   position: 'absolute',
   pointerEvents: 'none',
   opacity: disabled ? 0.3 : 1,
 })
 )
 
-const StyledInputContainer = styled.div<{ fullWidth: boolean }>(({ theme, fullWidth }) =>
+const StyledTextAreaContainer = styled.div<{ fullWidth: boolean }>(({ theme, fullWidth }) =>
   `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: inline-flex;
 
   position: relative;
-  align-items:center;
   `
 )
 
-const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornmentPadding: "left" | "right" | null }>
-  (({ theme, error, fullWidth, adornmentPadding }) =>
+const StyledTextArea = styled.textarea<{ error: boolean, fullWidth: boolean, adornmentPadding: "left" | "right" | null, resize: boolean | undefined }>
+  (({ theme, error, fullWidth, adornmentPadding, resize }) =>
     `
   padding-top: ${theme.spacing.xs};
   padding-bottom: ${theme.spacing.xs};
@@ -39,12 +39,12 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
 
   min-height: 22px;
 
+  ${resize ? "resize: auto;" : "resize:none;"}
 
   &:focus {
     outline: none;
     border-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
   }
-
 
   &:disabled{
     background-color:${theme.core.background.bgSecondary};
@@ -57,4 +57,4 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   `
   )
 
-export { StyledInputContainer, StyledInput, StyledAdornment };
+export { StyledTextArea, StyledTextAreaContainer, StyledAdornment };
