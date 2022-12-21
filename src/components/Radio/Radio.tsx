@@ -50,7 +50,7 @@ const Radio = (props: RadioProps) => {
                 size="sm"
                 color="primary.neutral.400"
               >
-                Weekly
+                {description}
               </Typography>
             ) : null}
           </RadioTextWrapper>
