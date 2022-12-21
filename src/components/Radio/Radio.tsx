@@ -1,7 +1,29 @@
 import React from "react";
-import {StyledRadio, RadioWrapperLabel} from "./Radio.styles";
+import Typography from "../Typography";
+import {StyledRadio, RadioWrapper, RadioLabel, RadioTextWrapper} from "./Radio.styles";
 
 export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+
+  /**
+   * checked state of the radio
+   * @default `false`
+   */
+  checked?: boolean;
+
+  /**
+   * renders the radio in different variants
+   */
+  variant: "default" | "card" | "list";
+
+  /**
+   * renders a text label next to the radio
+   */
+  label?: string;
+
+  /**
+   * renders a text bellow the label 
+   */
+  description?: string;
 
 };
 
@@ -13,11 +35,30 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
  * 
  */
 const Radio = (props: RadioProps) => {
+  const {checked=false,variant="default",label, description, ...rest } = props;
+
   return (
-    <RadioWrapperLabel>
-      <StyledRadio type="radio" />
-        tids
-    </RadioWrapperLabel>
+    <RadioLabel variant={variant}>
+      <RadioWrapper checked={checked} variant={variant}>
+        {label ? (
+          <RadioTextWrapper>
+            <Typography variant="label">Default</Typography>
+            {description ? (
+              <Typography
+                noMargin
+                variant="body"
+                size="sm"
+                color="primary.neutral.400"
+              >
+                Weekly
+              </Typography>
+            ) : null}
+          </RadioTextWrapper>
+        ) : null}
+
+        <StyledRadio type="radio" {...rest} />
+      </RadioWrapper>
+    </RadioLabel>
   );
 };
 

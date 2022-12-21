@@ -4,8 +4,6 @@ import { variantComponents } from "./Typography.styles";
 import { TypographySize } from "../../theming/global-theme.interface";
 
 
-//[TODO]: ( ) add noWrap
-//        ( ) add align options
 
 export interface TypographyProps
   extends Omit<React.HTMLProps<HTMLElement>, "size"> {

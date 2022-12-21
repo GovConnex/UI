@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 const StyledRadio = styled.input
     (({ theme }) => `
-
-
 -webkit-appearance: none;
 appearance: none;
 margin: 0;
@@ -21,31 +19,76 @@ border-radius: 50%;
 }
 
 &:hover {
-    // outline: 2px solid blue;
     &::after {
         background-color: ${theme.primary.brand[500]};
     }
 }
 &:focus {
-    outline: 2px solid ${theme.primary.brand[500]};
-    outline-offset: 2px;
+    outline: 0px solid ${theme.primary.brand[100]};
+    &::after{
+        background-color: ${theme.primary.brand[500]};
+    }
 }
 &:checked {
     border: 5px solid ${theme.primary.brand[500]};
+    ::after {
+        display: none;
+    }
     &:hover {
-        // outline: 2px solid blue;
         outline-offset: 2px;
-        // background-color: orange;
-        // border: 2px solid grey;
-        ::after {
-            display: none;
-        }
     }
 }
-`)
-    ;
-const RadioWrapperLabel = styled.label`
+`);
 
-`;
+const RadioLabel = styled.label<{ variant: string }>(({ theme, variant }) => `
 
-export { StyledRadio, RadioWrapperLabel};
+${variant === "card" ? `
+div:hover {
+    border-color:${theme.primary.brand[300]};
+    border-width:2px;
+    padding: calc(${theme.spacing.sm} - 1px);
+}
+:focus-within {
+    div{
+        border-color:${theme.primary.brand[500]};
+        border-width:2px;
+        padding: calc(${theme.spacing.sm} - 1px);
+    }
+}
+` : ""}
+
+
+`);
+
+const RadioWrapper = styled.div<{ checked: boolean, variant: string }>(({ theme, checked, variant }) => `
+
+${variant === "card" ? `
+border-radius: ${theme.borderRadius.sm};
+border-color:${theme.primary.neutral[200]};
+border-style:solid;
+border-width:1px;
+` : ""}
+
+
+padding: ${theme.spacing.sm};
+
+${checked && variant === "card" ? `
+    border-color:${theme.primary.brand[500]};
+    border-width:2px;
+    border-style:solid;
+    padding: calc(${theme.spacing.sm} - 1px);
+` : ""}
+
+display: flex;
+align-items: center;
+gap: ${theme.spacing.xs};
+flex-direction: ${variant === "default" ? "row-reverse" : "row"}};
+justify-content: ${variant === "default" ? "start" : "space-between"}};
+` );
+
+const RadioTextWrapper = styled.span(({ theme }) => `
+display: flex;
+flex-direction: column;
+` );
+
+export { StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper };
