@@ -42,7 +42,7 @@ const Radio = (props: RadioProps) => {
       <RadioWrapper checked={checked} variant={variant}>
         {label ? (
           <RadioTextWrapper>
-            <Typography variant="label">Default</Typography>
+            <Typography variant="label">{label}</Typography>
             {description ? (
               <Typography
                 noMargin
