@@ -7,6 +7,8 @@ appearance: none;
 margin: 0;
 width: 20px;
 height: 20px;
+min-width: 20px;
+min-height: 20px;
 border: 1px solid ${theme.primary.neutral[200]};
 border-radius: 50%;
 ::after {
