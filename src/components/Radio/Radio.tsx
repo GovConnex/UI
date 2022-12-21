@@ -56,7 +56,7 @@ const Radio = (props: RadioProps) => {
           </RadioTextWrapper>
         ) : null}
 
-        <StyledRadio type="radio" {...rest} />
+        <StyledRadio type="radio" checked={checked} {...rest} />
       </RadioWrapper>
     </RadioLabel>
   );
