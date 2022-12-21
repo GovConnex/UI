@@ -87,10 +87,6 @@ justify-content: ${variant === "default" ? "start" : "space-between"}};
 const RadioTextWrapper = styled.span(({ theme }) => `
 display: flex;
 flex-direction: column;
-
-white-space: nowrap;
-overflow: hidden;
-margin-right: ${theme.spacing.md};
 ` );
 
 export { StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper };
