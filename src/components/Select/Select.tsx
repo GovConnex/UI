@@ -40,6 +40,16 @@ export interface SelectProps {
    * hint message
    */
   hint?: string;
+
+  /**
+   * label of the Select 
+   */
+  label?: string;
+
+  /**
+   * dropdown 
+   */
+  dropdown: (props: any) => React.ReactNode;
 }
 
 /**
@@ -50,49 +60,61 @@ export interface SelectProps {
  *
  */
 const Select = (props: SelectProps) => {
-  const { chipValue, fullWidth = false, error,hint, maxHeight, title, ...rest } = props;
+  const { chipValue,label, fullWidth = false, error,hint, maxHeight,dropdown, title, ...rest } = props;
   return (
-    <>
-    <DropdownController
-    overlay={(close) => (
-      <MenuWrapepr maxHeight={maxHeight || null}>
-          {React.Children.map(props.children, (child) => child)}
-        </MenuWrapepr>
-      )}
-      rootButton={({ toggleVisibility, visible, ref }) => (
-        <StyledSelect
-        fullWidth={fullWidth}
-        ref={ref}
-        visible={visible}
-        onClick={(e) => (e.preventDefault(), toggleVisibility())}
-        error={!!error}
-        {...rest}
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    
+          {label ? (
+        <Typography noMargin variant="label" size="md">
+          {label}
+        </Typography>
+      ) : null}
+      <DropdownController
+        overlay={(close) =>
+          dropdown ? (
+            <MenuWrapepr maxHeight={maxHeight || null}>
+              {dropdown({ close, maxHeight, children: props.children })}
+            </MenuWrapepr>
+          ) : (
+            <MenuWrapepr maxHeight={maxHeight || null}>
+              {React.Children.map(props.children, (child) => child)}
+            </MenuWrapepr>
+          )
+        }
+        rootButton={({ toggleVisibility, visible, ref }) => (
+          <StyledSelect
+            fullWidth={fullWidth}
+            ref={ref}
+            visible={visible}
+            onClick={(e) => (e.preventDefault(), toggleVisibility())}
+            error={!!error}
+            {...rest}
+          >
+            {title}
+
+            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+              {chipValue ? (
+                <Chip size="md" role={error ? "error" : "primary"}>
+                  {chipValue}
+                </Chip>
+              ) : null}
+              <SvgIcon size="sm" icon="caret-down" />
+            </div>
+          </StyledSelect>
+        )}
+      />
+
+      {error || hint ? (
+        <Typography
+          variant="body"
+          color={error ? "secondary.red.500" : "primary.neutral.400"}
+          size="sm"
+          noMargin
         >
-          {title}
-
-          <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-            {chipValue ? (
-              <Chip size="md" role={error ? "error" : "primary"}>
-                {chipValue}
-              </Chip>
-            ) : null}
-            <SvgIcon size="sm" icon="caret-down" />
-          </div>
-        </StyledSelect>
-)}
-/>
-
-{error || hint ? (
-  <Typography
-  variant="body"
-  color={error ? "secondary.red.500" : "primary.neutral.400"}
-  size="sm"
-  noMargin
-  >
-  {error || hint}
-  </Typography>
-  ) : null}
-  </>
-)};
+          {error || hint}
+        </Typography>
+      ) : null}
+    </div>
+  );};
 
 export default Select;

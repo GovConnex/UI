@@ -43,6 +43,14 @@ List.args = {
   label:"Label",
   description: "Description"
 };
+export const Plain = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Plain.args = {
+  variant: "plain",
+  label:"Label",
+  description: "Description"
+};
+
 
 Example.parameters = {
 //  design: {

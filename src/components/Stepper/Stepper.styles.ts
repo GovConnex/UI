@@ -9,8 +9,8 @@ const StyledStepper = styled.div`
     height: 100%;
     `}
 `;
-const StyledBullet = styled.div<{ active: boolean, passed:boolean }>`
-    ${({ theme, active, passed }) => `
+const StyledBullet = styled.div<{ active: Boolean, passed:Boolean, disabled:Boolean }>`
+    ${({ theme, active, passed, disabled }) => `
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -39,6 +39,14 @@ const StyledBullet = styled.div<{ active: boolean, passed:boolean }>`
     // outline: 2px solid ${theme.core.border.borderFocus};
 
     ` : ``}
+
+    ${disabled ? `
+    background-color: ${theme.core.border.borderLight};
+    outline: none;
+    border: 3px solid ${theme.core.border.borderLight};
+
+    ` : ``}
+
     `}
 `;
 const StyledTrack = styled.div<{passed:boolean}>`

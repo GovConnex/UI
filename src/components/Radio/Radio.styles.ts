@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
+
 const StyledRadio = styled.input
     (({ theme }) => `
 -webkit-appearance: none;
 appearance: none;
 margin: 0;
+width: 20px;
+height: 20px; 
 min-width: 20px;
 min-height: 20px;
 border: 1px solid ${theme.primary.neutral[200]};
 border-radius: 50%;
+
 ::after {
     content: "";
     display: block;
@@ -44,6 +48,7 @@ const RadioLabel = styled.label<{ variant: string }>(({ theme, variant }) => `
 
 ${variant === "card" ? `
 div:hover {
+    background-color: ${theme.extended.state.secondaryHover};
     border-color:${theme.primary.brand[300]};
     border-width:2px;
     padding: calc(${theme.spacing.sm} - 1px);
@@ -67,8 +72,12 @@ border-radius: ${theme.borderRadius.sm};
 border-color:${theme.primary.neutral[200]};
 border-style:solid;
 border-width:1px;
-padding: ${theme.spacing.sm};
 ` : ""}
+
+cursor: pointer;
+
+padding: ${theme.spacing.sm};
+
 
 ${checked && variant === "card" ? `
     border-color:${theme.primary.brand[500]};

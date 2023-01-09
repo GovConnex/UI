@@ -35,11 +35,12 @@ Error.args = {
   title: "Select",
   chipValue: "All",
   error:"Error message",
-  children: [
-    <div>Option 1</div>,
-    <div>Option 2</div>,
-    <div>Option 3</div>,
-  ],
+  dropdown: ({close}) => <div onClick={close}>Dropdown</div>,
+  // children: [
+  //   <div>Option 1</div>,
+  //   <div>Option 2</div>,
+  //   <div>Option 3</div>,
+  // ],
   fullWidth: true,
 };
 export const LongList = Template.bind({});

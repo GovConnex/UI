@@ -13,7 +13,7 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
   /**
    * renders the radio in different variants
    */
-  variant: "default" | "card" | "list";
+  variant: "default" | "card" | "list" | "plain";
 
   /**
    * renders a text label next to the radio
@@ -42,7 +42,7 @@ const Radio = (props: RadioProps) => {
       <RadioWrapper checked={!!checked} variant={variant}>
         {label ? (
           <RadioTextWrapper>
-            <Typography variant="label">{label}</Typography>
+            <Typography as="span" variant="label" size="md">{label}</Typography>
             {description ? (
               <Typography
                 noMargin

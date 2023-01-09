@@ -23,6 +23,9 @@ height: 40px;
 outline-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
 }
 
+&:hover {
+    background-color: ${theme.extended.state.secondaryHover};
+  }
 
 ${fullWidth ? `width: 100%;` : ""}
 ${visible ? `outline: ${error ? theme.secondary.red[500] : theme.primary.base.brand} auto 1px !important;` : ""}

@@ -38,14 +38,22 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   background-color: ${theme.primary.base.white};
 
   min-height: 22px;
-
+  
+  outline: none;
 
   &:focus {
-    outline: none;
     border-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
+    border-width:2px;
+    padding-top: calc(${theme.spacing.xs} - 1px);
+    padding-bottom: calc(${theme.spacing.xs} - 1px);
+    padding-left: calc((${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"}) - 1px);
+    padding-right: calc((${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"}) - 1px);
   }
 
-
+  &:hover {
+    background-color: ${theme.extended.state.secondaryHover};
+  }
+  
   &:disabled{
     background-color:${theme.core.background.bgSecondary};
     cursor: no-drop;

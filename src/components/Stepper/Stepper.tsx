@@ -22,7 +22,7 @@ export interface StepperProps {
   /**
    * steps to render
    */
-  steps?: Array<{ label: string; description: string }>;
+  steps?: Array<{ label: string; description: string, disabled?: boolean }>;
 
 };
 
@@ -52,11 +52,12 @@ const Stepper = ({activeStep=0, steps=[]}: StepperProps) => {
           <BulletWrapper>
 
             <StyledBullet
+              disabled={item.disabled ?? false}
               passed={isPassed(activeStep, index)}
               active={activeStep === index}
             >
-              {isPassed(activeStep, index) ? (
-                <SvgIcon icon="check" size="xs" color="white" />
+              {isPassed(activeStep, index) || item.disabled ? (
+                <SvgIcon icon={item.disabled? "dash" : "check"} size="xs" color="white" /> 
               ) : null}
             </StyledBullet>
 
