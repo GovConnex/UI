@@ -5,6 +5,11 @@ import DropdownController from "./DropdownController";
 
 describe("DropdownController", () => {
   test("renders the DropdownController component", () => {
-    render(<DropdownController />);
+    render(
+      <DropdownController
+        rootButton={() => <div>Test</div>}
+        overlay={(toggleVis) => <div onClick={() => toggleVis()}>MenuItem</div>}
+      />
+    );
   });
 });

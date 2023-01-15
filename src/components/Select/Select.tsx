@@ -1,5 +1,10 @@
 import React from "react";
-import { StyledSelect, MenuWrapepr } from "./Select.styles";
+import {
+  StyledSelect,
+  MenuWrapepr,
+  SelectWrapper,
+  StyledChipWrapper,
+} from "./Select.styles";
 import DropdownController from "../DropdownController";
 import SvgIcon from "../SvgIcon";
 import Chip from "../Chip";
@@ -42,12 +47,12 @@ export interface SelectProps {
   hint?: string;
 
   /**
-   * label of the Select 
+   * label of the Select
    */
   label?: string;
 
   /**
-   * dropdown 
+   * dropdown
    */
   dropdown: (props: any) => React.ReactNode;
 }
@@ -60,11 +65,20 @@ export interface SelectProps {
  *
  */
 const Select = (props: SelectProps) => {
-  const { chipValue,label, fullWidth = false, error,hint, maxHeight,dropdown, title, ...rest } = props;
+  const {
+    chipValue,
+    label,
+    fullWidth = false,
+    error,
+    hint,
+    maxHeight,
+    dropdown,
+    title,
+    ...rest
+  } = props;
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-    
-          {label ? (
+    <SelectWrapper>
+      {label ? (
         <Typography noMargin variant="label" size="md">
           {label}
         </Typography>
@@ -92,14 +106,14 @@ const Select = (props: SelectProps) => {
           >
             {title}
 
-            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+            <StyledChipWrapper>
               {chipValue ? (
                 <Chip size="md" role={error ? "error" : "primary"}>
                   {chipValue}
                 </Chip>
               ) : null}
               <SvgIcon size="sm" icon="caret-down" />
-            </div>
+            </StyledChipWrapper>
           </StyledSelect>
         )}
       />
@@ -114,7 +128,8 @@ const Select = (props: SelectProps) => {
           {error || hint}
         </Typography>
       ) : null}
-    </div>
-  );};
+    </SelectWrapper>
+  );
+};
 
 export default Select;

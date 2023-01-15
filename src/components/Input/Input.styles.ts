@@ -17,6 +17,13 @@ const StyledInputContainer = styled.div<{ fullWidth: boolean }>(({ theme, fullWi
   align-items:center;
   `
 )
+const StyledInputWrapper = styled.div(({ theme }) =>
+  `
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.xs};
+  `
+)
 
 const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornmentPadding: "left" | "right" | null }>
   (({ theme, error, fullWidth, adornmentPadding }) =>
@@ -65,4 +72,4 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   `
   )
 
-export { StyledInputContainer, StyledInput, StyledAdornment };
+export {StyledInputWrapper, StyledInputContainer, StyledInput, StyledAdornment };

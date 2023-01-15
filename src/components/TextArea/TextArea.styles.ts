@@ -57,4 +57,13 @@ const StyledTextArea = styled.textarea<{ error: boolean, fullWidth: boolean, ado
   `
   )
 
-export { StyledTextArea, StyledTextAreaContainer, StyledAdornment };
+  const StyledTextAreaWrapper = styled.div(({ theme }) =>
+  `
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.xs};
+  `
+)
+
+
+export { StyledTextArea,StyledTextAreaWrapper, StyledTextAreaContainer, StyledAdornment };

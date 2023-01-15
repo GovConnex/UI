@@ -8,11 +8,11 @@ export interface BannerProps {
   /**
    * title of the banner
    */
-  title: string;
+  title?: string;
   /**
    * description of the banner
    */
-  description: string;
+  description?: string;
   /**
    * variant of the banner
    */

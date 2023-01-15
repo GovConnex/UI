@@ -4,7 +4,7 @@ import StyledBox from "./Box.styles";
 import { Spacing } from "../../theming/global-theme.interface";
 
 
-export interface BoxProps extends React.HTMLAttributes<HTMLElement>{
+export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>{
   /**
    * @ignore content of the Box
    */
@@ -18,49 +18,49 @@ export interface BoxProps extends React.HTMLAttributes<HTMLElement>{
 }
 
 export interface ExtendedBoxProps extends BoxProps {
-  pt: number | keyof Spacing;
-  pb: number | keyof Spacing;
+  pt?: number | keyof Spacing;
+  pb?: number | keyof Spacing;
 
   // padding
-  p: number | keyof Spacing;
+  p?: number | keyof Spacing;
 
-  pl: number | keyof Spacing;
-  pr: number | keyof Spacing;
-  px: number | keyof Spacing;
-  py: number | keyof Spacing;
+  pl?: number | keyof Spacing;
+  pr?: number | keyof Spacing;
+  px?: number | keyof Spacing;
+  py?: number | keyof Spacing;
 
-  paddingX: number | keyof Spacing;
-  paddingY: number | keyof Spacing;
+  paddingX?: number | keyof Spacing;
+  paddingY?: number | keyof Spacing;
 
   // margin
-  m: number | keyof Spacing;
-  mt: number | keyof Spacing;
-  mb: number | keyof Spacing;
-  ml: number | keyof Spacing;
-  mr: number | keyof Spacing;
-  mx: number | keyof Spacing;
-  my: number | keyof Spacing;
-  marginX: number | keyof Spacing;
-  marginY: number | keyof Spacing;
+  m?: number | keyof Spacing;
+  mt?: number | keyof Spacing;
+  mb?: number | keyof Spacing;
+  ml?: number | keyof Spacing;
+  mr?: number | keyof Spacing;
+  mx?: number | keyof Spacing;
+  my?: number | keyof Spacing;
+  marginX?: number | keyof Spacing;
+  marginY?: number | keyof Spacing;
 
   // width
-  w: number | keyof Spacing;
-  width: number | keyof Spacing | string;
+  w?: number | keyof Spacing;
+  width?: number | keyof Spacing | string;
 
   // height
-  h: number | keyof Spacing;
-  height: number | keyof Spacing | string;
+  h?: number | keyof Spacing;
+  height?: number | keyof Spacing | string;
 
   // background
-  bg: string;
-  backgroundColor: string;
+  bg?: string;
+  backgroundColor?: string;
 
   // breakpoints
   sm?: customStyles;
   md?: customStyles;
   lg?: customStyles;
 
-  direction: "row" | "column" | "row-reverse" | "column-reverse";
+  direction?: "row" | "column" | "row-reverse" | "column-reverse";
 }
 
  
@@ -84,7 +84,7 @@ const Box = React.forwardRef<HTMLDivElement,ExtendedBoxProps>(function Box(
   ref
 ) {
 
-  // WARN does not pass onClick, etc. to the div element
+  // WARN does not pass onClick, etc to the div element
   return (
     <StyledBox ref={ref} cs={{...props}}>
       {props.children}

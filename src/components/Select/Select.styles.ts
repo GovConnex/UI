@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { shadowFromProp } from "../style-utils";
 
 
-const StyledSelect = styled.button<{ error: boolean,fullWidth:boolean, visible: boolean }>
+const StyledSelect = styled.button<{ error: boolean, fullWidth: boolean, visible: boolean }>
     (({ theme, error, visible, fullWidth }) =>
         `
 padding:0 ${theme.spacing.sm};
@@ -34,7 +34,7 @@ gap: ${theme.spacing.sm};
 `
     );
 
-const MenuWrapepr = styled.div<{maxHeight: string | null}>
+const MenuWrapepr = styled.div<{ maxHeight: string | null }>
     (({ theme, maxHeight }) =>
         `
         background-color: ${theme.primary.base.white};
@@ -51,10 +51,22 @@ const MenuWrapepr = styled.div<{maxHeight: string | null}>
         flex-direction: column;
         box-sizing: border-box;
 
-       ${maxHeight ? `max-height: ${maxHeight};` : "" }
+       ${maxHeight ? `max-height: ${maxHeight};` : ""}
         overflow-y: auto;
 
         `
     );
 
-export { StyledSelect, MenuWrapepr };
+const SelectWrapper = styled.div`
+    display: flex;
+    gap: ${({ theme }) => theme.spacing.xs}; 
+    flex-direction: column;
+    `;
+
+const StyledChipWrapper = styled.div`
+    display: flex;
+    gap: ${({ theme }) => theme.spacing.xs};
+    align-items: center;
+    `;
+
+export { SelectWrapper, StyledChipWrapper, StyledSelect, MenuWrapepr };

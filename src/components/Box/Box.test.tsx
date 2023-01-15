@@ -3,7 +3,7 @@ import { render } from "../test-utils";
 
 
 
-import Box from "./Box";
+import Box, { ExtendedBoxProps } from "./Box";
 
 describe("Box", () => {
   

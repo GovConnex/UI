@@ -5,6 +5,9 @@ import Select from "./Select";
 
 describe("Select", () => {
   test("renders the Select component", () => {
-    render(<Select />);
+    render(<Select dropdown={() => 
+      <div>Test</div>
+    } >
+    </Select>);
   });
 });

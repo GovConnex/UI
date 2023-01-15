@@ -12,8 +12,9 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
   /**
    * renders the radio in different variants
+   * @default `default`
    */
-  variant: "default" | "card" | "list" | "plain";
+  variant?: "default" | "card" | "list" | "plain";
 
   /**
    * renders a text label next to the radio

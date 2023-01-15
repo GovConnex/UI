@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  children:<Typography variant="heading" size="lg">box</Typography>,
   onClick:() => {console.log("test")}
 };
 
@@ -35,7 +35,7 @@ Theme.args = {
 
   backgroundColor:"theme.brand.300",
   cs:{border:"1px solid theme.brand.300"},
-  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  children:<Typography variant="heading" size="lg">box</Typography>,
   onClick:() => {console.log("test")}
 };
 
@@ -45,7 +45,7 @@ Padding.args = {
   pt:7,
   pb:"sm",
   width:"100%",
-  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  children:<Typography variant="heading" size="lg">box</Typography>,
   onClick:() => {console.log("test")}
 };
 
@@ -57,9 +57,9 @@ Padding.args = {
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
-  md:{padding:"spacing.xl"},
   cs: {sm:{backgroundColor:"primary.brand.300"}},
-  children:<Typography variant="heading" size="lg">Child in box</Typography>,
+  md:{padding:"spacing.xl", backgroundColor:"primary.brand.500"},
+  children:<Typography variant="heading" size="lg">box</Typography>,
 };
 
 

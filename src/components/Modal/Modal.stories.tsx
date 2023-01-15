@@ -25,7 +25,6 @@ const Template: ComponentStory<typeof Modal> = (args) => {
           {args.children}
         </StyledModalContent>
       </Modal>
-      {/* <div style={{ height: "300em" }} /> */}
     </div>
   );
 };

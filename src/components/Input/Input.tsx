@@ -4,6 +4,7 @@ import {
   StyledInputContainer,
   StyledAdornment,
   StyledInput,
+  StyledInputWrapper,
 } from "./Input.styles";
 
 export interface InputProps
@@ -50,7 +51,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   } = props;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <StyledInputWrapper>
+
       {label ? (
         <Typography noMargin variant="label" size="md">
           {label}
@@ -72,7 +74,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           error={!!error}
           ref={ref}
           {...rest}
-        ></StyledInput>
+          ></StyledInput>
 
         {endAdornment ? (
           <StyledAdornment disabled={props.disabled || false} position="right">
@@ -83,15 +85,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
       {error || hint ? (
         <Typography
-          variant="body"
-          color={error ? "secondary.red.500" : "primary.neutral.400"}
-          size="sm"
-          noMargin
+        variant="body"
+        color={error ? "secondary.red.500" : "primary.neutral.400"}
+        size="sm"
+        noMargin
         >
           {error || hint}
         </Typography>
       ) : null}
-    </div>
+      </StyledInputWrapper>
   );
 });
 
