@@ -1,8 +1,7 @@
 import React from "react";
 import { customStyles } from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
-import type * as CSS from "csstype";
-import GlobalTheme, { Spacing } from "../../theming/global-theme.interface";
+import { Spacing } from "../../theming/global-theme.interface";
 
 
 export interface BoxProps extends React.HTMLAttributes<HTMLElement>{
@@ -18,17 +17,58 @@ export interface BoxProps extends React.HTMLAttributes<HTMLElement>{
   
 }
 
-// CHANGE: add a new interface
-export interface tes {
+export interface ExtendedBoxProps extends BoxProps {
   pt: number | keyof Spacing;
   pb: number | keyof Spacing;
+
+  // padding
+  p: number | keyof Spacing;
+
+  pl: number | keyof Spacing;
+  pr: number | keyof Spacing;
+  px: number | keyof Spacing;
+  py: number | keyof Spacing;
+
+  paddingX: number | keyof Spacing;
+  paddingY: number | keyof Spacing;
+
+  // margin
+  m: number | keyof Spacing;
+  mt: number | keyof Spacing;
+  mb: number | keyof Spacing;
+  ml: number | keyof Spacing;
+  mr: number | keyof Spacing;
+  mx: number | keyof Spacing;
+  my: number | keyof Spacing;
+  marginX: number | keyof Spacing;
+  marginY: number | keyof Spacing;
+
+  // width
+  w: number | keyof Spacing;
+  width: number | keyof Spacing | string;
+
+  // height
+  h: number | keyof Spacing;
+  height: number | keyof Spacing | string;
+
+  // background
+  bg: string;
+  backgroundColor: string;
+
+  // breakpoints
+  sm?: customStyles;
+  md?: customStyles;
+  lg?: customStyles;
+
+  direction: "row" | "column" | "row-reverse" | "column-reverse";
 }
 
-export interface LP extends tes, BoxProps {}
  
 /**
  *
- * `Box` is a extendable div component 
+ * `Box` is a extendable div component.
+ *  [WARNING] experimental and does not support onClick, 
+ *  and other props that are passed to the div element.
  *
  * Demo: 
  * 
@@ -39,9 +79,8 @@ export interface LP extends tes, BoxProps {}
  *  - [Box Docs](https://ui.govconnex.com/?path=/docs/components-box--example/)
  *
  */
-
-const Box = React.forwardRef<HTMLDivElement,LP>(function Box(
-  props: LP,
+const Box = React.forwardRef<HTMLDivElement,ExtendedBoxProps>(function Box(
+  props: ExtendedBoxProps,
   ref
 ) {
 

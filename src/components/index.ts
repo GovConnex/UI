@@ -1,7 +1,6 @@
 export { default as ThemeProvider } from "./ThemeProvider";
 export { default as TextArea } from "./TextArea";
 export { default as Banner } from "./Banner";
-export { default as ToggleButton } from "./ToggleButton";
 export { default as Radio } from "./Radio";
 export { default as DropdownController } from "./DropdownController";
 export { default as Select } from "./Select";

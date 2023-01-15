@@ -32,6 +32,7 @@ Example.args = {
 export const Theme = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Theme.args = {
+
   backgroundColor:"theme.brand.300",
   cs:{border:"1px solid theme.brand.300"},
   children:<Typography variant="heading" size="lg">Child in box</Typography>,
@@ -43,9 +44,6 @@ export const Padding = Template.bind({});
 Padding.args = {
   pt:7,
   pb:"sm",
-  // pt:"spacing.md",
-  // px:3,
-  // cs:{padding:"spacing.xl"},
   width:"100%",
   children:<Typography variant="heading" size="lg">Child in box</Typography>,
   onClick:() => {console.log("test")}
