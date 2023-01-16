@@ -7,10 +7,10 @@ export interface CardProps {
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  (props: CardProps, ref) => {
+  ({ focused, children, ...rest}, ref) => {
     return (
-      <StyledCard ref={ref} focused={!!props.focused}>
-        {props.children}
+      <StyledCard ref={ref} focused={!!focused} {...rest}>
+        {children}
       </StyledCard>
     );
   }

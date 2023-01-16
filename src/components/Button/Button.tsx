@@ -1,10 +1,14 @@
 import React, { ComponentType } from "react";
 import { Spacing, TypographySize } from "../../theming/global-theme.interface";
+import Typography from "../Typography";
 import {
   StyledButton,
   StyledAdornment,
   StyledTypography,
+  StyledSpinner,
 } from "./Button.styles";
+import styled, {keyframes} from 'styled-components';
+
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
 export type ButtonSize = "sm" | "md" | "lg";
@@ -21,10 +25,12 @@ export interface ButtonProps
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   as?: string | ComponentType<any>;
+  title?: string;
+  isLoading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, shape, size, iconOnly, ...props }, ref) => {
+  ({ variant, shape, size, iconOnly, title, isLoading, ...props }, ref) => {
     const typographyMap: Record<ButtonSize, keyof TypographySize> = {
       lg: "md",
       md: "sm",
@@ -46,21 +52,28 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         iconOnly={iconOnly}
         iconOnlySize={iconOnlySizeMap[size || "md"]}
         shape={shape || "rect"}
+        isLoading={isLoading}
         {...props}
       >
-        {props.startAdornment ? (
+        {props.startAdornment && !isLoading ? (
           <StyledAdornment>{props.startAdornment}</StyledAdornment>
         ) : null}
 
-        {iconOnly ? (
-          props.children
-        ) : (
-          <StyledTypography variant="label" size={typographyMap[size || "md"]}>
-            {props.children}
-          </StyledTypography>
-        )}
+        {isLoading ? <StyledSpinner variant={variant ?? "primary"} /> : null}
 
-        {props.endAdornment ? (
+        {iconOnly && !isLoading ? (
+          props.children
+        ) : !isLoading ? (
+          <Typography
+            as="span"
+            variant="label"
+            size={typographyMap[size || "md"]}
+          >
+            {props.children || title}
+          </Typography>
+        ) : null}
+
+        {props.endAdornment && !isLoading ? (
           <StyledAdornment>{props.endAdornment}</StyledAdornment>
         ) : null}
       </StyledButton>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { ButtonVariant, ButtonShape, ButtonSize } from "./Button";
 import { Spacing } from "../../theming/global-theme.interface";
 import Typography from "../Typography";
@@ -22,7 +22,9 @@ const StyledButton = styled.button<{
   iconOnlySize: keyof Spacing;
   shape: ButtonShape;
   size: ButtonSize;
+  isLoading:Boolean;
 }>`
+position: relative;
   align-items: center;
   cursor: pointer;
   padding: ${(props) => `0 ${props.theme.spacing.md}`};
@@ -65,7 +67,7 @@ const StyledButton = styled.button<{
     outline-offset: ${({ theme }) => `${theme.borderWidth.lg};`}
   }
 
-  ${({ theme, variant }) =>
+  ${({ theme, variant, isLoading }) =>
     variant === "primary" &&
     `
     color: ${theme.core.content.contentInversePrimary};
@@ -80,7 +82,7 @@ const StyledButton = styled.button<{
     }
 
     &:disabled {
-      background-color: ${theme.extended.state.disabled};
+      background-color: ${isLoading ? theme.primary.brand[500] : theme.extended.state.disabled};
     }
   `}
 
@@ -121,5 +123,25 @@ const StyledButton = styled.button<{
 const StyledTypography = styled(Typography)`
   cursor: pointer;
 `;
+const spinner = keyframes`
+  to {transform: rotate(360deg);}
+`;
 
-export { StyledButton, StyledAdornment, StyledTypography };
+const StyledSpinner = styled.div<{variant:ButtonVariant}>`
+ &:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid ${({ theme, variant }) => variant === "primary" ? theme.extended.state.primaryBase : theme.extended.state.secondaryBase};
+    border-top-color: ${({ theme , variant}) => variant === "primary" ? theme.extended.state.secondaryBase : theme.extended.state.primaryBase};
+    animation: ${spinner} .6s linear infinite;
+`;
+
+export { StyledButton,StyledSpinner, StyledAdornment, StyledTypography };
