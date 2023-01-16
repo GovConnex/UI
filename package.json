@@ -7,8 +7,8 @@
     "prepublishOnly": "rm -rf dist && rollup -c",
     "test": "jest",
     "prestart": "yarn run build:tokens",
-    "start": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook",
     "prepare": "yarn run build:tokens",
     "new": "plop"
   },
