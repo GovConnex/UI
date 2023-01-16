@@ -18,6 +18,7 @@ export interface ModalProps {
   enableClickAway?: boolean;
   disablePortal?: boolean;
   disableScrollLock?: boolean;
+  width?: string;
 };
 
 const ScrollWrapper: React.FC<{
@@ -47,7 +48,7 @@ const Modal = (props: ModalProps) => {
               <ClickAwayListener
                 onClickAway={props.enableClickAway ? props.onClose : () => null}
               >
-                <StyledModal>
+                <StyledModal style={{ width: props.width }}>
                   {props.children}
                 </StyledModal>
               </ClickAwayListener>
