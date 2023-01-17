@@ -63,6 +63,26 @@ Maecenas porta aliquet posuere. Phasellus ullamcorper at sem non congue. Proin m
   },
 };
 
+export const LongDescriptionTruncated = Template.bind({});
+LongDescriptionTruncated.args = {
+  truncateDescription: 140,
+  issue: {
+    id: "123123123",
+    title: "My test issue",
+    description: `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu diam, imperdiet auctor ultrices eu, vulputate vitae nisl. Vestibulum at congue sapien. Sed faucibus mauris ante, in commodo purus lobortis et. Nunc volutpat turpis lacus, in pharetra massa ultricies vitae. Integer rhoncus libero eget vestibulum rhoncus. Quisque vehicula risus a gravida consectetur. Sed congue molestie mauris, vitae rutrum erat accumsan sit amet. Aliquam efficitur efficitur enim et aliquam. Proin sed auctor lectus. Integer et enim sit amet tortor hendrerit blandit et at est.
+
+Quisque commodo leo placerat urna faucibus, eget rhoncus dolor consequat. Cras tortor tortor, pellentesque eget blandit non, ultrices in orci. Donec efficitur, sem a congue pharetra, enim purus venenatis purus, non porta risus arcu at ex. Etiam ullamcorper consequat tincidunt. Etiam semper vel mauris nec congue. Donec nec suscipit orci. Phasellus eget lectus erat. Vivamus turpis erat, malesuada vitae turpis ac, blandit auctor diam.
+
+Maecenas porta aliquet posuere. Phasellus ullamcorper at sem non congue. Proin mattis eu risus at feugiat. Donec non felis diam. Nunc a tincidunt purus. Donec tempor id mauris a gravida. Aenean luctus convallis maximus. Donec tincidunt euismod enim, a egestas lacus scelerisque et. Nullam eu nunc arcu. Curabitur viverra odio ac fringilla pulvinar.
+
+`,
+    shared: false,
+    userLinks: [],
+    notificationsEnabled: true,
+  },
+};
+
 export const NonMemberHasUsersLocked = Template.bind({});
 NonMemberHasUsersLocked.args = {
   accessLevel: "non_member",

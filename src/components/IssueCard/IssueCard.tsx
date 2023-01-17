@@ -47,6 +47,7 @@ export interface IssueCardProps {
   menuContainer?: string | HTMLElement | null;
   pinned: boolean;
   togglePinned: () => void;
+  truncateDescription?: number;
 }
 
 const IssueCard = ({
@@ -61,6 +62,7 @@ const IssueCard = ({
   menuContainer,
   pinned,
   togglePinned,
+  truncateDescription,
 }: IssueCardProps) => {
   const { id, title, description, userLinks, shared } = issue;
   const [isMenuShown, setMenuShown] = useState(false);
@@ -185,7 +187,10 @@ const IssueCard = ({
         )}
       </Top>
       <Description variant="body" size="md" data-cy="issue-card-description">
-        {description}
+        {truncateDescription && description?.length >= truncateDescription
+          ? description.slice(0, truncateDescription).trim() + "..."
+          : description
+        }
       </Description>
       <Avatars>
         {userLinks?.map((link, idx) =>

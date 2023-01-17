@@ -43,6 +43,7 @@ const StyledTextArea = styled.textarea<{ error: boolean, fullWidth: boolean, ado
 
   &:focus {
     outline: none;
+    border-width: 2px;
     border-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
   }
 
@@ -53,6 +54,10 @@ const StyledTextArea = styled.textarea<{ error: boolean, fullWidth: boolean, ado
 
   &:disabled::placeholder{
     color:${theme.extended.state.disabled};
+  }
+
+  &:hover {
+    background-color: ${theme.extended.state.secondaryHover};
   }
   `
   )
