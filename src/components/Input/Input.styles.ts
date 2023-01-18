@@ -17,8 +17,9 @@ const StyledInputContainer = styled.div<{ fullWidth: boolean }>(({ theme, fullWi
   align-items:center;
   `
 )
-const StyledInputWrapper = styled.div(({ theme }) =>
+const StyledInputWrapper = styled.div<{ fullWidth: boolean }>(({ theme, fullWidth }) =>
   `
+  width: ${fullWidth ? "100%" : "fit-content"};
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.xs};
@@ -45,7 +46,7 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   background-color: ${theme.primary.base.white};
 
   min-height: 22px;
-  
+
   outline: none;
 
   &:focus {
@@ -60,7 +61,7 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   &:hover {
     background-color: ${theme.extended.state.secondaryHover};
   }
-  
+
   &:disabled{
     background-color:${theme.core.background.bgSecondary};
     cursor: no-drop;

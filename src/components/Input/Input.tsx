@@ -51,7 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   } = props;
 
   return (
-      <StyledInputWrapper>
+      <StyledInputWrapper fullWidth={!!fullWidth}>
 
       {label ? (
         <Typography noMargin variant="label" size="md">
