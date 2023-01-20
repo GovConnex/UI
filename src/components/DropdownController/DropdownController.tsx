@@ -15,6 +15,11 @@ export interface DropdownControllerProps {
   overlay: (close: () => void) => React.ReactNode;
 
   /**
+   * overlayWidth width of the overlay
+   */
+  overlayWidth?: string;
+
+  /**
    * z-index of the overlay
    */
   zIndex?: number;
@@ -28,7 +33,7 @@ export interface DropdownControllerProps {
  *
  */
 const DropdownController = (props: DropdownControllerProps) => {
-  const { rootButton, overlay, zIndex } = props;
+  const { rootButton, overlay, zIndex, overlayWidth } = props;
   const [visible, setVisibility] = React.useState(false);
 
   const referenceRef =
@@ -68,7 +73,7 @@ const DropdownController = (props: DropdownControllerProps) => {
     <div
       ref={popperRef}
       {...attributes.popper}
-      style={{ width: selectorWidth ||  "100%", zIndex: zIndex || 5, ...styles.popper }}
+      style={{ width: overlayWidth || selectorWidth ||  "100%", zIndex: zIndex || 5, ...styles.popper }}
     >
       {visible ? overlay(() => setVisibility(false)) : null}
     </div>
