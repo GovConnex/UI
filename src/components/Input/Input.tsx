@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import Typography from "../Typography";
 import {
   StyledInputContainer,
@@ -35,6 +35,46 @@ export interface InputProps
    */
   error?: string;
 }
+
+export const debounce = (fn: Function, ms: number) => {
+  let timeoutId: NodeJS.Timeout;
+  return (...args: any[]) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), ms);
+  };
+};
+
+// Expand input props to add delay prop
+export interface DebouncedInputProps extends InputProps {
+  delayMs?: number;
+}
+
+const noop = () => {};
+
+/**
+ * Variation of `Input` that only fires change events after X milliseconds (X=delayMs) of no change.
+ */
+export const DebouncedInput = ({value, onChange = noop, delayMs = 500, ...props}: DebouncedInputProps) => {
+  const [inputValue, setInputValue] = useState(value);
+  const debouncedChange = useMemo(() => debounce(onChange as Function, delayMs), [onChange]);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  useEffect(() => {
+    // If value has changed
+    if (inputValue !== value) {
+      debouncedChange(inputValue);
+    }
+  // Only fire if inputValue changes.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputValue]);
+
+  return (
+    <Input value={inputValue} onChange={e => setInputValue(e.target.value)} {...props} />
+  );
+};
 
 /**
  * `Input` is a extendable input component

@@ -25,7 +25,7 @@ export { default as DataTable } from "./DataTable";
 export { default as SvgIcon } from "./SvgIcon";
 export { default as BackgroundIcon } from "./BackgroundIcon";
 export { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export { default as Input } from "./Input";
+export { default as Input, DebouncedInput, debounce } from "./Input";
 export { default as Button } from "./Button";
 export { default as Menu } from "./Menu";
 export * from "./MenuList";
