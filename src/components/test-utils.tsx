@@ -1,5 +1,6 @@
 import React, {FC, ReactElement} from 'react'
 import {render, RenderOptions} from '@testing-library/react'
+import "@testing-library/jest-dom";
 import ThemeProvider from "./ThemeProvider";
 
 const AllTheProviders: FC = ({children}) => {
