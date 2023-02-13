@@ -1,4 +1,5 @@
 export { default as ThemeProvider } from "./ThemeProvider";
+export { default as NewsletterCard } from "./NewsletterCard";
 export { default as TextArea } from "./TextArea";
 export { default as Banner } from "./Banner";
 export { default as Radio } from "./Radio";
