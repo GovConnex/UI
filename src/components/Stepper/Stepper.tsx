@@ -49,7 +49,7 @@ const Stepper = ({activeStep=0, steps=[]}: StepperProps) => {
 
       {steps.map((item, index) => (
         <>
-          <BulletWrapper>
+          <BulletWrapper key={item.label}>
 
             <StyledBullet
               disabled={item.disabled ?? false}

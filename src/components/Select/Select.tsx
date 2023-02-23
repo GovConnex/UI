@@ -76,6 +76,7 @@ const Select = (props: SelectProps) => {
     title,
     ...rest
   } = props;
+  
   return (
     <SelectWrapper>
       {label ? (

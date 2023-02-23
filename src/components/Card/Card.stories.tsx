@@ -17,6 +17,15 @@ export const Focused = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Focused.args = {
   focused: true,
+  padding: "xs",
+  children: <div>Hello!</div>,
+};
+export const Selected = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Selected.args = {
+  selected: true,
+  padding: "xs",
+  hoverStyle:"regress",
   children: <div>Hello!</div>,
 };
 

@@ -85,6 +85,20 @@ position: relative;
       background-color: ${isLoading ? theme.primary.brand[500] : theme.extended.state.disabled};
     }
   `}
+  ${({ theme, variant, isLoading }) =>
+    variant === "danger" &&
+    `
+    color: ${theme.core.content.contentInversePrimary};
+    background-color: ${theme.foundation.error};
+
+    &:hover {
+      background-color: ${theme.foundation.error};
+    }
+
+    &:disabled {
+      background-color: ${isLoading ? theme.foundation.error : theme.extended.state.disabled};
+    }
+  `}
 
   ${({ theme, variant }) =>
     variant === "secondary" &&
@@ -139,8 +153,14 @@ const StyledSpinner = styled.div<{variant:ButtonVariant}>`
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid ${({ theme, variant }) => variant === "primary" ? theme.extended.state.primaryBase : theme.extended.state.secondaryBase};
-    border-top-color: ${({ theme , variant}) => variant === "primary" ? theme.extended.state.secondaryBase : theme.extended.state.primaryBase};
+    border: 2px solid ${({ theme, variant }) => 
+    variant === "primary" ? theme.extended.state.primaryBase :
+    variant === "danger" ? theme.foundation.error
+    : theme.extended.state.secondaryBase};
+    border-top-color: ${({ theme , variant}) => 
+    variant === "primary" ? theme.extended.state.secondaryBase :
+    variant === "danger" ? theme.extended.state.secondaryBase 
+    : theme.extended.state.primaryBase};
     animation: ${spinner} .6s linear infinite;
 `;
 

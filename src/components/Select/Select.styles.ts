@@ -46,7 +46,7 @@ const MenuWrapepr = styled.div<{ maxHeight: string | null }>
         overflow: hidden;
 
         gap: ${theme.spacing.xs};
-        padding: ${theme.spacing.xs} ${theme.spacing.sm};
+        padding: ${theme.spacing.xs} ${theme.spacing.xs};
         display: flex;
         flex-direction: column;
         box-sizing: border-box;

@@ -1,30 +1,63 @@
 import styled from "styled-components";
+import { Spacing } from "../../theming/global-theme.interface";
 import { shadowFromProp } from "../style-utils";
 
 const StyledCard = styled.div<{
   focused: boolean;
-}>`
-  background: ${(props) => props.theme.core?.background?.bgPrimary};
-  padding: ${(props) =>
-    `calc(${props.theme.spacing.sm}${
-      props.focused ? ` - ${props.theme.borderWidth.md}` : ""
+  padding?: keyof Spacing;
+  selected?: boolean;
+  hoverStyle?: "none" | "shadow" | "regress"
+}>
+  (({ theme, hoverStyle, focused, selected, padding }) =>
+    `
+  background: ${theme.core?.background?.bgPrimary};
+  padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${focused || selected ? ` - ${theme.borderWidth.md}` : ""
     })`};
-  margin-bottom: ${(props) => props.theme.spacing.xs};
+  margin-bottom: ${theme.spacing.xs};
   transition: border-color 300ms ease-out;
-  border-width: ${(props) =>
-    props.focused ? props.theme.borderWidth.lg : props.theme.borderWidth.md};
+  border-width: ${focused || selected ? theme.borderWidth.lg : theme.borderWidth.md};
   border-style: solid;
-  border-color: ${(props) =>
-    props.focused
-      ? props.theme.core?.border?.borderFocus
-      : props.theme.core?.border?.borderLight};
-  border-radius: ${(props) => props.theme.borderRadius.xs};
-  box-shadow: ${(props) =>
-    props.focused ? shadowFromProp(props.theme.boxShadow.sm) : "none"};
+  border-color: ${focused || selected
+      ? theme.core?.border?.borderFocus
+      : theme.core?.border?.borderLight};
+  border-radius: ${theme.borderRadius.xs};
+  box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
 
-  &:hover {
-    box-shadow: ${(props) => shadowFromProp(props.theme.boxShadow.xs)};
-  }
-`;
+  ${hoverStyle === "shadow" ? `
+      &:hover { box-shadow: ${shadowFromProp(theme.boxShadow.xs)}; }; `:null};
+      
+  ${hoverStyle === "regress" ? `
+      &:hover { background-color: ${theme.extended.state.secondaryHover}; }; `: null};
+        
+  `
+  );
+
+// const StyledCard = styled.div<{
+//   cs?:any,
+//   focused: boolean;
+//   padding?: string;
+//   theme: any;
+// }>((props) =>
+// addCustomStyles(props),
+// ({ theme, focused }) =>
+// `
+// background: ${theme.core?.background?.bgPrimary};
+// padding: ${`calc(${theme.spacing.sm}${focused ? ` - ${theme.borderWidth.md}` : ""
+//     })`};
+//   margin-bottom: ${theme.spacing.xs};
+//   transition: border-color 300ms ease-out;
+//   border-width: ${focused ? theme.borderWidth.lg : theme.borderWidth.md};
+//     border-style: solid;
+//     border-color: ${focused
+//       ? theme.core?.border?.borderFocus
+//       : theme.core?.border?.borderLight};
+//       border-radius: ${theme.borderRadius.xs};
+//       box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
+        
+//         &:hover {
+//           box-shadow: ${shadowFromProp(theme.boxShadow.xs)};
+//         }
+//         `
+// );
 
 export default StyledCard;

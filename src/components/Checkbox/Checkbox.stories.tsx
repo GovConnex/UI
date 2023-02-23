@@ -30,6 +30,16 @@ export const CheckOnly = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 CheckOnly.args = {
 };
+export const Indeterminate = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Indeterminate.args = {
+  indeterminate: true
+};
+export const HoverStyle = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+HoverStyle.args = {
+  withHoverStyle: true
+};
 
 Example.parameters = {
  design: {

@@ -1,16 +1,14 @@
 import React, { ComponentType } from "react";
 import { Spacing, TypographySize } from "../../theming/global-theme.interface";
 import Typography from "../Typography";
-import {
-  StyledButton,
-  StyledAdornment,
-  StyledTypography,
-  StyledSpinner,
-} from "./Button.styles";
-import styled, {keyframes} from 'styled-components';
+import { StyledButton, StyledAdornment, StyledSpinner } from "./Button.styles";
 
-
-export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "text"
+  | "danger";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 
@@ -29,52 +27,70 @@ export interface ButtonProps
   isLoading?: boolean;
 }
 
+const typographyMap: Record<ButtonSize, keyof TypographySize> = {
+  lg: "md",
+  md: "sm",
+  sm: "sm",
+};
+
+const iconOnlySizeMap: Record<ButtonSize, keyof Spacing> = {
+  lg: "xl",
+  md: "lg",
+  sm: "md",
+};
+/**
+ * `Button` extends the native `button`
+ * @todo fix `as` prop to allow for `Link` component without type error
+ */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, shape, size, iconOnly, title, isLoading, ...props }, ref) => {
-    const typographyMap: Record<ButtonSize, keyof TypographySize> = {
-      lg: "md",
-      md: "sm",
-      sm: "sm",
-    };
-
-    const iconOnlySizeMap: Record<ButtonSize, keyof Spacing> = {
-      lg: "xl",
-      md: "lg",
-      sm: "md",
-    };
-
+  (
+    {
+      variant,
+      shape,
+      size,
+      title,
+      children,
+      endAdornment,
+      startAdornment,
+      iconOnly = false,
+      isLoading = false,
+      disabled = false,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <StyledButton
         ref={ref}
-        disabled={!!props.disabled}
+        disabled={disabled || isLoading}
         variant={variant || "primary"}
         size={size || "md"}
         iconOnly={iconOnly}
         iconOnlySize={iconOnlySizeMap[size || "md"]}
         shape={shape || "rect"}
         isLoading={isLoading}
-        {...props}
+        {...rest}
       >
-        {props.startAdornment && !isLoading ? (
-          <StyledAdornment>{props.startAdornment}</StyledAdornment>
+        {startAdornment && !isLoading ? (
+          <StyledAdornment>{startAdornment}</StyledAdornment>
         ) : null}
 
         {isLoading ? <StyledSpinner variant={variant ?? "primary"} /> : null}
 
         {iconOnly && !isLoading ? (
-          props.children
+          children
         ) : !isLoading ? (
           <Typography
             as="span"
             variant="label"
             size={typographyMap[size || "md"]}
           >
-            {props.children || title}
+            {children || title}
           </Typography>
         ) : null}
 
-        {props.endAdornment && !isLoading ? (
-          <StyledAdornment>{props.endAdornment}</StyledAdornment>
+        {endAdornment && !isLoading ? (
+          <StyledAdornment>{endAdornment}</StyledAdornment>
         ) : null}
       </StyledButton>
     );

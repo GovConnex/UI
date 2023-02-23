@@ -59,6 +59,11 @@ const Accordion = (props: AccordionProps) => {
     );
   }
 
+  function handleChild(e:any) {
+    e.stopPropagation();
+    console.log('child');
+  }
+
   return (
     <StyledAccordion>
       <Root onClick={handleClick} onMouseDown={handleMousedown}>
@@ -67,9 +72,11 @@ const Accordion = (props: AccordionProps) => {
         {endAdornment ? (
           endAdornment
         ) : (
+          <div onClick={handleChild}>
           <Chevron open={open}>
             <SvgIcon icon="chevron-down" />
           </Chevron>
+          </div>
         )}
       </Root>
 

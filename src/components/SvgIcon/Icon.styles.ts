@@ -4,7 +4,10 @@ import { SizeProp, RotateProp } from "@fortawesome/fontawesome-svg-core";
 const sizeMap = {
   "xs": "vertical-align: 0em; font-size: 0.75em; line-height: 0.0833333337em;",
   "lg": "vertical-align: -0.2em; font-size: 1.25em; line-height: 0.05em;",
+  "xl": "vertical-align: -0.2em; font-size: 1.25em; line-height: 0.05em;",
   "sm": "vertical-align: -0.0714285705em; font-size: 0.875em; line-height: 0.0714285718em;",
+  "2xs": "vertical-align: -0.12em; font-size: 2em;",
+  "2xl": "vertical-align: -0.12em; font-size: 2em;",
   "1x": "vertical-align: -0.12em; font-size: 1em;",
   "2x": "vertical-align: -0.12em; font-size: 2em;",
   "3x": "vertical-align: -0.12em; font-size: 3em;",
