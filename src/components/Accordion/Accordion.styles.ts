@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const StyledAccordion = styled.div`
     ${({ theme }) => `
+    background-color: ${theme.core.background.bgPrimary};
     border: 1px solid ${theme.core.border.borderLight};
-    border-radius: ${theme.borderRadius.xs};
+    border-radius: ${theme.borderRadius.sm};
     overflow: hidden;
-    margin: ${theme.spacing.sm} 0;
+    margin-bottom: ${theme.spacing.xs};
     `};
     `;
 
@@ -32,7 +33,7 @@ const Root = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    position: relative; 
     `};
     `;
 

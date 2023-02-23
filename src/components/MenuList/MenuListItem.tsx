@@ -8,7 +8,7 @@ import StyledMenuListItem, {
 
 interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  onSelect?: () => void;
+  onSelect?: (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   button?: boolean;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
@@ -32,9 +32,9 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   endAdornment,
   ...props
 }) => {
-  const handleClick = () => {
+  const handleClick = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!disabled && onSelect) {
-      onSelect();
+      onSelect(e);
     }
   };
 
@@ -45,7 +45,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography variant="body" size="md" noMargin>{children}</Typography>
+        <Typography as="span" variant="body" size="md" noMargin>{children}</Typography>
       </StyledMenuListItemStart>
       <StyledMenuListItemEnd>{endAdornment}</StyledMenuListItemEnd>
     </StyledMenuListItem>

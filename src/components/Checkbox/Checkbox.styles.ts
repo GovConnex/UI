@@ -28,13 +28,22 @@ export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
   ` : `
     background-color: ${theme.primary.base.white};
     border: ${theme.borderWidth.md} solid ${theme.primary.neutral["200"]};
-  `}
-`;
+    `}
+    `;
 
-export const StyledCheckboxLabel = styled.label`
-  align-items: center;
-  display: flex;
-  cursor: pointer;
-  gap: ${props => props.theme.spacing.xs};
-  position: relative;
+export const StyledCheckboxLabel = styled.label<{ withHoverStyle: boolean }>`
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    gap: ${props => props.theme.spacing.xs};
+    position: relative;
+    
+    ${({ withHoverStyle, theme }) => withHoverStyle ? `
+    padding: ${theme.spacing.xs};
+    border-radius: 5px;
+  &:hover {
+    background-color: ${theme.primary.neutral[100]};
+  }
+  `: ""}
+    
 `;

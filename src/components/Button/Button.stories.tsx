@@ -78,3 +78,8 @@ IconButton.args = {
   iconOnly: true,
   children: <Icon icon={faBook} />,
 };
+export const IsLoading = Template.bind({});
+IsLoading.args = {
+  isLoading: true,
+  children: <Icon icon={faBook} />,
+};
