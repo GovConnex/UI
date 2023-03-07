@@ -1,3 +1,4 @@
+package-lock.json
 dist
 node_modules
 storybook-static
@@ -143,5 +144,5 @@ fabric.properties
 /pythonEnvs/
 
 
-# Packed files 
+# Packed files
 *.tgz
