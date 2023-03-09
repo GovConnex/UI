@@ -61,7 +61,6 @@ const Accordion = (props: AccordionProps) => {
 
   function handleChild(e:any) {
     e.stopPropagation();
-    // console.log('child');
   }
 
   return (
