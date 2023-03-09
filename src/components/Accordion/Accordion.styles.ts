@@ -27,7 +27,7 @@ const Chevron = styled.div<{ open: boolean }>`
 
 const Root = styled.div`
     ${({ theme }) => `
-    padding: ${theme.spacing.xs} ${theme.spacing.sm};
+    padding: 13.5px ${theme.spacing.sm};
     cursor: pointer;
     user-select: none;
     display: flex;
