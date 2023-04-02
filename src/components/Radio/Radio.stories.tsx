@@ -2,6 +2,8 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Radio from "./Radio";
 import { withDesign } from 'storybook-addon-designs';
+import {faBook} from "@fortawesome/pro-solid-svg-icons";
+import Icon from "../Icon";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -50,6 +52,15 @@ Plain.args = {
   label:"Label",
   description: "Description"
 };
+
+export const IconRadio = Template.bind({});
+
+IconRadio.args = {
+  variant: "card",
+  label:"Label",
+  description: "Description",
+  startAdornment: <Icon icon={faBook} />
+}
 
 
 Example.parameters = {
