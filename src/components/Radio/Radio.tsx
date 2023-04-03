@@ -45,7 +45,7 @@ const Radio = (props: RadioProps) => {
   return (
     <RadioLabel variant={variant}>
       <RadioWrapper checked={!!checked} variant={variant}>
-          <StyledAdornment>{startAdornment}</StyledAdornment>
+    {startAdornment ? <StyledAdornment>{startAdornment}</StyledAdornment> : null}
         {label ? (
           <RadioTextWrapper>
             <Typography as="span" variant="label" size="md">{label}</Typography>
