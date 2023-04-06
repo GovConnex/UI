@@ -106,7 +106,7 @@ const DataTable = ({
       manualPagination,
       initialState: {
         sortBy: initialSortBy || [],
-        pageIndex: manualPagination ? pageProp - 1 : 0,
+        pageIndex: manualPagination && pageProp ? pageProp - 1 : 0,
         pageSize: manualPagination ? pageSizeProp : 25,
       },
     },
