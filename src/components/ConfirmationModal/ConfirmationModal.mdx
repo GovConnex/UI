@@ -1,0 +1,49 @@
+# ConfirmationModal
+
+[Source code](https://github.com/GovConnex/UI/tree/main/src/components/ConfirmationModal)
+
+## Overview
+`ConfirmationModal` is a reusable, customizable modal component for displaying confirmation prompts to users. It features a background icon, text content, and configurable buttons for handling user actions.
+
+## Usage
+
+Here is a simple example of how to use `ConfirmationModal`
+
+```jsx
+import ConfirmationModal from './ConfirmationModal';
+
+<ConfirmationModal
+  isOpen={true}
+  onClose={() => {}}
+  title="Delete Item"
+  text="Are you sure you want to delete this item? This action cannot be undone."
+  backgroundIcon="fas fa-trash-alt"
+  buttons={[
+    {
+      variant: 'secondary',
+      text: 'Cancel',
+      onClick: () => {},
+    },
+    {
+      variant: 'danger',
+      text: 'Delete',
+      onClick: () => {},
+    },
+  ]}
+/>
+```
+
+Props
+
+- `isOpen` (boolean): Determines whether the modal is open or not.
+- `onClose` (function): Callback function when the modal is closed.
+- `title` (string): The title displayed at the top of the modal.
+- `text` (string): The main content text of the modal.
+- `backgroundIcon` (string): The icon class to be used as the background icon.
+- `buttons` (array): An array of button configurations for handling user actions.
+
+Button Configuration
+
+- `variant` (string): The variant of the button (e.g., 'secondary', 'danger').
+- `text` (string): The text displayed on the button.
+- `onClick` (function): The callback function when the button is clicked.
