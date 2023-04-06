@@ -24,10 +24,26 @@ Here is a simple example of how to use `GridBox`:
 </GridBox>
 ```
 
+Here's an example with both column and row gap enabled (NOTE: column gap enabled by default):
+
+```jsx
+<GridBox mt="spacing.md" showColumnGap showRowGap>
+  // Child components go here
+</GridBox>
+```
+
+Here's an example with both gaps disabled:
+
+```jsx
+<GridBox mt="spacing.md" showColumnGap={false} showRowGap={false}>
+  // Child components go here
+</GridBox>
+```
+
 Example
 
 <Canvas>
-  <GridBox>
+  <GridBox showColumnGap showRowGap>
         <Box
           cs={{
             gridColumn: "span 2",

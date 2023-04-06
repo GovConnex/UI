@@ -1,7 +1,16 @@
 import React from "react";
 import Box, { ExtendedBoxProps } from "../Box/Box";
 
-export interface GridBoxProps extends ExtendedBoxProps {}
+export interface GridBoxProps extends ExtendedBoxProps {
+  /**
+   * If enabled (default), will use the appropriate breakpoint styles from the theme.
+   */
+  showColumnGap?: boolean;
+  /**
+   * If enabled (NOT default), will use the appropriate breakpoint styles from the theme.
+   */
+  showRowGap?: boolean;
+}
 
 /**
  * `GridBox` is a higher-order component that extends the functionality of the `Box` component.
@@ -24,20 +33,31 @@ export interface GridBoxProps extends ExtendedBoxProps {}
  * @param {object} [props.lg] - The styles to apply for the "lg" breakpoint.
  * @returns {React.ReactElement} The rendered GridBox component.
  */
-const GridBox: React.FC<GridBoxProps> = ({ children, sm, md, lg, ...rest }) => {
+const GridBox: React.FC<GridBoxProps> = ({
+  children,
+  showColumnGap = true,
+  showRowGap = false,
+  sm,
+  md,
+  lg,
+  ...rest
+}) => {
   const smStyles = {
     gridTemplateColumns: "repeat(4, 1fr)",
-    columnGap: "spacing.sm",
+    columnGap: showColumnGap ? "spacing.sm" : undefined,
+    rowGap: showRowGap ? "spacing.sm" : undefined,
     ...sm,
   };
   const mdStyles = {
     gridTemplateColumns: "repeat(8, 1fr)",
-    columnGap: "spacing.md",
+    columnGap: showColumnGap ? "spacing.md" : undefined,
+    rowGap: showRowGap ? "spacing.md" : undefined,
     ...md,
   };
   const lgStyles = {
     gridTemplateColumns: "repeat(12, 1fr)",
-    columnGap: "spacing.lg",
+    columnGap: showColumnGap ? "spacing.lg" : undefined,
+    rowGap: showRowGap ? "spacing.lg" : undefined,
     ...lg,
   };
 

@@ -17,8 +17,8 @@ export default {
   },
 } as ComponentMeta<typeof GridBox>;
 
-const Template: ComponentStory<typeof GridBox> = (args) => (
-  <GridBox {...args}>
+const SampleCells = () => (
+  <>
     <Box
       cs={{
         gridColumn: "span 2",
@@ -84,6 +84,12 @@ const Template: ComponentStory<typeof GridBox> = (args) => (
     >
       Span 3 rows
     </Box>
+  </>
+);
+
+const Template: ComponentStory<typeof GridBox> = (args) => (
+  <GridBox {...args}>
+    <SampleCells />
   </GridBox>
 );
 
@@ -91,3 +97,19 @@ export const Default = Template.bind({});
 Default.args = {};
 
 Default.parameters = {};
+
+export const AllGaps = Template.bind({});
+AllGaps.args = {
+  showColumnGap: true,
+  showRowGap: true,
+};
+
+AllGaps.parameters = {};
+
+export const NoGaps = Template.bind({});
+NoGaps.args = {
+  showColumnGap: false,
+  showRowGap: false,
+};
+
+NoGaps.parameters = {};
