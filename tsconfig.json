@@ -1,5 +1,7 @@
 {
-  "exclude": ["dist"],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "target": "es6",
     "esModuleInterop": true,
@@ -16,7 +18,12 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "src/types/*"
+      ]
+    }
   }
 }
-
