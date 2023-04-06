@@ -57,10 +57,12 @@ export interface DataTableProps {
   columns: any[];
   onChangeSort?: (column: any) => void;
   pageSize?: number;
-  page: number;
+  page?: number;
   initialSortBy?: any[];
   onPaginationChange?: (input: { page: any; pageSize: number }) => void;
   onSelectedIdsChange?: (ids: string[]) => void;
+  showPagination?: boolean;
+  showSelection?: boolean;
 }
 
 const DataTable = ({
@@ -74,6 +76,8 @@ const DataTable = ({
   onPaginationChange: onPaginationChangeProp, // If provided pagination is manual (for server side)
   onSelectedIdsChange: onSelectedIdsChangeProp,
   className,
+  showPagination = true,
+  showSelection = true,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -102,7 +106,7 @@ const DataTable = ({
       manualPagination,
       initialState: {
         sortBy: initialSortBy || [],
-        pageIndex: manualPagination ? pageProp - 1 : 0,
+        pageIndex: manualPagination && pageProp ? pageProp - 1 : 0,
         pageSize: manualPagination ? pageSizeProp : 25,
       },
     },
@@ -114,7 +118,7 @@ const DataTable = ({
     (hooks: any) => {
       hooks.visibleColumns.push((columns: any) => [
         /// Let's make a column for selection
-        {
+        showSelection !== false ? {
           id: "selection",
           // The header can use the table's getToggleAllRowsSelectedProps method
           // to render a checkbox
@@ -134,9 +138,9 @@ const DataTable = ({
           maxWidth: 0,
           minWidth: 40,
           width: 40,
-        },
+        } : null,
         ...columns,
-      ]);
+      ].filter(Boolean));
       hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
@@ -239,15 +243,18 @@ const DataTable = ({
           </GcxDataTableTbody>
         </GcxDataTable>
       </GcxDataTableWrapper>
-      {/*<div className={"govconnex-data-table-pagination"}>*/}
-      <GcxDataTablePagination
-        itemsPerPage={pageSize}
-        itemsPerPageOptions={[25, 50, 100]}
-        page={page}
-        totalItems={numResults || 0}
-        onItemsPerPageChange={(newPageSize) => onPaginationChange({ page, pageSize: newPageSize})}
-        onPageChange={(newPage) => onPaginationChange({ page: newPage, pageSize})}
-      />
+      
+      {/* Pagination shown by default, but can be hidden */}
+      {showPagination !== false && (
+        <GcxDataTablePagination
+          itemsPerPage={pageSize}
+          itemsPerPageOptions={[25, 50, 100]}
+          page={page}
+          totalItems={numResults || 0}
+          onItemsPerPageChange={(newPageSize) => onPaginationChange({ page, pageSize: newPageSize})}
+          onPageChange={(newPage) => onPaginationChange({ page: newPage, pageSize})}
+        />
+      )}
       {/*</div>*/}
     </GcxDataTableRoot>
   );

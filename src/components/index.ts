@@ -1,4 +1,5 @@
 export { default as ThemeProvider } from "./ThemeProvider";
+export { default as ConfirmationModal } from "./ConfirmationModal";
 export { default as TextArea } from "./TextArea";
 export { default as Banner } from "./Banner";
 export { default as Radio } from "./Radio";
@@ -28,5 +29,6 @@ export { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export { default as Input, DebouncedInput, debounce } from "./Input";
 export { default as Button } from "./Button";
 export { default as Menu } from "./Menu";
+export { default as GridBox } from "./GridBox";
 export * from "./MenuList";
 export * from "./List";

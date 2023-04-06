@@ -4,11 +4,18 @@ import { StyledGrid as Grid, StyledGridCell as GridCell } from "./Grid.styles";
 import { withDesign } from "storybook-addon-designs";
 import styled, { DefaultTheme } from "styled-components";
 
+// NOTE: this component is deprecated and will be removed in a future release.
+// Use the GridBox component instead.
+
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/Grid",
+  title: "Components/DEPRECATED-Grid",
   component: Grid,
   decorators: [withDesign],
+  parameters: {
+    notes:
+      "⚠️ This component is deprecated and will be removed in a future release.",
+  },
 } as ComponentMeta<typeof Grid>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args

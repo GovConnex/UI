@@ -30,7 +30,6 @@ export interface PaginationProps {
 };
 
 const Pagination = (props: PaginationProps) => {
-  console.log("Pagination props", props);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [showMenu, setShowMenu] = useState(false);
 

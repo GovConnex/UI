@@ -80,12 +80,29 @@ Example.args = {
   columns: DATA_TABLE_COLUMNS,
   pageSize: 25,
   page: 1,
-  numResults: 100
+  numResults: 100,
 };
 
 Example.parameters = {
-   design: {
-     type: "figma",
-     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=83%3A25768"
-   }
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=83%3A25768",
+  },
+};
+
+// Another example, but with one without pagination
+export const ExampleWithoutPagination = Template.bind({});
+ExampleWithoutPagination.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  showPagination: false,
+};
+
+// Another example, but with one without selection
+export const ExampleWithoutSelection = Template.bind({});
+ExampleWithoutSelection.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  showPagination: false,
+  showSelection: false,
 };
