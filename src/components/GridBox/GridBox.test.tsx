@@ -35,6 +35,6 @@ describe("GridBox", () => {
 
     expect(gridbox).toBeInTheDocument();
     expect(gridbox).toHaveStyle("display: grid");
-    expect(screen.getByText("Child 1")).toBeInTheDocument();
+    expect(screen.getByText("Child")).toBeInTheDocument();
   });
 });

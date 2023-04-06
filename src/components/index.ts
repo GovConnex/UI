@@ -29,5 +29,6 @@ export { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export { default as Input, DebouncedInput, debounce } from "./Input";
 export { default as Button } from "./Button";
 export { default as Menu } from "./Menu";
+export { default as GridBox } from "./GridBox";
 export * from "./MenuList";
 export * from "./List";
