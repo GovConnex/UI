@@ -1,7 +1,8 @@
 import React from "react";
 import {
   GcxDataTableHeaderCellRoot,
-  GcxDataTableHeaderIcon, GcxDataTableHeaderSortIcon,
+  GcxDataTableHeaderIcon,
+  GcxDataTableHeaderSortIcon,
 } from "./DataTable.styles";
 import Typography from "../Typography";
 
@@ -14,8 +15,12 @@ export interface HeaderCellProps {
 const DataTableHeaderCell = ({ column }: any) => {
   return (
     <GcxDataTableHeaderCellRoot>
-      <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} />
-      <Typography variant="label" size="md" noMargin>{column.displayName}</Typography>
+      {column.icon ? (
+        <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} />
+      ) : null}
+      <Typography variant="label" size="md" noMargin>
+        {column.displayName}
+      </Typography>
       {column.canSort && column.isSorted ? (
         <GcxDataTableHeaderSortIcon
           size={"xs"}
