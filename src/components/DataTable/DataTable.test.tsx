@@ -125,4 +125,27 @@ describe("DataTable", () => {
       (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
     ).toBe(3);
   });
+
+  test("renders the DataTable component without header icon", async () => {
+    const { getByText } = render(
+      <DataTable
+        data={DATA_TABLE_DATA}
+        columns={DATA_TABLE_COLUMNS?.map((column) => {
+          return {
+            ...column,
+            icon: undefined,
+          };
+        })}
+        showPagination={false}
+        showSelection={false}
+      />
+    );
+
+    expect(
+      await screen.findByText(/Field 1/i, { exact: false })
+    ).toBeInTheDocument();
+    expect(
+      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
+    ).toBe(3);
+  });
 });

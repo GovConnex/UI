@@ -106,3 +106,14 @@ ExampleWithoutSelection.args = {
   showPagination: false,
   showSelection: false,
 };
+
+export const ExampleWithoutHeaderIcons = Template.bind({});
+ExampleWithoutHeaderIcons.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS.map((column) => ({
+    ...column,
+    icon: undefined,
+  })),
+  showPagination: false,
+  showSelection: false,
+};
