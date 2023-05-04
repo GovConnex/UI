@@ -13,6 +13,8 @@ jobs:
           node-version: 18.x
           cache: 'yarn'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          echo "//npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_NPM_TOKEN }}" >> .npmrc
+          yarn install --frozen-lockfile
       - name: Run unit tests
         run: yarn test
