@@ -25,6 +25,7 @@ export interface ButtonProps
   as?: string | ComponentType<any>;
   title?: string;
   isLoading?: boolean;
+  noPadding?: boolean;
 }
 
 const typographyMap: Record<ButtonSize, keyof TypographySize> = {
@@ -55,6 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly = false,
       isLoading = false,
       disabled = false,
+      noPadding = false,
       ...rest
     },
     ref
@@ -69,6 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         iconOnlySize={iconOnlySizeMap[size || "md"]}
         shape={shape || "rect"}
         isLoading={isLoading}
+        noPadding={noPadding}
         {...rest}
       >
         {startAdornment && !isLoading ? (

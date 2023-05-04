@@ -23,11 +23,12 @@ const StyledButton = styled.button<{
   shape: ButtonShape;
   size: ButtonSize;
   isLoading:Boolean;
+  noPadding?: boolean;
 }>`
 position: relative;
   align-items: center;
   cursor: pointer;
-  padding: ${(props) => `0 ${props.theme.spacing.md}`};
+  padding: ${(props) => `0 ${props.noPadding ? "0" : props.theme.spacing.md}`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly
       ? props.theme.borderRadius.xs
