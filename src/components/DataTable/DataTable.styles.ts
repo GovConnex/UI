@@ -39,7 +39,7 @@ export const GcxDataTableTh = styled.th`
 `;
 
 export const GcxDataTableTd = styled.td`
-  height: 45px;
+  min-height: 45px;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
@@ -54,7 +54,7 @@ export const GcxDataTableDataCellRoot = styled.div<{ hasDropdown: boolean }>`
   align-items: center;
   box-sizing: border-box;
   gap: ${(p) => p.theme.spacing.md};
-  padding: ${(p) => p.theme.spacing.sm};
+  padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
 
   ${(p) =>
     p.hasDropdown &&

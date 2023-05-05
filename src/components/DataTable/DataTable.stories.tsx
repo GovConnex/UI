@@ -8,7 +8,7 @@ import {
   faHeart,
   faUser,
 } from "@fortawesome/pro-solid-svg-icons";
-import { NameCell, SupportCell, TagCell } from "./DataTable.examples";
+import { DataCell, NameCell, SupportCell, TagCell } from "./DataTable.examples";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -125,4 +125,35 @@ ExampleWithFullWidth.args = {
   showPagination: false,
   showSelection: false,
   fullWidth: true,
+};
+
+// Example with columns containing long data etc
+const LONG_DATA_TABLE_DATA = [
+  {
+    name: "This is a very long name that should be truncated",
+    value:
+      "This is a very long name that should be truncated. Lorem ipsum content goes here.",
+    type: "Type 1",
+  },
+  {
+    name: "Field 2",
+    value: "Value 2",
+    type: "Type 2 is a very long type that should be truncated",
+  },
+  {
+    name: "Field 3",
+    value: "Value 3",
+    type: "Type 3",
+  },
+];
+
+export const ExampleWithLongData = Template.bind({});
+ExampleWithLongData.args = {
+  data: LONG_DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS?.map((column) => ({
+    ...column,
+    Cell: DataCell,
+  })),
+  showPagination: false,
+  showSelection: false,
 };
