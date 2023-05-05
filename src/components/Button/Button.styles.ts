@@ -22,7 +22,7 @@ const StyledButton = styled.button<{
   iconOnlySize: keyof Spacing;
   shape: ButtonShape;
   size: ButtonSize;
-  isLoading:Boolean;
+  isLoading: Boolean;
   noPadding?: boolean;
 }>`
 position: relative;
@@ -83,7 +83,9 @@ position: relative;
     }
 
     &:disabled {
-      background-color: ${isLoading ? theme.primary.brand[500] : theme.extended.state.disabled};
+      background-color: ${
+        isLoading ? theme.primary.brand[500] : theme.extended.state.disabled
+      };
     }
   `}
   ${({ theme, variant, isLoading }) =>
@@ -93,11 +95,18 @@ position: relative;
     background-color: ${theme.foundation.error};
 
     &:hover {
-      background-color: ${theme.foundation.error};
+      background-color: ${theme.secondary.red["800"]};
     }
 
     &:disabled {
-      background-color: ${isLoading ? theme.foundation.error : theme.extended.state.disabled};
+      background-color: ${
+        isLoading ? theme.foundation.error : theme.extended.state.disabled
+      };
+    }
+
+    &:focus:not(:disabled) {
+      background-color: ${theme.secondary.red["800"]};
+      outline: ${theme.borderWidth.lg} solid ${theme.secondary.red["800"]};
     }
   `}
 
@@ -109,7 +118,7 @@ position: relative;
     border: ${theme.borderWidth.md} solid ${theme.core.border.borderLight};
 
     &:hover {
-      background-color: ${theme.extended.state.secondaryHover};
+      background-color: ${theme.primary.neutral["200"]};
     }
 
     &:focus {
@@ -120,6 +129,30 @@ position: relative;
       background-color: ${theme.extended.state.secondaryHover};
       border-color: ${theme.extended.state.disabled};
       color: ${theme.extended.state.disabled};
+    }
+  `}
+
+  ${({ theme, variant }) =>
+    variant === "secondaryDanger" &&
+    `
+    color: ${theme.foundation.error};
+    background-color: ${theme.extended.state.secondaryBase};
+    border: ${theme.borderWidth.md} solid ${theme.foundation.error};
+
+    &:hover {
+      background-color: ${theme.secondary.red["50"]};
+    }
+
+    &:disabled {
+      background-color: ${theme.extended.state.secondaryHover};
+      border-color: ${theme.extended.state.disabled};
+      color: ${theme.extended.state.disabled};
+    }
+
+    &:focus:not(:disabled) {
+      background-color: ${theme.secondary.red["50"]};
+      border-color: transparent;
+      outline: ${theme.borderWidth.lg} solid ${theme.foundation.error};
     }
   `}
 
@@ -142,7 +175,7 @@ const spinner = keyframes`
   to {transform: rotate(360deg);}
 `;
 
-const StyledSpinner = styled.div<{variant:ButtonVariant}>`
+const StyledSpinner = styled.div<{ variant: ButtonVariant }>`
  &:before {
     content: '';
     box-sizing: border-box;
@@ -154,15 +187,19 @@ const StyledSpinner = styled.div<{variant:ButtonVariant}>`
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid ${({ theme, variant }) => 
-    variant === "primary" ? theme.extended.state.primaryBase :
-    variant === "danger" ? theme.foundation.error
-    : theme.extended.state.secondaryBase};
-    border-top-color: ${({ theme , variant}) => 
-    variant === "primary" ? theme.extended.state.secondaryBase :
-    variant === "danger" ? theme.extended.state.secondaryBase 
-    : theme.extended.state.primaryBase};
+    border: 2px solid ${({ theme, variant }) =>
+      variant === "primary"
+        ? theme.extended.state.primaryBase
+        : variant === "danger"
+        ? theme.foundation.error
+        : theme.extended.state.secondaryBase};
+    border-top-color: ${({ theme, variant }) =>
+      variant === "primary"
+        ? theme.extended.state.secondaryBase
+        : variant === "danger"
+        ? theme.extended.state.secondaryBase
+        : theme.extended.state.primaryBase};
     animation: ${spinner} .6s linear infinite;
 `;
 
-export { StyledButton,StyledSpinner, StyledAdornment, StyledTypography };
+export { StyledButton, StyledSpinner, StyledAdornment, StyledTypography };

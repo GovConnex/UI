@@ -8,7 +8,8 @@ export type ButtonVariant =
   | "secondary"
   | "tertiary"
   | "text"
-  | "danger";
+  | "danger"
+  | "secondaryDanger";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 
@@ -40,7 +41,19 @@ const iconOnlySizeMap: Record<ButtonSize, keyof Spacing> = {
   sm: "md",
 };
 /**
- * `Button` extends the native `button`
+ * `Button` extends the native `button` by adding styles and functionality.
+ *
+ * Features include:
+ *
+ * - `variant` prop to change the color of the button
+ * - `size` prop to change the size of the button
+ * - `shape` prop to change the shape of the button
+ * - `iconOnly` prop to render a button with only an icon
+ * - `startAdornment` prop to add an element to the start of the button
+ * - `endAdornment` prop to add an element to the end of the button
+ * - `isLoading` prop to render a loading spinner
+ * - `noPadding` prop to remove padding from the button
+ *
  * @todo fix `as` prop to allow for `Link` component without type error
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
