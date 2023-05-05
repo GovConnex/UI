@@ -1,4 +1,5 @@
 import { SizeProp } from "@fortawesome/fontawesome-svg-core";
+import { addCustomStyles, customStyles } from "../../core/styleFunctions";
 import styled, { DefaultTheme } from "styled-components";
 
 const sizeToBorderRadius = (size: SizeProp, theme: DefaultTheme): string =>
@@ -45,7 +46,7 @@ const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
   );
 };
 
-const StyledBackgroundIcon = styled.div<{ size?: SizeProp }>`
+const StyledBackgroundIcon = styled.div<{ size?: SizeProp, cs?: customStyles }>`
   align-items: center;
   border-radius: ${(props) =>
     sizeToBorderRadius(props.size || "sm", props.theme)};
@@ -57,6 +58,8 @@ const StyledBackgroundIcon = styled.div<{ size?: SizeProp }>`
   color: ${(props) => props.theme.primary.brand["600"]};
   width: ${(props) => sizeToWidth(props.size || "sm", props.theme)};
   height: ${(props) => sizeToWidth(props.size || "sm", props.theme)};
+
+  ${(props) => addCustomStyles(props)};
 `;
 
 export default StyledBackgroundIcon;

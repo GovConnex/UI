@@ -69,7 +69,7 @@ const GridBox: React.FC<GridBoxProps> = ({
         md: mdStyles,
         lg: lgStyles,
         ...rest,
-      }}
+      } as any}
     >
       {children}
     </Box>

@@ -88,3 +88,13 @@ Star1x.parameters = {
     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=463%3A21035",
   },
 };
+
+export const RedIcon = Template.bind({});
+RedIcon.args = {
+  icon: faSearch,
+  size: "3x",
+  cs: {
+    color: "secondary.red.700",
+    backgroundColor: "secondary.red.100",
+  },
+};

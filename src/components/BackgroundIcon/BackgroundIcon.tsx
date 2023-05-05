@@ -3,10 +3,11 @@ import React from "react";
 import SvgIcon from "../SvgIcon";
 import { IconProps } from "../SvgIcon/Icon";
 import StyledBackgroundIcon from "./BackgroundIcon.styles";
+import { customStyles } from "../../core/styleFunctions";
 
-const Icon = (props: FontAwesomeIconProps | IconProps) => {
+const Icon = (props: {cs?: customStyles} & (FontAwesomeIconProps | IconProps)) => {
   return (
-    <StyledBackgroundIcon size={props.size}>
+    <StyledBackgroundIcon size={props.size} cs={props.cs}>
       <SvgIcon {...props} />
     </StyledBackgroundIcon>
   );
