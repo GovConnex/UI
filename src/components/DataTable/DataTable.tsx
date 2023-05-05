@@ -51,20 +51,69 @@ const SelectionCheckbox = React.forwardRef((props, ref) => {
 });
 
 export interface DataTableProps {
+  /**
+   * Array of untyped objects to display as data in the table
+   */
   data: any[];
+  /**
+   * Class name to apply to the root element
+   */
   className?: string;
+  /**
+   * Number of results for use in pagination.
+   */
   numResults?: number;
+  /**
+   * Objects defining the columns to display in the table.
+   */
   columns: any[];
+  /**
+   * Callback for when the sort changes.
+   */
   onChangeSort?: (column: any) => void;
+  /**
+   * Size of the page for use in pagination.
+   */
   pageSize?: number;
+  /**
+   * Page number for use in pagination.
+   */
   page?: number;
+  /**
+   * List of columns to sort by initially.
+   */
   initialSortBy?: any[];
+  /**
+   * Callback for when the pagination changes.
+   */
   onPaginationChange?: (input: { page: any; pageSize: number }) => void;
+  /**
+   * Callback for when the selected ids change.
+   */
   onSelectedIdsChange?: (ids: string[]) => void;
+  /**
+   * Whether to show the pagination. Defaults to true.
+   * @default true
+   */
   showPagination?: boolean;
+  /**
+   * Whether to show the selection checkbox. Defaults to true.
+   * @default true
+   */
   showSelection?: boolean;
+  /**
+   * Whether the table should grow to fill its container. Defaults to false.
+   * @default false
+   */
+  fullWidth?: boolean;
 }
 
+/**
+ * Data table built from react-table. It supports pagination, sorting, selection, and resizing.
+ * 
+ * @param param0 
+ * @returns 
+ */
 const DataTable = ({
   data,
   numResults: numResultsProp,
@@ -78,9 +127,20 @@ const DataTable = ({
   className,
   showPagination = true,
   showSelection = true,
+  fullWidth = false,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
+
+  const defaultColumn = React.useMemo(
+    () => ({
+      // When using the useFlexLayout:
+      minWidth: 30, // minWidth is only used as a limit for resizing
+      width: 150, // width is used for both the flex-basis and flex-grow
+      maxWidth: 200, // maxWidth is only used as a limit for resizing
+    }),
+    []
+  )
 
   // @ts-ignore
   const {
@@ -102,6 +162,7 @@ const DataTable = ({
     {
       columns,
       data,
+      defaultColumn,
       manualSortBy,
       manualPagination,
       initialState: {
@@ -192,8 +253,9 @@ const DataTable = ({
     <GcxDataTableRoot
       className={classNames(className)}
     >
-      <GcxDataTableWrapper>
+      <GcxDataTableWrapper fullWidth={fullWidth}>
         <GcxDataTable
+          fullWidth={fullWidth}
           {...getTableProps()}
         >
           <GcxDataTableThead>

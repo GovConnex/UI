@@ -117,3 +117,12 @@ ExampleWithoutHeaderIcons.args = {
   showPagination: false,
   showSelection: false,
 };
+
+export const ExampleWithFullWidth = Template.bind({});
+ExampleWithFullWidth.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  showPagination: false,
+  showSelection: false,
+  fullWidth: true,
+};
