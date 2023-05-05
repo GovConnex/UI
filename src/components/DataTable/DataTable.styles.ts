@@ -8,6 +8,7 @@ export const GcxDataTableWrapper = styled.div<{ fullWidth?: boolean }>`
   border: 1px solid #ebebeb;
   border-radius: 5px;
   overflow: hidden;
+  overflow-x: auto;
   display: ${(p) => (p.fullWidth ? "block" : "inline-table")};
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;

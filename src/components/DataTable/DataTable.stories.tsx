@@ -157,3 +157,21 @@ ExampleWithLongData.args = {
   showPagination: false,
   showSelection: false,
 };
+
+const TemplateWithWrapper: ComponentStory<typeof DataTable> = (args) => (
+  <div style={{ width: "100px" }}>
+    <DataTable {...args} />
+  </div>
+);
+
+export const ExampleNarrowWidthWithHorizontalOverflow = TemplateWithWrapper.bind({});
+ExampleNarrowWidthWithHorizontalOverflow.args = {
+  data: LONG_DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS?.map((column) => ({
+    ...column,
+    Cell: DataCell,
+  })),
+  showPagination: false,
+  showSelection: false,
+  fullWidth: true,
+};
