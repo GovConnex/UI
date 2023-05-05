@@ -83,3 +83,51 @@ IsLoading.args = {
   isLoading: true,
   children: <Icon icon={faBook} />,
 };
+
+export const Danger = Template.bind({});
+Danger.args = {
+  children: "Danger Button",
+  variant: "danger",
+};
+
+export const DangerSm = Template.bind({});
+DangerSm.args = {
+  children: "Danger Button",
+  variant: "danger",
+  size: "sm",
+};
+
+export const DangerLg = Template.bind({});
+DangerLg.args = {
+  children: "Danger Button",
+  variant: "danger",
+  size: "lg",
+};
+
+export const SecondaryDanger = Template.bind({});
+SecondaryDanger.args = {
+  children: "Secondary Danger Button",
+  variant: "secondaryDanger",
+};
+
+export const SecondaryDangerSm = Template.bind({});
+SecondaryDangerSm.args = {
+  children: "Secondary Danger Button",
+  variant: "secondaryDanger",
+  size: "sm",
+};
+
+export const SecondaryDangerLg = Template.bind({});
+SecondaryDangerLg.args = {
+  children: "Secondary Danger Button",
+  variant: "secondaryDanger",
+  size: "lg",
+};
+
+export const SecondaryDangerDisabled = Template.bind({});
+SecondaryDangerDisabled.args = {
+  children: "Secondary Danger Button",
+  variant: "secondaryDanger",
+  size: "lg",
+  disabled: true,
+};

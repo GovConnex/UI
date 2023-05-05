@@ -1,4 +1,6 @@
 export { default as ThemeProvider } from "./ThemeProvider";
+export { default as PopIn } from "./PopIn";
+export { default as Snackbar, PopinSnackbar as PopinSnackbar } from "./Snackbar";
 export { default as ConfirmationModal } from "./ConfirmationModal";
 export { default as TextArea } from "./TextArea";
 export { default as Banner } from "./Banner";

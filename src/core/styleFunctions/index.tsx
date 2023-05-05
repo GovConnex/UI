@@ -1,15 +1,39 @@
 import * as CSS from "csstype";
 import { DefaultTheme } from "styled-components";
 
+type ShorthandCSS = {
+  p?: CSS.Properties['padding'] | number,
+  pt?: CSS.Properties['paddingTop'] | number,
+  pb?: CSS.Properties['paddingBottom'] | number,
+  pl?: CSS.Properties['paddingLeft'] | number,
+  pr?: CSS.Properties['paddingRight'] | number,
+  px?: string | number, // Chained properties: "paddingLeft&paddingRight"
+  py?: string | number, // Chained properties: "paddingTop&paddingBottom"
+  paddingX?: string | number, // Chained properties: "paddingLeft&paddingRight"
+  paddingY?: string | number, // Chained properties: "paddingTop&paddingBottom"
+  m?: CSS.Properties['margin'] | number,
+  mt?: CSS.Properties['marginTop'] | number,
+  mb?: CSS.Properties['marginBottom'] | number,
+  ml?: CSS.Properties['marginLeft'] | number,
+  mr?: CSS.Properties['marginRight'] | number,
+  mx?: string | number, // Chained properties: "marginLeft&marginRight"
+  my?: string | number, // Chained properties: "marginTop&marginBottom"
+  marginX?: string | number, // Chained properties: "marginLeft&marginRight"
+  marginY?: string | number, // Chained properties: "marginTop&marginBottom"
+  w?: CSS.Properties['width'],
+  h?: CSS.Properties['height'],
+  bg?: CSS.Properties['background'],
+  direction?: CSS.Properties['flexDirection'],
+};
+
 type breakpoints = {
-  sm?: CSS.Properties;
-  md?: CSS.Properties;
-  lg?: CSS.Properties;
+  sm?: CSS.Properties | ShorthandCSS;
+  md?: CSS.Properties | ShorthandCSS;
+  lg?: CSS.Properties | ShorthandCSS;
 };
 
 type keysTypes = "sm" | "md" | "lg"; 
 
-export type customStyles = CSS.Properties | breakpoints;
 
 const values: { sm: number; md: number; lg: number } = {
   sm: 0, // tablet
@@ -70,6 +94,8 @@ const numberToSpacingMap = {
   7:"spacing.xxl",
 }
 
+// Must include attributes of cssValueMap
+export type customStyles = CSS.Properties | breakpoints | ShorthandCSS
 
 const defaultBreakpoints = {
   keys: ["sm", "md", "lg"],
@@ -93,7 +119,7 @@ export function getValueFromPath(theme: any, path: string) {
  * takes in props and returns styles to be injected into styled-components
  */
 const experimental_passCustomStyles = (args: any) => {
-  const { cs, theme = {} as DefaultTheme } = args || {};
+  const { cs = {}, theme = {} as DefaultTheme } = args || {};
 
   // traverse through cs object and return styles
   function traverse(styles: any) {
@@ -133,6 +159,21 @@ const experimental_passCustomStyles = (args: any) => {
         });
 
       } else {
+
+        // Handle boxShadow specifically, which is an object
+        if (cssProp === 'boxShadow' && typeof styles[k] === "string") {
+          const themeValue = getValueFromPath(theme, styles[k]);
+
+          if (themeValue && typeof themeValue === "object") {
+            console.log("themeValue", themeValue);
+            const boxShadowValue = `${themeValue.x}px ${themeValue.y}px ${themeValue.blur}px ${themeValue.color}`;
+            css = { ...css, [cssProp]: boxShadowValue };
+            return;
+          } else {
+            css = { ...css, [cssProp]: themeValue };
+            return;
+          }
+        }
 
         // 4) check if prop is a string - if so, treat as a theme path
         if (typeof styles[k] === "string") {
