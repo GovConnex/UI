@@ -107,7 +107,7 @@ const Snackbar = (props: SnackbarProps) => {
       cs={{
         backgroundColor: "core.background.bgInversePrimary",
         borderRadius: "borderRadius.xs",
-        boxShadow: "shadow.sm",
+        boxShadow: "boxShadow.sm",
         color: "primary.neutral.100",
         display: "flex",
         flexDirection: "row",
@@ -130,7 +130,9 @@ const Snackbar = (props: SnackbarProps) => {
           marginRight: "spacing.md",
         }}
       >
-        <Typography variant="body">{props.children}</Typography>
+        <Typography variant="body" noMargin>
+          {props.children}
+        </Typography>
       </Box>
       <Box
         cs={{
