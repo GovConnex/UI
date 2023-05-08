@@ -13,6 +13,8 @@ export const PopInContainer = styled.div<{
   ${({ position = "bottom", offset = "spacing.md", theme }) => css`
     ${position}: ${getValueFromPath(theme, offset)};
   `}
+  left: 0;
+  right: 0;
   transform: ${({ position }) =>
     position === "top" ? "translateY(-150%)" : "translateY(150%)"};
   ${({ show }) =>
@@ -22,4 +24,11 @@ export const PopInContainer = styled.div<{
     `}
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
   opacity: ${({ show }) => (show ? 1 : 0)};
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 `;

@@ -1,6 +1,8 @@
 // PopIn.tsx
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { PopInContainer } from "./PopIn.styles";
+import Portal from "../Portal";
 
 export interface PopInProps {
   /**
@@ -31,6 +33,11 @@ export interface PopInProps {
    * @default 3
    **/
   timeoutSeconds?: number;
+
+  /**
+   * Whether or not to disable the portal. If true, the PopIn will be rendered in place.
+   */
+  disablePortal?: boolean;
 }
 
 /**
@@ -48,6 +55,7 @@ const PopIn: React.FC<PopInProps> = ({
   children,
   setShow,
   timeoutSeconds = 3,
+  disablePortal = false,
 }) => {
   // For storing timeout ID, and ensuring timeout state is consistent
   const timeoutId = React.useRef<number | NodeJS.Timeout>();
@@ -65,9 +73,11 @@ const PopIn: React.FC<PopInProps> = ({
   }, [show, setShow, timeoutSeconds]);
 
   return (
-    <PopInContainer show={show} position={position} offset={offset}>
-      {children}
-    </PopInContainer>
+    <Portal disablePortal={disablePortal}>
+      <PopInContainer show={show} position={position} offset={offset}>
+        {children}
+      </PopInContainer>
+    </Portal>
   );
 };
 
