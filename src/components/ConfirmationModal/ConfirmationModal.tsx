@@ -38,7 +38,7 @@ export interface ConfirmationModalProps {
   /**
    * Background icon for the ConfirmationModal.
    */
-  backgroundIcon: string;
+  backgroundIcon: string | React.ReactNode;
 
   /**
    * Array of button configurations for the ConfirmationModal.
@@ -81,7 +81,11 @@ const ConfirmationModal = ({
         }}
       >
         <Box>
-          <BackgroundIcon icon={backgroundIcon} size="2x" />
+          {typeof backgroundIcon === "string" ? (
+            <BackgroundIcon icon={backgroundIcon} size="2x" />
+          ) : (
+            backgroundIcon
+          )}
         </Box>
         <Box
           cs={{
