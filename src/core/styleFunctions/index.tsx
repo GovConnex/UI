@@ -165,7 +165,6 @@ const experimental_passCustomStyles = (args: any) => {
           const themeValue = getValueFromPath(theme, styles[k]);
 
           if (themeValue && typeof themeValue === "object") {
-            console.log("themeValue", themeValue);
             const boxShadowValue = `${themeValue.x}px ${themeValue.y}px ${themeValue.blur}px ${themeValue.color}`;
             css = { ...css, [cssProp]: boxShadowValue };
             return;
