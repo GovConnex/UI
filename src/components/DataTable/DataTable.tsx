@@ -29,7 +29,7 @@ import Icon from "../Icon";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
-const uuid = require("uuid/v4");
+const { v4: uuid } = require("uuid");
 
 const SelectionCheckbox = React.forwardRef((props, ref) => {
   const [id] = useState(uuid());
