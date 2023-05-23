@@ -42,7 +42,18 @@ export default [
         brotliSize: true,
       }),
     ],
-    external: ["styled-components", "react", "react-dom"],
+    external: [
+      "styled-components",
+      "react",
+      "react-dom",
+      // Don-t export these as they're under license AND they blow up the bundle size
+      "@fortawesome/react-fontawesome",
+      "@fortawesome/pro-duotone-svg-icons",
+      "@fortawesome/pro-light-svg-icons",
+      "@fortawesome/pro-regular-svg-icons",
+      "@fortawesome/pro-solid-svg-icons",
+      "@fortawesome/pro-thin-svg-icons",
+    ],
   },
   {
     input: "dist/esm/index.d.ts",
