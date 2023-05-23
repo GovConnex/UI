@@ -4,17 +4,10 @@ import GridBox from "./GridBox";
 import { withDesign } from "storybook-addon-designs";
 import Box from "../Box";
 
-import mdx from "./GridBox.mdx";
-
 export default {
   title: "Components/GridBox",
   component: GridBox,
   decorators: [withDesign],
-  parameters: {
-    docs: {
-      page: mdx,
-    },
-  },
 } as ComponentMeta<typeof GridBox>;
 
 const SampleCells = () => (
