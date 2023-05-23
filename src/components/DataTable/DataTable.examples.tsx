@@ -77,3 +77,17 @@ export const TagCell = () => {
     </DataTableDataCell>
   );
 };
+
+export const DataCell = ({
+  value,
+}: {
+  value: string
+}) => {
+  return (
+    <DataTableDataCell>
+      <Typography variant="body" size="md" noMargin>
+        {value}
+      </Typography>
+    </DataTableDataCell>
+  );
+};

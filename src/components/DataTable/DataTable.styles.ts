@@ -4,15 +4,18 @@ import Menu from "../Menu";
 import Pagination from "../Pagination";
 
 export const GcxDataTableRoot = styled.div``;
-export const GcxDataTableWrapper = styled.div`
+export const GcxDataTableWrapper = styled.div<{ fullWidth?: boolean }>`
   border: 1px solid #ebebeb;
   border-radius: 5px;
   overflow: hidden;
-  display: inline-table;
+  overflow-x: auto;
+  display: ${(p) => (p.fullWidth ? "block" : "inline-table")};
+  width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
-export const GcxDataTable = styled.table`
+export const GcxDataTable = styled.table<{ fullWidth?: boolean }>`
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
+  width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
 
 export const GcxDataTableThead = styled.thead``;
@@ -37,7 +40,7 @@ export const GcxDataTableTh = styled.th`
 `;
 
 export const GcxDataTableTd = styled.td`
-  height: 45px;
+  min-height: 45px;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
@@ -52,9 +55,11 @@ export const GcxDataTableDataCellRoot = styled.div<{ hasDropdown: boolean }>`
   align-items: center;
   box-sizing: border-box;
   gap: ${(p) => p.theme.spacing.md};
-  padding: ${(p) => p.theme.spacing.sm};
+  padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
 
-  ${(p) => p.hasDropdown && `
+  ${(p) =>
+    p.hasDropdown &&
+    `
     cursor: pointer;
     &:active {
       outline: ${p.theme.primary.base.brand} solid ${p.theme.borderWidth.lg};

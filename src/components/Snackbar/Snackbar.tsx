@@ -75,6 +75,16 @@ export interface PopinSnackbarProps extends SnackbarProps {
    * @default 3
    **/
   timeoutSeconds?: number;
+
+  /**
+   * Whether or not to disable the portal. If true, the PopIn will be rendered in place.
+   */
+  disablePortal?: boolean;
+
+  /**
+   * The ID of the container to render the PopIn in, if using the portal.
+   */
+  portalContainer?: string | HTMLElement | null;
 }
 
 /**
@@ -175,6 +185,8 @@ export const PopinSnackbar = (props: PopinSnackbarProps) => {
       timeoutSeconds={props.timeoutSeconds}
       position={props.position}
       offset={props.offset}
+      disablePortal={props.disablePortal}
+      portalContainer={props.portalContainer}
     >
       <Snackbar actions={props.actions} startAdornment={props.startAdornment}>
         {props.children}
