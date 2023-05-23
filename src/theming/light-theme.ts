@@ -1,12 +1,11 @@
 import {DefaultTheme} from 'styled-components';
 import lightTokens from "./tokens-output/light.json";
 import globalTokens from "./tokens-output/global.json";
-import _ from "lodash";
-
+import {deepMerge} from "../core/utils";
 
 export const lightTheme: DefaultTheme = {
+  ...deepMerge({}, globalTokens, lightTokens) as DefaultTheme,
   "name": "Light theme",
-  ..._.merge(globalTokens, lightTokens)
 };
 
 export default lightTheme;

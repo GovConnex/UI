@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useState,useEffect } from "react";
 import { BottomHighlight, StyledTabs } from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
-import { uniqueId } from "lodash";
 
 // Helpers
 
@@ -111,7 +110,7 @@ const Tabs = (props: TabsProps) => {
               child.props.onClick && child.props.onClick();
             },
             selected: selected.value === child.props?.value,
-            key: uniqueId(),
+            key: `tab-${i}`
           } as {onClick:React.DOMAttributes<HTMLButtonElement>, selected:boolean, key:string} );
         }
         return child;

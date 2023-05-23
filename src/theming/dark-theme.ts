@@ -1,11 +1,11 @@
 import {DefaultTheme} from 'styled-components';
 import darkTokens from "./tokens-output/dark.json";
 import globalTokens from "./tokens-output/global.json";
-import _ from "lodash";
+import {deepMerge} from "../core/utils";
 
 export const darkTheme: DefaultTheme = {
+  ...deepMerge({}, globalTokens, darkTokens) as DefaultTheme,
   "name": "Dark theme",
-  ..._.merge(globalTokens, darkTokens),
 };
 
 export default darkTheme;

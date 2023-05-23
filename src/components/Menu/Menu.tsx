@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { Placement } from "@popperjs/core";
-import _ from "lodash";
 import Popover from "../Popover";
 import { StyledMenuList } from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
@@ -15,7 +14,28 @@ export interface MenuOption {
   text?: string | number;
   category?: string;
   style?: React.CSSProperties;
-  'data-cy'?: string;
+  "data-cy"?: string;
+}
+
+export function sortByCategory(options: MenuOption[]) {
+  return [...options].sort((a, b) => {
+    if (a.category === undefined && b.category === undefined) {
+      return 0;
+    }
+    if (a.category === undefined) {
+      return 1;
+    }
+    if (b.category === undefined) {
+      return -1;
+    }
+    if (a.category < b.category) {
+      return -1;
+    }
+    if (a.category > b.category) {
+      return 1;
+    }
+    return 0;
+  });
 }
 
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -36,9 +56,7 @@ const Menu = ({
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
 
-  const sortedOptions = useMemo(() => {
-    return _.toArray(_.sortBy(options, ["category"]));
-  }, [options]);
+  const sortedOptions = useMemo(() => sortByCategory(options), [options]);
 
   useKey(["ArrowDown"], (e) => {
     e.preventDefault();
@@ -81,11 +99,13 @@ const Menu = ({
 
             return (
               <span key={`item-${idx}-${new Date().getTime()}`}>
-                {prev === null || prev.category !== option.category &&
-                  <MenuListHeading>{option.category}</MenuListHeading>}
+                {prev === null ||
+                  (prev.category !== option.category && (
+                    <MenuListHeading>{option.category}</MenuListHeading>
+                  ))}
 
                 <MenuListItem
-                  data-cy={option['data-cy']}
+                  data-cy={option["data-cy"]}
                   button
                   style={option.style}
                   onSelect={() => {
