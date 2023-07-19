@@ -24,6 +24,7 @@ type ShorthandCSS = {
   h?: CSS.Properties['height'],
   bg?: CSS.Properties['background'],
   direction?: CSS.Properties['flexDirection'],
+  flexGrow?: CSS.Properties['flexGrow'] | number,
 };
 
 type breakpoints = {

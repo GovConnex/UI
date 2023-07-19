@@ -1,6 +1,6 @@
 {
   "name": "@govconnex/ui",
-  "version": "0.0.122",
+  "version": "0.0.122-alpha.1",
   "description": "GovConnex UI - React Component Library",
   "scripts": {
     "build:tokens": "./tokens-build.sh",
@@ -9,6 +9,7 @@
     "prestart": "yarn run build:tokens",
     "start": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "buildTest": "webpack --mode production",
     "prepare": "yarn run build:tokens",
     "new": "plop"
   },
@@ -66,7 +67,10 @@
     "style-dictionary": "^3.7.2",
     "styled-components": "5.3.8",
     "typescript": "^4.9.5",
-    "webpack-merge": "^5.8.0"
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "resolutions": {
     "@types/react": "^16.13.1",

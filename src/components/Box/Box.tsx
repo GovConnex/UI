@@ -61,6 +61,7 @@ export interface ExtendedBoxProps extends BoxProps {
   lg?: customStyles;
 
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
+  flexGrow?: number;
 }
 
  
@@ -87,6 +88,7 @@ const Box = React.forwardRef<HTMLDivElement,ExtendedBoxProps>(function Box(
   // WARN does not pass onClick, etc to the div element
   return (
     <StyledBox ref={ref} cs={{...props}}>
+      Bingo styled box
       {props.children}
     </StyledBox>
   );
