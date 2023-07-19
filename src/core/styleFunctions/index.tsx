@@ -24,6 +24,7 @@ type ShorthandCSS = {
   h?: CSS.Properties['height'],
   bg?: CSS.Properties['background'],
   direction?: CSS.Properties['flexDirection'],
+  flexGrow?: CSS.Properties['flexGrow'] | number,
 };
 
 type breakpoints = {
@@ -79,6 +80,7 @@ const cssValueMap = {
   bg:"background",
 
   direction:"flexDirection", 
+  flexGrow: "flexGrow",
 }
 
 /**
@@ -184,6 +186,11 @@ const experimental_passCustomStyles = (args: any) => {
           const n =
             numberToSpacingMap[styles[k] as keyof typeof numberToSpacingMap] || "0px";
           css = { ...css, [cssProp]: getValueFromPath(theme, n) };
+        }
+
+        // Handle flexGrow specifically, which is a number
+        if (cssProp === 'flexGrow') {
+          css = { ...css, [cssProp]: styles[k] };
         }
 
         return;
