@@ -88,4 +88,14 @@ describe("StyledButton", () => {
       border-color: ${lightTheme.foundation.error};
     `);
   });
+
+  it("expects to pick up styling", () => {
+    const { getByRole } = renderStyledButton({
+      style: { width: '24px' } 
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle("width: 24px");
+  });
 });
