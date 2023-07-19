@@ -9,7 +9,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
@@ -32,6 +32,9 @@ module.exports = {
                 loader: 'url-loader',
             },
         ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'], // Add .js extension as well, for compatibility with Babel
     },
     externals: [nodeExternals()]
 };
