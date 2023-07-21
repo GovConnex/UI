@@ -28,7 +28,8 @@ const StyledButton = styled.button<{
 position: relative;
   align-items: center;
   cursor: pointer;
-  padding: ${(props) => `0 ${props.noPadding ? "0" : props.theme.spacing.md}`};
+  padding: ${(props) => `${props.noPadding ? "0" : props.theme.spacing.xs} 
+    ${props.noPadding ? "0" : props.theme.spacing[props.size]}`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly
       ? props.theme.borderRadius.xs
@@ -38,10 +39,6 @@ position: relative;
   gap: 12px;
   text-decoration: none !important;
   height: auto;
-
-  & * {
-    line-height: ${(props) => heightMap[props.size]};
-  }
 
   ${({ iconOnly, theme, iconOnlySize }) =>
     iconOnly
