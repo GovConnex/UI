@@ -77,4 +77,15 @@ describe("addCustomStyles", () => {
       boxShadow: "0 0 0 2px #000",
     });
   });
+
+  test("should handle flex glow with number value", () => {
+    const result = addCustomStyles({
+      cs: { flexGrow: 1 },
+      theme: lightTheme,
+    });
+
+    expect(result).toEqual({
+      flexGrow: 1,
+    });
+  });
 });
