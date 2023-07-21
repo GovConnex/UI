@@ -37,7 +37,7 @@ position: relative;
   display: flex;
   gap: 12px;
   text-decoration: none !important;
-  height: ${(props) => heightMap[props.size]};
+  height: auto;
 
   & * {
     line-height: ${(props) => heightMap[props.size]};
