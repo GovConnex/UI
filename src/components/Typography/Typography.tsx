@@ -1,5 +1,5 @@
 import React from "react";
-import { VariantsProp } from "./Typography.types";
+import { VariantsProp, Variants } from "./Typography.types";
 import { variantComponents } from "./Typography.styles";
 import { TypographySize } from "../../theming/global-theme.interface";
 
@@ -14,7 +14,7 @@ export interface TypographyProps
   /**
    * The content of the component.
    */
-  variant?: VariantsProp;
+  variant?: string;
 
   /**
    * The text color
@@ -53,7 +53,9 @@ const Typography = ({
   color, 
   ...props
 }: TypographyProps) => {
-  const VariantComponent = variantComponents[variant];
+  const selectedVariantValue = Variants[variant as keyof typeof Variants];
+  const validatedVariant: VariantsProp = selectedVariantValue ? variant as VariantsProp : "body";
+  const VariantComponent = variantComponents[validatedVariant];
   return <VariantComponent color={color} size={size} {...props}>{children}</VariantComponent>;
 };
 
