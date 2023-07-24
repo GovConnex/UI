@@ -8,6 +8,12 @@ export default {
   title: "Components/Typography",
   component: Typography,
   decorators: [withDesign],
+  argTypes: {
+    variant: {
+      control: 'text',
+      description: 'Possible values are heading, display, body, label',
+    },
+  },
 } as ComponentMeta<typeof Typography>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -17,7 +23,7 @@ const Template: ComponentStory<typeof Typography> = (args) => <Typography {...ar
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  variant: "body",
+  variant: "nonexisting-variant"
 };
 
 Example.parameters = {
