@@ -13,7 +13,9 @@ export const StyledModalBack = styled.div`
 
 export const StyledModal = styled.div`
   z-index: 1000;
-  max-width: 100%;
+  max-width: calc(100% - ${props => props.theme.spacing.lg});
+  max-height: calc(100% - ${props => props.theme.spacing.lg});
+  overflow: scroll;
   // width: 940px;
   margin: auto;
   display: flex;
@@ -56,6 +58,7 @@ export const StyledMobileModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
+  overflow: scroll;
   margin-top: env(safe-area-inset-top);
   top: 0;
   left: 0;
