@@ -10,7 +10,7 @@ describe("StyledButton", () => {
     return render(
       <ThemeProvider theme={lightTheme}>
         <Button {...props}>Test Button</Button>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   };
 
@@ -91,7 +91,7 @@ describe("StyledButton", () => {
 
   it("expects to pick up styling", () => {
     const { getByRole } = renderStyledButton({
-      style: { width: '24px' } 
+      style: { width: "24px" },
     });
 
     const button = getByRole("button");

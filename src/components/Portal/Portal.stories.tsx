@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Portal from "./Portal";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
     border: "1px solid gray",
     borderRadius: "2px",
     margin: "10px 0",
-    padding: "5px"
+    padding: "5px",
   };
 
   const handleClick = () => {
@@ -30,14 +30,16 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
   return (
     <>
       <Button onClick={handleClick}>
-        {show ? 'Unmount children' : 'Mount children'}
+        {show ? "Unmount children" : "Mount children"}
       </Button>
 
       <div style={divStyle}>
         It looks like I will render here.
         {show ? (
           <Portal container={container.current} disablePortal={disablePortal}>
-            <span>{disablePortal ? " And I do!" : "But I actually render here!"}</span>
+            <span>
+              {disablePortal ? " And I do!" : "But I actually render here!"}
+            </span>
           </Portal>
         ) : null}
       </div>
@@ -48,12 +50,11 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-};
+Example.args = {};
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

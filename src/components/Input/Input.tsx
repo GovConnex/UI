@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useEffect} from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Typography from "../Typography";
 import {
   StyledInputContainer,
@@ -54,9 +54,17 @@ const noop = () => {};
 /**
  * Variation of `Input` that only fires change events after X milliseconds (X=delayMs) of no change.
  */
-export const DebouncedInput = ({value, onChange = noop, delayMs = 500, ...props}: DebouncedInputProps) => {
+export const DebouncedInput = ({
+  value,
+  onChange = noop,
+  delayMs = 500,
+  ...props
+}: DebouncedInputProps) => {
   const [inputValue, setInputValue] = useState(value);
-  const debouncedChange = useMemo(() => debounce(onChange as Function, delayMs), [onChange]);
+  const debouncedChange = useMemo(
+    () => debounce(onChange as Function, delayMs),
+    [onChange],
+  );
 
   useEffect(() => {
     setInputValue(value);
@@ -67,12 +75,16 @@ export const DebouncedInput = ({value, onChange = noop, delayMs = 500, ...props}
     if (inputValue !== value) {
       debouncedChange(inputValue);
     }
-  // Only fire if inputValue changes.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Only fire if inputValue changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
   return (
-    <Input value={inputValue} onChange={e => setInputValue(e.target.value)} {...props} />
+    <Input
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      {...props}
+    />
   );
 };
 
@@ -91,8 +103,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   } = props;
 
   return (
-      <StyledInputWrapper fullWidth={!!fullWidth}>
-
+    <StyledInputWrapper fullWidth={!!fullWidth}>
       {label ? (
         <Typography noMargin variant="label" size="md">
           {label}
@@ -114,7 +125,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           error={!!error}
           ref={ref}
           {...rest}
-          ></StyledInput>
+        ></StyledInput>
 
         {endAdornment ? (
           <StyledAdornment disabled={props.disabled || false} position="right">
@@ -125,15 +136,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
       {error || hint ? (
         <Typography
-        variant="body"
-        color={error ? "secondary.red.500" : "primary.neutral.400"}
-        size="sm"
-        noMargin
+          variant="body"
+          color={error ? "secondary.red.500" : "primary.neutral.400"}
+          size="sm"
+          noMargin
         >
           {error || hint}
         </Typography>
       ) : null}
-      </StyledInputWrapper>
+    </StyledInputWrapper>
   );
 });
 

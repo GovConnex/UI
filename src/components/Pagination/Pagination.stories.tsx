@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Pagination from "./Pagination";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -40,12 +40,12 @@ export const Example = Template.bind({});
 Example.args = {
   page: 1,
   itemsPerPage: 10,
-  totalItems: 200
+  totalItems: 200,
 };
 
 Example.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=431%3A7899"
-  }
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=431%3A7899",
+  },
 };

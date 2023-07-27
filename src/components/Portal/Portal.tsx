@@ -17,12 +17,14 @@ const Portal = ({
   container?: string | HTMLElement | null;
   disablePortal?: boolean;
 }) => {
-  const [containerElement, setContainerElement] =
-    useState<null | HTMLElement>(null);
+  const [containerElement, setContainerElement] = useState<null | HTMLElement>(
+    null,
+  );
 
   useLayoutEffect(() => {
     if (!container) return;
-    let element: null | HTMLElement, systemCreated = false;
+    let element: null | HTMLElement,
+      systemCreated = false;
 
     if (typeof container === "string") {
       element = document.getElementById(container);
@@ -44,7 +46,7 @@ const Portal = ({
       if (element && systemCreated && element.parentNode) {
         element.parentNode.removeChild(element);
       }
-    }
+    };
   }, [container]);
 
   if (disablePortal && React.isValidElement(children)) return children;

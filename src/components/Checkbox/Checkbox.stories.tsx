@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Checkbox from "./Checkbox";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -24,26 +24,25 @@ const Template: ComponentStory<typeof Checkbox> = (args) => {
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
-  label: "Checkbox"
+  label: "Checkbox",
 };
 export const CheckOnly = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-CheckOnly.args = {
-};
+CheckOnly.args = {};
 export const Indeterminate = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Indeterminate.args = {
-  indeterminate: true
+  indeterminate: true,
 };
 export const HoverStyle = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 HoverStyle.args = {
-  withHoverStyle: true
+  withHoverStyle: true,
 };
 
 Example.parameters = {
- design: {
-   type: "figma",
-   url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=133%3A10483"
- }
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=133%3A10483",
+  },
 };

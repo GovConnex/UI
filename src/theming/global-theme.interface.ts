@@ -17,7 +17,7 @@ export interface BoxShadow {
   y: number;
   blur: number;
   spread: number;
-  color: string
+  color: string;
   type: string;
 }
 
@@ -38,7 +38,7 @@ export interface GlobalTheme {
     body: TypographySize;
     heading: TypographySize;
     label: TypographySize;
-  },
+  };
   spacing: Spacing;
   borderRadius: {
     xs: string;
@@ -46,19 +46,19 @@ export interface GlobalTheme {
     md: string;
     lg: string;
     xl: string;
-  },
+  };
   borderWidth: {
     sm: string;
     md: string;
     lg: string;
-  },
+  };
   boxShadow: {
     xs: BoxShadow;
     sm: BoxShadow;
     md: BoxShadow;
     lg: BoxShadow;
     xl: BoxShadow;
-  }
+  };
 }
 
 export interface CommonGradient {

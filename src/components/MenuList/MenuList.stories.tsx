@@ -12,7 +12,9 @@ export default {
 } as ComponentMeta<typeof MenuList>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof MenuList> = (args) => <MenuList {...args} />;
+const Template: ComponentStory<typeof MenuList> = (args) => (
+  <MenuList {...args} />
+);
 
 export const Example = Template.bind({});
 Example.args = {

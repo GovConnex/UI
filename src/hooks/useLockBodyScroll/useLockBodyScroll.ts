@@ -8,6 +8,6 @@ const useLockBodyScroll = () => {
       document.body.style.overflow = originalStyle;
     };
   }, []);
-}
+};
 
 export default useLockBodyScroll;

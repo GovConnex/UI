@@ -11,7 +11,7 @@ describe("Snackbar", () => {
 
   test("renders the children prop of the Snackbar component", () => {
     const { getByText } = render(
-      <Snackbar>This is a Snackbar message</Snackbar>
+      <Snackbar>This is a Snackbar message</Snackbar>,
     );
     expect(getByText("This is a Snackbar message")).toBeInTheDocument();
   });
@@ -20,7 +20,7 @@ describe("Snackbar", () => {
     const { getByTestId } = render(
       <Snackbar startAdornment={<div data-testid="test-adornment" />}>
         This is a Snackbar message
-      </Snackbar>
+      </Snackbar>,
     );
     expect(getByTestId("test-adornment")).toBeInTheDocument();
   });
@@ -35,7 +35,7 @@ describe("Snackbar", () => {
         ]}
       >
         This is a Snackbar message
-      </Snackbar>
+      </Snackbar>,
     );
     fireEvent.click(getByText("Action 1"));
     fireEvent.click(getByText("Action 2"));

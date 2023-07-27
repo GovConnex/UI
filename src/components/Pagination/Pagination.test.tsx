@@ -12,7 +12,7 @@ describe("Pagination", () => {
         page={1}
         itemsPerPage={1}
         onItemsPerPageChange={() => null}
-      />
+      />,
     );
   });
 });

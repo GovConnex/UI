@@ -9,7 +9,7 @@ describe("DropdownController", () => {
       <DropdownController
         rootButton={() => <div>Test</div>}
         overlay={(toggleVis) => <div onClick={() => toggleVis()}>MenuItem</div>}
-      />
+      />,
     );
   });
 });

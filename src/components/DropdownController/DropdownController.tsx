@@ -47,7 +47,7 @@ const DropdownController = (props: DropdownControllerProps) => {
     {
       modifiers: [{ name: "eventListeners", enabled: visible }],
       placement: "bottom-start",
-    }
+    },
   );
 
   React.useEffect(() => {
@@ -73,7 +73,11 @@ const DropdownController = (props: DropdownControllerProps) => {
     <div
       ref={popperRef}
       {...attributes.popper}
-      style={{ width: overlayWidth || selectorWidth ||  "100%", zIndex: zIndex || 5, ...styles.popper }}
+      style={{
+        width: overlayWidth || selectorWidth || "100%",
+        zIndex: zIndex || 5,
+        ...styles.popper,
+      }}
     >
       {visible ? overlay(() => setVisibility(false)) : null}
     </div>

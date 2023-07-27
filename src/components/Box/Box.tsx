@@ -3,8 +3,7 @@ import { customStyles } from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
 import { Spacing } from "../../theming/global-theme.interface";
 
-
-export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>{
+export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * @ignore content of the Box
    */
@@ -14,7 +13,6 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>{
    * add custom styles through `cs`
    */
   cs?: customStyles;
-  
 }
 
 export interface ExtendedBoxProps extends BoxProps {
@@ -63,30 +61,28 @@ export interface ExtendedBoxProps extends BoxProps {
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
 }
 
- 
 /**
  *
  * `Box` is a extendable div component.
- *  [WARNING] experimental and does not support onClick, 
+ *  [WARNING] experimental and does not support onClick,
  *  and other props that are passed to the div element.
  *
- * Demo: 
- * 
+ * Demo:
+ *
  *  - [Box](https://ui.govconnex.com/?path=/story/components-box--example)
- * 
- * Docs: 
- * 
+ *
+ * Docs:
+ *
  *  - [Box Docs](https://ui.govconnex.com/?path=/docs/components-box--example/)
  *
  */
-const Box = React.forwardRef<HTMLDivElement,ExtendedBoxProps>(function Box(
+const Box = React.forwardRef<HTMLDivElement, ExtendedBoxProps>(function Box(
   props: ExtendedBoxProps,
-  ref
+  ref,
 ) {
-
   // WARN does not pass onClick, etc to the div element
   return (
-    <StyledBox ref={ref} cs={{...props}}>
+    <StyledBox ref={ref} cs={{ ...props }}>
       {props.children}
     </StyledBox>
   );

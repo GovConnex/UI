@@ -20,10 +20,10 @@ Example.args = {
 };
 
 Example.parameters = {
-   design: {
-     type: "figma",
-     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=61%3A18486"
-   }
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=61%3A18486",
+  },
 };
 
 export const Deletable = Template.bind({});

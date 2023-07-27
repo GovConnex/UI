@@ -8,7 +8,9 @@ export const PopInContainer = styled.div<{
 }>`
   position: absolute;
   z-index: 1000;
-  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out,
+  transition:
+    transform 0.3s ease-in-out,
+    visibility 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
   ${({ position = "bottom", offset = "spacing.md", theme }) => css`
     ${position}: ${getValueFromPath(theme, offset)};

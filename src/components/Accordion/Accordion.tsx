@@ -48,18 +48,18 @@ const Accordion = (props: AccordionProps) => {
   // If the height is auto, set it to the fixed px height
   async function handleMousedown() {
     setHeight((prev) =>
-      prev === "auto" ? `${content.current?.scrollHeight}px` : prev
+      prev === "auto" ? `${content.current?.scrollHeight}px` : prev,
     );
   }
 
   function handleClick() {
     setOpen(!open);
     setHeight((prev) =>
-      prev === "0px" ? `${content.current?.scrollHeight}px` : "0px"
+      prev === "0px" ? `${content.current?.scrollHeight}px` : "0px",
     );
   }
 
-  function handleChild(e:any) {
+  function handleChild(e: any) {
     e.stopPropagation();
   }
 
@@ -72,9 +72,9 @@ const Accordion = (props: AccordionProps) => {
           endAdornment
         ) : (
           <div onClick={handleChild}>
-          <Chevron open={open}>
-            <SvgIcon icon="chevron-down" />
-          </Chevron>
+            <Chevron open={open}>
+              <SvgIcon icon="chevron-down" />
+            </Chevron>
           </div>
         )}
       </Root>
@@ -84,7 +84,7 @@ const Accordion = (props: AccordionProps) => {
         ref={content}
         height={height}
       >
-        <InnerContent >{children}</InnerContent>
+        <InnerContent>{children}</InnerContent>
       </Collapse>
     </StyledAccordion>
   );

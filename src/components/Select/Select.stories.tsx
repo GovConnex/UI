@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Select from "./Select";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -11,22 +11,17 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Select> = (args) => 
-<div style={{maxWidth:"300px"}}>
-<Select {...args} />
-</div>
-;
-
+const Template: ComponentStory<typeof Select> = (args) => (
+  <div style={{ maxWidth: "300px" }}>
+    <Select {...args} />
+  </div>
+);
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   title: "Select",
   chipValue: "All",
-  children: [
-    <div>Option 1</div>,
-    <div>Option 2</div>,
-    <div>Option 3</div>,
-  ],
+  children: [<div>Option 1</div>, <div>Option 2</div>, <div>Option 3</div>],
   fullWidth: true,
 };
 export const Error = Template.bind({});
@@ -34,8 +29,8 @@ export const Error = Template.bind({});
 Error.args = {
   title: "Select",
   chipValue: "All",
-  error:"Error message",
-  dropdown: ({close}) => <div onClick={close}>Dropdown</div>,
+  error: "Error message",
+  dropdown: ({ close }) => <div onClick={close}>Dropdown</div>,
   // children: [
   //   <div>Option 1</div>,
   //   <div>Option 2</div>,
@@ -66,8 +61,8 @@ LongList.args = {
 };
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

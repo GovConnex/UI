@@ -9,6 +9,6 @@ describe("Typography", () => {
   });
 
   test("should accept non existing variant", () => {
-    render(<Typography variant="non-existing-variant"/>);
+    render(<Typography variant="non-existing-variant" />);
   });
 });

@@ -9,7 +9,7 @@ describe("PopIn component", () => {
     render(
       <PopIn show={true} position="top" offset="20px">
         <div>PopIn content</div>
-      </PopIn>
+      </PopIn>,
     );
 
     expect(screen.getByText("PopIn content")).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("PopIn component", () => {
     render(
       <PopIn show={false} position="top" offset="20px">
         <div>PopIn content</div>
-      </PopIn>
+      </PopIn>,
     );
 
     expect(screen.getByText("PopIn content")).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("PopIn component", () => {
     const { rerender } = render(
       <PopIn show={true} position="top" offset="20px">
         <div>PopIn content</div>
-      </PopIn>
+      </PopIn>,
     );
 
     expect(screen.getByText("PopIn content")).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("PopIn component", () => {
     rerender(
       <PopIn show={false} position="top" offset="20px">
         <div>PopIn content</div>
-      </PopIn>
+      </PopIn>,
     );
 
     await new Promise((resolve) => setTimeout(resolve, 350)); // Wait for the transition to finish

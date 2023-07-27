@@ -5,6 +5,10 @@ import ThemeProvider from "./ThemeProvider";
 
 describe("ThemeProvider", () => {
   test("renders the ThemeProvider component", () => {
-    render(<ThemeProvider theme={"light"}><div>ThemeProvider</div></ThemeProvider>);
+    render(
+      <ThemeProvider theme={"light"}>
+        <div>ThemeProvider</div>
+      </ThemeProvider>,
+    );
   });
 });

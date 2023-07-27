@@ -134,15 +134,15 @@ const IssueCard = ({
                       id: pinned ? "unpin" : "pin",
                       "data-cy": pinned ? "issue-card-unpin" : "issue-card-pin",
                       text: pinned ? "Unpin Issue" : "Pin Issue",
-                      startAdornment: (
-                        <Icon icon={"fa-solid fa-thumbtack"} />
-                      ),
+                      startAdornment: <Icon icon={"fa-solid fa-thumbtack"} />,
                       onSelect: togglePinned,
                     },
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "mute",
                       "data-cy": "issue-card-mute",
-                      text: issue.notificationsEnabled ? "Mute Issue" : "Unmute Issue",
+                      text: issue.notificationsEnabled
+                        ? "Mute Issue"
+                        : "Unmute Issue",
                       startAdornment: (
                         <Icon
                           icon={
@@ -189,8 +189,7 @@ const IssueCard = ({
       <Description variant="body" size="md" data-cy="issue-card-description">
         {truncateDescription && description?.length >= truncateDescription
           ? description.slice(0, truncateDescription).trim() + "..."
-          : description
-        }
+          : description}
       </Description>
       <Avatars>
         {userLinks?.map((link, idx) =>
@@ -202,7 +201,7 @@ const IssueCard = ({
               size="xl"
               src={link?.user?.profileImage?.url}
             />
-          ) : null
+          ) : null,
         )}
         {userLinks?.length > maxAvatars ? (
           <StyledGrayAvatar

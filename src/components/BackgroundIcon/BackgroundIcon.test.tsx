@@ -11,7 +11,7 @@ describe("BackgroundIcon", () => {
     return render(
       <ThemeProvider theme={lightTheme}>
         <BackgroundIcon {...props} />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   };
 
@@ -39,7 +39,7 @@ describe("BackgroundIcon", () => {
 
     const wrapper = container.querySelector("div");
     expect(wrapper).toHaveStyle(
-      `background: ${lightTheme.primary.brand["50"]}`
+      `background: ${lightTheme.primary.brand["50"]}`,
     );
     expect(wrapper).toHaveStyle("color: white");
   });

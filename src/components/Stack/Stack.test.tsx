@@ -14,12 +14,10 @@ describe("Stack", () => {
   test("renders the Stack component with children and breakpoints", () => {
     render(
       <Stack direction={{ sm: "column", md: "column" }} gap={{ md: "sm" }}>
-      <Card>Item 1</Card>
-      <Card>Item 2</Card>
-      <Card>Item 3</Card>
-      </Stack>
+        <Card>Item 1</Card>
+        <Card>Item 2</Card>
+        <Card>Item 3</Card>
+      </Stack>,
     );
   });
 });
-
-

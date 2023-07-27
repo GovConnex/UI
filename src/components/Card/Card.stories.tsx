@@ -25,7 +25,7 @@ export const Selected = Template.bind({});
 Selected.args = {
   selected: true,
   padding: "xs",
-  hoverStyle:"regress",
+  hoverStyle: "regress",
   children: <div>Hello!</div>,
 };
 

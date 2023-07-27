@@ -2,9 +2,9 @@ import styled from "styled-components";
 import Typography from "../Typography";
 
 const StyledTab = styled.button<{
-  selected: boolean
+  selected: boolean;
 }>`
-${({ theme, selected }) =>
+  ${({ theme, selected }) =>
     ` 
     padding-left: ${theme.spacing.sm};
     padding-right: ${theme.spacing.sm};
@@ -12,7 +12,11 @@ ${({ theme, selected }) =>
     border: 0 solid transparent;
     position: relative;
     white-space: nowrap;
-    color: ${selected ? theme.core.content.contentPrimary : theme.core.content.contentTertiary};
+    color: ${
+      selected
+        ? theme.core.content.contentPrimary
+        : theme.core.content.contentTertiary
+    };
     background-color:${theme.core.background.bgPrimary};
     &:disabled {
         background-color:${theme.core.background.bgSecondary};
@@ -24,13 +28,11 @@ ${({ theme, selected }) =>
     gap:${theme.spacing.xs};
     display:flex;
     align-items:center;
-    justify-conent:center;`
-
-  }
+    justify-conent:center;`}
 `;
 
 const StyledTypography = styled(Typography)`
-      margin-bottom:0;
-`
+  margin-bottom: 0;
+`;
 
-export {StyledTypography, StyledTab}
+export { StyledTypography, StyledTab };

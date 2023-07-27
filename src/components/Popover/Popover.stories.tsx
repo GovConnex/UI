@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Popover from "./Popover";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -18,19 +18,24 @@ const Template: ComponentStory<typeof Popover> = (args) => {
 
   return (
     <div>
-      <Button ref={exampleRef} onClick={() => setShowPopper(!showPopper)}>Toggle popper</Button>
-      {showPopper && <Popover {...args} anchorEl={exampleRef}>I'm popper!</Popover>}
+      <Button ref={exampleRef} onClick={() => setShowPopper(!showPopper)}>
+        Toggle popper
+      </Button>
+      {showPopper && (
+        <Popover {...args} anchorEl={exampleRef}>
+          I'm popper!
+        </Popover>
+      )}
     </div>
   );
-}
+};
 
 export const PlacementDefault = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-PlacementDefault.args = {
-};
+PlacementDefault.args = {};
 
 export const PlacementRight = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 PlacementRight.args = {
-  placement: "right"
+  placement: "right",
 };

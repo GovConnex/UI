@@ -9,7 +9,7 @@ describe("GridBox", () => {
       <GridBox>
         <div>Child 1</div>
         <div>Child 2</div>
-      </GridBox>
+      </GridBox>,
     );
 
     expect(screen.getByText("Child 1")).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("GridBox", () => {
         lg={{ backgroundColor: "yellow" }}
       >
         <div>Child</div>
-      </GridBox>
+      </GridBox>,
     );
 
     const gridbox = container.firstChild as HTMLElement;

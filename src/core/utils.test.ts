@@ -43,7 +43,7 @@ describe("deepMerge", () => {
   it("should return an empty object if no arguments are provided", () => {
     const result = deepMerge(
       undefined as any as AnyObject,
-      undefined as any as AnyObject
+      undefined as any as AnyObject,
     );
 
     expect(result).toEqual(undefined);

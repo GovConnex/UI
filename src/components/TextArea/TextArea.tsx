@@ -106,7 +106,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         ) : null}
       </StyledTextAreaWrapper>
     );
-  }
+  },
 );
 
 export default TextArea;

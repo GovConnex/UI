@@ -35,6 +35,6 @@ Example.args = {
 Example.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=645%3A46279"
-  }
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=645%3A46279",
+  },
 };

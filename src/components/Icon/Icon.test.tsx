@@ -5,6 +5,6 @@ import Icon from "./Icon";
 
 describe("Icon", () => {
   test("renders the Icon component", () => {
-    render(<Icon icon={['fas', 'heart']} />);
+    render(<Icon icon={["fas", "heart"]} />);
   });
 });

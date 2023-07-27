@@ -20,7 +20,8 @@ import {
   GcxDataTableThead,
   GcxDataTableTr,
   GcxDataTableWrapper,
-  Resizer, ResizerDrag,
+  Resizer,
+  ResizerDrag,
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
@@ -110,9 +111,9 @@ export interface DataTableProps {
 
 /**
  * Data table built from react-table. It supports pagination, sorting, selection, and resizing.
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 const DataTable = ({
   data,
@@ -139,8 +140,8 @@ const DataTable = ({
       width: 150, // width is used for both the flex-basis and flex-grow
       maxWidth: 200, // maxWidth is only used as a limit for resizing
     }),
-    []
-  )
+    [],
+  );
 
   // @ts-ignore
   const {
@@ -177,31 +178,35 @@ const DataTable = ({
     useFlexLayout,
     useRowSelect,
     (hooks: any) => {
-      hooks.visibleColumns.push((columns: any) => [
-        /// Let's make a column for selection
-        showSelection !== false ? {
-          id: "selection",
-          // The header can use the table's getToggleAllRowsSelectedProps method
-          // to render a checkbox
-          Header: ({getToggleAllRowsSelectedProps}: any) => (
-            <div>
-              <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
-            </div>
-          ),
-          // The cell can use the individual row's getToggleRowSelectedProps method
-          // to the render a checkbox
-          Cell: ({row}: any) => (
-            <div>
-              <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
-            </div>
-          ),
-          defaultCanSort: false,
-          maxWidth: 0,
-          minWidth: 40,
-          width: 40,
-        } : null,
-        ...columns,
-      ].filter(Boolean));
+      hooks.visibleColumns.push((columns: any) =>
+        [
+          /// Let's make a column for selection
+          showSelection !== false
+            ? {
+                id: "selection",
+                // The header can use the table's getToggleAllRowsSelectedProps method
+                // to render a checkbox
+                Header: ({ getToggleAllRowsSelectedProps }: any) => (
+                  <div>
+                    <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
+                  </div>
+                ),
+                // The cell can use the individual row's getToggleRowSelectedProps method
+                // to the render a checkbox
+                Cell: ({ row }: any) => (
+                  <div>
+                    <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
+                  </div>
+                ),
+                defaultCanSort: false,
+                maxWidth: 0,
+                minWidth: 40,
+                width: 40,
+              }
+            : null,
+          ...columns,
+        ].filter(Boolean),
+      );
       hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
@@ -209,7 +214,7 @@ const DataTable = ({
         if (selectionGroupHeader) selectionGroupHeader.canResize = false;
         if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
       });
-    }
+    },
     // useResizeColumns
   );
 
@@ -219,9 +224,9 @@ const DataTable = ({
 
   useEffect(() => {
     if (onChangeSort) {
-      if(sortBy.length > 0) {
+      if (sortBy.length > 0) {
         const column = columns.find((c) => c.id === sortBy[0].id);
-        onChangeSort([{...sortBy[0], ...column}]);
+        onChangeSort([{ ...sortBy[0], ...column }]);
       }
     }
   }, [onChangeSort, sortBy, columns]);
@@ -235,40 +240,32 @@ const DataTable = ({
         setDataTablePageSize(pageInfo.pageSize);
       }
     },
-    [manualPagination, gotoPage, setDataTablePageSize, onPaginationChangeProp]
+    [manualPagination, gotoPage, setDataTablePageSize, onPaginationChangeProp],
   );
 
   useEffect(() => {
     const selectedRowsStillPresent = Object.keys(selectedRowIds).every(
-      (rowIndex: any) => data[rowIndex]
+      (rowIndex: any) => data[rowIndex],
     );
     if (onSelectedIdsChangeProp && selectedRowsStillPresent)
       onSelectedIdsChangeProp(
-        Object.keys(selectedRowIds).map((rowIndex: any) => data[rowIndex].id)
+        Object.keys(selectedRowIds).map((rowIndex: any) => data[rowIndex].id),
       );
   }, [selectedRowIds, onSelectedIdsChangeProp, data]);
 
   // if (loading) return <InlineLoading />;
   return (
-    <GcxDataTableRoot
-      className={classNames(className)}
-    >
+    <GcxDataTableRoot className={classNames(className)}>
       <GcxDataTableWrapper fullWidth={fullWidth}>
-        <GcxDataTable
-          fullWidth={fullWidth}
-          {...getTableProps()}
-        >
+        <GcxDataTable fullWidth={fullWidth} {...getTableProps()}>
           <GcxDataTableThead>
             {headerGroups.map((headerGroup: any) => (
               <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column: any) => (
-                  <GcxDataTableTh
-                    {...column.getHeaderProps()}
-                  >
+                  <GcxDataTableTh {...column.getHeaderProps()}>
                     <div {...column.getSortByToggleProps()}>
                       {" "}
                       {column.render("Header")}
-
                     </div>
 
                     {column.canResize ? (
@@ -305,7 +302,7 @@ const DataTable = ({
           </GcxDataTableTbody>
         </GcxDataTable>
       </GcxDataTableWrapper>
-      
+
       {/* Pagination shown by default, but can be hidden */}
       {showPagination !== false && (
         <GcxDataTablePagination
@@ -313,8 +310,12 @@ const DataTable = ({
           itemsPerPageOptions={[25, 50, 100]}
           page={page}
           totalItems={numResults || 0}
-          onItemsPerPageChange={(newPageSize) => onPaginationChange({ page, pageSize: newPageSize})}
-          onPageChange={(newPage) => onPaginationChange({ page: newPage, pageSize})}
+          onItemsPerPageChange={(newPageSize) =>
+            onPaginationChange({ page, pageSize: newPageSize })
+          }
+          onPageChange={(newPage) =>
+            onPaginationChange({ page: newPage, pageSize })
+          }
         />
       )}
       {/*</div>*/}

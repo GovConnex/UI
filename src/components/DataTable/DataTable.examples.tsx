@@ -17,7 +17,9 @@ export const NameCell = () => {
         variant={"square"}
         size={"lg"}
       />
-      <Typography variant="body" size="md" noMargin>Cooper Darling-Blair</Typography>
+      <Typography variant="body" size="md" noMargin>
+        Cooper Darling-Blair
+      </Typography>
     </DataTableDataCell>
   );
 };
@@ -52,7 +54,9 @@ export const SupportCell = () => {
   return (
     <DataTableDataCell menuOptions={MENU_OPTIONS}>
       <Dot />
-      <Typography variant="body" size="md" noMargin>Very High</Typography>
+      <Typography variant="body" size="md" noMargin>
+        Very High
+      </Typography>
     </DataTableDataCell>
   );
 };
@@ -78,11 +82,7 @@ export const TagCell = () => {
   );
 };
 
-export const DataCell = ({
-  value,
-}: {
-  value: string
-}) => {
+export const DataCell = ({ value }: { value: string }) => {
   return (
     <DataTableDataCell>
       <Typography variant="body" size="md" noMargin>

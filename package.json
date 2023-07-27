@@ -9,7 +9,7 @@
     "prestart": "yarn run build:tokens",
     "start": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
-    "format": "prettier",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings=0 .",
     "prepare": "yarn run build:tokens",
     "new": "plop"

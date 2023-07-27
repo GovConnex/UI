@@ -5,7 +5,7 @@ import { ChipPriority, ChipRole, ChipSize } from "./Chip";
 const propsToBg = (
   theme: DefaultTheme,
   role: ChipRole,
-  priority: ChipPriority
+  priority: ChipPriority,
 ) =>
   ({
     default: {
@@ -32,12 +32,12 @@ const propsToBg = (
       high: theme.core.background.bgPrimary,
       low: theme.primary.brand[50],
     },
-  }[role][priority]);
+  })[role][priority];
 
 const propsToColour = (
   theme: DefaultTheme,
   role: ChipRole,
-  priority: ChipPriority
+  priority: ChipPriority,
 ) =>
   ({
     default: {
@@ -64,7 +64,7 @@ const propsToColour = (
       high: theme.core.content.contentInversePrimary,
       low: theme.primary.brand[900],
     },
-  }[role][priority]);
+  })[role][priority];
 
 const StyledChip = styled.div<{
   size: ChipSize;

@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Icon from "./Icon";
-import { withDesign } from 'storybook-addon-designs';
+import { withDesign } from "storybook-addon-designs";
 import { faSearch } from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 export const HeartSvg = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 HeartSvg.args = {
-  icon: ['fas', 'heart'],
+  icon: ["fas", "heart"],
 };
 
 export const FontAwesomeSearch = Template.bind({});

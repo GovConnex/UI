@@ -28,21 +28,26 @@ const Template: ComponentStory<typeof ClickAwayListener> = (_) => {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <span>
-        <Button ref={exampleRef} onClick={handleClick} variant="text">Toggle popper</Button>
-        {open && <Popover placement="bottom-start" anchorEl={exampleRef}>I will stay open until you click away!</Popover>}
+        <Button ref={exampleRef} onClick={handleClick} variant="text">
+          Toggle popper
+        </Button>
+        {open && (
+          <Popover placement="bottom-start" anchorEl={exampleRef}>
+            I will stay open until you click away!
+          </Popover>
+        )}
       </span>
     </ClickAwayListener>
   );
-}
+};
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-};
+Example.args = {};
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

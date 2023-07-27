@@ -19,7 +19,7 @@ export interface ModalProps {
   disablePortal?: boolean;
   disableScrollLock?: boolean;
   width?: string;
-};
+}
 
 const ScrollWrapper: React.FC<{
   children: React.ReactElement;
@@ -40,19 +40,17 @@ const Modal = (props: ModalProps) => {
     <Portal container={containerId} disablePortal={props.disablePortal}>
       <ScrollWrapper disableScrollLock={!fullscreen && props.disableScrollLock}>
         {fullscreen ? (
-          <StyledMobileModal>
-            {props.children}
-          </StyledMobileModal>
+          <StyledMobileModal>{props.children}</StyledMobileModal>
         ) : (
-            <StyledModalBack>
-              <ClickAwayListener
-                onClickAway={props.enableClickAway ? props.onClose : () => null}
-              >
-                <StyledModal style={{ width: props.width }}>
-                  {props.children}
-                </StyledModal>
-              </ClickAwayListener>
-            </StyledModalBack>
+          <StyledModalBack>
+            <ClickAwayListener
+              onClickAway={props.enableClickAway ? props.onClose : () => null}
+            >
+              <StyledModal style={{ width: props.width }}>
+                {props.children}
+              </StyledModal>
+            </ClickAwayListener>
+          </StyledModalBack>
         )}
       </ScrollWrapper>
     </Portal>

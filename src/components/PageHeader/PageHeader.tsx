@@ -7,9 +7,9 @@ export interface PageHeaderProps {
   icon: React.ReactNode;
 }
 /**
- * 
+ *
  * @deprecated `PageHeader` is being deprecated and will be removed in next major version `@govconnex/ui@v0.1.x`
- * use Box with Stack instead 
+ * use Box with Stack instead
  *
  */
 const PageHeader = ({ icon, children }: PageHeaderProps) => {
@@ -24,5 +24,3 @@ const PageHeader = ({ icon, children }: PageHeaderProps) => {
 };
 
 export default PageHeader;
-
-

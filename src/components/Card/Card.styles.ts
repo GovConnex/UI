@@ -6,31 +6,44 @@ const StyledCard = styled.div<{
   focused: boolean;
   padding?: keyof Spacing;
   selected?: boolean;
-  hoverStyle?: "none" | "shadow" | "regress"
-}>
-  (({ theme, hoverStyle, focused, selected, padding }) =>
+  hoverStyle?: "none" | "shadow" | "regress";
+}>(
+  ({ theme, hoverStyle, focused, selected, padding }) =>
     `
   background: ${theme.core?.background?.bgPrimary};
-  padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${focused || selected ? ` - ${theme.borderWidth.md}` : ""
-    })`};
+  padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
+    focused || selected ? ` - ${theme.borderWidth.md}` : ""
+  })`};
   margin-bottom: ${theme.spacing.xs};
   transition: border-color 300ms ease-out;
-  border-width: ${focused || selected ? theme.borderWidth.lg : theme.borderWidth.md};
+  border-width: ${
+    focused || selected ? theme.borderWidth.lg : theme.borderWidth.md
+  };
   border-style: solid;
-  border-color: ${focused || selected
+  border-color: ${
+    focused || selected
       ? theme.core?.border?.borderFocus
-      : theme.core?.border?.borderLight};
+      : theme.core?.border?.borderLight
+  };
   border-radius: ${theme.borderRadius.xs};
   box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
 
-  ${hoverStyle === "shadow" ? `
-      &:hover { box-shadow: ${shadowFromProp(theme.boxShadow.xs)}; }; `:null};
+  ${
+    hoverStyle === "shadow"
+      ? `
+      &:hover { box-shadow: ${shadowFromProp(theme.boxShadow.xs)}; }; `
+      : null
+  };
       
-  ${hoverStyle === "regress" ? `
-      &:hover { background-color: ${theme.extended.state.secondaryHover}; }; `: null};
+  ${
+    hoverStyle === "regress"
+      ? `
+      &:hover { background-color: ${theme.extended.state.secondaryHover}; }; `
+      : null
+  };
         
-  `
-  );
+  `,
+);
 
 // const StyledCard = styled.div<{
 //   cs?:any,
@@ -53,7 +66,7 @@ const StyledCard = styled.div<{
 //       : theme.core?.border?.borderLight};
 //       border-radius: ${theme.borderRadius.xs};
 //       box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
-        
+
 //         &:hover {
 //           box-shadow: ${shadowFromProp(theme.boxShadow.xs)};
 //         }

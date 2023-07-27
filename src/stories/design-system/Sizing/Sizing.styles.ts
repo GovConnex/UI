@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import StyledDoc from "../../common/styles";
 
-export const SizingRoot = styled(StyledDoc)`
-
-`;
+export const SizingRoot = styled(StyledDoc)``;
 
 export const SizingTable = styled.table`
   width: 100%;
@@ -22,12 +20,10 @@ export const SizingTableTr = styled.tr`
   //padding: 1rem 0;
 `;
 
-
-
 export const SizingTableTd = styled.td`
   //display: flex;
   //flex-direction: row;
-   padding: .5rem 0;
+  padding: 0.5rem 0;
 `;
 
 export const SizingNameTd = styled(SizingTableTd)`
@@ -39,19 +35,18 @@ export const SizingNameTd = styled(SizingTableTd)`
 
 export const SizingValueTd = styled(SizingTableTd)`
   //flex-grow: 1;
-  
+
   line-height: 1.5;
- 
+
   opacity: 0.9;
   //min-width: 0rem
 `;
 
-
 export const SizingDescriptionTd = styled(SizingTableTd)`
   //flex-grow: 1;
-  
+
   line-height: 1.5;
- 
+
   opacity: 0.9;
   //min-width: 0rem
 `;

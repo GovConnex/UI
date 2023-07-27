@@ -1,10 +1,15 @@
 import React from "react";
 import Typography from "../Typography";
-import {StyledRadio, RadioWrapper, RadioLabel, RadioTextWrapper} from "./Radio.styles";
-import {StyledAdornment} from "../Button/Button.styles";
+import {
+  StyledRadio,
+  RadioWrapper,
+  RadioLabel,
+  RadioTextWrapper,
+} from "./Radio.styles";
+import { StyledAdornment } from "../Button/Button.styles";
 
-export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
-
+export interface RadioProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * checked state of the radio
    * @default `false`
@@ -30,7 +35,7 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
    * renders an icon before the label and description
    */
   startAdornment?: React.ReactNode;
-};
+}
 
 /**
  *
@@ -40,15 +45,26 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
  *
  */
 const Radio = (props: RadioProps) => {
-  const {checked, variant = "default", label, description, startAdornment, ...rest } = props;
+  const {
+    checked,
+    variant = "default",
+    label,
+    description,
+    startAdornment,
+    ...rest
+  } = props;
 
   return (
     <RadioLabel variant={variant}>
       <RadioWrapper checked={!!checked} variant={variant}>
-    {startAdornment ? <StyledAdornment>{startAdornment}</StyledAdornment> : null}
+        {startAdornment ? (
+          <StyledAdornment>{startAdornment}</StyledAdornment>
+        ) : null}
         {label ? (
           <RadioTextWrapper>
-            <Typography as="span" variant="label" size="md">{label}</Typography>
+            <Typography as="span" variant="label" size="md">
+              {label}
+            </Typography>
             {description ? (
               <Typography
                 noMargin

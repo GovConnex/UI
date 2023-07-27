@@ -13,7 +13,7 @@ import Icon from "../Icon";
 export interface PaginationItemsPerPageObject {
   value: number;
   label: string | number;
-};
+}
 
 export type PaginationItemsPerPageOption =
   | number
@@ -27,7 +27,7 @@ export interface PaginationProps {
   onItemsPerPageChange: (newItemsPerPage: number) => void;
   itemsPerPageOptions?: (PaginationItemsPerPageOption | number)[];
   className?: string;
-};
+}
 
 const Pagination = (props: PaginationProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -43,7 +43,10 @@ const Pagination = (props: PaginationProps) => {
       return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
           ? { text: x, onSelect: () => setItemsPerPage(x) }
-          : { text: x.label || x.value, onSelect: () => setItemsPerPage(x.value) }
+          : {
+              text: x.label || x.value,
+              onSelect: () => setItemsPerPage(x.value),
+            },
       );
     } else {
       return [
@@ -60,7 +63,8 @@ const Pagination = (props: PaginationProps) => {
       <>
         <div>
           <Typography noMargin>
-            Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
+            Page {props.page} of{" "}
+            {Math.ceil(props.totalItems / props.itemsPerPage)}
           </Typography>
 
           <Button

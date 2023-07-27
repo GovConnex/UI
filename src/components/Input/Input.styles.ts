@@ -1,38 +1,49 @@
 import styled from "styled-components";
 
-const StyledAdornment = styled.span<{ position: string, disabled: Boolean }>(({ theme, position, disabled }) => ({
-  [position]: theme.spacing.sm,
-  position: 'absolute',
-  pointerEvents: 'none',
-  opacity: disabled ? 0.3 : 1,
-})
-)
+const StyledAdornment = styled.span<{ position: string; disabled: Boolean }>(
+  ({ theme, position, disabled }) => ({
+    [position]: theme.spacing.sm,
+    position: "absolute",
+    pointerEvents: "none",
+    opacity: disabled ? 0.3 : 1,
+  }),
+);
 
-const StyledInputContainer = styled.div<{ fullWidth: boolean }>(({ theme, fullWidth }) =>
-  `
+const StyledInputContainer = styled.div<{ fullWidth: boolean }>(
+  ({ theme, fullWidth }) =>
+    `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: inline-flex;
 
   position: relative;
   align-items:center;
-  `
-)
-const StyledInputWrapper = styled.div<{ fullWidth: boolean }>(({ theme, fullWidth }) =>
-  `
+  `,
+);
+const StyledInputWrapper = styled.div<{ fullWidth: boolean }>(
+  ({ theme, fullWidth }) =>
+    `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.xs};
-  `
-)
+  `,
+);
 
-const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornmentPadding: "left" | "right" | null }>
-  (({ theme, error, fullWidth, adornmentPadding }) =>
+const StyledInput = styled.input<{
+  error: boolean;
+  fullWidth: boolean;
+  adornmentPadding: "left" | "right" | null;
+}>(
+  ({ theme, error, fullWidth, adornmentPadding }) =>
     `
   padding-top: ${theme.spacing.xs};
   padding-bottom: ${theme.spacing.xs};
-  padding-left: calc(${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"});
-  padding-right: calc(${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"});
+  padding-left: calc(${theme.spacing.sm} + ${
+    adornmentPadding === "left" ? "26px" : "0px"
+  });
+  padding-right: calc(${theme.spacing.sm} + ${
+    adornmentPadding === "right" ? "26px" : "0px"
+  });
 
   width: ${fullWidth ? "100%" : "initial"};
   background-color: transparent;
@@ -54,8 +65,12 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
     border-width:2px;
     padding-top: calc(${theme.spacing.xs} - 1px);
     padding-bottom: calc(${theme.spacing.xs} - 1px);
-    padding-left: calc((${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"}) - 1px);
-    padding-right: calc((${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"}) - 1px);
+    padding-left: calc((${theme.spacing.sm} + ${
+      adornmentPadding === "left" ? "26px" : "0px"
+    }) - 1px);
+    padding-right: calc((${theme.spacing.sm} + ${
+      adornmentPadding === "right" ? "26px" : "0px"
+    }) - 1px);
   }
 
   &:hover {
@@ -70,7 +85,12 @@ const StyledInput = styled.input<{ error: boolean, fullWidth: boolean, adornment
   &:disabled::placeholder{
     color:${theme.extended.state.disabled};
   }
-  `
-  )
+  `,
+);
 
-export {StyledInputWrapper, StyledInputContainer, StyledInput, StyledAdornment };
+export {
+  StyledInputWrapper,
+  StyledInputContainer,
+  StyledInput,
+  StyledAdornment,
+};

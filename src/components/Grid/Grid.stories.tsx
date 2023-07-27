@@ -27,7 +27,7 @@ const spanToBG = (span: number, theme: DefaultTheme) =>
     2: theme.primary.brand["200"],
     3: theme.primary.brand["300"],
     4: theme.primary.brand["400"],
-  }[span]);
+  })[span];
 
 const spanToColor = (span: number, theme: DefaultTheme) =>
   ({
@@ -35,7 +35,7 @@ const spanToColor = (span: number, theme: DefaultTheme) =>
     2: theme.primary.brand["700"],
     3: theme.primary.brand["100"],
     4: theme.primary.brand["50"],
-  }[span]);
+  })[span];
 
 const Cell = styled(GridCell)`
   background: ${(props) => spanToBG(props.columnSpan || 1, props.theme)};

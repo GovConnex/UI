@@ -44,7 +44,7 @@ export type gapProps =
   | { sm?: keyof Spacing; md?: keyof Spacing; lg?: keyof Spacing }
   | keyof Spacing;
 
-export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
+export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * content of the Stack
    */
@@ -55,7 +55,7 @@ export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
    */
   direction?: directionProps;
   /**
-   * defines gap between child components 
+   * defines gap between child components
    */
   gap?: gapProps;
 
@@ -68,12 +68,12 @@ export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
  *
  * `Stack` manages layout of its children along vertical or horizontal axis
  *
- * Demo: 
- * 
+ * Demo:
+ *
  *  - [Stack](https://ui.govconnex.com/?path=/story/components-Stack--example)
- * 
- * Docs: 
- * 
+ *
+ * Docs:
+ *
  *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-Stack--example/)
  *
  */

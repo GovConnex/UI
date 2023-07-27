@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { shadowFromProp } from "../style-utils";
 
-
-const StyledSelect = styled.button<{ error: boolean, fullWidth: boolean, visible: boolean }>
-    (({ theme, error, visible, fullWidth }) =>
-        `
+const StyledSelect = styled.button<{
+  error: boolean;
+  fullWidth: boolean;
+  visible: boolean;
+}>(
+  ({ theme, error, visible, fullWidth }) =>
+    `
 padding:0 ${theme.spacing.sm};
 display:flex;
 align-items:center;
@@ -28,15 +31,21 @@ outline-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
   }
 
 ${fullWidth ? `width: 100%;` : ""}
-${visible ? `outline: ${error ? theme.secondary.red[500] : theme.primary.base.brand} auto 1px !important;` : ""}
+${
+  visible
+    ? `outline: ${
+        error ? theme.secondary.red[500] : theme.primary.base.brand
+      } auto 1px !important;`
+    : ""
+}
 gap: ${theme.spacing.sm};
 
-`
-    );
+`,
+);
 
-const MenuWrapepr = styled.div<{ maxHeight: string | null }>
-    (({ theme, maxHeight }) =>
-        `
+const MenuWrapepr = styled.div<{ maxHeight: string | null }>(
+  ({ theme, maxHeight }) =>
+    `
         background-color: ${theme.primary.base.white};
         min-width: 100%;
         inline-size: fit-content;
@@ -54,19 +63,19 @@ const MenuWrapepr = styled.div<{ maxHeight: string | null }>
        ${maxHeight ? `max-height: ${maxHeight};` : ""}
         overflow-y: auto;
 
-        `
-    );
+        `,
+);
 
 const SelectWrapper = styled.div`
-    display: flex;
-    gap: ${({ theme }) => theme.spacing.xs}; 
-    flex-direction: column;
-    `;
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.xs};
+  flex-direction: column;
+`;
 
 const StyledChipWrapper = styled.div`
-    display: flex;
-    gap: ${({ theme }) => theme.spacing.xs};
-    align-items: center;
-    `;
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.xs};
+  align-items: center;
+`;
 
 export { SelectWrapper, StyledChipWrapper, StyledSelect, MenuWrapepr };

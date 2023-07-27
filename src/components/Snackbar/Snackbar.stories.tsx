@@ -4,7 +4,7 @@ import Snackbar, { PopinSnackbar } from "./Snackbar";
 import { withDesign } from "storybook-addon-designs";
 import Icon from "../SvgIcon/Icon";
 import Box from "../Box";
-import {faStar} from "@fortawesome/pro-solid-svg-icons/faStar";
+import { faStar } from "@fortawesome/pro-solid-svg-icons/faStar";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

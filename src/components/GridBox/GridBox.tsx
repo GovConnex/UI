@@ -63,13 +63,15 @@ const GridBox: React.FC<GridBoxProps> = ({
 
   return (
     <Box
-      cs={{
-        display: "grid",
-        sm: smStyles,
-        md: mdStyles,
-        lg: lgStyles,
-        ...rest,
-      } as any}
+      cs={
+        {
+          display: "grid",
+          sm: smStyles,
+          md: mdStyles,
+          lg: lgStyles,
+          ...rest,
+        } as any
+      }
     >
       {children}
     </Box>

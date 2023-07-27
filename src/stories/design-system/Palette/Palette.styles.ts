@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import StyledDoc from "../../common/styles";
 
-const StyledPalette = styled(StyledDoc)`
-  
-`;
+const StyledPalette = styled(StyledDoc)``;
 
 export const SectionHeader = styled.h2`
   font-size: 1.5rem;
@@ -28,23 +26,19 @@ export const ColorsTableRow = styled.tr`
   //padding: 1rem 0;
 `;
 
-
-
 export const ColorsTableTd = styled.td`
   //display: flex;
   //flex-direction: row;
-   padding: .5rem 0;
+  padding: 0.5rem 0;
 `;
 
 export const ColorValueTd = styled(ColorsTableTd)`
-  
   //display: flex;
   //flex-direction: row;
   width: 2rem;
   //padding: 0;/
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 `;
-
 
 export const ColorNameTd = styled(ColorsTableTd)`
   //padding: 2rem 1rem;
@@ -55,16 +49,15 @@ export const ColorNameTd = styled(ColorsTableTd)`
 
 export const ColorDescriptionTd = styled(ColorsTableTd)`
   //flex-grow: 1;
-  
+
   line-height: 1.5;
- 
+
   opacity: 0.9;
   //min-width: 0rem
 `;
 
-
-export const ColorValue = styled.div<{value: string}>`
-  background-color: ${props => props.value};
+export const ColorValue = styled.div<{ value: string }>`
+  background-color: ${(props) => props.value};
   height: 2rem;
   border-radius: 50%;
   width: 2rem;

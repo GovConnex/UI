@@ -32,7 +32,7 @@ export const StyledGridCell = styled.div<{
     props.columnSpan
       ? `grid-column: span ${Math.min(
           props.columnSpanSm || props.columnSpan,
-          4
+          4,
         )}`
       : ""};
 
@@ -41,7 +41,7 @@ export const StyledGridCell = styled.div<{
       props.columnSpan
         ? `grid-column: span ${Math.min(
             props.columnSpanMd || props.columnSpan,
-            8
+            8,
           )}`
         : ""};
   }
@@ -51,7 +51,7 @@ export const StyledGridCell = styled.div<{
       props.columnSpan
         ? `grid-column: span ${Math.min(
             props.columnSpanLg || props.columnSpan,
-            12
+            12,
           )}`
         : ""};
   }

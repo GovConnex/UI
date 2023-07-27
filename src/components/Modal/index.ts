@@ -1,1 +1,6 @@
-export { Modal, StyledModalContent, StyledModalHead, StyledModalFeet } from "./Modal";
+export {
+  Modal,
+  StyledModalContent,
+  StyledModalHead,
+  StyledModalFeet,
+} from "./Modal";

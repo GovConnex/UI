@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState,useEffect } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import { BottomHighlight, StyledTabs } from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
 
@@ -8,7 +8,10 @@ import { StyledTab, StyledTypography } from "./Tab.styles";
  * `getIndexOfCollectionValue` returns the index of a collection with value x
  * for example the index of a child component
  */
-function getIndexOfCollectionValue( value: string, collection: HTMLCollection | undefined) {
+function getIndexOfCollectionValue(
+  value: string,
+  collection: HTMLCollection | undefined,
+) {
   if (!collection) return 0;
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].getAttribute("value") === value) {
@@ -25,7 +28,7 @@ function getOffsetWidth(selectedIndex: number, collection: HTMLCollection) {
   let offset = 0;
   for (let i = 0; i <= selectedIndex - 1; i++) {
     const w = collection[i].getBoundingClientRect().width;
-    offset += w
+    offset += w;
   }
   return offset;
 }
@@ -44,21 +47,20 @@ export interface TabsProps {
   /**
    * Gives you access to the value prop of `Tab` on change.
    */
-  onChange?:(e:string) => void;
+  onChange?: (e: string) => void;
 }
-
 
 /**
  *
  * `Tabs` is a shell for Tab that has a bottom bar to let the user know what current `Tab` they are on
  *
- * 
- * Demo: 
- * 
+ *
+ * Demo:
+ *
  *  - [Stack](https://ui.govconnex.com/?path=/story/components-tabs--example)
- * 
- * Docs: 
- * 
+ *
+ * Docs:
+ *
  *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-tabs--example/)
  *
  */
@@ -94,10 +96,9 @@ const Tabs = (props: TabsProps) => {
     if (!props.value) return;
     updateSelected(
       props.value,
-      getIndexOfCollectionValue(props.value, collection)
+      getIndexOfCollectionValue(props.value, collection),
     );
   }, []);
-
 
   return (
     <StyledTabs ref={TabsRef}>
@@ -106,12 +107,16 @@ const Tabs = (props: TabsProps) => {
           return React.cloneElement(child, {
             onClick: () => {
               updateSelected(child.props.value, i);
-             props.onChange && props.onChange(child.props.value);
+              props.onChange && props.onChange(child.props.value);
               child.props.onClick && child.props.onClick();
             },
             selected: selected.value === child.props?.value,
-            key: `tab-${i}`
-          } as {onClick:React.DOMAttributes<HTMLButtonElement>, selected:boolean, key:string} );
+            key: `tab-${i}`,
+          } as {
+            onClick: React.DOMAttributes<HTMLButtonElement>;
+            selected: boolean;
+            key: string;
+          });
         }
         return child;
       })}
@@ -155,6 +160,6 @@ Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         <StyledTypography>{props.label}</StyledTypography>
       </StyledTab>
     );
-  }
+  },
 );
 export default Tabs;

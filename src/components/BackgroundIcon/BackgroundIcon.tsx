@@ -5,7 +5,9 @@ import { IconProps } from "../SvgIcon/Icon";
 import StyledBackgroundIcon from "./BackgroundIcon.styles";
 import { customStyles } from "../../core/styleFunctions";
 
-const Icon = (props: {cs?: customStyles} & (FontAwesomeIconProps | IconProps)) => {
+const Icon = (
+  props: { cs?: customStyles } & (FontAwesomeIconProps | IconProps),
+) => {
   return (
     <StyledBackgroundIcon size={props.size} cs={props.cs}>
       <SvgIcon {...props} />

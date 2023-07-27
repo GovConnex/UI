@@ -20,7 +20,7 @@ const sizeToBorderRadius = (size: SizeProp, theme: DefaultTheme): string =>
     "8x": theme.borderRadius.lg,
     "9x": theme.borderRadius.lg,
     "10x": theme.borderRadius.lg,
-  }[size]);
+  })[size];
 
 const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
   const basePx = 24;
@@ -46,7 +46,7 @@ const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
   );
 };
 
-const StyledBackgroundIcon = styled.div<{ size?: SizeProp, cs?: customStyles }>`
+const StyledBackgroundIcon = styled.div<{ size?: SizeProp; cs?: customStyles }>`
   align-items: center;
   border-radius: ${(props) =>
     sizeToBorderRadius(props.size || "sm", props.theme)};

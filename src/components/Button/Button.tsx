@@ -74,7 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       style,
       ...rest
     },
-    ref
+    ref,
   ) => {
     return (
       <StyledButton
@@ -113,7 +113,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : null}
       </StyledButton>
     );
-  }
+  },
 );
 
 export default Button;

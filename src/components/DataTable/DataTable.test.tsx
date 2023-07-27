@@ -80,14 +80,14 @@ describe("DataTable", () => {
         pageSize={25}
         page={1}
         numResults={100}
-      />
+      />,
     );
 
     expect(
-      await screen.findByText(/Field 1/i, { exact: false })
+      await screen.findByText(/Field 1/i, { exact: false }),
     ).toBeInTheDocument();
     expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
+      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
     ).toBe(3);
   });
 
@@ -97,14 +97,14 @@ describe("DataTable", () => {
         data={DATA_TABLE_DATA}
         columns={DATA_TABLE_COLUMNS}
         showPagination={false}
-      />
+      />,
     );
 
     expect(
-      await screen.findByText(/Field 1/i, { exact: false })
+      await screen.findByText(/Field 1/i, { exact: false }),
     ).toBeInTheDocument();
     expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
+      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
     ).toBe(3);
   });
 
@@ -115,14 +115,14 @@ describe("DataTable", () => {
         columns={DATA_TABLE_COLUMNS}
         showPagination={false}
         showSelection={false}
-      />
+      />,
     );
 
     expect(
-      await screen.findByText(/Field 1/i, { exact: false })
+      await screen.findByText(/Field 1/i, { exact: false }),
     ).toBeInTheDocument();
     expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
+      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
     ).toBe(3);
   });
 
@@ -138,14 +138,14 @@ describe("DataTable", () => {
         })}
         showPagination={false}
         showSelection={false}
-      />
+      />,
     );
 
     expect(
-      await screen.findByText(/Field 1/i, { exact: false })
+      await screen.findByText(/Field 1/i, { exact: false }),
     ).toBeInTheDocument();
     expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length
+      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
     ).toBe(3);
   });
 });

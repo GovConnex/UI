@@ -13,7 +13,7 @@ export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const isFaProps = (
-  props: FontAwesomeIconProps | IconProps
+  props: FontAwesomeIconProps | IconProps,
 ): props is FontAwesomeIconProps => {
   return !React.isValidElement(props.icon);
 };

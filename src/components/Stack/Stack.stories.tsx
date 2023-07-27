@@ -4,19 +4,19 @@ import Stack from "./Stack";
 import { withDesign } from "storybook-addon-designs";
 import Card from "../Card";
 // @ts-ignore
-import mdx from './Stack.mdx';
+import mdx from "./Stack.mdx";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/Stack",
   component: Stack,
-  decorators: [withDesign, ],
+  decorators: [withDesign],
   parameters: {
     docs: {
       page: mdx,
     },
   },
-  
+
   argTypes: {
     direction: {
       options: ["row", "row-reverse", "column", "column-reverse"],
@@ -66,7 +66,6 @@ export const Example = Template.bind({});
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
-  direction: {sm:"column",md:"row"} ,
-  gap: {sm:"md",md:"sm"},
+  direction: { sm: "column", md: "row" },
+  gap: { sm: "md", md: "sm" },
 };
-
