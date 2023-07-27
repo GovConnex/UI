@@ -16,6 +16,7 @@ module.exports = {
   staticDirs: ["../static"],
   typescript: {
     "check": true,
+    reactDocgen: "react-docgen-typescript-plugin",
   },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
