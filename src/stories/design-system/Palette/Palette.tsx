@@ -1,7 +1,6 @@
 import React from "react";
 import globalTokens from "../../../theming/tokens-style-dictionary/global.json";
 import lightTokens from "../../../theming/tokens-style-dictionary/light.json";
-import darkTokens from "../../../theming/tokens-style-dictionary/dark.json";
 
 import StyledPalette, {
   ColorsTable,

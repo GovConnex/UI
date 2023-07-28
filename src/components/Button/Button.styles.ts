@@ -22,7 +22,7 @@ const StyledButton = styled.button<{
   iconOnlySize: keyof Spacing;
   shape: ButtonShape;
   size: ButtonSize;
-  isLoading: Boolean;
+  isLoading: boolean;
   noPadding?: boolean;
 }>`
 position: relative;
