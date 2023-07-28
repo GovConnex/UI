@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledStepper = styled.div`
-  ${({ theme }) => `
+  ${() => `
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -10,9 +10,9 @@ const StyledStepper = styled.div`
     `}
 `;
 const StyledBullet = styled.div<{
-  active: Boolean;
-  passed: Boolean;
-  disabled: Boolean;
+  active: boolean;
+  passed: boolean;
+  disabled: boolean;
 }>`
   ${({ theme, active, passed, disabled }) => `
     width: 16px;
@@ -83,7 +83,7 @@ const StyledTrack = styled.div<{ passed: boolean }>`
     `}
 `;
 const BulletWrapper = styled.div<{}>`
-  ${({ theme }) => `
+  ${() => `
     display: flex;
     align-items: center;
     gap: 15px;
@@ -92,7 +92,7 @@ const BulletWrapper = styled.div<{}>`
 `;
 
 const InfoWrapper = styled.div<{}>`
-  ${({ theme }) => `
+  ${() => `
     display: flex;
     flex-direction: column;
     `}

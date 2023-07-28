@@ -3,7 +3,6 @@ import { StyledList, StyledListItem, StyledListItemStart } from "./List.styles";
 import Typography from "../Typography";
 import { VariantsProp } from "../Typography/Typography.types";
 import {
-  Typography as tp,
   TypographySize,
 } from "../../theming/global-theme.interface";
 

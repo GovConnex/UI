@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { DataCellMenu, GcxDataTableDataCellRoot } from "./DataTable.styles";
-import Menu from "../Menu";
 import { MenuOption } from "../Menu/Menu";
 
 export interface DataCellProps {

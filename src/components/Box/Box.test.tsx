@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "../test-utils";
 
-import Box, { ExtendedBoxProps } from "./Box";
+import Box from "./Box";
 
 describe("Box", () => {
   test("renders the Box component", () => {

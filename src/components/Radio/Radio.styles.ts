@@ -110,6 +110,7 @@ justify-content: ${variant === "default" ? "start" : "space-between"}};
 );
 
 const RadioTextWrapper = styled.span(
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ theme }) => `
 display: flex;
 flex-direction: column;

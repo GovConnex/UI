@@ -152,7 +152,7 @@ const experimental_passCustomStyles = (args: any) => {
       // 3) normalise chained keys
       if (cssProp.includes("&")) {
         // split by &
-        let t = cssProp.split("&");
+        const t = cssProp.split("&");
 
         // 3.1) Loop through chained keys and add to css
         t.forEach((v) => {

@@ -1,6 +1,5 @@
 // PopIn.tsx
-import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import React, { useEffect } from "react";
 import { PopInContainer } from "./PopIn.styles";
 import Portal from "../Portal";
 

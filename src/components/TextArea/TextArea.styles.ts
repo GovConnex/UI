@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledAdornment = styled.span<{ position: string; disabled: Boolean }>(
+const StyledAdornment = styled.span<{ position: string; disabled: boolean }>(
   ({ theme, position, disabled }) => ({
     [position]: theme.spacing.sm,
     paddingTop: theme.spacing.xs,
@@ -11,6 +11,7 @@ const StyledAdornment = styled.span<{ position: string; disabled: Boolean }>(
 );
 
 const StyledTextAreaContainer = styled.div<{ fullWidth: boolean }>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ theme, fullWidth }) =>
     `
   width: ${fullWidth ? "100%" : "fit-content"};

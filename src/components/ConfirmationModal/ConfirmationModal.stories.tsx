@@ -2,7 +2,6 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ConfirmationModal from "./ConfirmationModal";
 import { withDesign } from "storybook-addon-designs";
-import mdx from "./ConfirmationModal.mdx";
 import { BackgroundIcon } from "..";
 
 export default {

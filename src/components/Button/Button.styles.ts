@@ -10,12 +10,6 @@ const StyledAdornment = styled.span`
   margin-bottom: 1px;
 `;
 
-const heightMap = {
-  sm: "24px",
-  md: "32px",
-  lg: "40px",
-};
-
 const StyledButton = styled.button<{
   variant: ButtonVariant;
   iconOnly?: boolean;

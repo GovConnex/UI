@@ -73,7 +73,7 @@ const StyledChip = styled.div<{
 }>`
   background-color: ${({ theme, role, priority }) =>
     propsToBg(theme, role, priority)};
-  padding: 0 ${({ theme, size }) => theme.spacing.xs};
+  padding: 0 ${({ theme }) => theme.spacing.xs};
   height: ${({ theme, size }) => theme.spacing[size]};
   line-height: ${({ theme, size }) => theme.spacing[size]};
   border-radius: ${({ theme }) => theme.borderRadius.sm};

@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof ClickAwayListener>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ClickAwayListener> = (_) => {
+const Template: ComponentStory<typeof ClickAwayListener> = () => {
   const [open, setOpen] = useState(false);
   const exampleRef = useRef<HTMLButtonElement>(null);
 

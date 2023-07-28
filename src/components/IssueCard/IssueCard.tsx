@@ -10,7 +10,7 @@ import {
   NoMembers,
   LockIcon,
 } from "./IssueCard.styles";
-import React, { useState, useRef, Ref } from "react";
+import React, { useState, useRef } from "react";
 import { Button, SvgIcon as Icon, Menu, Portal } from "../";
 import { MenuOption } from "../Menu/Menu";
 

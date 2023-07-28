@@ -92,7 +92,7 @@ describe("DataTable", () => {
   });
 
   test("renders the DataTable component without pagination", async () => {
-    const { getByText } = render(
+    render(
       <DataTable
         data={DATA_TABLE_DATA}
         columns={DATA_TABLE_COLUMNS}
@@ -109,7 +109,7 @@ describe("DataTable", () => {
   });
 
   test("renders the DataTable component without selection", async () => {
-    const { getByText } = render(
+    render(
       <DataTable
         data={DATA_TABLE_DATA}
         columns={DATA_TABLE_COLUMNS}
@@ -127,7 +127,7 @@ describe("DataTable", () => {
   });
 
   test("renders the DataTable component without header icon", async () => {
-    const { getByText } = render(
+    render(
       <DataTable
         data={DATA_TABLE_DATA}
         columns={DATA_TABLE_COLUMNS?.map((column) => {

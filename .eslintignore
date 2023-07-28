@@ -143,6 +143,10 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 /pythonEnvs/
 
+# Config files
+*.config.js
+
+plopfile.js
 
 # Packed files
 *.tgz

@@ -1,5 +1,4 @@
 import { addCustomStyles } from "./index";
-import { DefaultTheme } from "styled-components";
 import { lightTheme } from "../../theming";
 
 describe("addCustomStyles", () => {
@@ -59,8 +58,6 @@ describe("addCustomStyles", () => {
       cs: { boxShadow: "shadow.sm" },
       theme: lightTheme,
     });
-
-    const expectedShadow = lightTheme.boxShadow.sm;
 
     expect(result).toEqual({
       boxShadow: null,

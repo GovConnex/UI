@@ -10,6 +10,7 @@ const StyledAdornment = styled.span<{ position: string; disabled: Boolean }>(
 );
 
 const StyledInputContainer = styled.div<{ fullWidth: boolean }>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ theme, fullWidth }) =>
     `
   width: ${fullWidth ? "100%" : "fit-content"};

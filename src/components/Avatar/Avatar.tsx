@@ -1,5 +1,4 @@
 import React from "react";
-import Typography from "../Typography";
 import StyledAvatar, { StyledAvatarImage } from "./Avatar.styles";
 
 export type Variant = "circle" | "square";
@@ -51,7 +50,7 @@ const Avatar = ({
 }: AvatarProps) => {
   const [error, setError] = React.useState(false);
   const showAvatar = src && !error;
-  let initials = getInitials(alt) || "";
+  const initials = getInitials(alt) || "";
   const colourIndex =
     ((initials?.charCodeAt(0) || 0) + (initials?.charCodeAt(1) || 0)) %
     colourVariants.length;

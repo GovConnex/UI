@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import {
   useFlexLayout,
@@ -25,17 +25,10 @@ import {
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-import Pagination from "../Pagination";
-import Icon from "../Icon";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
-const { v4: uuid } = require("uuid");
-
-const SelectionCheckbox = React.forwardRef((props, ref) => {
-  const [id] = useState(uuid());
-  const defaultRef = React.useRef();
-  const resolvedRef = ref || defaultRef;
+const SelectionCheckbox = React.forwardRef(() => {
   return (
     <>
       {/*<Checkbox*/}

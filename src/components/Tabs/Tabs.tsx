@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { BottomHighlight, StyledTabs } from "./Tabs.styles";
 import { StyledTab, StyledTypography } from "./Tab.styles";
 

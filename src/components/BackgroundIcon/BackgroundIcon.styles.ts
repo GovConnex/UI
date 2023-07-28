@@ -22,7 +22,7 @@ const sizeToBorderRadius = (size: SizeProp, theme: DefaultTheme): string =>
     "10x": theme.borderRadius.lg,
   })[size];
 
-const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
+const sizeToWidth = (size: SizeProp): string => {
   const basePx = 24;
   return (
     {
