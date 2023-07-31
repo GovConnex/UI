@@ -78,7 +78,7 @@
     "storybook-addon-designs": "^6.3.1",
     "style-dictionary": "^3.7.2",
     "styled-components": "5.3.8",
-    "typescript": "*",
+    "typescript": "^4.9.5",
     "webpack-merge": "^5.8.0"
   },
   "resolutions": {
