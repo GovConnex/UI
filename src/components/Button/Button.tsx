@@ -1,12 +1,7 @@
 import React, {ComponentType} from "react";
 import {Spacing, TypographySize} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
-import {
-  StyledButton,
-  StyledAdornment,
-  StyledSpinner,
-  StyledTypography,
-} from "./Button.styles";
+import {StyledButton, StyledAdornment, StyledSpinner} from "./Button.styles";
 
 export type ButtonVariant =
   | "primary"
