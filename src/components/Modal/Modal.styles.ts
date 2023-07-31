@@ -62,7 +62,7 @@ export const StyledMobileModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
-  overflow: scroll;
+  overflow: auto;
   margin-top: env(safe-area-inset-top);
   top: 0;
   left: 0;
