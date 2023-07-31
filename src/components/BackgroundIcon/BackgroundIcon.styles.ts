@@ -55,8 +55,8 @@ const StyledBackgroundIcon = styled.div<{size?: SizeProp; cs?: customStyles}>`
   padding: 0;
   background: ${(props) => props.theme.primary.brand["50"]};
   color: ${(props) => props.theme.primary.brand["600"]};
-  width: ${(props) => sizeToWidth(props.size || "sm", props.theme)};
-  height: ${(props) => sizeToWidth(props.size || "sm", props.theme)};
+  width: ${(props) => sizeToWidth(props.size || "sm")};
+  height: ${(props) => sizeToWidth(props.size || "sm")};
 
   ${(props) => addCustomStyles(props)};
 `;
