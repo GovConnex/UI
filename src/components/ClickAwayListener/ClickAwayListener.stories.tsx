@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useState, useRef} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import ClickAwayListener from "./ClickAwayListener";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 import Popover from "../Popover";
 
@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof ClickAwayListener>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ClickAwayListener> = (_) => {
+const Template: ComponentStory<typeof ClickAwayListener> = () => {
   const [open, setOpen] = useState(false);
   const exampleRef = useRef<HTMLButtonElement>(null);
 
@@ -28,21 +28,26 @@ const Template: ComponentStory<typeof ClickAwayListener> = (_) => {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <span>
-        <Button ref={exampleRef} onClick={handleClick} variant="text">Toggle popper</Button>
-        {open && <Popover placement="bottom-start" anchorEl={exampleRef}>I will stay open until you click away!</Popover>}
+        <Button ref={exampleRef} onClick={handleClick} variant="text">
+          Toggle popper
+        </Button>
+        {open && (
+          <Popover placement="bottom-start" anchorEl={exampleRef}>
+            I will stay open until you click away!
+          </Popover>
+        )}
       </span>
     </ClickAwayListener>
   );
-}
+};
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-};
+Example.args = {};
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

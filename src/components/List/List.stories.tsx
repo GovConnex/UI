@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { List, ListItem } from "./List";
-import { withDesign } from "storybook-addon-designs";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
+import {List, ListItem} from "./List";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -35,6 +35,6 @@ Example.args = {
 Example.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=645%3A46279"
-  }
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/?node-id=645%3A46279",
+  },
 };

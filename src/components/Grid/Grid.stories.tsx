@@ -1,8 +1,8 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { StyledGrid as Grid, StyledGridCell as GridCell } from "./Grid.styles";
-import { withDesign } from "storybook-addon-designs";
-import styled, { DefaultTheme } from "styled-components";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
+import {StyledGrid as Grid, StyledGridCell as GridCell} from "./Grid.styles";
+import {withDesign} from "storybook-addon-designs";
+import styled, {DefaultTheme} from "styled-components";
 
 // NOTE: this component is deprecated and will be removed in a future release.
 // Use the GridBox component instead.
@@ -13,8 +13,7 @@ export default {
   component: Grid,
   decorators: [withDesign],
   parameters: {
-    notes:
-      "⚠️ This component is deprecated and will be removed in a future release.",
+    notes: "⚠️ This component is deprecated and will be removed in a future release.",
   },
 } as ComponentMeta<typeof Grid>;
 
@@ -27,7 +26,7 @@ const spanToBG = (span: number, theme: DefaultTheme) =>
     2: theme.primary.brand["200"],
     3: theme.primary.brand["300"],
     4: theme.primary.brand["400"],
-  }[span]);
+  })[span];
 
 const spanToColor = (span: number, theme: DefaultTheme) =>
   ({
@@ -35,7 +34,7 @@ const spanToColor = (span: number, theme: DefaultTheme) =>
     2: theme.primary.brand["700"],
     3: theme.primary.brand["100"],
     4: theme.primary.brand["50"],
-  }[span]);
+  })[span];
 
 const Cell = styled(GridCell)`
   background: ${(props) => spanToBG(props.columnSpan || 1, props.theme)};

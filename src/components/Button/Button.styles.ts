@@ -1,6 +1,6 @@
-import styled, { keyframes } from "styled-components";
-import { ButtonVariant, ButtonShape, ButtonSize } from "./Button";
-import { Spacing } from "../../theming/global-theme.interface";
+import styled, {keyframes} from "styled-components";
+import {ButtonVariant, ButtonShape, ButtonSize} from "./Button";
+import {Spacing} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
 
 const StyledAdornment = styled.span`
@@ -10,19 +10,13 @@ const StyledAdornment = styled.span`
   margin-bottom: 1px;
 `;
 
-const heightMap = {
-  sm: "24px",
-  md: "32px",
-  lg: "40px",
-};
-
 const StyledButton = styled.button<{
   variant: ButtonVariant;
   iconOnly?: boolean;
   iconOnlySize: keyof Spacing;
   shape: ButtonShape;
   size: ButtonSize;
-  isLoading: Boolean;
+  isLoading: boolean;
   noPadding?: boolean;
 }>`
 position: relative;
@@ -31,16 +25,14 @@ position: relative;
   padding: ${(props) => `${props.noPadding ? "0" : props.theme.spacing.xs} 
     ${props.noPadding ? "0" : props.theme.spacing[props.size]}`};
   border-radius: ${(props) =>
-    props.shape === "rect" || !props.iconOnly
-      ? props.theme.borderRadius.xs
-      : "100%"};
+    props.shape === "rect" || !props.iconOnly ? props.theme.borderRadius.xs : "100%"};
   border: 0 solid transparent;
   display: flex;
   gap: 12px;
   text-decoration: none !important;
   height: auto;
 
-  ${({ iconOnly, theme, iconOnlySize }) =>
+  ${({iconOnly, theme, iconOnlySize}) =>
     iconOnly
       ? `
       width: ${theme.spacing[iconOnlySize]};
@@ -60,12 +52,12 @@ position: relative;
   }
 
   &:focus:not(:disabled) {
-    outline: ${({ theme }) =>
+    outline: ${({theme}) =>
       `${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};`}
-    outline-offset: ${({ theme }) => `${theme.borderWidth.lg};`}
+    outline-offset: ${({theme}) => `${theme.borderWidth.lg};`}
   }
 
-  ${({ theme, variant, isLoading }) =>
+  ${({theme, variant, isLoading}) =>
     variant === "primary" &&
     `
     color: ${theme.core.content.contentInversePrimary};
@@ -85,7 +77,7 @@ position: relative;
       };
     }
   `}
-  ${({ theme, variant, isLoading }) =>
+  ${({theme, variant, isLoading}) =>
     variant === "danger" &&
     `
     color: ${theme.core.content.contentInversePrimary};
@@ -107,7 +99,7 @@ position: relative;
     }
   `}
 
-  ${({ theme, variant }) =>
+  ${({theme, variant}) =>
     variant === "secondary" &&
     `
     color: ${theme.core.content.contentSecondary};
@@ -129,7 +121,7 @@ position: relative;
     }
   `}
 
-  ${({ theme, variant }) =>
+  ${({theme, variant}) =>
     variant === "secondaryDanger" &&
     `
     color: ${theme.foundation.error};
@@ -153,7 +145,7 @@ position: relative;
     }
   `}
 
-  ${({ theme, variant }) =>
+  ${({theme, variant}) =>
     (variant === "text" || variant === "tertiary") &&
     `
     background-color: transparent;
@@ -172,7 +164,7 @@ const spinner = keyframes`
   to {transform: rotate(360deg);}
 `;
 
-const StyledSpinner = styled.div<{ variant: ButtonVariant }>`
+const StyledSpinner = styled.div<{variant: ButtonVariant}>`
  &:before {
     content: '';
     box-sizing: border-box;
@@ -184,13 +176,13 @@ const StyledSpinner = styled.div<{ variant: ButtonVariant }>`
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid ${({ theme, variant }) =>
+    border: 2px solid ${({theme, variant}) =>
       variant === "primary"
         ? theme.extended.state.primaryBase
         : variant === "danger"
         ? theme.foundation.error
         : theme.extended.state.secondaryBase};
-    border-top-color: ${({ theme, variant }) =>
+    border-top-color: ${({theme, variant}) =>
       variant === "primary"
         ? theme.extended.state.secondaryBase
         : variant === "danger"
@@ -199,4 +191,4 @@ const StyledSpinner = styled.div<{ variant: ButtonVariant }>`
     animation: ${spinner} .6s linear infinite;
 `;
 
-export { StyledButton, StyledSpinner, StyledAdornment, StyledTypography };
+export {StyledButton, StyledSpinner, StyledAdornment, StyledTypography};

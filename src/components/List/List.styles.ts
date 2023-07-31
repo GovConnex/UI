@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-export const StyledList = styled.div<{ scroll?: boolean }>`
-  ${({scroll}) => scroll && `
+export const StyledList = styled.div<{scroll?: boolean}>`
+  ${({scroll}) =>
+    scroll &&
+    `
     overflow: auto;
     position: relative;
   `}
@@ -10,7 +12,7 @@ export const StyledList = styled.div<{ scroll?: boolean }>`
 export const StyledListItem = styled.div<{
   button?: boolean;
   hoverIcon?: boolean;
-  selected?: boolean
+  selected?: boolean;
 }>`
   background-color: ${(props) => props.theme.primary.base.white};
   padding: ${(props) => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
@@ -24,7 +26,9 @@ export const StyledListItem = styled.div<{
     transition: all 300ms ease;
   }
 
-  ${props => props.hoverIcon && `
+  ${(props) =>
+    props.hoverIcon &&
+    `
     & > span > svg {
       color: ${props.theme.primary.neutral["300"]};
       opacity: 0;
@@ -39,7 +43,9 @@ export const StyledListItem = styled.div<{
     }
   `}
 
-  ${props => props.button && `
+  ${(props) =>
+    props.button &&
+    `
     cursor: pointer;
 
     &:hover {
@@ -48,8 +54,7 @@ export const StyledListItem = styled.div<{
   `}
 
   ${(props) =>
-    props.selected &&
-    `background-color: ${props.theme.primary.neutral["100"]};`}
+    props.selected && `background-color: ${props.theme.primary.neutral["100"]};`}
 `;
 
 export const StyledListItemStart = styled.div`

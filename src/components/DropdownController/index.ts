@@ -1,1 +1,1 @@
-export { default } from "./DropdownController";
+export {default} from "./DropdownController";

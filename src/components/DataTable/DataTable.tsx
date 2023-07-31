@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect} from "react";
 
 import {
   useFlexLayout,
@@ -20,21 +20,15 @@ import {
   GcxDataTableThead,
   GcxDataTableTr,
   GcxDataTableWrapper,
-  Resizer, ResizerDrag,
+  Resizer,
+  ResizerDrag,
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-import Pagination from "../Pagination";
-import Icon from "../Icon";
 
 // Data table built from react-table. Pagination, sortby etc can be SS or CS
 
-const { v4: uuid } = require("uuid");
-
-const SelectionCheckbox = React.forwardRef((props, ref) => {
-  const [id] = useState(uuid());
-  const defaultRef = React.useRef();
-  const resolvedRef = ref || defaultRef;
+const SelectionCheckbox = React.forwardRef(() => {
   return (
     <>
       {/*<Checkbox*/}
@@ -86,7 +80,7 @@ export interface DataTableProps {
   /**
    * Callback for when the pagination changes.
    */
-  onPaginationChange?: (input: { page: any; pageSize: number }) => void;
+  onPaginationChange?: (input: {page: any; pageSize: number}) => void;
   /**
    * Callback for when the selected ids change.
    */
@@ -110,9 +104,9 @@ export interface DataTableProps {
 
 /**
  * Data table built from react-table. It supports pagination, sorting, selection, and resizing.
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 const DataTable = ({
   data,
@@ -140,7 +134,7 @@ const DataTable = ({
       maxWidth: 200, // maxWidth is only used as a limit for resizing
     }),
     []
-  )
+  );
 
   // @ts-ignore
   const {
@@ -177,32 +171,36 @@ const DataTable = ({
     useFlexLayout,
     useRowSelect,
     (hooks: any) => {
-      hooks.visibleColumns.push((columns: any) => [
-        /// Let's make a column for selection
-        showSelection !== false ? {
-          id: "selection",
-          // The header can use the table's getToggleAllRowsSelectedProps method
-          // to render a checkbox
-          Header: ({getToggleAllRowsSelectedProps}: any) => (
-            <div>
-              <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
-            </div>
-          ),
-          // The cell can use the individual row's getToggleRowSelectedProps method
-          // to the render a checkbox
-          Cell: ({row}: any) => (
-            <div>
-              <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
-            </div>
-          ),
-          defaultCanSort: false,
-          maxWidth: 0,
-          minWidth: 40,
-          width: 40,
-        } : null,
-        ...columns,
-      ].filter(Boolean));
-      hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
+      hooks.visibleColumns.push((columns: any) =>
+        [
+          /// Let's make a column for selection
+          showSelection !== false
+            ? {
+                id: "selection",
+                // The header can use the table's getToggleAllRowsSelectedProps method
+                // to render a checkbox
+                Header: ({getToggleAllRowsSelectedProps}: any) => (
+                  <div>
+                    <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
+                  </div>
+                ),
+                // The cell can use the individual row's getToggleRowSelectedProps method
+                // to the render a checkbox
+                Cell: ({row}: any) => (
+                  <div>
+                    <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
+                  </div>
+                ),
+                defaultCanSort: false,
+                maxWidth: 0,
+                minWidth: 40,
+                width: 40,
+              }
+            : null,
+          ...columns,
+        ].filter(Boolean)
+      );
+      hooks.useInstanceBeforeDimensions.push(({headerGroups}: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
@@ -219,7 +217,7 @@ const DataTable = ({
 
   useEffect(() => {
     if (onChangeSort) {
-      if(sortBy.length > 0) {
+      if (sortBy.length > 0) {
         const column = columns.find((c) => c.id === sortBy[0].id);
         onChangeSort([{...sortBy[0], ...column}]);
       }
@@ -250,25 +248,17 @@ const DataTable = ({
 
   // if (loading) return <InlineLoading />;
   return (
-    <GcxDataTableRoot
-      className={classNames(className)}
-    >
+    <GcxDataTableRoot className={classNames(className)}>
       <GcxDataTableWrapper fullWidth={fullWidth}>
-        <GcxDataTable
-          fullWidth={fullWidth}
-          {...getTableProps()}
-        >
+        <GcxDataTable fullWidth={fullWidth} {...getTableProps()}>
           <GcxDataTableThead>
             {headerGroups.map((headerGroup: any) => (
               <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column: any) => (
-                  <GcxDataTableTh
-                    {...column.getHeaderProps()}
-                  >
+                  <GcxDataTableTh {...column.getHeaderProps()}>
                     <div {...column.getSortByToggleProps()}>
                       {" "}
                       {column.render("Header")}
-
                     </div>
 
                     {column.canResize ? (
@@ -305,7 +295,7 @@ const DataTable = ({
           </GcxDataTableTbody>
         </GcxDataTable>
       </GcxDataTableWrapper>
-      
+
       {/* Pagination shown by default, but can be hidden */}
       {showPagination !== false && (
         <GcxDataTablePagination
@@ -313,8 +303,10 @@ const DataTable = ({
           itemsPerPageOptions={[25, 50, 100]}
           page={page}
           totalItems={numResults || 0}
-          onItemsPerPageChange={(newPageSize) => onPaginationChange({ page, pageSize: newPageSize})}
-          onPageChange={(newPage) => onPaginationChange({ page: newPage, pageSize})}
+          onItemsPerPageChange={(newPageSize) =>
+            onPaginationChange({page, pageSize: newPageSize})
+          }
+          onPageChange={(newPage) => onPaginationChange({page: newPage, pageSize})}
         />
       )}
       {/*</div>*/}

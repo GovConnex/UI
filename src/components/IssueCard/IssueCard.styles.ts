@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Avatar from "../Avatar";
 import Typography from "../Typography";
-import { shadowFromProp } from "../style-utils";
+import {shadowFromProp} from "../style-utils";
 
-export const StyledIssueCard = styled.div<{ focused?: boolean }>`
+export const StyledIssueCard = styled.div<{focused?: boolean}>`
   background: ${(props) => props.theme.core?.background?.bgPrimary};
   border-width: ${(props) =>
     props.focused ? props.theme.borderWidth.lg : props.theme.borderWidth.md};
@@ -47,13 +47,13 @@ export const Avatars = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: ${({ theme }) => theme.spacing.xs};
+  margin-left: ${({theme}) => theme.spacing.xs};
 `;
 
 export const StyledAvatar = styled(Avatar)`
-  margin-left: -${({ theme }) => theme.spacing.xs};
-  outline: ${({ theme }) => theme.borderWidth.lg} solid
-    ${({ theme }) => theme.core.background.bgPrimary};
+  margin-left: -${({theme}) => theme.spacing.xs};
+  outline: ${({theme}) => theme.borderWidth.lg} solid
+    ${({theme}) => theme.core.background.bgPrimary};
 `;
 
 export const Actions = styled.div`
@@ -61,19 +61,19 @@ export const Actions = styled.div`
   color: ${(props) => props.theme.core.content.contentSecondary};
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing.xs};
+  gap: ${({theme}) => theme.spacing.xs};
 `;
 
 export const NoMembers = styled(Typography)`
-  color: ${({ theme }) => theme.core.content.contentTertiary};
+  color: ${({theme}) => theme.core.content.contentTertiary};
 `;
 
 export const LockIcon = styled.div`
-  margin: 0 ${({ theme }) => theme.spacing.xs};
+  margin: 0 ${({theme}) => theme.spacing.xs};
 `;
 
 export const StyledGrayAvatar = styled(StyledAvatar)`
-  background-color: ${({ theme }) => theme.core.background.bgTertiary};
+  background-color: ${({theme}) => theme.core.background.bgTertiary};
 `;
 
 export default StyledIssueCard;

@@ -30,29 +30,20 @@ export const StyledGridCell = styled.div<{
   ${(props) => (props.rowSpan ? `grid-row: span ${props.rowSpan}` : "")};
   ${(props) =>
     props.columnSpan
-      ? `grid-column: span ${Math.min(
-          props.columnSpanSm || props.columnSpan,
-          4
-        )}`
+      ? `grid-column: span ${Math.min(props.columnSpanSm || props.columnSpan, 4)}`
       : ""};
 
   @media (min-width: 600px) {
     ${(props) =>
       props.columnSpan
-        ? `grid-column: span ${Math.min(
-            props.columnSpanMd || props.columnSpan,
-            8
-          )}`
+        ? `grid-column: span ${Math.min(props.columnSpanMd || props.columnSpan, 8)}`
         : ""};
   }
 
   @media (min-width: 1360px) {
     ${(props) =>
       props.columnSpan
-        ? `grid-column: span ${Math.min(
-            props.columnSpanLg || props.columnSpan,
-            12
-          )}`
+        ? `grid-column: span ${Math.min(props.columnSpanLg || props.columnSpan, 12)}`
         : ""};
   }
 `;

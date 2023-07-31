@@ -10,9 +10,9 @@ import {
   NoMembers,
   LockIcon,
 } from "./IssueCard.styles";
-import React, { useState, useRef, Ref } from "react";
-import { Button, SvgIcon as Icon, Menu, Portal } from "../";
-import { MenuOption } from "../Menu/Menu";
+import React, {useState, useRef} from "react";
+import {Button, SvgIcon as Icon, Menu, Portal} from "../";
+import {MenuOption} from "../Menu/Menu";
 
 interface IssueUserLinkUser {
   fullName?: string;
@@ -64,7 +64,7 @@ const IssueCard = ({
   togglePinned,
   truncateDescription,
 }: IssueCardProps) => {
-  const { id, title, description, userLinks, shared } = issue;
+  const {id, title, description, userLinks, shared} = issue;
   const [isMenuShown, setMenuShown] = useState(false);
   const menuRef: React.RefObject<HTMLButtonElement> =
     useRef<HTMLButtonElement>() as React.RefObject<HTMLButtonElement>;
@@ -134,9 +134,7 @@ const IssueCard = ({
                       id: pinned ? "unpin" : "pin",
                       "data-cy": pinned ? "issue-card-unpin" : "issue-card-pin",
                       text: pinned ? "Unpin Issue" : "Pin Issue",
-                      startAdornment: (
-                        <Icon icon={"fa-solid fa-thumbtack"} />
-                      ),
+                      startAdornment: <Icon icon={"fa-solid fa-thumbtack"} />,
                       onSelect: togglePinned,
                     },
                     (accessLevel === "member" || accessLevel === "admin") && {
@@ -165,9 +163,7 @@ const IssueCard = ({
                       id: "leave",
                       "data-cy": "issue-card-leave",
                       text: "Leave Issue",
-                      startAdornment: (
-                        <Icon icon={"fa-solid fa-person-to-door"} />
-                      ),
+                      startAdornment: <Icon icon={"fa-solid fa-person-to-door"} />,
                       onSelect: leaveIssue,
                     },
                     accessLevel === "admin" && {
@@ -189,8 +185,7 @@ const IssueCard = ({
       <Description variant="body" size="md" data-cy="issue-card-description">
         {truncateDescription && description?.length >= truncateDescription
           ? description.slice(0, truncateDescription).trim() + "..."
-          : description
-        }
+          : description}
       </Description>
       <Avatars>
         {userLinks?.map((link, idx) =>
@@ -205,10 +200,7 @@ const IssueCard = ({
           ) : null
         )}
         {userLinks?.length > maxAvatars ? (
-          <StyledGrayAvatar
-            alt={`+ ${userLinks?.length - maxAvatars}`}
-            size="xl"
-          />
+          <StyledGrayAvatar alt={`+ ${userLinks?.length - maxAvatars}`} size="xl" />
         ) : null}
       </Avatars>
       {!userLinks?.length && (

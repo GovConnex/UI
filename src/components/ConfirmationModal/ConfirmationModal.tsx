@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, StyledModalContent, StyledModalFeet } from "../Modal";
+import {Modal, StyledModalContent, StyledModalFeet} from "../Modal";
 import Box from "../Box";
 import Typography from "../Typography";
 import Button from "../Button";
-import { ButtonVariant } from "../Button/Button";
+import {ButtonVariant} from "../Button/Button";
 import BackgroundIcon from "../BackgroundIcon";
 
 export interface ConfirmationModalButton {
@@ -63,13 +63,7 @@ const ConfirmationModal = ({
   backgroundIcon,
   buttons,
 }: ConfirmationModalProps) => (
-  <Modal
-    open={isOpen}
-    onClose={onClose}
-    enableClickAway
-    disablePortal
-    width="400px"
-  >
+  <Modal open={isOpen} onClose={onClose} enableClickAway disablePortal width="400px">
     <StyledModalContent>
       <Box
         cs={{
@@ -98,11 +92,7 @@ const ConfirmationModal = ({
           <Typography variant="heading" size="xs" noMargin>
             {title}
           </Typography>
-          <Typography
-            variant="body"
-            noMargin
-            color="core.content.contentSecondary"
-          >
+          <Typography variant="body" noMargin color="core.content.contentSecondary">
             {text}
           </Typography>
         </Box>
@@ -117,7 +107,7 @@ const ConfirmationModal = ({
           width: "100%",
         }}
       >
-        {buttons.map(({ variant, text, onClick, isLoading, disabled }) => (
+        {buttons.map(({variant, text, onClick, isLoading, disabled}) => (
           <Button
             key={text}
             variant={variant}

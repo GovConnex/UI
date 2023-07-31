@@ -10,17 +10,14 @@ export const StyledPageHeader = styled.div`
   border-bottom: ${(props) => props.theme.borderWidth.md} solid
     ${(props) => props.theme.core.border.borderLight};
 
-  padding: ${(props) => props.theme.spacing.sm}
-    ${(props) => props.theme.spacing.sm};
+  padding: ${(props) => props.theme.spacing.sm} ${(props) => props.theme.spacing.sm};
 
   @media (min-width: 600px) {
-    padding: ${(props) => props.theme.spacing.md}
-      ${(props) => props.theme.spacing.lg};
+    padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.lg};
   }
 
   @media (min-width: 1360px) {
-    padding: ${(props) => props.theme.spacing.md}
-      ${(props) => props.theme.spacing.xxl};
+    padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.xxl};
   }
 `;
 

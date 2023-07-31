@@ -1,5 +1,5 @@
 import React from "react";
-import { usePopper } from "react-popper";
+import {usePopper} from "react-popper";
 
 export interface DropdownControllerProps {
   /**
@@ -33,22 +33,16 @@ export interface DropdownControllerProps {
  *
  */
 const DropdownController = (props: DropdownControllerProps) => {
-  const { rootButton, overlay, zIndex, overlayWidth } = props;
+  const {rootButton, overlay, zIndex, overlayWidth} = props;
   const [visible, setVisibility] = React.useState(false);
 
-  const referenceRef =
-    React.useRef() as React.MutableRefObject<HTMLDivElement | null>;
-  const popperRef =
-    React.useRef() as React.MutableRefObject<HTMLDivElement | null>;
+  const referenceRef = React.useRef() as React.MutableRefObject<HTMLDivElement | null>;
+  const popperRef = React.useRef() as React.MutableRefObject<HTMLDivElement | null>;
 
-  const { styles, attributes } = usePopper(
-    referenceRef.current,
-    popperRef.current,
-    {
-      modifiers: [{ name: "eventListeners", enabled: visible }],
-      placement: "bottom-start",
-    }
-  );
+  const {styles, attributes} = usePopper(referenceRef.current, popperRef.current, {
+    modifiers: [{name: "eventListeners", enabled: visible}],
+    placement: "bottom-start",
+  });
 
   React.useEffect(() => {
     const handleDocumentClick = (event: any) => {
@@ -73,7 +67,11 @@ const DropdownController = (props: DropdownControllerProps) => {
     <div
       ref={popperRef}
       {...attributes.popper}
-      style={{ width: overlayWidth || selectorWidth ||  "100%", zIndex: zIndex || 5, ...styles.popper }}
+      style={{
+        width: overlayWidth || selectorWidth || "100%",
+        zIndex: zIndex || 5,
+        ...styles.popper,
+      }}
     >
       {visible ? overlay(() => setVisibility(false)) : null}
     </div>

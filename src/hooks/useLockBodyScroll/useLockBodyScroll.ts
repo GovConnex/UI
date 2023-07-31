@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import {useLayoutEffect} from "react";
 
 const useLockBodyScroll = () => {
   useLayoutEffect(() => {
@@ -8,6 +8,6 @@ const useLockBodyScroll = () => {
       document.body.style.overflow = originalStyle;
     };
   }, []);
-}
+};
 
 export default useLockBodyScroll;

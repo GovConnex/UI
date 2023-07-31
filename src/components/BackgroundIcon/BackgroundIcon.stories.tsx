@@ -1,9 +1,9 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import BackgroundIcon from "./BackgroundIcon";
-import { withDesign } from "storybook-addon-designs";
-import { faSearch, faStar } from "@fortawesome/pro-solid-svg-icons";
-import { faStar as faStarLight } from "@fortawesome/pro-light-svg-icons";
+import {withDesign} from "storybook-addon-designs";
+import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
+import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof BackgroundIcon>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof BackgroundIcon> = (args) => (
+const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
   <BackgroundIcon {...args} />
 );
 

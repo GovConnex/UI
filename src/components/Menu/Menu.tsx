@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
-import { Placement } from "@popperjs/core";
+import React, {useMemo} from "react";
+import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
-import { StyledMenuList } from "./Menu.styles";
+import {StyledMenuList} from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
-import { MenuListHeading } from "../MenuList";
+import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
-import { useKey } from "rooks";
+import {useKey} from "rooks";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;

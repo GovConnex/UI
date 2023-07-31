@@ -1,5 +1,5 @@
-import { getValueFromPath } from "../../core/styleFunctions";
-import styled, { css } from "styled-components";
+import {getValueFromPath} from "../../core/styleFunctions";
+import styled, {css} from "styled-components";
 
 export const PopInContainer = styled.div<{
   show: boolean;
@@ -8,23 +8,25 @@ export const PopInContainer = styled.div<{
 }>`
   position: absolute;
   z-index: 1000;
-  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out,
+  transition:
+    transform 0.3s ease-in-out,
+    visibility 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
-  ${({ position = "bottom", offset = "spacing.md", theme }) => css`
+  ${({position = "bottom", offset = "spacing.md", theme}) => css`
     ${position}: ${getValueFromPath(theme, offset)};
   `}
   left: 0;
   right: 0;
-  transform: ${({ position }) =>
+  transform: ${({position}) =>
     position === "top" ? "translateY(-150%)" : "translateY(150%)"};
-  ${({ show }) =>
+  ${({show}) =>
     show &&
     css`
       transform: translateY(0%);
     `}
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  pointer-events: ${({ show }) => (show ? "auto" : "none")};
+  visibility: ${({show}) => (show ? "visible" : "hidden")};
+  opacity: ${({show}) => (show ? 1 : 0)};
+  pointer-events: ${({show}) => (show ? "auto" : "none")};
   margin: 0;
   padding: 0;
   display: flex;

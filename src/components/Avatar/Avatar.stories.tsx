@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Avatar from "./Avatar";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,8 +21,8 @@ Example.args = {
 };
 
 Example.parameters = {
-   design: {
-     type: "figma",
-     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/GovConnex-Component-Library?node-id=167%3A66750"
-   }
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/GovConnex-Component-Library?node-id=167%3A66750",
+  },
 };

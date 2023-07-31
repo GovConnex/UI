@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  DefaultTheme,
-  ThemeProvider as StyledThemeProvider,
-} from "styled-components";
-import { lightTheme, darkTheme } from "../../theming";
-import { Helmet } from "react-helmet";
+import {DefaultTheme, ThemeProvider as StyledThemeProvider} from "styled-components";
+import {lightTheme, darkTheme} from "../../theming";
+import {Helmet} from "react-helmet";
 import FontStyles from "./FontStyles";
 
 export interface ThemeProviderProps {

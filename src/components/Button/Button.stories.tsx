@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {PropsWithChildren} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Button from "./Button";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
-import { faCoffee, faBook } from "@fortawesome/pro-solid-svg-icons";
+import {faCoffee, faBook} from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

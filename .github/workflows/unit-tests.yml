@@ -18,3 +18,8 @@ jobs:
           yarn install --frozen-lockfile
       - name: Run unit tests
         run: yarn test
+      - name: Check code formatting
+        run: yarn formatCheck
+      - name: Lint code
+        run: yarn lint
+

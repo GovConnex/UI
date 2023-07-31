@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Card from "./Card";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -25,7 +25,7 @@ export const Selected = Template.bind({});
 Selected.args = {
   selected: true,
   padding: "xs",
-  hoverStyle:"regress",
+  hoverStyle: "regress",
   children: <div>Hello!</div>,
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MenuList, MenuListHeading } from "./MenuList";
-import { withDesign } from "storybook-addon-designs";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
+import {MenuList, MenuListHeading} from "./MenuList";
+import {withDesign} from "storybook-addon-designs";
 import MenuListItem from "./MenuListItem";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof MenuList> = (args) => <MenuList {...args} 
 
 export const Example = Template.bind({});
 Example.args = {
-  style: { maxWidth: "200px" },
+  style: {maxWidth: "200px"},
   children: (
     <>
       <MenuListItem>MenuList Item</MenuListItem>
@@ -30,7 +30,7 @@ Example.args = {
 
 export const FixedHeight = Template.bind({});
 FixedHeight.args = {
-  style: { height: "200px", maxWidth: "200px" },
+  style: {height: "200px", maxWidth: "200px"},
   children: (
     <>
       <MenuListHeading>Not Sticky Heading</MenuListHeading>

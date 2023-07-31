@@ -1,1 +1,1 @@
-export { default } from "./GridBox";
+export {default} from "./GridBox";

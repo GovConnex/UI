@@ -1,4 +1,4 @@
-import { lightTheme } from "./light-theme";
+import {lightTheme} from "./light-theme";
 
 describe("lightTheme", () => {
   it('should contain "name" property', () => {
@@ -17,8 +17,8 @@ describe("lightTheme", () => {
   });
 
   it("should give precedence to lightTokens when properties conflict", () => {
-    const globalTokens = { conflictProp: "globalValue" };
-    const lightTokens = { conflictProp: "lightValue" };
+    const globalTokens = {conflictProp: "globalValue"};
+    const lightTokens = {conflictProp: "lightValue"};
 
     const theme = {
       name: "Light theme",

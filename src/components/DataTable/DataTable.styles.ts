@@ -4,7 +4,7 @@ import Menu from "../Menu";
 import Pagination from "../Pagination";
 
 export const GcxDataTableRoot = styled.div``;
-export const GcxDataTableWrapper = styled.div<{ fullWidth?: boolean }>`
+export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   border: 1px solid #ebebeb;
   border-radius: 5px;
   overflow: hidden;
@@ -12,7 +12,7 @@ export const GcxDataTableWrapper = styled.div<{ fullWidth?: boolean }>`
   display: ${(p) => (p.fullWidth ? "block" : "inline-table")};
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
-export const GcxDataTable = styled.table<{ fullWidth?: boolean }>`
+export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
@@ -49,7 +49,7 @@ export const GcxDataTableTd = styled.td`
 
 // Data cell styles
 
-export const GcxDataTableDataCellRoot = styled.div<{ hasDropdown: boolean }>`
+export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
   display: flex;
   height: 100%;
   align-items: center;

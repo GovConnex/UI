@@ -1,12 +1,9 @@
 import React from "react";
-import { VariantsProp, Variants } from "./Typography.types";
-import { variantComponents } from "./Typography.styles";
-import { TypographySize } from "../../theming/global-theme.interface";
+import {VariantsProp, Variants} from "./Typography.types";
+import {variantComponents} from "./Typography.styles";
+import {TypographySize} from "../../theming/global-theme.interface";
 
-
-
-export interface TypographyProps
-  extends Omit<React.HTMLProps<HTMLElement>, "size"> {
+export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "size"> {
   /**
    * The content of the component.
    */
@@ -22,27 +19,26 @@ export interface TypographyProps
   color?: string;
 
   /**
-   * If `true`, all margin is set to 0 
+   * If `true`, all margin is set to 0
    */
   noMargin?: boolean;
   /**
-   * Typography font size 
+   * Typography font size
    *  @default md
    */
   size?: keyof TypographySize;
 }
 
-
 /**
  *
  * `Typography`
  *
- * Demo: 
- * 
+ * Demo:
+ *
  *  - [Typography](https://ui.govconnex.com/?path=/story/components-typography--example)
- * 
- * Docs: 
- * 
+ *
+ * Docs:
+ *
  *  - [Typography Docs](https://ui.govconnex.com/?path=/docs/components-typography--example/)
  *
  */
@@ -50,14 +46,19 @@ const Typography = ({
   children,
   variant = "body",
   size = "md",
-  color, 
+  color,
   ...props
 }: TypographyProps) => {
   const selectedVariantValue = Variants[variant as keyof typeof Variants];
-  const validatedVariant: VariantsProp = selectedVariantValue ? variant as VariantsProp : "body";
+  const validatedVariant: VariantsProp = selectedVariantValue
+    ? (variant as VariantsProp)
+    : "body";
   const VariantComponent = variantComponents[validatedVariant];
-  return <VariantComponent color={color} size={size} {...props}>{children}</VariantComponent>;
+  return (
+    <VariantComponent color={color} size={size} {...props}>
+      {children}
+    </VariantComponent>
+  );
 };
 
 export default Typography;
-

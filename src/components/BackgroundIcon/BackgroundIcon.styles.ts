@@ -1,6 +1,6 @@
-import { SizeProp } from "@fortawesome/fontawesome-svg-core";
-import { addCustomStyles, customStyles } from "../../core/styleFunctions";
-import styled, { DefaultTheme } from "styled-components";
+import {SizeProp} from "@fortawesome/fontawesome-svg-core";
+import {addCustomStyles, customStyles} from "../../core/styleFunctions";
+import styled, {DefaultTheme} from "styled-components";
 
 const sizeToBorderRadius = (size: SizeProp, theme: DefaultTheme): string =>
   ({
@@ -20,9 +20,9 @@ const sizeToBorderRadius = (size: SizeProp, theme: DefaultTheme): string =>
     "8x": theme.borderRadius.lg,
     "9x": theme.borderRadius.lg,
     "10x": theme.borderRadius.lg,
-  }[size]);
+  })[size];
 
-const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
+const sizeToWidth = (size: SizeProp): string => {
   const basePx = 24;
   return (
     {
@@ -46,10 +46,9 @@ const sizeToWidth = (size: SizeProp, theme: DefaultTheme): string => {
   );
 };
 
-const StyledBackgroundIcon = styled.div<{ size?: SizeProp, cs?: customStyles }>`
+const StyledBackgroundIcon = styled.div<{size?: SizeProp; cs?: customStyles}>`
   align-items: center;
-  border-radius: ${(props) =>
-    sizeToBorderRadius(props.size || "sm", props.theme)};
+  border-radius: ${(props) => sizeToBorderRadius(props.size || "sm", props.theme)};
   box-sizing: border-box;
   display: inline-flex;
   justify-content: center;

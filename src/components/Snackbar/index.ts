@@ -1,1 +1,1 @@
-export { default, PopinSnackbar } from "./Snackbar";
+export {default, PopinSnackbar} from "./Snackbar";

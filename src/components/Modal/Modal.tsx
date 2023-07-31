@@ -9,7 +9,7 @@ import {
 } from "./Modal.styles";
 import Portal from "../Portal";
 import ClickAwayListener from "../ClickAwayListener";
-import { useWindowSize, useLockBodyScroll } from "../../hooks";
+import {useWindowSize, useLockBodyScroll} from "../../hooks";
 
 export interface ModalProps {
   children?: React.ReactNode;
@@ -19,12 +19,12 @@ export interface ModalProps {
   disablePortal?: boolean;
   disableScrollLock?: boolean;
   width?: string;
-};
+}
 
 const ScrollWrapper: React.FC<{
   children: React.ReactElement;
   disableScrollLock?: boolean;
-}> = ({ children, disableScrollLock }) => {
+}> = ({children, disableScrollLock}) => {
   if (!disableScrollLock) useLockBodyScroll();
   return children;
 };
@@ -40,23 +40,19 @@ const Modal = (props: ModalProps) => {
     <Portal container={containerId} disablePortal={props.disablePortal}>
       <ScrollWrapper disableScrollLock={!fullscreen && props.disableScrollLock}>
         {fullscreen ? (
-          <StyledMobileModal>
-            {props.children}
-          </StyledMobileModal>
+          <StyledMobileModal>{props.children}</StyledMobileModal>
         ) : (
-            <StyledModalBack>
-              <ClickAwayListener
-                onClickAway={props.enableClickAway ? props.onClose : () => null}
-              >
-                <StyledModal style={{ width: props.width }}>
-                  {props.children}
-                </StyledModal>
-              </ClickAwayListener>
-            </StyledModalBack>
+          <StyledModalBack>
+            <ClickAwayListener
+              onClickAway={props.enableClickAway ? props.onClose : () => null}
+            >
+              <StyledModal style={{width: props.width}}>{props.children}</StyledModal>
+            </ClickAwayListener>
+          </StyledModalBack>
         )}
       </ScrollWrapper>
     </Portal>
   );
 };
 
-export { Modal, StyledModalContent, StyledModalHead, StyledModalFeet };
+export {Modal, StyledModalContent, StyledModalHead, StyledModalFeet};

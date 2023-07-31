@@ -1,6 +1,6 @@
 // PopIn.test.tsx
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import PopIn from "./PopIn";
 
@@ -27,7 +27,7 @@ describe("PopIn component", () => {
   });
 
   test("toggles visibility when show prop changes", async () => {
-    const { rerender } = render(
+    const {rerender} = render(
       <PopIn show={true} position="top" offset="20px">
         <div>PopIn content</div>
       </PopIn>

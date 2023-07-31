@@ -1,4 +1,4 @@
-import 'styled-components';
+import "styled-components";
 import GlobalTheme, {CommonGradient} from "./global-theme.interface";
 
 declare module "styled-components" {
@@ -10,14 +10,14 @@ declare module "styled-components" {
         brand: string;
         white: string;
         black: string;
-      }
-    }
+      };
+    };
     secondary: {
       red: CommonGradient;
       yellow: CommonGradient;
       green: CommonGradient;
       blue: CommonGradient;
-    },
+    };
     foundation: {
       primary: string;
       black: string;
@@ -26,7 +26,7 @@ declare module "styled-components" {
       success: string;
       warning: string;
       error: string;
-    },
+    };
     core: {
       background: {
         bgPrimary: string;
@@ -34,7 +34,7 @@ declare module "styled-components" {
         bgTertiary: string;
         bgInversePrimary: string;
         bgInverseSecondary: string;
-      },
+      };
       content: {
         contentPrimary: string;
         contentSecondary: string;
@@ -42,39 +42,39 @@ declare module "styled-components" {
         contentInversePrimary: string;
         contentInverseSecondary: string;
         contentInverseTertiary: string;
-      },
+      };
       border: {
         borderLight: string;
         borderDark: string;
         borderFocus: string;
         borderInverseLight: string;
         borderInverseDark: string;
-      }
-    },
+      };
+    };
     extended: {
       state: {
-        primaryBase: string,
-        primaryHover: string,
-        secondaryBase: string,
-        secondaryHover: string,
-        tertiaryBase: string,
-        tertiaryHover: string,
-        disabled: string,
-      },
+        primaryBase: string;
+        primaryHover: string;
+        secondaryBase: string;
+        secondaryHover: string;
+        tertiaryBase: string;
+        tertiaryHover: string;
+        disabled: string;
+      };
       support: {
-        infoBase: string,
-        infoDark: string,
-        successBase: string,
-        successDark: string,
-        warningBase: string,
-        warningDark: string,
-        errorBase: string,
-        errorDark: string,
-        infoLight: string,
-        successLight: string,
-        warningLight: string
-        errorLight: string
-      }
-    }
+        infoBase: string;
+        infoDark: string;
+        successBase: string;
+        successDark: string;
+        warningBase: string;
+        warningDark: string;
+        errorBase: string;
+        errorDark: string;
+        infoLight: string;
+        successLight: string;
+        warningLight: string;
+        errorLight: string;
+      };
+    };
   }
 }

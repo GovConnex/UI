@@ -1,14 +1,10 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import DataTable from "./DataTable";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-import {
-  faContactCard,
-  faHeart,
-  faUser,
-} from "@fortawesome/pro-solid-svg-icons";
-import { DataCell, NameCell, SupportCell, TagCell } from "./DataTable.examples";
+import {faContactCard, faHeart, faUser} from "@fortawesome/pro-solid-svg-icons";
+import {DataCell, NameCell, SupportCell, TagCell} from "./DataTable.examples";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -18,9 +14,7 @@ export default {
 } as ComponentMeta<typeof DataTable>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof DataTable> = (args) => (
-  <DataTable {...args} />
-);
+const Template: ComponentStory<typeof DataTable> = (args) => <DataTable {...args} />;
 
 const DATA_TABLE_COLUMNS = [
   {
@@ -159,7 +153,7 @@ ExampleWithLongData.args = {
 };
 
 const TemplateWithWrapper: ComponentStory<typeof DataTable> = (args) => (
-  <div style={{ width: "100px" }}>
+  <div style={{width: "100px"}}>
     <DataTable {...args} />
   </div>
 );

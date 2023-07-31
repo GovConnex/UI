@@ -1,14 +1,10 @@
 import React from "react";
 import StyledStack from "./Stack.styles";
-import { Spacing } from "../../theming/global-theme.interface";
+import {Spacing} from "../../theming/global-theme.interface";
 
-export type directionValues =
-  | "row"
-  | "row-reverse"
-  | "column"
-  | "column-reverse";
+export type directionValues = "row" | "row-reverse" | "column" | "column-reverse";
 export type directionProps =
-  | { sm?: directionValues; md?: directionValues; lg?: directionValues }
+  | {sm?: directionValues; md?: directionValues; lg?: directionValues}
   | directionValues;
 
 export type alignItemValues =
@@ -20,7 +16,7 @@ export type alignItemValues =
   | "initial"
   | "inherit";
 export type alignItemProps =
-  | { sm?: alignItemValues; md?: alignItemValues; lg?: alignItemValues }
+  | {sm?: alignItemValues; md?: alignItemValues; lg?: alignItemValues}
   | alignItemValues;
 
 export type justifyContentValues =
@@ -41,10 +37,10 @@ export type justifyContentProps =
   | justifyContentValues;
 
 export type gapProps =
-  | { sm?: keyof Spacing; md?: keyof Spacing; lg?: keyof Spacing }
+  | {sm?: keyof Spacing; md?: keyof Spacing; lg?: keyof Spacing}
   | keyof Spacing;
 
-export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
+export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * content of the Stack
    */
@@ -55,7 +51,7 @@ export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
    */
   direction?: directionProps;
   /**
-   * defines gap between child components 
+   * defines gap between child components
    */
   gap?: gapProps;
 
@@ -68,12 +64,12 @@ export interface StackProps  extends React.HTMLAttributes<HTMLDivElement> {
  *
  * `Stack` manages layout of its children along vertical or horizontal axis
  *
- * Demo: 
- * 
+ * Demo:
+ *
  *  - [Stack](https://ui.govconnex.com/?path=/story/components-Stack--example)
- * 
- * Docs: 
- * 
+ *
+ * Docs:
+ *
  *  - [Stack Docs](https://ui.govconnex.com/?path=/docs/components-Stack--example/)
  *
  */

@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Portal from "./Portal";
-import { withDesign } from 'storybook-addon-designs';
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof Portal>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
+const Template: ComponentStory<typeof Portal> = ({disablePortal}) => {
   const [show, setShow] = React.useState(false);
   const container = React.useRef(null);
 
@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
     border: "1px solid gray",
     borderRadius: "2px",
     margin: "10px 0",
-    padding: "5px"
+    padding: "5px",
   };
 
   const handleClick = () => {
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
   return (
     <>
       <Button onClick={handleClick}>
-        {show ? 'Unmount children' : 'Mount children'}
+        {show ? "Unmount children" : "Mount children"}
       </Button>
 
       <div style={divStyle}>
@@ -48,12 +48,11 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
 
 export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-};
+Example.args = {};
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };

@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 const StyledTabs = styled.div`
-    display:flex;
-    position: relative;
-    overflow:scroll;
+  display: flex;
+  position: relative;
+  overflow: scroll;
 `;
 
 const BottomHighlight = styled.span<{
-    width: number,
-    offset: number,
+  width: number;
+  offset: number;
 }>`
-${({ theme, width, offset }) =>
-        ` 
+  ${({theme, width, offset}) =>
+    ` 
     width: 100%;
     width: ${width}px;
     left: ${offset || 0}px;
@@ -24,6 +24,7 @@ ${({ theme, width, offset }) =>
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0ms;
     bottom:0;
-`}`;
+`}
+`;
 
-export { StyledTabs, BottomHighlight };
+export {StyledTabs, BottomHighlight};

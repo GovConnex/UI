@@ -1,1 +1,1 @@
-export { default } from "./useLockBodyScroll";
+export {default} from "./useLockBodyScroll";

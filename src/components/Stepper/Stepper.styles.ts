@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledStepper = styled.div`
-    ${({ theme }) => `
+  ${() => `
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -9,8 +9,12 @@ const StyledStepper = styled.div`
     height: 100%;
     `}
 `;
-const StyledBullet = styled.div<{ active: Boolean, passed:Boolean, disabled:Boolean }>`
-    ${({ theme, active, passed, disabled }) => `
+const StyledBullet = styled.div<{
+  active: boolean;
+  passed: boolean;
+  disabled: boolean;
+}>`
+  ${({theme, active, passed, disabled}) => `
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -25,32 +29,43 @@ const StyledBullet = styled.div<{ active: Boolean, passed:Boolean, disabled:Bool
 
     outline: 2px solid ${theme.core.border.borderLight};
 
-    ${active ? `
+    ${
+      active
+        ? `
     outline: 2px solid ${theme.core.border.borderFocus};
     background-color: ${theme.core.border.borderFocus};
     border: 1px solid white;
-    ` : ``
+    `
+        : ``
     }
 
-    ${passed ? `
+    ${
+      passed
+        ? `
     background-color: ${theme.core.border.borderFocus};
     outline: none;
     border: 3px solid ${theme.core.border.borderFocus};
     // outline: 2px solid ${theme.core.border.borderFocus};
 
-    ` : ``}
+    `
+        : ``
+    }
 
-    ${disabled ? `
+    ${
+      disabled
+        ? `
     background-color: ${theme.core.border.borderLight};
     outline: none;
     border: 3px solid ${theme.core.border.borderLight};
 
-    ` : ``}
+    `
+        : ``
+    }
 
     `}
 `;
-const StyledTrack = styled.div<{passed:boolean}>`
-    ${({ theme, passed }) => `
+const StyledTrack = styled.div<{passed: boolean}>`
+  ${({theme, passed}) => `
     height: 100%;
     min-height: 32px;
     width: 2px;
@@ -58,13 +73,17 @@ const StyledTrack = styled.div<{passed:boolean}>`
 
     margin-left: 7px;
 
-    ${passed ? `
+    ${
+      passed
+        ? `
     background-color: ${theme.core.border.borderFocus};
-    ` : ``}
+    `
+        : ``
+    }
     `}
 `;
 const BulletWrapper = styled.div<{}>`
-    ${({ theme }) => `
+  ${() => `
     display: flex;
     align-items: center;
     gap: 15px;
@@ -73,12 +92,10 @@ const BulletWrapper = styled.div<{}>`
 `;
 
 const InfoWrapper = styled.div<{}>`
-    ${({ theme }) => `
+  ${() => `
     display: flex;
     flex-direction: column;
     `}
 `;
 
-
-
-export { StyledStepper,InfoWrapper, StyledBullet, StyledTrack, BulletWrapper};
+export {StyledStepper, InfoWrapper, StyledBullet, StyledTrack, BulletWrapper};

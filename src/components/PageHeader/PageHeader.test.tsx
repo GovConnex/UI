@@ -1,6 +1,6 @@
-import { faGrid2 } from "@fortawesome/pro-solid-svg-icons";
+import {faGrid2} from "@fortawesome/pro-solid-svg-icons";
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 import PageHeader from "./PageHeader";
 

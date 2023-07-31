@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useState} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import PopIn from "./PopIn";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Box from "../Box";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

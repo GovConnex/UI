@@ -8,7 +8,7 @@ import StyledMenuListItem, {
 
 interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  onSelect?: (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onSelect?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   button?: boolean;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
@@ -17,7 +17,7 @@ interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   // checked?: boolean;
   disabled?: boolean;
   className?: string;
-  'data-cy'?: string;
+  "data-cy"?: string;
 }
 
 export const MenuListItem: React.FC<MenuListItemProps> = ({
@@ -32,20 +32,28 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   endAdornment,
   ...props
 }) => {
-  const handleClick = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!disabled && onSelect) {
       onSelect(e);
     }
   };
 
   return (
-    <StyledMenuListItem {...props} data-cy={props['data-cy']} button={button} className={classNames(className, {
-      cursor
-    })} onClick={handleClick}>
+    <StyledMenuListItem
+      {...props}
+      data-cy={props["data-cy"]}
+      button={button}
+      className={classNames(className, {
+        cursor,
+      })}
+      onClick={handleClick}
+    >
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography as="span" variant="body" size="md" noMargin>{children}</Typography>
+        <Typography as="span" variant="body" size="md" noMargin>
+          {children}
+        </Typography>
       </StyledMenuListItemStart>
       <StyledMenuListItemEnd>{endAdornment}</StyledMenuListItemEnd>
     </StyledMenuListItem>

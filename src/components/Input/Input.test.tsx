@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen } from "../test-utils";
+import {render, screen} from "../test-utils";
 import "@testing-library/react";
-import { fireEvent } from "@testing-library/dom";
+import {fireEvent} from "@testing-library/dom";
 
-import Input, { DebouncedInput } from "./Input";
+import Input, {DebouncedInput} from "./Input";
 
 describe("Input", () => {
   test("renders the Input component", () => {
@@ -23,7 +23,7 @@ describe("Input", () => {
 
     // Fire event to change input value
     fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "Hello world 2" },
+      target: {value: "Hello world 2"},
     });
 
     expect(onChange).not.toHaveBeenCalled();
@@ -37,7 +37,7 @@ describe("Input", () => {
 
     // Fire event to change input value
     fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "Hello world 2" },
+      target: {value: "Hello world 2"},
     });
 
     expect(onChange).toHaveBeenCalled();

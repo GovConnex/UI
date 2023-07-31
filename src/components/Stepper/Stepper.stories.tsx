@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Stepper from "./Stepper";
-import { withDesign } from 'storybook-addon-designs';
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -17,12 +17,16 @@ export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   activeStep: 1,
-  steps: [{ label: "Step 1", description: "Step 1 description" }, { label: "Step 2", description: "Step 2 description"}, { label: "Step 3", description: "Step 3 description", disabled:true }],
+  steps: [
+    {label: "Step 1", description: "Step 1 description"},
+    {label: "Step 2", description: "Step 2 description"},
+    {label: "Step 3", description: "Step 3 description", disabled: true},
+  ],
 };
 
 Example.parameters = {
-//  design: {
-//    type: "figma",
-//    url: ""
-//  }
+  //  design: {
+  //    type: "figma",
+  //    url: ""
+  //  }
 };
