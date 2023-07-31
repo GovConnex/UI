@@ -1,8 +1,8 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import ConfirmationModal from "./ConfirmationModal";
-import { withDesign } from "storybook-addon-designs";
-import { BackgroundIcon } from "..";
+import {withDesign} from "storybook-addon-designs";
+import {BackgroundIcon} from "..";
 
 export default {
   title: "Components/ConfirmationModal",

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useState} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Pagination from "./Pagination";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

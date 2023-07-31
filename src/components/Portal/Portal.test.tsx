@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 describe("Portal", () => {
   test("renders the Portal component", () => {

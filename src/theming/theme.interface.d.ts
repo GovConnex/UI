@@ -1,5 +1,5 @@
 import "styled-components";
-import GlobalTheme, { CommonGradient } from "./global-theme.interface";
+import GlobalTheme, {CommonGradient} from "./global-theme.interface";
 
 declare module "styled-components" {
   export interface DefaultTheme extends GlobalTheme {

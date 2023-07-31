@@ -1,1 +1,1 @@
-export { MenuList, MenuListItem, MenuListHeading } from "./MenuList";
+export {MenuList, MenuListItem, MenuListHeading} from "./MenuList";

@@ -1,9 +1,9 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Input from "./Input";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
-import { faSearch } from "@fortawesome/pro-solid-svg-icons";
+import {faSearch} from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -24,7 +24,7 @@ Default.args = {
 
 export const Focused = Template.bind({});
 Focused.args = {
-  startAdornment: <Icon icon={faSearch} style={{ opacity: "0.4" }} />,
+  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
   placeholder: "Search",
 };
 
@@ -32,7 +32,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   placeholder: "Search",
   disabled: true,
-  startAdornment: <Icon icon={faSearch} style={{ opacity: "0.4" }} />,
+  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
 };
 
 export const Error = Template.bind({});

@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import IssueCard from "./IssueCard";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -10,9 +10,7 @@ export default {
   decorators: [withDesign],
 } as ComponentMeta<typeof IssueCard>;
 
-const Template: ComponentStory<typeof IssueCard> = (args) => (
-  <IssueCard {...args} />
-);
+const Template: ComponentStory<typeof IssueCard> = (args) => <IssueCard {...args} />;
 
 const LinkTemplate: ComponentStory<typeof IssueCard> = (args) => (
   <a href="">

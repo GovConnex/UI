@@ -1,7 +1,7 @@
 import React from "react";
-import { customStyles } from "../../core/styleFunctions";
+import {customStyles} from "../../core/styleFunctions";
 import StyledBox from "./Box.styles";
-import { Spacing } from "../../theming/global-theme.interface";
+import {Spacing} from "../../theming/global-theme.interface";
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -78,11 +78,11 @@ export interface ExtendedBoxProps extends BoxProps {
  */
 const Box = React.forwardRef<HTMLDivElement, ExtendedBoxProps>(function Box(
   props: ExtendedBoxProps,
-  ref,
+  ref
 ) {
   // WARN does not pass onClick, etc to the div element
   return (
-    <StyledBox ref={ref} cs={{ ...props }}>
+    <StyledBox ref={ref} cs={{...props}}>
       {props.children}
     </StyledBox>
   );

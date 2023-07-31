@@ -21,11 +21,11 @@ export const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.primary.base.white};
-  border: ${({ theme }) => `${theme.borderWidth.md} solid #E6E6E7`};
+  border: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
   border-radius: ${(props) => props.theme.borderRadius.sm};
   filter: ${({
     theme: {
-      boxShadow: { md },
+      boxShadow: {md},
     },
   }) => `drop-shadow(${md.x}px ${md.y}px ${md.blur}px ${md.color})`};
 `;
@@ -37,7 +37,7 @@ export const StyledModalHead = styled.div`
   border-top-right-radius: ${(props) => props.theme.borderRadius.sm};
   padding: ${(props) => props.theme.spacing.sm};
   border-top-left-radius: ${(props) => props.theme.borderRadius.sm};
-  border-bottom: ${({ theme }) => `${theme.borderWidth.md} solid #E6E6E7`};
+  border-bottom: ${({theme}) => `${theme.borderWidth.md} solid #E6E6E7`};
 `;
 
 export const StyledModalContent = styled.div`
@@ -70,6 +70,6 @@ export const StyledMobileModal = styled.div`
   flex-direction: column;
 
   background-color: ${(props) => props.theme.primary.base.white};
-  border: ${({ theme }) => `${theme.borderWidth.sm} solid #E6E6E7`};
+  border: ${({theme}) => `${theme.borderWidth.sm} solid #E6E6E7`};
   border-radius: ${(props) => props.theme.borderRadius.sm};
 `;

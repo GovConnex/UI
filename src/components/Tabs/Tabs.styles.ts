@@ -10,7 +10,7 @@ const BottomHighlight = styled.span<{
   width: number;
   offset: number;
 }>`
-  ${({ theme, width, offset }) =>
+  ${({theme, width, offset}) =>
     ` 
     width: 100%;
     width: ${width}px;
@@ -27,4 +27,4 @@ const BottomHighlight = styled.span<{
 `}
 `;
 
-export { StyledTabs, BottomHighlight };
+export {StyledTabs, BottomHighlight};

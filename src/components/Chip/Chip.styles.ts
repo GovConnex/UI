@@ -1,12 +1,8 @@
-import styled, { DefaultTheme } from "styled-components";
+import styled, {DefaultTheme} from "styled-components";
 import Icon from "../Icon";
-import { ChipPriority, ChipRole, ChipSize } from "./Chip";
+import {ChipPriority, ChipRole, ChipSize} from "./Chip";
 
-const propsToBg = (
-  theme: DefaultTheme,
-  role: ChipRole,
-  priority: ChipPriority,
-) =>
+const propsToBg = (theme: DefaultTheme, role: ChipRole, priority: ChipPriority) =>
   ({
     default: {
       high: theme.core.background.bgSecondary,
@@ -34,11 +30,7 @@ const propsToBg = (
     },
   })[role][priority];
 
-const propsToColour = (
-  theme: DefaultTheme,
-  role: ChipRole,
-  priority: ChipPriority,
-) =>
+const propsToColour = (theme: DefaultTheme, role: ChipRole, priority: ChipPriority) =>
   ({
     default: {
       high: theme.core.content.contentPrimary,
@@ -71,13 +63,12 @@ const StyledChip = styled.div<{
   priority: ChipPriority;
   role: ChipRole;
 }>`
-  background-color: ${({ theme, role, priority }) =>
-    propsToBg(theme, role, priority)};
-  padding: 0 ${({ theme }) => theme.spacing.xs};
-  height: ${({ theme, size }) => theme.spacing[size]};
-  line-height: ${({ theme, size }) => theme.spacing[size]};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-  color: ${({ theme, role, priority }) => propsToColour(theme, role, priority)};
+  background-color: ${({theme, role, priority}) => propsToBg(theme, role, priority)};
+  padding: 0 ${({theme}) => theme.spacing.xs};
+  height: ${({theme, size}) => theme.spacing[size]};
+  line-height: ${({theme, size}) => theme.spacing[size]};
+  border-radius: ${({theme}) => theme.borderRadius.sm};
+  color: ${({theme, role, priority}) => propsToColour(theme, role, priority)};
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -86,21 +77,15 @@ const StyledChip = styled.div<{
 `;
 
 export const StyledChipIcon = styled(Icon)`
-  margin-left: ${({ theme }) => theme.spacing.xs};
+  margin-left: ${({theme}) => theme.spacing.xs};
   border-radius: 50%;
-  width: calc(
-    ${({ theme }) => theme.spacing.xs} + ${({ theme }) => theme.spacing.xxs}
-  );
-  height: calc(
-    ${({ theme }) => theme.spacing.xs} + ${({ theme }) => theme.spacing.xxs}
-  );
+  width: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
+  height: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
 `;
 
-export const StyledAdornment = styled.div<{ position: string }>`
+export const StyledAdornment = styled.div<{position: string}>`
   ${(props) =>
-    `margin-${props.position === "end" ? "left" : "right"}: ${
-      props.theme.spacing.xs
-    }`};
+    `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
   vertical-align: middle;
 `;
 

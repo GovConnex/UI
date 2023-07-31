@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "../test-utils";
+import {fireEvent, render, screen} from "../test-utils";
 
 import ConfirmationModal from "./ConfirmationModal";
 
@@ -15,7 +15,7 @@ describe("ConfirmationModal", () => {
         text={""}
         backgroundIcon={""}
         buttons={[]}
-      />,
+      />
     );
   });
 
@@ -44,7 +44,7 @@ describe("ConfirmationModal", () => {
             variant: "secondary",
           },
         ]}
-      />,
+      />
     );
 
     const title = screen.getByText("Test Title");
@@ -75,7 +75,7 @@ describe("ConfirmationModal", () => {
           },
         ]}
         onClose={handleClose}
-      />,
+      />
     );
 
     const closeButton = screen.getByText("Close");
@@ -106,7 +106,7 @@ describe("ConfirmationModal", () => {
           },
         ]}
         onClose={handleClose}
-      />,
+      />
     );
 
     const saveButton = screen.getByText("Save");

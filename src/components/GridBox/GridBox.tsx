@@ -1,5 +1,5 @@
 import React from "react";
-import Box, { ExtendedBoxProps } from "../Box/Box";
+import Box, {ExtendedBoxProps} from "../Box/Box";
 
 export interface GridBoxProps extends ExtendedBoxProps {
   /**

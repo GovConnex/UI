@@ -9,7 +9,7 @@ import {
 } from "./Modal.styles";
 import Portal from "../Portal";
 import ClickAwayListener from "../ClickAwayListener";
-import { useWindowSize, useLockBodyScroll } from "../../hooks";
+import {useWindowSize, useLockBodyScroll} from "../../hooks";
 
 export interface ModalProps {
   children?: React.ReactNode;
@@ -24,7 +24,7 @@ export interface ModalProps {
 const ScrollWrapper: React.FC<{
   children: React.ReactElement;
   disableScrollLock?: boolean;
-}> = ({ children, disableScrollLock }) => {
+}> = ({children, disableScrollLock}) => {
   if (!disableScrollLock) useLockBodyScroll();
   return children;
 };
@@ -46,9 +46,7 @@ const Modal = (props: ModalProps) => {
             <ClickAwayListener
               onClickAway={props.enableClickAway ? props.onClose : () => null}
             >
-              <StyledModal style={{ width: props.width }}>
-                {props.children}
-              </StyledModal>
+              <StyledModal style={{width: props.width}}>{props.children}</StyledModal>
             </ClickAwayListener>
           </StyledModalBack>
         )}
@@ -57,4 +55,4 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-export { Modal, StyledModalContent, StyledModalHead, StyledModalFeet };
+export {Modal, StyledModalContent, StyledModalHead, StyledModalFeet};

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import {render} from "@testing-library/react";
 
 import ThemeProvider from "./ThemeProvider";
 
@@ -8,7 +8,7 @@ describe("ThemeProvider", () => {
     render(
       <ThemeProvider theme={"light"}>
         <div>ThemeProvider</div>
-      </ThemeProvider>,
+      </ThemeProvider>
     );
   });
 });

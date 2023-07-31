@@ -1,10 +1,7 @@
 import React from "react";
 import StyledIcon from "./Icon.styles";
-import {
-  FontAwesomeIcon,
-  FontAwesomeIconProps,
-} from "@fortawesome/react-fontawesome";
-import { SizeProp, RotateProp } from "@fortawesome/fontawesome-svg-core";
+import {FontAwesomeIcon, FontAwesomeIconProps} from "@fortawesome/react-fontawesome";
+import {SizeProp, RotateProp} from "@fortawesome/fontawesome-svg-core";
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   icon: React.ReactNode;
@@ -13,7 +10,7 @@ export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const isFaProps = (
-  props: FontAwesomeIconProps | IconProps,
+  props: FontAwesomeIconProps | IconProps
 ): props is FontAwesomeIconProps => {
   return !React.isValidElement(props.icon);
 };

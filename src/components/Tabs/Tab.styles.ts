@@ -4,7 +4,7 @@ import Typography from "../Typography";
 const StyledTab = styled.button<{
   selected: boolean;
 }>`
-  ${({ theme, selected }) =>
+  ${({theme, selected}) =>
     ` 
     padding-left: ${theme.spacing.sm};
     padding-right: ${theme.spacing.sm};
@@ -13,9 +13,7 @@ const StyledTab = styled.button<{
     position: relative;
     white-space: nowrap;
     color: ${
-      selected
-        ? theme.core.content.contentPrimary
-        : theme.core.content.contentTertiary
+      selected ? theme.core.content.contentPrimary : theme.core.content.contentTertiary
     };
     background-color:${theme.core.background.bgPrimary};
     &:disabled {
@@ -35,4 +33,4 @@ const StyledTypography = styled(Typography)`
   margin-bottom: 0;
 `;
 
-export { StyledTypography, StyledTab };
+export {StyledTypography, StyledTab};

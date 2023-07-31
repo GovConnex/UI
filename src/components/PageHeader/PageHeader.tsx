@@ -1,6 +1,6 @@
 import React from "react";
 import BackgroundIcon from "../BackgroundIcon";
-import { StyledPageHeader, StyledPageTitle } from "./PageHeader.styles";
+import {StyledPageHeader, StyledPageTitle} from "./PageHeader.styles";
 
 export interface PageHeaderProps {
   children?: React.ReactNode;
@@ -12,7 +12,7 @@ export interface PageHeaderProps {
  * use Box with Stack instead
  *
  */
-const PageHeader = ({ icon, children }: PageHeaderProps) => {
+const PageHeader = ({icon, children}: PageHeaderProps) => {
   return (
     <StyledPageHeader>
       <BackgroundIcon icon={icon} size="2x" />

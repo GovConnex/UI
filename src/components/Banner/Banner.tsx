@@ -1,8 +1,8 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import Icon from "../Icon";
 import Typography from "../Typography";
-import { StyledBanner, StyledTextWrapper } from "./Banner.styles";
+import {StyledBanner, StyledTextWrapper} from "./Banner.styles";
 
 export interface BannerProps {
   /**
@@ -34,7 +34,7 @@ const variantMap = {
  *
  */
 const Banner = (props: BannerProps) => {
-  const { title, description, variant = "info" } = props;
+  const {title, description, variant = "info"} = props;
   return (
     <StyledBanner variant={variant}>
       <Icon icon={variantMap[variant] as IconProp} />

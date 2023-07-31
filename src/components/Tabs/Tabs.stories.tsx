@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Tabs from "./Tabs";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
 // @ts-ignore
 import mdx from "./Tabs.mdx";
@@ -19,7 +19,7 @@ export default {
   argTypes: {
     value: {
       options: ["tab1", "tab2", "tab2", "tab3", "tab4"],
-      control: { type: "select" },
+      control: {type: "select"},
     },
   },
 } as ComponentMeta<typeof Tabs>;

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useState} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Menu from "./Menu";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 import Icon from "../Icon";
-import { faUser } from "@fortawesome/pro-solid-svg-icons";
+import {faUser} from "@fortawesome/pro-solid-svg-icons";
 import styled from "styled-components";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -25,11 +25,7 @@ const Template: ComponentStory<typeof Menu> = (args) => {
         Toggle menu
       </Button>
       {showMenu && (
-        <Menu
-          {...args}
-          onClose={() => setShowMenu(false)}
-          anchorEl={exampleRef}
-        />
+        <Menu {...args} onClose={() => setShowMenu(false)} anchorEl={exampleRef} />
       )}
     </div>
   );
@@ -47,13 +43,13 @@ export const Example = Template.bind({});
 Example.args = {
   placement: "bottom-start",
   options: [
-    { text: "Menu Option", startAdornment: <GreenDot /> },
+    {text: "Menu Option", startAdornment: <GreenDot />},
     {
       text: "Hello",
       startAdornment: <GreenDot />,
       endAdornment: <Icon icon={faUser} />,
     },
-    { text: "Menu Option Part 2", startAdornment: <GreenDot /> },
+    {text: "Menu Option Part 2", startAdornment: <GreenDot />},
     {
       text: "Menu Option Part 2: 2",
       startAdornment: <GreenDot />,
@@ -74,11 +70,11 @@ export const Headings = Template.bind({});
 Headings.args = {
   placement: "bottom-start",
   options: [
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Animals" },
-    { text: "Menu Option", category: "Plants" },
-    { text: "Menu Option", category: "Plants" },
+    {text: "Menu Option", category: "Animals"},
+    {text: "Menu Option", category: "Animals"},
+    {text: "Menu Option", category: "Animals"},
+    {text: "Menu Option", category: "Animals"},
+    {text: "Menu Option", category: "Plants"},
+    {text: "Menu Option", category: "Plants"},
   ],
 };

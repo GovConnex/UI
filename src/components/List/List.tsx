@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledList, StyledListItem, StyledListItemStart } from "./List.styles";
+import {StyledList, StyledListItem, StyledListItemStart} from "./List.styles";
 import Typography from "../Typography";
-import { VariantsProp } from "../Typography/Typography.types";
-import { TypographySize } from "../../theming/global-theme.interface";
+import {VariantsProp} from "../Typography/Typography.types";
+import {TypographySize} from "../../theming/global-theme.interface";
 
 export const List = StyledList;
 
@@ -34,13 +34,13 @@ interface TypoVariant {
 }
 
 const typographyVariant: TypoVariant = {
-  item: { variant: "body", size: "md" as any },
-  header: { variant: "heading", size: "xs" as any },
-  subheader: { variant: "body", size: "sm" as any },
+  item: {variant: "body", size: "md" as any},
+  header: {variant: "heading", size: "xs" as any},
+  subheader: {variant: "body", size: "sm" as any},
 };
 
 export const ListItem = (props: ListItemProps) => {
-  const { variant, size } = typographyVariant[props.variant || "item"];
+  const {variant, size} = typographyVariant[props.variant || "item"];
 
   return (
     <StyledListItem {...props} button={props.button}>

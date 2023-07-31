@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
-const StyledAdornment = styled.span<{ position: string; disabled: boolean }>(
-  ({ theme, position, disabled }) => ({
+const StyledAdornment = styled.span<{position: string; disabled: boolean}>(
+  ({theme, position, disabled}) => ({
     [position]: theme.spacing.sm,
     paddingTop: theme.spacing.xs,
     position: "absolute",
     pointerEvents: "none",
     opacity: disabled ? 0.3 : 1,
-  }),
+  })
 );
 
-const StyledTextAreaContainer = styled.div<{ fullWidth: boolean }>(
+const StyledTextAreaContainer = styled.div<{fullWidth: boolean}>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ theme, fullWidth }) =>
+  ({theme, fullWidth}) =>
     `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: inline-flex;
 
   position: relative;
-  `,
+  `
 );
 
 const StyledTextArea = styled.textarea<{
@@ -27,7 +27,7 @@ const StyledTextArea = styled.textarea<{
   adornmentPadding: "left" | "right" | null;
   resize: boolean | undefined;
 }>(
-  ({ theme, error, fullWidth, adornmentPadding, resize }) =>
+  ({theme, error, fullWidth, adornmentPadding, resize}) =>
     `
   padding-top: ${theme.spacing.xs};
   padding-bottom: ${theme.spacing.xs};
@@ -71,21 +71,16 @@ const StyledTextArea = styled.textarea<{
   &:hover {
     background-color: ${theme.extended.state.secondaryHover};
   }
-  `,
+  `
 );
 
 const StyledTextAreaWrapper = styled.div(
-  ({ theme }) =>
+  ({theme}) =>
     `
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.xs};
-  `,
+  `
 );
 
-export {
-  StyledTextArea,
-  StyledTextAreaWrapper,
-  StyledTextAreaContainer,
-  StyledAdornment,
-};
+export {StyledTextArea, StyledTextAreaWrapper, StyledTextAreaContainer, StyledAdornment};

@@ -1,8 +1,8 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Radio from "./Radio";
-import { withDesign } from "storybook-addon-designs";
-import { faBook } from "@fortawesome/pro-solid-svg-icons";
+import {withDesign} from "storybook-addon-designs";
+import {faBook} from "@fortawesome/pro-solid-svg-icons";
 import Icon from "../Icon";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -16,9 +16,7 @@ export default {
 const Template: ComponentStory<typeof Radio> = (args) => {
   const [checked, setChecked] = React.useState(args.checked);
 
-  return (
-    <Radio checked={checked} onChange={() => setChecked(!checked)} {...args} />
-  );
+  return <Radio checked={checked} onChange={() => setChecked(!checked)} {...args} />;
 };
 
 export const Example = Template.bind({});

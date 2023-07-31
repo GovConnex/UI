@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const StyledList = styled.div<{ scroll?: boolean }>`
-  ${({ scroll }) =>
+export const StyledList = styled.div<{scroll?: boolean}>`
+  ${({scroll}) =>
     scroll &&
     `
     overflow: auto;
@@ -54,8 +54,7 @@ export const StyledListItem = styled.div<{
   `}
 
   ${(props) =>
-    props.selected &&
-    `background-color: ${props.theme.primary.neutral["100"]};`}
+    props.selected && `background-color: ${props.theme.primary.neutral["100"]};`}
 `;
 
 export const StyledListItemStart = styled.div`

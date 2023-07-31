@@ -1,1 +1,1 @@
-export { default, DebouncedInput, debounce } from "./Input";
+export {default, DebouncedInput, debounce} from "./Input";

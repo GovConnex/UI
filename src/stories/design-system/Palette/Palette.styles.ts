@@ -56,7 +56,7 @@ export const ColorDescriptionTd = styled(ColorsTableTd)`
   //min-width: 0rem
 `;
 
-export const ColorValue = styled.div<{ value: string }>`
+export const ColorValue = styled.div<{value: string}>`
   background-color: ${(props) => props.value};
   height: 2rem;
   border-radius: 50%;

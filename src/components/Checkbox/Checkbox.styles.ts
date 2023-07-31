@@ -13,7 +13,7 @@ export const StyledCheckbox = styled.input`
   position: absolute;
 `;
 
-export const StyledFakeCheckbox = styled.div<{ checked?: boolean }>`
+export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
   width: 20px;
   height: 20px;
   border-radius: 4px;
@@ -23,7 +23,7 @@ export const StyledFakeCheckbox = styled.div<{ checked?: boolean }>`
   color: ${(props) => props.theme.primary.base.white};
   border: ${(props) => props.theme.borderWidth.md} solid transparent;
 
-  ${({ checked, theme }) =>
+  ${({checked, theme}) =>
     checked
       ? `
     background-color: ${theme.primary.base.brand};
@@ -34,14 +34,14 @@ export const StyledFakeCheckbox = styled.div<{ checked?: boolean }>`
     `}
 `;
 
-export const StyledCheckboxLabel = styled.label<{ withHoverStyle: boolean }>`
+export const StyledCheckboxLabel = styled.label<{withHoverStyle: boolean}>`
   align-items: center;
   display: flex;
   cursor: pointer;
   gap: ${(props) => props.theme.spacing.xs};
   position: relative;
 
-  ${({ withHoverStyle, theme }) =>
+  ${({withHoverStyle, theme}) =>
     withHoverStyle
       ? `
     padding: ${theme.spacing.xs};

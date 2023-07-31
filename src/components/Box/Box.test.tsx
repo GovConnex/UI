@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 import Box from "./Box";
 
@@ -9,7 +9,7 @@ describe("Box", () => {
 
     render(<Box ref={elementRef} />);
 
-    const { current: element } = elementRef;
+    const {current: element} = elementRef;
     console.log(element);
     // expect(element).not.to
   });

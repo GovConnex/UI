@@ -1,5 +1,5 @@
 import * as CSS from "csstype";
-import { DefaultTheme } from "styled-components";
+import {DefaultTheme} from "styled-components";
 
 type ShorthandCSS = {
   p?: CSS.Properties["padding"] | number;
@@ -35,7 +35,7 @@ type breakpoints = {
 
 type keysTypes = "sm" | "md" | "lg";
 
-const values: { sm: number; md: number; lg: number } = {
+const values: {sm: number; md: number; lg: number} = {
   sm: 0, // tablet
   md: 600, // small laptop
   lg: 1360, // desktop 1360
@@ -121,7 +121,7 @@ export function getValueFromPath(theme: any, path: string) {
  * takes in props and returns styles to be injected into styled-components
  */
 const experimental_passCustomStyles = (args: any) => {
-  const { cs = {}, theme = {} as DefaultTheme } = args || {};
+  const {cs = {}, theme = {} as DefaultTheme} = args || {};
 
   // traverse through cs object and return styles
   function traverse(styles: any) {
@@ -134,13 +134,13 @@ const experimental_passCustomStyles = (args: any) => {
 
       // 1) check if prop is a custom style object
       if (k === "cs" && typeof styles[k] === "object") {
-        css = { ...css, ...traverse(styles[k]) };
+        css = {...css, ...traverse(styles[k])};
       }
 
       // 2) check if prop is a breakpoint
       if (defaultBreakpoints.keys.includes(k)) {
         const bp = defaultBreakpoints.up(k as keysTypes);
-        css = { ...css, [bp]: traverse(styles[k]) };
+        css = {...css, [bp]: traverse(styles[k])};
       }
 
       // 3) check if prop is a special case
@@ -156,7 +156,7 @@ const experimental_passCustomStyles = (args: any) => {
 
         // 3.1) Loop through chained keys and add to css
         t.forEach((v) => {
-          css = { ...css, ...traverse({ [v]: styles[k] }) };
+          css = {...css, ...traverse({[v]: styles[k]})};
         });
       } else {
         // Handle boxShadow specifically, which is an object
@@ -165,30 +165,29 @@ const experimental_passCustomStyles = (args: any) => {
 
           if (themeValue && typeof themeValue === "object") {
             const boxShadowValue = `${themeValue.x}px ${themeValue.y}px ${themeValue.blur}px ${themeValue.color}`;
-            css = { ...css, [cssProp]: boxShadowValue };
+            css = {...css, [cssProp]: boxShadowValue};
             return;
           } else {
-            css = { ...css, [cssProp]: themeValue };
+            css = {...css, [cssProp]: themeValue};
             return;
           }
         }
 
         // 4) check if prop is a string - if so, treat as a theme path
         if (typeof styles[k] === "string") {
-          css = { ...css, [cssProp]: getValueFromPath(theme, styles[k]) };
+          css = {...css, [cssProp]: getValueFromPath(theme, styles[k])};
         }
 
         // 5) check if prop is a number - if so, treat as a spacing value
         if (typeof styles[k] === "number") {
           const n =
-            numberToSpacingMap[styles[k] as keyof typeof numberToSpacingMap] ||
-            "0px";
-          css = { ...css, [cssProp]: getValueFromPath(theme, n) };
+            numberToSpacingMap[styles[k] as keyof typeof numberToSpacingMap] || "0px";
+          css = {...css, [cssProp]: getValueFromPath(theme, n)};
         }
 
         // Handle flexGrow specifically, which is a number
         if (cssProp === "flexGrow") {
-          css = { ...css, [cssProp]: styles[k] };
+          css = {...css, [cssProp]: styles[k]};
         }
 
         return;
@@ -203,7 +202,7 @@ const experimental_passCustomStyles = (args: any) => {
 
 // Pass the theme for styled-components
 export function addCustomStyles(
-  props: { cs?: customStyles; theme: DefaultTheme } | CSS.Properties,
+  props: {cs?: customStyles; theme: DefaultTheme} | CSS.Properties
 ) {
   // @ts-ignore
   return experimental_passCustomStyles(props);

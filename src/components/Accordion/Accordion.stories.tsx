@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Accordion from "./Accordion";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -25,8 +25,8 @@ Example.args = {
   children: (
     <div>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt,
-        nisl eget aliquam tincidunt, nisl nisl aliquet nisl, nec
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, nisl eget
+        aliquam tincidunt, nisl nisl aliquet nisl, nec
       </p>
     </div>
   ),

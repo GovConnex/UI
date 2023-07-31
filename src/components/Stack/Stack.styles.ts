@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import {
-  directionProps,
-  gapProps,
-  alignItemProps,
-  justifyContentProps,
-} from "./Stack";
+import {directionProps, gapProps, alignItemProps, justifyContentProps} from "./Stack";
 
 const StyledStack = styled.div<{
   direction?: directionProps;
@@ -12,7 +7,7 @@ const StyledStack = styled.div<{
   alignItems?: alignItemProps;
   justifyContent?: justifyContentProps;
 }>`
-  ${({ theme, gap, alignItems, justifyContent, direction }) =>
+  ${({theme, gap, alignItems, justifyContent, direction}) =>
     `
     display:flex;
     flex-direction: ${
@@ -43,9 +38,7 @@ const StyledStack = styled.div<{
         };
         align-items: ${
           // eslint-disable-next-line no-extra-boolean-cast
-          !!(alignItems instanceof Object)
-            ? alignItems.md
-            : alignItems || "stretch"
+          !!(alignItems instanceof Object) ? alignItems.md : alignItems || "stretch"
         };
         justify-content: ${
           // eslint-disable-next-line no-extra-boolean-cast
@@ -68,9 +61,7 @@ const StyledStack = styled.div<{
         };
         align-items: ${
           // eslint-disable-next-line no-extra-boolean-cast
-          !!(alignItems instanceof Object)
-            ? alignItems.lg
-            : alignItems || "stretch"
+          !!(alignItems instanceof Object) ? alignItems.lg : alignItems || "stretch"
         };
         justify-content: ${
           // eslint-disable-next-line no-extra-boolean-cast

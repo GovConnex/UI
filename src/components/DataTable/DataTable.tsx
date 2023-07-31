@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, {useCallback, useEffect} from "react";
 
 import {
   useFlexLayout,
@@ -80,7 +80,7 @@ export interface DataTableProps {
   /**
    * Callback for when the pagination changes.
    */
-  onPaginationChange?: (input: { page: any; pageSize: number }) => void;
+  onPaginationChange?: (input: {page: any; pageSize: number}) => void;
   /**
    * Callback for when the selected ids change.
    */
@@ -133,7 +133,7 @@ const DataTable = ({
       width: 150, // width is used for both the flex-basis and flex-grow
       maxWidth: 200, // maxWidth is only used as a limit for resizing
     }),
-    [],
+    []
   );
 
   // @ts-ignore
@@ -179,14 +179,14 @@ const DataTable = ({
                 id: "selection",
                 // The header can use the table's getToggleAllRowsSelectedProps method
                 // to render a checkbox
-                Header: ({ getToggleAllRowsSelectedProps }: any) => (
+                Header: ({getToggleAllRowsSelectedProps}: any) => (
                   <div>
                     <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
                   </div>
                 ),
                 // The cell can use the individual row's getToggleRowSelectedProps method
                 // to the render a checkbox
-                Cell: ({ row }: any) => (
+                Cell: ({row}: any) => (
                   <div>
                     <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
                   </div>
@@ -198,16 +198,16 @@ const DataTable = ({
               }
             : null,
           ...columns,
-        ].filter(Boolean),
+        ].filter(Boolean)
       );
-      hooks.useInstanceBeforeDimensions.push(({ headerGroups }: any) => {
+      hooks.useInstanceBeforeDimensions.push(({headerGroups}: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
         if (selectionGroupHeader) selectionGroupHeader.canResize = false;
         if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
       });
-    },
+    }
     // useResizeColumns
   );
 
@@ -219,7 +219,7 @@ const DataTable = ({
     if (onChangeSort) {
       if (sortBy.length > 0) {
         const column = columns.find((c) => c.id === sortBy[0].id);
-        onChangeSort([{ ...sortBy[0], ...column }]);
+        onChangeSort([{...sortBy[0], ...column}]);
       }
     }
   }, [onChangeSort, sortBy, columns]);
@@ -233,16 +233,16 @@ const DataTable = ({
         setDataTablePageSize(pageInfo.pageSize);
       }
     },
-    [manualPagination, gotoPage, setDataTablePageSize, onPaginationChangeProp],
+    [manualPagination, gotoPage, setDataTablePageSize, onPaginationChangeProp]
   );
 
   useEffect(() => {
     const selectedRowsStillPresent = Object.keys(selectedRowIds).every(
-      (rowIndex: any) => data[rowIndex],
+      (rowIndex: any) => data[rowIndex]
     );
     if (onSelectedIdsChangeProp && selectedRowsStillPresent)
       onSelectedIdsChangeProp(
-        Object.keys(selectedRowIds).map((rowIndex: any) => data[rowIndex].id),
+        Object.keys(selectedRowIds).map((rowIndex: any) => data[rowIndex].id)
       );
   }, [selectedRowIds, onSelectedIdsChangeProp, data]);
 
@@ -304,11 +304,9 @@ const DataTable = ({
           page={page}
           totalItems={numResults || 0}
           onItemsPerPageChange={(newPageSize) =>
-            onPaginationChange({ page, pageSize: newPageSize })
+            onPaginationChange({page, pageSize: newPageSize})
           }
-          onPageChange={(newPage) =>
-            onPaginationChange({ page: newPage, pageSize })
-          }
+          onPageChange={(newPage) => onPaginationChange({page: newPage, pageSize})}
         />
       )}
       {/*</div>*/}

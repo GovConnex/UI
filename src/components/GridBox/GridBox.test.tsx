@@ -1,7 +1,7 @@
 import React from "react";
-import { prettyDOM, screen } from "@testing-library/react";
+import {prettyDOM, screen} from "@testing-library/react";
 import GridBox from "./GridBox";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 describe("GridBox", () => {
   it("renders GridBox with children", () => {
@@ -9,7 +9,7 @@ describe("GridBox", () => {
       <GridBox>
         <div>Child 1</div>
         <div>Child 2</div>
-      </GridBox>,
+      </GridBox>
     );
 
     expect(screen.getByText("Child 1")).toBeInTheDocument();
@@ -17,15 +17,15 @@ describe("GridBox", () => {
   });
 
   it("applies custom styles and breakpoint styles correctly", () => {
-    const { container } = render(
+    const {container} = render(
       <GridBox
         backgroundColor="red"
-        sm={{ backgroundColor: "blue" }}
-        md={{ backgroundColor: "green" }}
-        lg={{ backgroundColor: "yellow" }}
+        sm={{backgroundColor: "blue"}}
+        md={{backgroundColor: "green"}}
+        lg={{backgroundColor: "yellow"}}
       >
         <div>Child</div>
-      </GridBox>,
+      </GridBox>
     );
 
     const gridbox = container.firstChild as HTMLElement;

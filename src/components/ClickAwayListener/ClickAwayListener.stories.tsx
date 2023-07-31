@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useState, useRef} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import ClickAwayListener from "./ClickAwayListener";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 import Popover from "../Popover";
 

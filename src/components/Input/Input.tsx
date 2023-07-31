@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import Typography from "../Typography";
 import {
   StyledInputContainer,
@@ -63,7 +63,7 @@ export const DebouncedInput = ({
   const [inputValue, setInputValue] = useState(value);
   const debouncedChange = useMemo(
     () => debounce(onChange as Function, delayMs),
-    [onChange],
+    [onChange]
   );
 
   useEffect(() => {
@@ -91,15 +91,7 @@ export const DebouncedInput = ({
  * `Input` is a extendable input component
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {
-    label,
-    hint,
-    startAdornment,
-    endAdornment,
-    error,
-    fullWidth,
-    ...rest
-  } = props;
+  const {label, hint, startAdornment, endAdornment, error, fullWidth, ...rest} = props;
 
   return (
     <StyledInputWrapper fullWidth={!!fullWidth}>
@@ -117,9 +109,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         ) : null}
 
         <StyledInput
-          adornmentPadding={
-            startAdornment ? "left" : endAdornment ? "right" : null
-          }
+          adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}
           ref={ref}

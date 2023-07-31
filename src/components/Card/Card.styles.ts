@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Spacing } from "../../theming/global-theme.interface";
-import { shadowFromProp } from "../style-utils";
+import {Spacing} from "../../theming/global-theme.interface";
+import {shadowFromProp} from "../style-utils";
 
 const StyledCard = styled.div<{
   focused: boolean;
@@ -8,7 +8,7 @@ const StyledCard = styled.div<{
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
 }>(
-  ({ theme, hoverStyle, focused, selected, padding }) =>
+  ({theme, hoverStyle, focused, selected, padding}) =>
     `
   background: ${theme.core?.background?.bgPrimary};
   padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
@@ -16,9 +16,7 @@ const StyledCard = styled.div<{
   })`};
   margin-bottom: ${theme.spacing.xs};
   transition: border-color 300ms ease-out;
-  border-width: ${
-    focused || selected ? theme.borderWidth.lg : theme.borderWidth.md
-  };
+  border-width: ${focused || selected ? theme.borderWidth.lg : theme.borderWidth.md};
   border-style: solid;
   border-color: ${
     focused || selected
@@ -42,7 +40,7 @@ const StyledCard = styled.div<{
       : null
   };
         
-  `,
+  `
 );
 
 // const StyledCard = styled.div<{

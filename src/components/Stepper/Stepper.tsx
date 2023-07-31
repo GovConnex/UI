@@ -28,7 +28,7 @@ export interface StepperProps {
   /**
    * steps to render
    */
-  steps?: Array<{ label: string; description: string; disabled?: boolean }>;
+  steps?: Array<{label: string; description: string; disabled?: boolean}>;
 }
 
 /**
@@ -38,7 +38,7 @@ export interface StepperProps {
  * Component Demo: [Stepper](https://ui.govconnex.com/?path=/story/components-Stepper--example)
  *
  */
-const Stepper = ({ activeStep = 0, steps = [] }: StepperProps) => {
+const Stepper = ({activeStep = 0, steps = []}: StepperProps) => {
   //  const {activeStep, ...rest} = props;
 
   function isPassed(activeStep: number, index: number) {

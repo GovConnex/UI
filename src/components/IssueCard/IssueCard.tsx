@@ -10,9 +10,9 @@ import {
   NoMembers,
   LockIcon,
 } from "./IssueCard.styles";
-import React, { useState, useRef } from "react";
-import { Button, SvgIcon as Icon, Menu, Portal } from "../";
-import { MenuOption } from "../Menu/Menu";
+import React, {useState, useRef} from "react";
+import {Button, SvgIcon as Icon, Menu, Portal} from "../";
+import {MenuOption} from "../Menu/Menu";
 
 interface IssueUserLinkUser {
   fullName?: string;
@@ -64,7 +64,7 @@ const IssueCard = ({
   togglePinned,
   truncateDescription,
 }: IssueCardProps) => {
-  const { id, title, description, userLinks, shared } = issue;
+  const {id, title, description, userLinks, shared} = issue;
   const [isMenuShown, setMenuShown] = useState(false);
   const menuRef: React.RefObject<HTMLButtonElement> =
     useRef<HTMLButtonElement>() as React.RefObject<HTMLButtonElement>;
@@ -140,9 +140,7 @@ const IssueCard = ({
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "mute",
                       "data-cy": "issue-card-mute",
-                      text: issue.notificationsEnabled
-                        ? "Mute Issue"
-                        : "Unmute Issue",
+                      text: issue.notificationsEnabled ? "Mute Issue" : "Unmute Issue",
                       startAdornment: (
                         <Icon
                           icon={
@@ -165,9 +163,7 @@ const IssueCard = ({
                       id: "leave",
                       "data-cy": "issue-card-leave",
                       text: "Leave Issue",
-                      startAdornment: (
-                        <Icon icon={"fa-solid fa-person-to-door"} />
-                      ),
+                      startAdornment: <Icon icon={"fa-solid fa-person-to-door"} />,
                       onSelect: leaveIssue,
                     },
                     accessLevel === "admin" && {
@@ -201,13 +197,10 @@ const IssueCard = ({
               size="xl"
               src={link?.user?.profileImage?.url}
             />
-          ) : null,
+          ) : null
         )}
         {userLinks?.length > maxAvatars ? (
-          <StyledGrayAvatar
-            alt={`+ ${userLinks?.length - maxAvatars}`}
-            size="xl"
-          />
+          <StyledGrayAvatar alt={`+ ${userLinks?.length - maxAvatars}`} size="xl" />
         ) : null}
       </Avatars>
       {!userLinks?.length && (

@@ -1,7 +1,7 @@
-import React, { ComponentType } from "react";
-import { Spacing, TypographySize } from "../../theming/global-theme.interface";
+import React, {ComponentType} from "react";
+import {Spacing, TypographySize} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
-import { StyledButton, StyledAdornment, StyledSpinner } from "./Button.styles";
+import {StyledButton, StyledAdornment, StyledSpinner} from "./Button.styles";
 
 export type ButtonVariant =
   | "primary"
@@ -13,8 +13,7 @@ export type ButtonVariant =
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   children?: React.ReactNode;
   variant?: ButtonVariant;
@@ -74,7 +73,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       style,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <StyledButton
@@ -99,11 +98,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {iconOnly && !isLoading ? (
           children
         ) : !isLoading ? (
-          <Typography
-            as="span"
-            variant="label"
-            size={typographyMap[size || "md"]}
-          >
+          <Typography as="span" variant="label" size={typographyMap[size || "md"]}>
             {children || title}
           </Typography>
         ) : null}
@@ -113,7 +108,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : null}
       </StyledButton>
     );
-  },
+  }
 );
 
 export default Button;

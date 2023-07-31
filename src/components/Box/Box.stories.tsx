@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Box from "./Box";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Typography from "../Typography";
 // @ts-ignore
 import mdx from "./Box.mdx";
@@ -38,7 +38,7 @@ export const Theme = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Theme.args = {
   backgroundColor: "theme.brand.300",
-  cs: { border: "1px solid theme.brand.300" },
+  cs: {border: "1px solid theme.brand.300"},
   children: (
     <Typography variant="heading" size="lg">
       box
@@ -68,8 +68,8 @@ Padding.args = {
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
-  cs: { sm: { backgroundColor: "primary.brand.300" } },
-  md: { padding: "spacing.xl", backgroundColor: "primary.brand.500" },
+  cs: {sm: {backgroundColor: "primary.brand.300"}},
+  md: {padding: "spacing.xl", backgroundColor: "primary.brand.500"},
   children: (
     <Typography variant="heading" size="lg">
       box

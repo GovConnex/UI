@@ -1,21 +1,21 @@
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 import Button from "./Button";
 import "@testing-library/jest-dom/extend-expect";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../theming/index";
+import {ThemeProvider} from "styled-components";
+import {lightTheme} from "../../theming/index";
 
 describe("StyledButton", () => {
   const renderStyledButton = (props: any) => {
     return render(
       <ThemeProvider theme={lightTheme}>
         <Button {...props}>Test Button</Button>
-      </ThemeProvider>,
+      </ThemeProvider>
     );
   };
 
   it("renders primary button", () => {
-    const { getByRole } = renderStyledButton({
+    const {getByRole} = renderStyledButton({
       variant: "primary",
       shape: "rect",
       size: "md",
@@ -30,7 +30,7 @@ describe("StyledButton", () => {
   });
 
   it("renders secondary button", () => {
-    const { getByRole } = renderStyledButton({
+    const {getByRole} = renderStyledButton({
       variant: "secondary",
       shape: "rect",
       size: "md",
@@ -45,7 +45,7 @@ describe("StyledButton", () => {
   });
 
   it("renders danger button", () => {
-    const { getByRole } = renderStyledButton({
+    const {getByRole} = renderStyledButton({
       variant: "danger",
       shape: "rect",
       size: "md",
@@ -60,7 +60,7 @@ describe("StyledButton", () => {
   });
 
   it("renders text button", () => {
-    const { getByRole } = renderStyledButton({
+    const {getByRole} = renderStyledButton({
       variant: "text",
       shape: "rect",
       size: "md",
@@ -75,7 +75,7 @@ describe("StyledButton", () => {
   });
 
   it("renders secondary danger button", () => {
-    const { getByRole } = renderStyledButton({
+    const {getByRole} = renderStyledButton({
       variant: "secondaryDanger",
       shape: "rect",
       size: "md",
@@ -90,8 +90,8 @@ describe("StyledButton", () => {
   });
 
   it("expects to pick up styling", () => {
-    const { getByRole } = renderStyledButton({
-      style: { width: "24px" },
+    const {getByRole} = renderStyledButton({
+      style: {width: "24px"},
     });
 
     const button = getByRole("button");

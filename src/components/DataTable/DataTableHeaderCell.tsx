@@ -12,12 +12,10 @@ export interface HeaderCellProps {
   onSelect?: () => void;
 }
 
-const DataTableHeaderCell = ({ column }: any) => {
+const DataTableHeaderCell = ({column}: any) => {
   return (
     <GcxDataTableHeaderCellRoot>
-      {column.icon ? (
-        <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} />
-      ) : null}
+      {column.icon ? <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} /> : null}
       <Typography variant="label" size="md" noMargin>
         {column.displayName}
       </Typography>

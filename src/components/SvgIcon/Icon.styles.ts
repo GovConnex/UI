@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SizeProp, RotateProp } from "@fortawesome/fontawesome-svg-core";
+import {SizeProp, RotateProp} from "@fortawesome/fontawesome-svg-core";
 
 const sizeMap = {
   xs: "vertical-align: 0em; font-size: 0.75em; line-height: 0.0833333337em;",
@@ -20,7 +20,7 @@ const sizeMap = {
   "10x": "vertical-align: -0.12em; font-size: 10em;",
 };
 
-const StyledIcon = styled.span<{ rotate?: RotateProp; size?: SizeProp }>`
+const StyledIcon = styled.span<{rotate?: RotateProp; size?: SizeProp}>`
   display: inline-block;
   text-align: center;
   text-transform: none;
@@ -32,8 +32,8 @@ const StyledIcon = styled.span<{ rotate?: RotateProp; size?: SizeProp }>`
     vertical-align: -0.125em;
     height: 1em;
 
-    ${({ size }) => size && sizeMap[size]}
-    ${({ rotate }) => rotate && `transform: rotate(${rotate}deg);`}
+    ${({size}) => size && sizeMap[size]}
+    ${({rotate}) => rotate && `transform: rotate(${rotate}deg);`}
   }
 `;
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Stack from "./Stack";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Card from "../Card";
 // @ts-ignore
 import mdx from "./Stack.mdx";
@@ -66,6 +66,6 @@ export const Example = Template.bind({});
 export const Breakpoints = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Breakpoints.args = {
-  direction: { sm: "column", md: "row" },
-  gap: { sm: "md", md: "sm" },
+  direction: {sm: "column", md: "row"},
+  gap: {sm: "md", md: "sm"},
 };

@@ -14,7 +14,7 @@ const StyledBullet = styled.div<{
   passed: boolean;
   disabled: boolean;
 }>`
-  ${({ theme, active, passed, disabled }) => `
+  ${({theme, active, passed, disabled}) => `
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -64,8 +64,8 @@ const StyledBullet = styled.div<{
 
     `}
 `;
-const StyledTrack = styled.div<{ passed: boolean }>`
-  ${({ theme, passed }) => `
+const StyledTrack = styled.div<{passed: boolean}>`
+  ${({theme, passed}) => `
     height: 100%;
     min-height: 32px;
     width: 2px;
@@ -98,4 +98,4 @@ const InfoWrapper = styled.div<{}>`
     `}
 `;
 
-export { StyledStepper, InfoWrapper, StyledBullet, StyledTrack, BulletWrapper };
+export {StyledStepper, InfoWrapper, StyledBullet, StyledTrack, BulletWrapper};

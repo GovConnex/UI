@@ -74,7 +74,7 @@ const ClickAwayListener: FunctionComponent<ClickAwayListenerProps> = ({
   const handleChildRef = (childRef: HTMLElement) => {
     node.current = childRef;
 
-    const { ref } = children as typeof children & {
+    const {ref} = children as typeof children & {
       ref: RefCallback<HTMLElement> | MutableRefObject<HTMLElement>;
     };
 
@@ -123,7 +123,7 @@ const ClickAwayListener: FunctionComponent<ClickAwayListenerProps> = ({
       [mappedFocusEvent]: handleBubbledEvents(mappedFocusEvent),
       [mappedMouseEvent]: handleBubbledEvents(mappedMouseEvent),
       [mappedTouchEvent]: handleBubbledEvents(mappedTouchEvent),
-    }),
+    })
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 import Pagination from "./Pagination";
 
@@ -12,7 +12,7 @@ describe("Pagination", () => {
         page={1}
         itemsPerPage={1}
         onItemsPerPageChange={() => null}
-      />,
+      />
     );
   });
 });

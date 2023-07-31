@@ -1,10 +1,9 @@
 import React from "react";
-import { VariantsProp, Variants } from "./Typography.types";
-import { variantComponents } from "./Typography.styles";
-import { TypographySize } from "../../theming/global-theme.interface";
+import {VariantsProp, Variants} from "./Typography.types";
+import {variantComponents} from "./Typography.styles";
+import {TypographySize} from "../../theming/global-theme.interface";
 
-export interface TypographyProps
-  extends Omit<React.HTMLProps<HTMLElement>, "size"> {
+export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "size"> {
   /**
    * The content of the component.
    */

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../test-utils";
+import {render} from "../test-utils";
 
 import Tabs from "./Tabs";
 
@@ -8,7 +8,7 @@ describe("Tabs", () => {
     render(
       <Tabs>
         <div>test</div>
-      </Tabs>,
+      </Tabs>
     );
   });
   test("renders the Tabs component with children", () => {
@@ -17,7 +17,7 @@ describe("Tabs", () => {
         <Tabs.Tab label="Normal tab" value="tab1" />,
         <Tabs.Tab disabled label="Disabled tab" value="tab3" />,
         <Tabs.Tab label="Another tab" value="tab4" />,
-      </Tabs>,
+      </Tabs>
     );
   });
   test("renders the Tabs component with plain divs", () => {
@@ -25,7 +25,7 @@ describe("Tabs", () => {
       <Tabs>
         <div>I should still work</div>
         <div>I also work</div>
-      </Tabs>,
+      </Tabs>
     );
   });
 });

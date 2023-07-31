@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Select from "./Select";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -12,7 +12,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Select> = (args) => (
-  <div style={{ maxWidth: "300px" }}>
+  <div style={{maxWidth: "300px"}}>
     <Select {...args} />
   </div>
 );
@@ -30,7 +30,7 @@ Error.args = {
   title: "Select",
   chipValue: "All",
   error: "Error message",
-  dropdown: ({ close }) => <div onClick={close}>Dropdown</div>,
+  dropdown: ({close}) => <div onClick={close}>Dropdown</div>,
   // children: [
   //   <div>Option 1</div>,
   //   <div>Option 2</div>,

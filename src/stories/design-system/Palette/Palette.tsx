@@ -13,13 +13,13 @@ import StyledPalette, {
   SectionHeader,
 } from "./Palette.styles";
 
-const ColorsContainer = ({ palette: paletteProps }: any) => {
+const ColorsContainer = ({palette: paletteProps}: any) => {
   const palette = organisePalette(paletteProps);
 
   return (
     <ColorsTable>
       <ColorsTableTbody>
-        {palette.map(({ name, description, value }, index: number) => {
+        {palette.map(({name, description, value}, index: number) => {
           return (
             <ColorsTableRow key={index}>
               <ColorValueTd>
@@ -37,17 +37,17 @@ const ColorsContainer = ({ palette: paletteProps }: any) => {
 
 const organisePalette = (
   palette: any,
-  prevKeys: string[] = [],
-): Array<{ name: string; value: string; description: string }> => {
+  prevKeys: string[] = []
+): Array<{name: string; value: string; description: string}> => {
   const keys = Object.keys(palette);
   let results: any = [];
 
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    const { value, description } = palette[key];
+    const {value, description} = palette[key];
     const newKeys = [...prevKeys, key];
     if (value) {
-      results = [...results, { name: newKeys.join("."), value, description }];
+      results = [...results, {name: newKeys.join("."), value, description}];
     } else {
       results = [...results, ...organisePalette(palette[key], newKeys)];
     }

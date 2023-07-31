@@ -23,8 +23,7 @@ export const StyledMenuListItem = styled.div<{
   `}
 
   ${(props) =>
-    props.selected &&
-    `background-color: ${props.theme.primary.neutral["100"]};`}
+    props.selected && `background-color: ${props.theme.primary.neutral["100"]};`}
 `;
 
 export const StyledMenuListItemStart = styled.div`

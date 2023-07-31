@@ -3,7 +3,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/pro-solid-svg-icons";
-import React, { useState, useRef, useMemo } from "react";
+import React, {useState, useRef, useMemo} from "react";
 import Button from "../Button";
 import Menu from "../Menu";
 import Typography from "../Typography";
@@ -15,9 +15,7 @@ export interface PaginationItemsPerPageObject {
   label: string | number;
 }
 
-export type PaginationItemsPerPageOption =
-  | number
-  | PaginationItemsPerPageObject;
+export type PaginationItemsPerPageOption = number | PaginationItemsPerPageObject;
 
 export interface PaginationProps {
   totalItems: number;
@@ -42,18 +40,18 @@ const Pagination = (props: PaginationProps) => {
     if (props.itemsPerPageOptions) {
       return props.itemsPerPageOptions.map((x) =>
         typeof x === "number"
-          ? { text: x, onSelect: () => setItemsPerPage(x) }
+          ? {text: x, onSelect: () => setItemsPerPage(x)}
           : {
               text: x.label || x.value,
               onSelect: () => setItemsPerPage(x.value),
-            },
+            }
       );
     } else {
       return [
-        { text: 10, onSelect: () => setItemsPerPage(10) },
-        { text: 25, onSelect: () => setItemsPerPage(25) },
-        { text: 50, onSelect: () => setItemsPerPage(50) },
-        { text: 100, onSelect: () => setItemsPerPage(100) },
+        {text: 10, onSelect: () => setItemsPerPage(10)},
+        {text: 25, onSelect: () => setItemsPerPage(25)},
+        {text: 50, onSelect: () => setItemsPerPage(50)},
+        {text: 100, onSelect: () => setItemsPerPage(100)},
       ];
     }
   }, [props.itemsPerPageOptions]);
@@ -63,8 +61,7 @@ const Pagination = (props: PaginationProps) => {
       <>
         <div>
           <Typography noMargin>
-            Page {props.page} of{" "}
-            {Math.ceil(props.totalItems / props.itemsPerPage)}
+            Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
           </Typography>
 
           <Button
@@ -78,9 +75,7 @@ const Pagination = (props: PaginationProps) => {
           <Button
             variant="secondary"
             onClick={() => props.onPageChange(props.page + 1)}
-            disabled={
-              props.page >= Math.ceil(props.totalItems / props.itemsPerPage)
-            }
+            disabled={props.page >= Math.ceil(props.totalItems / props.itemsPerPage)}
           >
             <Icon icon={faChevronRight} />
           </Button>

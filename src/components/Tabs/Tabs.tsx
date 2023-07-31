@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
-import { BottomHighlight, StyledTabs } from "./Tabs.styles";
-import { StyledTab, StyledTypography } from "./Tab.styles";
+import React, {useLayoutEffect, useState} from "react";
+import {BottomHighlight, StyledTabs} from "./Tabs.styles";
+import {StyledTab, StyledTypography} from "./Tab.styles";
 
 // Helpers
 
@@ -10,7 +10,7 @@ import { StyledTab, StyledTypography } from "./Tab.styles";
  */
 function getIndexOfCollectionValue(
   value: string,
-  collection: HTMLCollection | undefined,
+  collection: HTMLCollection | undefined
 ) {
   if (!collection) return 0;
   for (let i = 0; i < collection.length; i++) {
@@ -71,11 +71,11 @@ const Tabs = (props: TabsProps) => {
   // set defaults
   const [selected, setSelected] = useState<{
     value: string | undefined;
-  }>({ value: props.value });
+  }>({value: props.value});
   const [bottomBarParts, setBottomBarParts] = useState<{
     width: number;
     offset: number;
-  }>({ width: 0, offset: 0 });
+  }>({width: 0, offset: 0});
 
   // handle a new selection
   function updateSelected(value: string, index: number) {
@@ -85,8 +85,8 @@ const Tabs = (props: TabsProps) => {
     const bottomBarWidth = collection[index].getBoundingClientRect().width;
     const bottomBarOffset = getOffsetWidth(index, collection);
 
-    setSelected({ value: value });
-    setBottomBarParts({ width: bottomBarWidth, offset: bottomBarOffset });
+    setSelected({value: value});
+    setBottomBarParts({width: bottomBarWidth, offset: bottomBarOffset});
   }
 
   // on layout set selected tab
@@ -94,10 +94,7 @@ const Tabs = (props: TabsProps) => {
     const collection = TabsRef.current?.children;
     if (!collection) return;
     if (!props.value) return;
-    updateSelected(
-      props.value,
-      getIndexOfCollectionValue(props.value, collection),
-    );
+    updateSelected(props.value, getIndexOfCollectionValue(props.value, collection));
   }, []);
 
   return (
@@ -120,16 +117,12 @@ const Tabs = (props: TabsProps) => {
         }
         return child;
       })}
-      <BottomHighlight
-        offset={bottomBarParts.offset}
-        width={bottomBarParts.width}
-      />
+      <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
     </StyledTabs>
   );
 };
 
-export interface TabProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Value of the current tab
    */
@@ -152,14 +145,12 @@ export interface TabProps
  * @param {React.ReactNode} startAdornment a react node to render on the left side/start of the tab
  *
  */
-Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(
-  ({ ...props }, ref) => {
-    return (
-      <StyledTab selected={false} ref={ref} {...props}>
-        {props.startAdornment ? props.startAdornment : null}
-        <StyledTypography>{props.label}</StyledTypography>
-      </StyledTab>
-    );
-  },
-);
+Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
+  return (
+    <StyledTab selected={false} ref={ref} {...props}>
+      {props.startAdornment ? props.startAdornment : null}
+      <StyledTypography>{props.label}</StyledTypography>
+    </StyledTab>
+  );
+});
 export default Tabs;

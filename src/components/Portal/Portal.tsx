@@ -1,5 +1,5 @@
-import React, { useState, useLayoutEffect } from "react";
-import { createPortal } from "react-dom";
+import React, {useState, useLayoutEffect} from "react";
+import {createPortal} from "react-dom";
 
 const createContainerAndAppendToBody = (containerId: string) => {
   const containerElement = document.createElement("div");
@@ -17,9 +17,7 @@ const Portal = ({
   container?: string | HTMLElement | null;
   disablePortal?: boolean;
 }) => {
-  const [containerElement, setContainerElement] = useState<null | HTMLElement>(
-    null,
-  );
+  const [containerElement, setContainerElement] = useState<null | HTMLElement>(null);
 
   useLayoutEffect(() => {
     if (!container) return;

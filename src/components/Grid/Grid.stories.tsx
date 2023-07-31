@@ -1,8 +1,8 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { StyledGrid as Grid, StyledGridCell as GridCell } from "./Grid.styles";
-import { withDesign } from "storybook-addon-designs";
-import styled, { DefaultTheme } from "styled-components";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
+import {StyledGrid as Grid, StyledGridCell as GridCell} from "./Grid.styles";
+import {withDesign} from "storybook-addon-designs";
+import styled, {DefaultTheme} from "styled-components";
 
 // NOTE: this component is deprecated and will be removed in a future release.
 // Use the GridBox component instead.
@@ -13,8 +13,7 @@ export default {
   component: Grid,
   decorators: [withDesign],
   parameters: {
-    notes:
-      "⚠️ This component is deprecated and will be removed in a future release.",
+    notes: "⚠️ This component is deprecated and will be removed in a future release.",
   },
 } as ComponentMeta<typeof Grid>;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import StyledAvatar, { StyledAvatarImage } from "./Avatar.styles";
+import StyledAvatar, {StyledAvatarImage} from "./Avatar.styles";
 
 export type Variant = "circle" | "square";
 export type Size = "sm" | "md" | "lg" | "xl";
@@ -41,13 +41,7 @@ const colourVariants = [
   "#FFC107",
 ];
 
-const Avatar = ({
-  variant = "circle",
-  size = "md",
-  alt,
-  src,
-  ...rest
-}: AvatarProps) => {
+const Avatar = ({variant = "circle", size = "md", alt, src, ...rest}: AvatarProps) => {
   const [error, setError] = React.useState(false);
   const showAvatar = src && !error;
   const initials = getInitials(alt) || "";
@@ -62,9 +56,7 @@ const Avatar = ({
       variant={variant}
       {...rest}
     >
-      {showAvatar ? (
-        <StyledAvatarImage src={src} onError={() => setError(true)} />
-      ) : null}
+      {showAvatar ? <StyledAvatarImage src={src} onError={() => setError(true)} /> : null}
       {!showAvatar ? initials || "" : null}
     </StyledAvatar>
   );

@@ -1,13 +1,7 @@
 import React from "react";
 import SvgIcon from "../SvgIcon";
 import Typography from "../Typography";
-import {
-  InnerContent,
-  Collapse,
-  Root,
-  StyledAccordion,
-  Chevron,
-} from "./Accordion.styles";
+import {InnerContent, Collapse, Root, StyledAccordion, Chevron} from "./Accordion.styles";
 
 export interface AccordionProps {
   /**
@@ -34,7 +28,7 @@ export interface AccordionProps {
  *
  */
 const Accordion = (props: AccordionProps) => {
-  const { children, endAdornment, label } = props;
+  const {children, endAdornment, label} = props;
   // Get the height of the content
   const content = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState("0px");
@@ -47,16 +41,12 @@ const Accordion = (props: AccordionProps) => {
 
   // If the height is auto, set it to the fixed px height
   async function handleMousedown() {
-    setHeight((prev) =>
-      prev === "auto" ? `${content.current?.scrollHeight}px` : prev,
-    );
+    setHeight((prev) => (prev === "auto" ? `${content.current?.scrollHeight}px` : prev));
   }
 
   function handleClick() {
     setOpen(!open);
-    setHeight((prev) =>
-      prev === "0px" ? `${content.current?.scrollHeight}px` : "0px",
-    );
+    setHeight((prev) => (prev === "0px" ? `${content.current?.scrollHeight}px` : "0px"));
   }
 
   function handleChild(e: any) {
@@ -79,11 +69,7 @@ const Accordion = (props: AccordionProps) => {
         )}
       </Root>
 
-      <Collapse
-        onTransitionEnd={handleTransitionEnd}
-        ref={content}
-        height={height}
-      >
+      <Collapse onTransitionEnd={handleTransitionEnd} ref={content} height={height}>
         <InnerContent>{children}</InnerContent>
       </Collapse>
     </StyledAccordion>

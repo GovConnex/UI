@@ -1,15 +1,10 @@
-import { faCheck, faDash } from "@fortawesome/pro-solid-svg-icons";
+import {faCheck, faDash} from "@fortawesome/pro-solid-svg-icons";
 import React from "react";
 import Icon from "../Icon";
 import Typography from "../Typography";
-import {
-  StyledCheckboxLabel,
-  StyledFakeCheckbox,
-  StyledCheckbox,
-} from "./Checkbox.styles";
+import {StyledCheckboxLabel, StyledFakeCheckbox, StyledCheckbox} from "./Checkbox.styles";
 
-export interface CheckboxProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * checked state of the checkbox
    */
@@ -64,12 +59,7 @@ const Checkbox = (props: CheckboxProps) => {
   } = props;
   return (
     <StyledCheckboxLabel withHoverStyle={withHoverStyle}>
-      <StyledCheckbox
-        type="checkbox"
-        onChange={onChange}
-        checked={checked}
-        {...rest}
-      />
+      <StyledCheckbox type="checkbox" onChange={onChange} checked={checked} {...rest} />
       <StyledFakeCheckbox checked={checked || indeterminate}>
         {indeterminate ? (
           <Icon icon={faDash} size="xs" />

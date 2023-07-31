@@ -1,16 +1,12 @@
 import React from "react";
 import DataTable from "./DataTable";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-import {
-  faContactCard,
-  faHeart,
-  faUser,
-} from "@fortawesome/pro-solid-svg-icons";
-import { render, screen } from "../test-utils";
+import {faContactCard, faHeart, faUser} from "@fortawesome/pro-solid-svg-icons";
+import {render, screen} from "../test-utils";
 import DataTableDataCell from "./DataTableDataCell";
 import Typography from "../Typography";
 
-export const DataCell = (props: { row: { original: { value: string } } }) => {
+export const DataCell = (props: {row: {original: {value: string}}}) => {
   return (
     <DataTableDataCell>
       <Typography variant="body" size="md" noMargin>
@@ -80,15 +76,11 @@ describe("DataTable", () => {
         pageSize={25}
         page={1}
         numResults={100}
-      />,
+      />
     );
 
-    expect(
-      await screen.findByText(/Field 1/i, { exact: false }),
-    ).toBeInTheDocument();
-    expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
-    ).toBe(3);
+    expect(await screen.findByText(/Field 1/i, {exact: false})).toBeInTheDocument();
+    expect((await screen.findAllByText(/Value 1/i, {exact: false}))?.length).toBe(3);
   });
 
   test("renders the DataTable component without pagination", async () => {
@@ -97,15 +89,11 @@ describe("DataTable", () => {
         data={DATA_TABLE_DATA}
         columns={DATA_TABLE_COLUMNS}
         showPagination={false}
-      />,
+      />
     );
 
-    expect(
-      await screen.findByText(/Field 1/i, { exact: false }),
-    ).toBeInTheDocument();
-    expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
-    ).toBe(3);
+    expect(await screen.findByText(/Field 1/i, {exact: false})).toBeInTheDocument();
+    expect((await screen.findAllByText(/Value 1/i, {exact: false}))?.length).toBe(3);
   });
 
   test("renders the DataTable component without selection", async () => {
@@ -115,15 +103,11 @@ describe("DataTable", () => {
         columns={DATA_TABLE_COLUMNS}
         showPagination={false}
         showSelection={false}
-      />,
+      />
     );
 
-    expect(
-      await screen.findByText(/Field 1/i, { exact: false }),
-    ).toBeInTheDocument();
-    expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
-    ).toBe(3);
+    expect(await screen.findByText(/Field 1/i, {exact: false})).toBeInTheDocument();
+    expect((await screen.findAllByText(/Value 1/i, {exact: false}))?.length).toBe(3);
   });
 
   test("renders the DataTable component without header icon", async () => {
@@ -138,14 +122,10 @@ describe("DataTable", () => {
         })}
         showPagination={false}
         showSelection={false}
-      />,
+      />
     );
 
-    expect(
-      await screen.findByText(/Field 1/i, { exact: false }),
-    ).toBeInTheDocument();
-    expect(
-      (await screen.findAllByText(/Value 1/i, { exact: false }))?.length,
-    ).toBe(3);
+    expect(await screen.findByText(/Field 1/i, {exact: false})).toBeInTheDocument();
+    expect((await screen.findAllByText(/Value 1/i, {exact: false}))?.length).toBe(3);
   });
 });

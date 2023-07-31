@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledRadio = styled.input(
-  ({ theme }) => `
+  ({theme}) => `
 -webkit-appearance: none;
 appearance: none;
 margin: 0;
@@ -41,11 +41,11 @@ border-radius: 50%;
         outline-offset: 2px;
     }
 }
-`,
+`
 );
 
-const RadioLabel = styled.label<{ variant: string }>(
-  ({ theme, variant }) => `
+const RadioLabel = styled.label<{variant: string}>(
+  ({theme, variant}) => `
 
 ${
   variant === "card"
@@ -68,11 +68,11 @@ div:hover {
 }
 
 
-`,
+`
 );
 
-const RadioWrapper = styled.div<{ checked: boolean; variant: string }>(
-  ({ theme, checked, variant }) => `
+const RadioWrapper = styled.div<{checked: boolean; variant: string}>(
+  ({theme, checked, variant}) => `
 
 ${
   variant === "card"
@@ -106,15 +106,15 @@ align-items: center;
 gap: ${theme.spacing.xs};
 flex-direction: ${variant === "default" ? "row-reverse" : "row"}};
 justify-content: ${variant === "default" ? "start" : "space-between"}};
-`,
+`
 );
 
 const RadioTextWrapper = styled.span(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ theme }) => `
+  ({theme}) => `
 display: flex;
 flex-direction: column;
-`,
+`
 );
 
-export { StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper };
+export {StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper};

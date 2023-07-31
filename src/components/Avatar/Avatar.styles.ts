@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, Variant } from "./Avatar";
+import {Size, Variant} from "./Avatar";
 
 export const StyledAvatarRoot = styled.div<{
   backgroundColor: string;
@@ -16,11 +16,11 @@ export const StyledAvatarRoot = styled.div<{
   overflow: hidden;
   user-select: none;
 
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({backgroundColor}) => backgroundColor};
   color: white;
   font-weight: 600;
 
-  ${({ variant, size }) => {
+  ${({variant, size}) => {
     switch (variant) {
       case "circle":
         return `
@@ -42,7 +42,7 @@ export const StyledAvatarRoot = styled.div<{
     }
   }}
 
-  ${({ size }) => {
+  ${({size}) => {
     switch (size) {
       case "sm":
         return `

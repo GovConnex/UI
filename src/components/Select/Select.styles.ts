@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { shadowFromProp } from "../style-utils";
+import {shadowFromProp} from "../style-utils";
 
 const StyledSelect = styled.button<{
   error: boolean;
   fullWidth: boolean;
   visible: boolean;
 }>(
-  ({ theme, error, visible, fullWidth }) =>
+  ({theme, error, visible, fullWidth}) =>
     `
 padding:0 ${theme.spacing.sm};
 display:flex;
@@ -40,11 +40,11 @@ ${
 }
 gap: ${theme.spacing.sm};
 
-`,
+`
 );
 
-const MenuWrapepr = styled.div<{ maxHeight: string | null }>(
-  ({ theme, maxHeight }) =>
+const MenuWrapepr = styled.div<{maxHeight: string | null}>(
+  ({theme, maxHeight}) =>
     `
         background-color: ${theme.primary.base.white};
         min-width: 100%;
@@ -63,19 +63,19 @@ const MenuWrapepr = styled.div<{ maxHeight: string | null }>(
        ${maxHeight ? `max-height: ${maxHeight};` : ""}
         overflow-y: auto;
 
-        `,
+        `
 );
 
 const SelectWrapper = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xs};
+  gap: ${({theme}) => theme.spacing.xs};
   flex-direction: column;
 `;
 
 const StyledChipWrapper = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xs};
+  gap: ${({theme}) => theme.spacing.xs};
   align-items: center;
 `;
 
-export { SelectWrapper, StyledChipWrapper, StyledSelect, MenuWrapepr };
+export {SelectWrapper, StyledChipWrapper, StyledSelect, MenuWrapepr};

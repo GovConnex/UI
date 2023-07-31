@@ -88,7 +88,7 @@ const Select = (props: SelectProps) => {
         overlay={(close) =>
           dropdown ? (
             <MenuWrapepr maxHeight={maxHeight || null}>
-              {dropdown({ close, maxHeight, children: props.children })}
+              {dropdown({close, maxHeight, children: props.children})}
             </MenuWrapepr>
           ) : (
             <MenuWrapepr maxHeight={maxHeight || null}>
@@ -96,7 +96,7 @@ const Select = (props: SelectProps) => {
             </MenuWrapepr>
           )
         }
-        rootButton={({ toggleVisibility, visible, ref }) => (
+        rootButton={({toggleVisibility, visible, ref}) => (
           <StyledSelect
             fullWidth={fullWidth}
             ref={ref}

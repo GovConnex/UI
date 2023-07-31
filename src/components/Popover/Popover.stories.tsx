@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React, {useRef, useState} from "react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Popover from "./Popover";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

@@ -1,17 +1,17 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import {render} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BackgroundIcon from "./BackgroundIcon";
-import { IconProps } from "../SvgIcon/Icon";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../theming";
+import {IconProps} from "../SvgIcon/Icon";
+import {ThemeProvider} from "styled-components";
+import {lightTheme} from "../../theming";
 
 describe("BackgroundIcon", () => {
   const renderStyledButton = (props: any) => {
     return render(
       <ThemeProvider theme={lightTheme}>
         <BackgroundIcon {...props} />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
   };
 
@@ -21,14 +21,14 @@ describe("BackgroundIcon", () => {
       size: "2x",
     };
 
-    const { container } = renderStyledButton(iconProps);
+    const {container} = renderStyledButton(iconProps);
 
     const wrapper = container.querySelector("div");
     expect(wrapper).toBeInTheDocument();
   });
 
   test("renders correctly with customStyles", () => {
-    const { container } = renderStyledButton({
+    const {container} = renderStyledButton({
       icon: "user",
       size: "2x",
       cs: {
@@ -38,9 +38,7 @@ describe("BackgroundIcon", () => {
     });
 
     const wrapper = container.querySelector("div");
-    expect(wrapper).toHaveStyle(
-      `background: ${lightTheme.primary.brand["50"]}`,
-    );
+    expect(wrapper).toHaveStyle(`background: ${lightTheme.primary.brand["50"]}`);
     expect(wrapper).toHaveStyle("color: white");
   });
 

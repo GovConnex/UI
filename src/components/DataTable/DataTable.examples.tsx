@@ -4,7 +4,7 @@ import Avatar from "../Avatar";
 import Typography from "../Typography";
 import styled from "styled-components";
 import Chip from "../Chip";
-import { MenuOption } from "../Menu/Menu";
+import {MenuOption} from "../Menu/Menu";
 
 export const NameCell = () => {
   return (
@@ -24,7 +24,7 @@ export const NameCell = () => {
   );
 };
 
-const Dot = styled.div<{ color?: string }>`
+const Dot = styled.div<{color?: string}>`
   background-color: ${(props) => props.color || "green"};
   width: 10px;
   height: 10px;
@@ -82,7 +82,7 @@ export const TagCell = () => {
   );
 };
 
-export const DataCell = ({ value }: { value: string }) => {
+export const DataCell = ({value}: {value: string}) => {
   return (
     <DataTableDataCell>
       <Typography variant="body" size="md" noMargin>

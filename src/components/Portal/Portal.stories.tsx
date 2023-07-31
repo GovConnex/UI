@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Portal from "./Portal";
-import { withDesign } from "storybook-addon-designs";
+import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof Portal>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
+const Template: ComponentStory<typeof Portal> = ({disablePortal}) => {
   const [show, setShow] = React.useState(false);
   const container = React.useRef(null);
 
@@ -37,9 +37,7 @@ const Template: ComponentStory<typeof Portal> = ({ disablePortal }) => {
         It looks like I will render here.
         {show ? (
           <Portal container={container.current} disablePortal={disablePortal}>
-            <span>
-              {disablePortal ? " And I do!" : "But I actually render here!"}
-            </span>
+            <span>{disablePortal ? " And I do!" : "But I actually render here!"}</span>
           </Portal>
         ) : null}
       </div>

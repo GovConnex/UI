@@ -6,12 +6,10 @@ const StyledBanner = styled.div<{
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  background-color: ${(props) =>
-    props.theme.extended.support[`${props.variant}Light`]};
+  background-color: ${(props) => props.theme.extended.support[`${props.variant}Light`]};
   padding: ${(props) => props.theme.spacing.sm};
   border-radius: ${(props) => props.theme.borderRadius.sm};
-  border: 1px solid
-    ${(props) => props.theme.extended.support[`${props.variant}Base`]};
+  border: 1px solid ${(props) => props.theme.extended.support[`${props.variant}Base`]};
 `;
 const StyledTextWrapper = styled.div`
   margin-top: -2px;
@@ -20,4 +18,4 @@ const StyledTextWrapper = styled.div`
   gap: 0.2rem;
 `;
 
-export { StyledBanner, StyledTextWrapper };
+export {StyledBanner, StyledTextWrapper};

@@ -1,33 +1,33 @@
 import styled from "styled-components";
 
-const StyledAdornment = styled.span<{ position: string; disabled: Boolean }>(
-  ({ theme, position, disabled }) => ({
+const StyledAdornment = styled.span<{position: string; disabled: Boolean}>(
+  ({theme, position, disabled}) => ({
     [position]: theme.spacing.sm,
     position: "absolute",
     pointerEvents: "none",
     opacity: disabled ? 0.3 : 1,
-  }),
+  })
 );
 
-const StyledInputContainer = styled.div<{ fullWidth: boolean }>(
+const StyledInputContainer = styled.div<{fullWidth: boolean}>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ theme, fullWidth }) =>
+  ({theme, fullWidth}) =>
     `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: inline-flex;
 
   position: relative;
   align-items:center;
-  `,
+  `
 );
-const StyledInputWrapper = styled.div<{ fullWidth: boolean }>(
-  ({ theme, fullWidth }) =>
+const StyledInputWrapper = styled.div<{fullWidth: boolean}>(
+  ({theme, fullWidth}) =>
     `
   width: ${fullWidth ? "100%" : "fit-content"};
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.xs};
-  `,
+  `
 );
 
 const StyledInput = styled.input<{
@@ -35,7 +35,7 @@ const StyledInput = styled.input<{
   fullWidth: boolean;
   adornmentPadding: "left" | "right" | null;
 }>(
-  ({ theme, error, fullWidth, adornmentPadding }) =>
+  ({theme, error, fullWidth, adornmentPadding}) =>
     `
   padding-top: ${theme.spacing.xs};
   padding-bottom: ${theme.spacing.xs};
@@ -86,12 +86,7 @@ const StyledInput = styled.input<{
   &:disabled::placeholder{
     color:${theme.extended.state.disabled};
   }
-  `,
+  `
 );
 
-export {
-  StyledInputWrapper,
-  StyledInputContainer,
-  StyledInput,
-  StyledAdornment,
-};
+export {StyledInputWrapper, StyledInputContainer, StyledInput, StyledAdornment};
