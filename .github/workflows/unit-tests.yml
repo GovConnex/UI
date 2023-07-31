@@ -19,7 +19,7 @@ jobs:
       - name: Run unit tests
         run: yarn test
       - name: Check code formatting
-        run: yarn format --check
+        run: yarn formatCheck
       - name: Lint code
         run: yarn lint
 
