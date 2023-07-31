@@ -77,7 +77,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <StyledButton
-        ref={ref}
+        ref={ref }
         disabled={disabled || isLoading}
         variant={variant || "primary"}
         size={size || "md"}
