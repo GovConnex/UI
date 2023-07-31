@@ -15,7 +15,7 @@ export const StyledModal = styled.div`
   z-index: 1000;
   max-width: calc(100% - ${(props) => props.theme.spacing.lg});
   max-height: calc(100% - ${(props) => props.theme.spacing.lg});
-  overflow: scroll;
+  overflow: auto;
   // width: 940px;
   margin: auto;
   display: flex;

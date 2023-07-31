@@ -2,9 +2,7 @@ import React from "react";
 import { StyledList, StyledListItem, StyledListItemStart } from "./List.styles";
 import Typography from "../Typography";
 import { VariantsProp } from "../Typography/Typography.types";
-import {
-  TypographySize,
-} from "../../theming/global-theme.interface";
+import { TypographySize } from "../../theming/global-theme.interface";
 
 export const List = StyledList;
 

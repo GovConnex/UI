@@ -31,8 +31,8 @@ const StyledStack = styled.div<{
     };
     gap:${
       gap
-        // eslint-disable-next-line no-extra-boolean-cast
-        ? theme.spacing[!!(gap instanceof Object) ? gap.sm || "sm" : gap]
+        ? // eslint-disable-next-line no-extra-boolean-cast
+          theme.spacing[!!(gap instanceof Object) ? gap.sm || "sm" : gap]
         : "0px"
     };
   
@@ -55,8 +55,8 @@ const StyledStack = styled.div<{
         };
         gap:${
           gap
-            // eslint-disable-next-line no-extra-boolean-cast
-            ? theme.spacing[!!(gap instanceof Object) ? gap.md || "sm" : gap]
+            ? // eslint-disable-next-line no-extra-boolean-cast
+              theme.spacing[!!(gap instanceof Object) ? gap.md || "sm" : gap]
             : "0px"
         };
     }
@@ -80,8 +80,8 @@ const StyledStack = styled.div<{
         };
         gap:${
           gap
-            // eslint-disable-next-line no-extra-boolean-cast
-            ? theme.spacing[!!(gap instanceof Object) ? gap.lg || "sm" : gap]
+            ? // eslint-disable-next-line no-extra-boolean-cast
+              theme.spacing[!!(gap instanceof Object) ? gap.lg || "sm" : gap]
             : "0px"
         };
     }
