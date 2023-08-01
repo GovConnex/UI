@@ -20,9 +20,9 @@ export default {
   decorators: [withDesign],
   argTypes: {
     size: {
-      description: 'Check this out',
-      control: {type: 'text'}
-    }
+      description: "Check this out",
+      control: {type: "text"},
+    },
   },
   parameters: {
     docs: {
