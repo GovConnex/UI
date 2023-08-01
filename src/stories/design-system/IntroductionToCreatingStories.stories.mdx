@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Introduction To Creating Stories" />
+
+# Creating stories of your own
+
+## We have a standardized way now of creating stories! It is encouraged that we follow proper documentation and be as informative as we can when creating our stories. 
+
+1. #### Create a summary of the component as a short description, some context as to why the component was created, as well as its figma link
+```jsx
+const summary = "##Summary\\nThe Background icon component may contain various icons to visualize or to give information as an image.\\n\\n";
+const context = "##Context\\nThe Background component was added to create a visual of the information it is trying to portray.\\n\\n";
+const figmaLink = "###Figma Link\\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
+const markdown = summary + context + figmaLink;
+```
+In the components component meta, we should put the markdown variable in the description like so:
+```jsx
+export default {
+  title: "Components/BackgroundIcon",
+  component: BackgroundIcon,
+  decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: markdown, 
+      },
+    },
+  },
+} as ComponentMeta<typeof BackgroundIcon>;
+```
