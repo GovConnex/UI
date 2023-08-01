@@ -18,6 +18,12 @@ export default {
   title: "Components/BackgroundIcon",
   component: BackgroundIcon,
   decorators: [withDesign],
+  argTypes: {
+    size: {
+      description: 'Check this out',
+      control: {type: 'text'}
+    }
+  },
   parameters: {
     docs: {
       description: {
