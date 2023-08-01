@@ -5,9 +5,12 @@ import {withDesign} from "storybook-addon-designs";
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
 
-const summary = "##Summary\nThe Background icon component may contain various icons to visualize or to give information as an image.\n\n";
-const context = "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
-const figmaLink = "###Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
+const summary =
+  "##Summary\nThe Background icon component may contain various icons to visualize or to give information as an image.\n\n";
+const context =
+  "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
+const figmaLink =
+  "###Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
 const markdown = `${summary}${context}${figmaLink}`;
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -18,7 +21,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: markdown, 
+        component: markdown,
       },
     },
   },
