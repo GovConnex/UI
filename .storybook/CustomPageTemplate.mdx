@@ -1,0 +1,22 @@
+import { Title, Description, Primary, Stories, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+
+### Before creating a story, take time to read the instructions from 'Introduction To Creating Stories' for better documentation
+
+<React.Fragment>
+  <div style={{ padding: '20px' }}>
+    <div style={{ borderBottom: '1px solid #ccc', marginBottom: '20px' }}>
+      <div style={{marginBottom: '10px'}}><Title /></div>
+      <div style={{marginBottom: '10px', color: 'orange', fontSize: '13px'}}><i>NOTE: Create a summary of the component as a short description, some context as to why the component was created, as well as its figma link</i></div>
+      <Description />
+    </div>
+    <div>
+      <h2 style={{ borderBottom: '1px solid #ccc'}}>Primary Component</h2>
+      <Primary />
+      <div style={{ marginBottom: '20px' }}>
+        <ArgsTable story={PRIMARY_STORY} />
+      </div>
+      <h2 style={{ borderBottom: '1px solid #ccc'}}></h2>
+      <Stories />
+    </div>
+  </div>
+</React.Fragment>
