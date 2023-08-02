@@ -10,18 +10,47 @@ const summary =
 const context =
   "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
 const figmaLink =
-  "###Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
-const markdown = `${summary}${context}${figmaLink}`;
+  "##Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
+const markdown = summary + context + figmaLink;
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/BackgroundIcon",
   component: BackgroundIcon,
   decorators: [withDesign],
   argTypes: {
+    icon: {
+      description: "Icon of the component from fortawesome",
+    },
     size: {
-      description: "Check this out",
-      control: {type: "text"},
+      description: "Size of the component",
+      type: "string",
+      control: {
+        type: "select",
+        options: [
+          "xs",
+          "sm",
+          "lg",
+          "xl",
+          "1x",
+          "2xs",
+          "2xl",
+          "2x",
+          "3x",
+          "4x",
+          "5x",
+          "6x",
+          "7x",
+          "8x",
+          "9x",
+          "10x",
+        ],
+      },
+      defaultValue: "sm",
+    },
+    cs: {
+      description:
+        "Custom styles of the component. Styles are similar to css styles but in camel case",
+      type: Object,
     },
   },
   parameters: {
@@ -33,13 +62,11 @@ export default {
   },
 } as ComponentMeta<typeof BackgroundIcon>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
   <BackgroundIcon {...args} />
 );
 
 export const HeartSvg = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 HeartSvg.args = {
   icon: (
     <svg fill="currentColor" viewBox="0 0 1024 1024">
@@ -55,49 +82,42 @@ HeartSvg.parameters = {
 };
 
 export const StarXs = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 StarXs.args = {
   icon: faStar,
   size: "xs",
 };
 
 export const StarSm = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 StarSm.args = {
   icon: faStar,
   size: "sm",
 };
 
 export const Star1x = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Star1x.args = {
   icon: faStar,
   size: "1x",
 };
 
 export const StarLg = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 StarLg.args = {
   icon: faStar,
   size: "lg",
 };
 
 export const Star2x = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Star2x.args = {
   icon: faStar,
   size: "2x",
 };
 
 export const StarLight2x = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 StarLight2x.args = {
   icon: faStarLight,
   size: "2x",
 };
 
 export const Star3x = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Star3x.args = {
   icon: faStar,
   size: "3x",
