@@ -66,6 +66,12 @@ yarn link react-dom --legacy-peer-deps
 yarn link styled-components --legacy-peer-deps
 ```
 
+Then you might want to start a `watch` job to auto re-build as you edit components:
+
+```sh
+yarn watch
+```
+
 ### Figma Tokens Plugin
 
 Design tokens are pushed to the repo via the Figma Tokens Plugin to:
