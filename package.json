@@ -9,11 +9,16 @@
     "prestart": "yarn run build:tokens",
     "start": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "watch": "NODE_ENV=development yarn run prepublishOnly --watch",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "formatCheck": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings=0 .",
     "prepare": "yarn run build:tokens",
-    "new": "plop"
+    "new": "plop",
+    "link:all": "yarn link:react && yarn link:react-dom && yarn link:styled-components && yarn link",
+    "link:react": "cd node_modules/react && yarn link && cd ../../",
+    "link:react-dom": "cd node_modules/react-dom && yarn link && cd ../../",
+    "link:styled-components": "cd node_modules/styled-components && yarn link && cd ../../"
   },
   "author": "GovConnex",
   "license": "ISC",
@@ -67,9 +72,9 @@
     "jest-environment-jsdom": "^29.5.0",
     "plop": "^3.1.2",
     "prettier": "3.0.0",
-    "react": "^16.13.1",
+    "react": "^18.2.0",
     "react-docgen-typescript-plugin": "^1.0.5",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.2.0",
     "rollup": "^3.18.0",
     "rollup-plugin-dts": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -114,8 +119,8 @@
     "tslib": "^2.5.0"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": ">= 3"
   },
   "repository": {
