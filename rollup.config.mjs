@@ -11,11 +11,13 @@ import json from "@rollup/plugin-json";
 
 import packageJson from "./package.json" assert { type: "json" };
 
+const isDev = process.env.NODE_ENV === "development";
+
 export default [
   {
     input: "src/index.ts",
     output: [
-      {
+      isDev ? null : {
         file: packageJson.exports["."].require,
         format: "cjs",
         sourcemap: true,
@@ -32,9 +34,9 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
-      terser(),
+      isDev ? null : terser(),
       json(),
-      visualizer({
+      isDev ? null : visualizer({
         filename: "./dist/stats.html",
         title: "Bundle Stats",
         open: true,
