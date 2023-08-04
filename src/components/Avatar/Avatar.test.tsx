@@ -41,38 +41,23 @@ describe("Avatar", () => {
   });
 
   describe("getInitials", () => {
-    it("should not include symbols if there's actual words", () => {
-      expect(
-        getInitials("Department of Defence — Cocos (Keeling) Islands Airfield Upgrade")
-      ).toBe("DDC");
-    });
-
-    it("should return initials from a symbol", () => {
-      expect(getInitials("?")).toBe("?");
-    });
-
-    it("should return initials from a full name", () => {
-      expect(getInitials("John Doe")).toBe("JD");
-    });
-
-    it("should return empty string if no name is provided", () => {
-      expect(getInitials()).toBe("");
-    });
-
-    it("should return initials for multiple names", () => {
-      expect(getInitials("John Michael Doe")).toBe("JMD");
-    });
-
-    it("should limit initials for long names", () => {
-      expect(getInitials("Committee of Privileges and Members' Interests")).toBe("CPM");
-    });
-
-    it("should return initials in uppercase", () => {
-      expect(getInitials("john doe")).toBe("JD");
-    });
-
-    it("should handle single name", () => {
-      expect(getInitials("John")).toBe("J");
+    describe("getInitials function", () => {
+      it.each([
+        ["Defence — Cocos (Keeling) Islands Airfield Upgrade", "DC"],
+        ["?", "?"],
+        ["John Doe", "JD"],
+        [undefined, ""],
+        ["", ""],
+        [" ", ""],
+        ["           ", ""],
+        ["John Michael Doe", "JM"],
+        ["Vincent van Gogh", "VG"],
+        ["Committee of Privileges and Members' Interests", "CP"],
+        ["john doe", "JD"],
+        ["John", "J"],
+      ])("should return '%s' when input is '%s'", (input, expected) => {
+        expect(getInitials(input)).toBe(expected);
+      });
     });
   });
 });

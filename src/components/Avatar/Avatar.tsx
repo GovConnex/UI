@@ -30,21 +30,21 @@ export const getInitials = (name?: string) => {
     : names;
 
   const uppercaseNames = prioritizedNames.filter(
-    (name) => name[0] === name[0].toUpperCase()
+    (name) => name[0] === name[0]?.toUpperCase()
   );
   const lowercaseNames = prioritizedNames.filter(
-    (name) => name[0] !== name[0].toUpperCase()
+    (name) => name[0] !== name[0]?.toUpperCase()
   );
 
   const initials = [];
   for (const uname of uppercaseNames) {
-    initials.push(uname[0].toUpperCase());
-    if (initials.length === 3) return initials.join("");
+    initials.push(uname[0]?.toUpperCase());
+    if (initials.length === 2) return initials.join("");
   }
 
   for (const lname of lowercaseNames) {
-    initials.push(lname[0].toUpperCase());
-    if (initials.length === 3) break;
+    initials.push(lname[0]?.toUpperCase());
+    if (initials.length === 2) break;
   }
 
   return initials.join("");
