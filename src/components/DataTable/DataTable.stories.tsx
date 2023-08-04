@@ -23,29 +23,33 @@ const DATA_TABLE_COLUMNS = [
     Cell: NameCell,
     icon: faUser,
     displayName: "Name",
-    canResize: true,
     accessor: "name",
-    minWidth: 225,
   },
   {
     id: "D01",
     Header: DataTableHeaderCell,
     Cell: SupportCell,
-    canResize: true,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    minWidth: 225,
+    isResizable: true,
   },
   {
     id: "D02",
     Header: DataTableHeaderCell,
     Cell: TagCell,
     icon: faContactCard,
-    canResize: true,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    minWidth: 225,
+    isResizable: false,
+  },
+  {
+    id: "D03",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    displayName: "Third Contact",
+    accessor: "type", // accessor is the "key" in the data
+    isResizable: false,
   },
 ];
 
@@ -64,6 +68,11 @@ const DATA_TABLE_DATA = [
     name: "Field 3",
     value: "Value 3",
     type: "Type 3",
+  },
+  {
+    name: "Field 4",
+    value: "Value 4",
+    type: "Type 4",
   },
 ];
 
@@ -167,5 +176,14 @@ ExampleNarrowWidthWithHorizontalOverflow.args = {
   })),
   showPagination: false,
   showSelection: false,
+  fullWidth: false,
+};
+
+// Another example, but with one without pagination
+export const Test = Template.bind({});
+Test.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  showPagination: false,
   fullWidth: true,
 };

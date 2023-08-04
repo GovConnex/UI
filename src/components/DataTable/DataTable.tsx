@@ -204,8 +204,11 @@ const DataTable = ({
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
-        if (selectionGroupHeader) selectionGroupHeader.canResize = false;
-        if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
+        // if (selectionGroupHeader) selectionGroupHeader.canResize = false;
+        // if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
+
+        // if (selectionGroupHeader) selectionGroupHeader.testParameter = false;
+        // if (selectionGroupHeader2) selectionGroupHeader2.testParameter = false;
       });
     }
     // useResizeColumns
@@ -255,13 +258,13 @@ const DataTable = ({
             {headerGroups.map((headerGroup: any) => (
               <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column: any) => (
-                  <GcxDataTableTh {...column.getHeaderProps()}>
+                  <GcxDataTableTh width={column?.width} {...column.getHeaderProps()}>
                     <div {...column.getSortByToggleProps()}>
                       {" "}
                       {column.render("Header")}
                     </div>
 
-                    {column.canResize ? (
+                    {column.isResizable ? (
                       <Resizer
                         {...column.getResizerProps()}
                         onClick={(e) => {
@@ -284,7 +287,7 @@ const DataTable = ({
                 <GcxDataTableTr {...row.getRowProps()}>
                   {row.cells.map((cell: any) => {
                     return (
-                      <GcxDataTableTd {...cell.getCellProps()}>
+                      <GcxDataTableTd width={cell?.column?.width} {...cell.getCellProps()}>
                         {cell.render("Cell")}
                       </GcxDataTableTd>
                     );
