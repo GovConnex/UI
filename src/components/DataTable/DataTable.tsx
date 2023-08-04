@@ -121,7 +121,7 @@ const DataTable = ({
   className,
   showPagination = true,
   showSelection = true,
-  fullWidth = false,
+  fullWidth = true,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -197,7 +197,10 @@ const DataTable = ({
                 width: 40,
               }
             : null,
-          ...columns,
+          ...columns.map((column: any) => ({
+            ...column,
+            isResizable: column.isResizable !== undefined ? column.isResizable : true,
+          })),
         ].filter(Boolean)
       );
       hooks.useInstanceBeforeDimensions.push(({headerGroups}: any) => {

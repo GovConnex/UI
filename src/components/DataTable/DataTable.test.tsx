@@ -198,7 +198,7 @@ describe("DataTable", () => {
     expect((await screen.findAllByText(/Value 1/i, {exact: false}))?.length).toBe(3);
   });
 
-  test("renders the DataTable component and check if width is 100% on full width", async () => {
+  test("renders the DataTable component and check if width is auto on full false", async () => {
     const renderTable = () => {
       return render(
         <DataTable
@@ -211,7 +211,7 @@ describe("DataTable", () => {
           })}
           showPagination={false}
           showSelection={false}
-          fullWidth={true}
+          fullWidth={false}
         />
       );
     };
@@ -220,7 +220,7 @@ describe("DataTable", () => {
 
     const table = getByRole("table");
     expect(table).toBeInTheDocument();
-    expect(table).toHaveStyle("width: 100%");
+    expect(table).toHaveStyle("width: auto");
   });
 
   test("renders the DataTable component and check if column supports fixed width", async () => {

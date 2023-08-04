@@ -83,7 +83,6 @@ const DATA_TABLE_COLUMNS = [
     icon: faUser,
     displayName: "Name",
     accessor: "name",
-    minWidth: 220,
   },
   {
     id: "D01",
@@ -92,7 +91,6 @@ const DATA_TABLE_COLUMNS = [
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    minWidth: 100,
   },
   {
     id: "D02",
@@ -101,7 +99,6 @@ const DATA_TABLE_COLUMNS = [
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    minWidth: 220,
   },
   {
     id: "D03",
@@ -109,7 +106,6 @@ const DATA_TABLE_COLUMNS = [
     Cell: TagCell,
     displayName: "Third Contact",
     accessor: "type", // accessor is the "key" in the data
-    minWidth: 220,
   },
 ];
 
@@ -152,7 +148,7 @@ Basic.parameters = {
   },
 };
 
-const DATA_TABLE_COLUMNS_WITH_RESIZE = [
+const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
   {
     id: "D04",
     Header: DataTableHeaderCell,
@@ -160,7 +156,7 @@ const DATA_TABLE_COLUMNS_WITH_RESIZE = [
     icon: faUser,
     displayName: "Name",
     accessor: "name",
-    isResizable: true,
+    isResizable: false,
   },
   {
     id: "D05",
@@ -169,7 +165,7 @@ const DATA_TABLE_COLUMNS_WITH_RESIZE = [
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    isResizable: true,
+    isResizable: false,
   },
   {
     id: "D06",
@@ -178,7 +174,7 @@ const DATA_TABLE_COLUMNS_WITH_RESIZE = [
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    isResizable: true,
+    isResizable: false,
   },
   {
     id: "D07",
@@ -186,7 +182,7 @@ const DATA_TABLE_COLUMNS_WITH_RESIZE = [
     Cell: TagCell,
     displayName: "Third Contact",
     accessor: "type", // accessor is the "key" in the data
-    isResizable: true,
+    isResizable: false,
   },
 ];
 
@@ -194,10 +190,11 @@ const DATA_TABLE_COLUMNS_WITH_RESIZE = [
 export const WithResizeColumnConfig = Template.bind({});
 WithResizeColumnConfig.args = {
   data: DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS_WITH_RESIZE,
+  columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
   pageSize: 25,
   page: 1,
   numResults: 100,
+  fullWidth: false,
 };
 
 // Another example, but with one without pagination
