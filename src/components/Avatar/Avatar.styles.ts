@@ -19,6 +19,7 @@ export const StyledAvatarRoot = styled.div<{
   background-color: ${({backgroundColor}) => backgroundColor};
   color: white;
   font-weight: 600;
+  white-space: nowrap;
 
   ${({variant, size}) => {
     switch (variant) {
@@ -67,6 +68,24 @@ export const StyledAvatarRoot = styled.div<{
           font-size: 12px;
           width: 32px;
           height: 32px;
+        `;
+      case "2xl":
+        return `
+          font-size: 1rem;
+          width: 40px;
+          height: 40px;
+        `;
+      case "3xl":
+        return `
+          font-size: 2rem;
+          width: 64px;
+          height: 64px;
+        `;
+      case "4xl":
+        return `
+          font-size: 4rem;
+          width: 128px;
+          height: 128px;
         `;
       default:
         return `

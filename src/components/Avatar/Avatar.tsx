@@ -2,7 +2,7 @@ import React from "react";
 import StyledAvatar, {StyledAvatarImage} from "./Avatar.styles";
 
 export type Variant = "circle" | "square";
-export type Size = "sm" | "md" | "lg" | "xl";
+export type Size = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 
 export interface AvatarProps {
   variant?: Variant;
@@ -18,10 +18,36 @@ export interface AvatarProps {
   onBlur?: () => void;
 }
 
-const getInitials = (name?: string) => {
-  const names = name?.split(" ");
-  const initials = names?.map((name) => name[0]?.toUpperCase())?.join("");
-  return initials || "";
+export const getInitials = (name?: string) => {
+  if (!name) return "";
+
+  // Split name by spaces and dashes
+  const names = name.split(/[\s—-]+/);
+
+  // Prioritize alphabetic words, but fallback to any characters
+  const prioritizedNames = names.filter((word) => /^[a-zA-Z]/.test(word)).length
+    ? names.filter((word) => /^[a-zA-Z]/.test(word))
+    : names;
+
+  const uppercaseNames = prioritizedNames.filter(
+    (name) => name[0] === name[0].toUpperCase()
+  );
+  const lowercaseNames = prioritizedNames.filter(
+    (name) => name[0] !== name[0].toUpperCase()
+  );
+
+  const initials = [];
+  for (const uname of uppercaseNames) {
+    initials.push(uname[0].toUpperCase());
+    if (initials.length === 3) return initials.join("");
+  }
+
+  for (const lname of lowercaseNames) {
+    initials.push(lname[0].toUpperCase());
+    if (initials.length === 3) break;
+  }
+
+  return initials.join("");
 };
 
 const colourVariants = [
@@ -42,21 +68,25 @@ const colourVariants = [
 ];
 
 const Avatar = ({variant = "circle", size = "md", alt, src, ...rest}: AvatarProps) => {
-  const [error, setError] = React.useState(false);
-  const showAvatar = src && !error;
-  const initials = getInitials(alt) || "";
+  const [errorSrc, setErrorSrc] = React.useState<string | null>(null);
+  const showAvatar = src && src !== errorSrc;
+  const initials = getInitials(alt || "?") || "";
   const colourIndex =
     ((initials?.charCodeAt(0) || 0) + (initials?.charCodeAt(1) || 0)) %
     colourVariants.length;
   const backgroundColor = colourVariants[colourIndex];
+
   return (
     <StyledAvatar
       backgroundColor={backgroundColor}
       size={size}
       variant={variant}
+      title={alt}
       {...rest}
     >
-      {showAvatar ? <StyledAvatarImage src={src} onError={() => setError(true)} /> : null}
+      {showAvatar ? (
+        <StyledAvatarImage src={src} alt={alt} onError={() => setErrorSrc(src)} />
+      ) : null}
       {!showAvatar ? initials || "" : null}
     </StyledAvatar>
   );
