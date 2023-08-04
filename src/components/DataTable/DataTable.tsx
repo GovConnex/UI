@@ -204,11 +204,8 @@ const DataTable = ({
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
-        // if (selectionGroupHeader) selectionGroupHeader.canResize = false;
-        // if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
-
-        // if (selectionGroupHeader) selectionGroupHeader.testParameter = false;
-        // if (selectionGroupHeader2) selectionGroupHeader2.testParameter = false;
+        if (selectionGroupHeader) selectionGroupHeader.isResizable = false;
+        if (selectionGroupHeader2) selectionGroupHeader2.isResizable = false;
       });
     }
     // useResizeColumns
@@ -287,7 +284,10 @@ const DataTable = ({
                 <GcxDataTableTr {...row.getRowProps()}>
                   {row.cells.map((cell: any) => {
                     return (
-                      <GcxDataTableTd width={cell?.column?.width} {...cell.getCellProps()}>
+                      <GcxDataTableTd
+                        width={cell?.column?.width}
+                        {...cell.getCellProps()}
+                      >
                         {cell.render("Cell")}
                       </GcxDataTableTd>
                     );
