@@ -187,8 +187,8 @@ const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
 ];
 
 // Another example, but with resize property in column config
-export const WithResizeColumnConfig = Template.bind({});
-WithResizeColumnConfig.args = {
+export const WithoutResizeColumnConfig = Template.bind({});
+WithoutResizeColumnConfig.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
   pageSize: 25,
