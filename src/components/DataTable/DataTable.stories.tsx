@@ -26,47 +26,48 @@ export default {
     },
     className: {
       type: "string",
-      description: "(Optional) Class name to apply to the root element."
+      description: "(Optional) Class name to apply to the root element.",
     },
     numResults: {
       type: "number",
-      description: "(Optional) Number of results for use in pagination."
+      description: "(Optional) Number of results for use in pagination.",
     },
     onChangeSort: {
       type: "function",
-      description: "(Optional) Callback for when the sort changes."
+      description: "(Optional) Callback for when the sort changes.",
     },
     pageSize: {
       type: "number",
-      description: "(Optional) Size of the page for use in pagination."
+      description: "(Optional) Size of the page for use in pagination.",
     },
     page: {
       type: "number",
-      description: "(Optional) Page number for use in pagination."
+      description: "(Optional) Page number for use in pagination.",
     },
     initialSortBy: {
       type: Array,
-      description: "(Optional) List of columns to sort by initially."
+      description: "(Optional) List of columns to sort by initially.",
     },
     onPaginationChange: {
       type: "function",
-      description: "(Optional) Callback for when the pagination changes."
+      description: "(Optional) Callback for when the pagination changes.",
     },
     onSelectedIdsChange: {
       type: "function",
-      description: "(Optional) Callback for when the selected ids change."
+      description: "(Optional) Callback for when the selected ids change.",
     },
     showPagination: {
       type: "boolean",
-      description: "(Optional) Whether to show the pagination. Defaults to true."
+      description: "(Optional) Whether to show the pagination. Defaults to true.",
     },
     showSelection: {
       type: "boolean",
-      description: "(Optional) Whether to show the selection checkbox. Defaults to true."
+      description: "(Optional) Whether to show the selection checkbox. Defaults to true.",
     },
     fullWidth: {
       type: "boolean",
-      description: "(Optional) Whether the table should grow to fill its container. Defaults to false."
+      description:
+        "(Optional) Whether the table should grow to fill its container. Defaults to false.",
     },
   },
 } as ComponentMeta<typeof DataTable>;
@@ -198,7 +199,6 @@ WithResizeColumnConfig.args = {
   page: 1,
   numResults: 100,
 };
-
 
 // Another example, but with one without pagination
 export const WithoutPagination = Template.bind({});

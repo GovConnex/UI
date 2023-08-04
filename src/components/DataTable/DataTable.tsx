@@ -267,7 +267,7 @@ const DataTable = ({
                         onClick={(e) => {
                           e.preventDefault();
                         }}
-                        className={column.isResizing ? "isResizing" : ""}
+                        className="isResizing"
                       >
                         <ResizerDrag />
                       </Resizer>
