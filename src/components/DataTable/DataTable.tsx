@@ -121,7 +121,7 @@ const DataTable = ({
   className,
   showPagination = true,
   showSelection = true,
-  fullWidth = false,
+  fullWidth = true,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -197,15 +197,18 @@ const DataTable = ({
                 width: 40,
               }
             : null,
-          ...columns,
+          ...columns.map((column: any) => ({
+            ...column,
+            isResizable: column.isResizable !== undefined ? column.isResizable : true,
+          })),
         ].filter(Boolean)
       );
       hooks.useInstanceBeforeDimensions.push(({headerGroups}: any) => {
         // fix the parent group of the selection button to not be resizable
         const selectionGroupHeader = headerGroups[0].headers[0];
         const selectionGroupHeader2 = headerGroups[0].headers[1];
-        if (selectionGroupHeader) selectionGroupHeader.canResize = false;
-        if (selectionGroupHeader2) selectionGroupHeader2.canResize = false;
+        if (selectionGroupHeader) selectionGroupHeader.isResizable = false;
+        if (selectionGroupHeader2) selectionGroupHeader2.isResizable = false;
       });
     }
     // useResizeColumns
@@ -255,19 +258,19 @@ const DataTable = ({
             {headerGroups.map((headerGroup: any) => (
               <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column: any) => (
-                  <GcxDataTableTh {...column.getHeaderProps()}>
+                  <GcxDataTableTh width={column?.width} {...column.getHeaderProps()}>
                     <div {...column.getSortByToggleProps()}>
                       {" "}
                       {column.render("Header")}
                     </div>
 
-                    {column.canResize ? (
+                    {column.isResizable ? (
                       <Resizer
                         {...column.getResizerProps()}
                         onClick={(e) => {
                           e.preventDefault();
                         }}
-                        className={column.isResizing ? "isResizing" : ""}
+                        className="isResizing"
                       >
                         <ResizerDrag />
                       </Resizer>
@@ -284,7 +287,10 @@ const DataTable = ({
                 <GcxDataTableTr {...row.getRowProps()}>
                   {row.cells.map((cell: any) => {
                     return (
-                      <GcxDataTableTd {...cell.getCellProps()}>
+                      <GcxDataTableTd
+                        width={cell?.column?.width}
+                        {...cell.getCellProps()}
+                      >
                         {cell.render("Cell")}
                       </GcxDataTableTd>
                     );

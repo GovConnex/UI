@@ -13,6 +13,7 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
+  table-layout: fixed;
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
@@ -28,7 +29,9 @@ export const GcxDataTableTr = styled.tr`
   }
 `;
 
-export const GcxDataTableTh = styled.th`
+export const GcxDataTableTh = styled.th<{width?: string}>`
+  width: ${(p) => p.width};
+  overflow: hidden;
   user-select: none;
   text-align: left;
   border-bottom: 1px solid #ebebeb;
@@ -41,6 +44,7 @@ export const GcxDataTableTh = styled.th`
 
 export const GcxDataTableTd = styled.td`
   min-height: 45px;
+  overflow: hidden;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;

@@ -11,6 +11,65 @@ export default {
   title: "Components/Data Table",
   component: DataTable,
   decorators: [withDesign],
+  argTypes: {
+    data: {
+      type: Array,
+      defaultValue: [],
+      description:
+        "(Required) Data to be processed in the table. The array is a list of objects having key value pairs.",
+    },
+    columns: {
+      type: Array,
+      defaultValue: [],
+      description:
+        "(Required) Column config to be processed by the table. It should contain the id, Header(header cell), Cell(Data cell), display name, accessor(key of the data column), and others like minWidth, width, isResizable(defaults to false, works when column does not have a specified width or minWidth. First and second columns are fixed and not resizable.)",
+    },
+    className: {
+      type: "string",
+      description: "(Optional) Class name to apply to the root element.",
+    },
+    numResults: {
+      type: "number",
+      description: "(Optional) Number of results for use in pagination.",
+    },
+    onChangeSort: {
+      type: "function",
+      description: "(Optional) Callback for when the sort changes.",
+    },
+    pageSize: {
+      type: "number",
+      description: "(Optional) Size of the page for use in pagination.",
+    },
+    page: {
+      type: "number",
+      description: "(Optional) Page number for use in pagination.",
+    },
+    initialSortBy: {
+      type: Array,
+      description: "(Optional) List of columns to sort by initially.",
+    },
+    onPaginationChange: {
+      type: "function",
+      description: "(Optional) Callback for when the pagination changes.",
+    },
+    onSelectedIdsChange: {
+      type: "function",
+      description: "(Optional) Callback for when the selected ids change.",
+    },
+    showPagination: {
+      type: "boolean",
+      description: "(Optional) Whether to show the pagination. Defaults to true.",
+    },
+    showSelection: {
+      type: "boolean",
+      description: "(Optional) Whether to show the selection checkbox. Defaults to true.",
+    },
+    fullWidth: {
+      type: "boolean",
+      description:
+        "(Optional) Whether the table should grow to fill its container. Defaults to false.",
+    },
+  },
 } as ComponentMeta<typeof DataTable>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -23,29 +82,30 @@ const DATA_TABLE_COLUMNS = [
     Cell: NameCell,
     icon: faUser,
     displayName: "Name",
-    canResize: true,
     accessor: "name",
-    minWidth: 225,
   },
   {
     id: "D01",
     Header: DataTableHeaderCell,
     Cell: SupportCell,
-    canResize: true,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    minWidth: 225,
   },
   {
     id: "D02",
     Header: DataTableHeaderCell,
     Cell: TagCell,
     icon: faContactCard,
-    canResize: true,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    minWidth: 225,
+  },
+  {
+    id: "D03",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    displayName: "Third Contact",
+    accessor: "type", // accessor is the "key" in the data
   },
 ];
 
@@ -65,11 +125,15 @@ const DATA_TABLE_DATA = [
     value: "Value 3",
     type: "Type 3",
   },
+  {
+    name: "Field 4",
+    value: "Value 4",
+    type: "Type 4",
+  },
 ];
 
-export const Example = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
   pageSize: 25,
@@ -77,32 +141,82 @@ Example.args = {
   numResults: 100,
 };
 
-Example.parameters = {
+Basic.parameters = {
   design: {
     type: "figma",
     url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=83%3A25768",
   },
 };
 
+const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
+  {
+    id: "D04",
+    Header: DataTableHeaderCell,
+    Cell: NameCell,
+    icon: faUser,
+    displayName: "Name",
+    accessor: "name",
+    isResizable: false,
+  },
+  {
+    id: "D05",
+    Header: DataTableHeaderCell,
+    Cell: SupportCell,
+    icon: faHeart,
+    displayName: "Target Support",
+    accessor: "value", // accessor is the "key" in the data
+    isResizable: false,
+  },
+  {
+    id: "D06",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    icon: faContactCard,
+    displayName: "Secondary Contact",
+    accessor: "type", // accessor is the "key" in the data
+    isResizable: false,
+  },
+  {
+    id: "D07",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    displayName: "Third Contact",
+    accessor: "type", // accessor is the "key" in the data
+    isResizable: false,
+  },
+];
+
+// Another example, but with resize property in column config
+export const WithoutResizeColumnConfig = Template.bind({});
+WithoutResizeColumnConfig.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
+  fullWidth: false,
+};
+
 // Another example, but with one without pagination
-export const ExampleWithoutPagination = Template.bind({});
-ExampleWithoutPagination.args = {
+export const WithoutPagination = Template.bind({});
+WithoutPagination.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
   showPagination: false,
 };
 
 // Another example, but with one without selection
-export const ExampleWithoutSelection = Template.bind({});
-ExampleWithoutSelection.args = {
+export const WithoutSelection = Template.bind({});
+WithoutSelection.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
   showPagination: false,
   showSelection: false,
 };
 
-export const ExampleWithoutHeaderIcons = Template.bind({});
-ExampleWithoutHeaderIcons.args = {
+// Another example, but without icons
+export const WithoutHeaderIcons = Template.bind({});
+WithoutHeaderIcons.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS.map((column) => ({
     ...column,
@@ -112,8 +226,8 @@ ExampleWithoutHeaderIcons.args = {
   showSelection: false,
 };
 
-export const ExampleWithFullWidth = Template.bind({});
-ExampleWithFullWidth.args = {
+export const WithFullWidth = Template.bind({});
+WithFullWidth.args = {
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
   showPagination: false,
@@ -141,8 +255,8 @@ const LONG_DATA_TABLE_DATA = [
   },
 ];
 
-export const ExampleWithLongData = Template.bind({});
-ExampleWithLongData.args = {
+export const WithLongData = Template.bind({});
+WithLongData.args = {
   data: LONG_DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS?.map((column) => ({
     ...column,
@@ -152,20 +266,58 @@ ExampleWithLongData.args = {
   showSelection: false,
 };
 
+const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
+  {
+    id: "D04",
+    Header: DataTableHeaderCell,
+    Cell: NameCell,
+    icon: faUser,
+    displayName: "Name",
+    accessor: "name",
+    width: "300px",
+  },
+  {
+    id: "D05",
+    Header: DataTableHeaderCell,
+    Cell: SupportCell,
+    icon: faHeart,
+    displayName: "Target Support",
+    accessor: "value", // accessor is the "key" in the data
+    width: "300px",
+  },
+  {
+    id: "D06",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    icon: faContactCard,
+    displayName: "Secondary Contact",
+    accessor: "type", // accessor is the "key" in the data
+    width: "300px",
+  },
+  {
+    id: "D07",
+    Header: DataTableHeaderCell,
+    Cell: TagCell,
+    displayName: "Third Contact",
+    accessor: "type", // accessor is the "key" in the data
+    width: "300px",
+  },
+];
+
 const TemplateWithWrapper: ComponentStory<typeof DataTable> = (args) => (
-  <div style={{width: "100px"}}>
+  <div style={{width: "700px", overflow: "scroll"}}>
     <DataTable {...args} />
   </div>
 );
 
-export const ExampleNarrowWidthWithHorizontalOverflow = TemplateWithWrapper.bind({});
-ExampleNarrowWidthWithHorizontalOverflow.args = {
+export const WithHorizontalOverflowAndFixedWidth = TemplateWithWrapper.bind({});
+WithHorizontalOverflowAndFixedWidth.args = {
   data: LONG_DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS?.map((column) => ({
+  columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH?.map((column) => ({
     ...column,
     Cell: DataCell,
   })),
   showPagination: false,
   showSelection: false,
-  fullWidth: true,
+  fullWidth: false,
 };
