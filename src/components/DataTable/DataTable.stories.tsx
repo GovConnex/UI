@@ -5,12 +5,20 @@ import {withDesign} from "storybook-addon-designs";
 import DataTableHeaderCell from "./DataTableHeaderCell";
 import {faContactCard, faHeart, faUser} from "@fortawesome/pro-solid-svg-icons";
 import {DataCell, NameCell, SupportCell, TagCell} from "./DataTable.examples";
+import componentSummary from './ComponentSummary';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/Data Table",
   component: DataTable,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: componentSummary,
+      },
+    },
+  },
   argTypes: {
     data: {
       type: Array,
