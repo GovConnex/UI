@@ -4,7 +4,7 @@ import BackgroundIcon from "./BackgroundIcon";
 import {withDesign} from "storybook-addon-designs";
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
-import componentSummary from './ComponentSummary';
+import componentSummary from "./ComponentSummary";
 
 export default {
   title: "Components/BackgroundIcon",

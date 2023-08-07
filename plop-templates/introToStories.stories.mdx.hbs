@@ -1,12 +1,12 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Introduction To Creating Stories" />
+<Meta title="Components/{{name}}/Introduction" />
 
 # Creating stories of your own
 
 We have a standardized way now of creating stories! It is encouraged that we follow proper documentation and be as informative as we can when creating our stories. 
 
-1. #### Create a component named ```YourCompentName.stories.tsx``` under you component folder.
+1. #### Create a component named ```{{name}}.stories.tsx``` under you component folder.
 
 2. #### Add the necessary imports for your story
 ```jsx
@@ -16,7 +16,7 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import {withDesign} from "storybook-addon-designs";
 import componentSummary from './ComponentSummary';
 // Your component
-import BackgroundIcon from "./BackgroundIcon";
+import {{name}} from "./{{name}}";
 // Other imports. In this case, we need to import the icons
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
@@ -26,8 +26,8 @@ import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
 More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 ```jsx
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/{{name}}",
+  component: {{name}},
   decorators: [withDesign],
   parameters: {
     docs: {
@@ -36,7 +36,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof {{name}}>;
 ```
 
 4. #### For better documentation, we should put the ```argTypes``` which include properties and their attributes in the component meta as well. Ideally, for each property, it would have a ```description, type, control, and defaultValue```. 
@@ -48,8 +48,8 @@ export default {
 Below is an example of it:
 ```jsx
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/{{name}}",
+  component: {{name}},
   decorators: [withDesign],
   parameters: {
     docs: {
@@ -82,14 +82,14 @@ export default {
       type: Object,
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof {{name}}>;
 ``` 
 
 5. #### Next, add a template to be used for your stories:
 More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 ```jsx
-const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
-  <BackgroundIcon {...args} />
+const Template: ComponentStory<typeof {{name}}> = (args: any) => (
+  <{{name}} {...args} />
 );
 ```
 
@@ -110,13 +110,13 @@ StarXs.args = {
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import componentSummary from './ComponentSummary';
-import BackgroundIcon from "./BackgroundIcon";
+import {{name}} from "./{{name}}";
 import {withDesign} from "storybook-addon-designs";
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/{{name}}",
+  component: {{name}},
   decorators: [withDesign],
   parameters: {
     docs: {
@@ -149,10 +149,10 @@ export default {
       type: Object,
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof {{name}}>;
 
-const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
-  <BackgroundIcon {...args} />
+const Template: ComponentStory<typeof {{name}}> = (args: any) => (
+  <{{name}} {...args} />
 );
 
 export const HeartSvg = Template.bind({});
