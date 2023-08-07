@@ -39,7 +39,7 @@ module.exports = plop => {
         actions: [
             {
                 type: "add",
-                path: "src/components/{{name}}/IntroductionToCreatingStories.stories.mdx",
+                path: "src/components/{{name}}/Introduction.stories.mdx",
                 templateFile: "plop-templates/introToStories.stories.mdx.hbs",
             },
             {
