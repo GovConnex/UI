@@ -300,22 +300,21 @@ const DataTable = ({
             })}
           </GcxDataTableTbody>
         </GcxDataTable>
+        {/* Pagination shown by default, but can be hidden */}
+        {showPagination !== false && (
+          <GcxDataTablePagination
+            itemsPerPage={pageSize}
+            itemsPerPageOptions={[25, 50, 100]}
+            page={page}
+            totalItems={numResults || 0}
+            onItemsPerPageChange={(newPageSize) =>
+              onPaginationChange({page, pageSize: newPageSize})
+            }
+            onPageChange={(newPage) => onPaginationChange({page: newPage, pageSize})}
+          />
+        )}
+        {/*</div>*/}
       </GcxDataTableWrapper>
-
-      {/* Pagination shown by default, but can be hidden */}
-      {showPagination !== false && (
-        <GcxDataTablePagination
-          itemsPerPage={pageSize}
-          itemsPerPageOptions={[25, 50, 100]}
-          page={page}
-          totalItems={numResults || 0}
-          onItemsPerPageChange={(newPageSize) =>
-            onPaginationChange({page, pageSize: newPageSize})
-          }
-          onPageChange={(newPage) => onPaginationChange({page: newPage, pageSize})}
-        />
-      )}
-      {/*</div>*/}
     </GcxDataTableRoot>
   );
 };

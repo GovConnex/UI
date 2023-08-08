@@ -121,9 +121,7 @@ export const GcxDataTableHeaderSortIcon = styled(Icon)`
 `;
 
 export const GcxDataTablePagination = styled(Pagination)`
-  border-left: 1px solid #ebebeb;
-  border-right: 1px solid #ebebeb;
-  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
   padding: ${(p) => p.theme.spacing.sm} ${(p) => p.theme.spacing.sm} 0
     ${(p) => p.theme.spacing.sm};
   background-color: ${(p) => p.theme.primary.base.white};
