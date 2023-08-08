@@ -5,7 +5,8 @@ import {withDesign} from "storybook-addon-designs";
 import DataTableHeaderCell from "./DataTableHeaderCell";
 import {faContactCard, faHeart, faUser} from "@fortawesome/pro-solid-svg-icons";
 import {DataCell, NameCell, SupportCell, TagCell} from "./DataTable.examples";
-import componentSummary from "./ComponentSummary";
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -15,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: componentSummary,
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
       },
     },
   },
@@ -113,7 +114,7 @@ const DATA_TABLE_COLUMNS = [
     Header: DataTableHeaderCell,
     Cell: TagCell,
     displayName: "Third Contact",
-    accessor: "type", // accessor is the "key" in the data
+    accessor: "secondType", // accessor is the "key" in the data
   },
 ];
 
@@ -122,21 +123,25 @@ const DATA_TABLE_DATA = [
     name: "Field 1",
     value: "Value 1",
     type: "Type 1",
+    secondType: "Second Type 1",
   },
   {
     name: "Field 2",
     value: "Value 2",
     type: "Type 2",
+    secondType: "Second Type 2",
   },
   {
     name: "Field 3",
     value: "Value 3",
     type: "Type 3",
+    secondType: "Second Type 3",
   },
   {
     name: "Field 4",
     value: "Value 4",
     type: "Type 4",
+    secondType: "Second Type 4",
   },
 ];
 
@@ -189,7 +194,7 @@ const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
     Header: DataTableHeaderCell,
     Cell: TagCell,
     displayName: "Third Contact",
-    accessor: "type", // accessor is the "key" in the data
+    accessor: "secondType", // accessor is the "key" in the data
     isResizable: false,
   },
 ];
@@ -250,16 +255,19 @@ const LONG_DATA_TABLE_DATA = [
     value:
       "This is a very long name that should be truncated. Lorem ipsum content goes here.",
     type: "Type 1",
+    secondType: "Second Type 1",
   },
   {
     name: "Field 2",
     value: "Value 2",
     type: "Type 2 is a very long type that should be truncated",
+    secondType: "Second Type 2",
   },
   {
     name: "Field 3",
     value: "Value 3",
     type: "Type 3",
+    secondType: "Second Type 3",
   },
 ];
 
@@ -270,8 +278,61 @@ WithLongData.args = {
     ...column,
     Cell: DataCell,
   })),
-  showPagination: false,
-  showSelection: false,
+  onChangeSort(column) {
+    callHandleDataChange(column);
+  },
+};
+
+// Define a callback function that will be used to update the data
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let updateDynamicData = (column: any) => {};
+
+WithLongData.decorators = [
+  (Story) => {
+    const [dynamicData, setDynamicData] = React.useState(LONG_DATA_TABLE_DATA);
+    const [sortOrder, setSortOrder] = React.useState<"asc" | "desc">("asc");
+
+    // Define the handleDataChange function inside the decorator
+    const handleDataChange = (column: any) => {
+      // Sort the dynamic data based on the selected column
+      if (column) {
+        const accessor = column[0]?.accessor;
+        if (accessor) {
+          const sortedData = [...dynamicData]; // Create a copy
+          sortedData.sort((a: any, b: any) => {
+            const aValue = a[accessor];
+            const bValue = b[accessor];
+
+            // Compare the values based on the current sortOrder
+            return sortOrder === "asc"
+              ? aValue.localeCompare(bValue)
+              : bValue.localeCompare(aValue);
+          });
+
+          // Toggle the sortOrder for next sorting
+          setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+
+          setDynamicData(sortedData);
+        }
+      }
+    };
+
+    // Assign the handleDataChange function to the update function
+    updateDynamicData = handleDataChange;
+
+    return (
+      <div>
+        <Story args={{...WithLongData.args, data: dynamicData}} />
+      </div>
+    );
+  },
+];
+
+// Call the handleDataChange function from outside the story
+const callHandleDataChange = (column: any) => {
+  if (typeof updateDynamicData === "function") {
+    updateDynamicData(column);
+  }
 };
 
 const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
@@ -307,7 +368,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
     Header: DataTableHeaderCell,
     Cell: TagCell,
     displayName: "Third Contact",
-    accessor: "type", // accessor is the "key" in the data
+    accessor: "secondType", // accessor is the "key" in the data
     width: "300px",
   },
 ];
