@@ -11,6 +11,7 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   overflow-x: auto;
   display: ${(p) => (p.fullWidth ? "block" : "inline-table")};
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
+  background: ${(p) => p.theme.primary.base.white};
 `;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   table-layout: fixed;
@@ -51,6 +52,7 @@ export const GcxDataTableTh = styled.th<{width?: string}>`
 
 export const GcxDataTableTd = styled.td`
   min-width: 0;
+  border-bottom: 1px solid #ebebeb;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
