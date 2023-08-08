@@ -17,8 +17,31 @@ module.exports = plop => {
                 message: "What is your component name?",
                 validate: requireField("name"),
             },
+            {
+                type: "input",
+                name: "summary",
+                message: "Description of your component",
+                validate: requireField("summary"),
+            },
+            {
+                type: "input",
+                name: "purpose",
+                message: "Purpose of your component",
+                validate: requireField("purpose"),
+            },
+            {
+                type: "input",
+                name: "figmaLink",
+                message: "Figma Link of your component",
+                validate: requireField("figmaLink"),
+            },
         ],
         actions: [
+            {
+                type: "add",
+                path: "src/components/{{name}}/ComponentSummary.mdx",
+                templateFile: "plop-templates/componentSummary.mdx.hbs",
+            },
             {
                 type: "add",
                 path: "src/components/{{name}}/{{name}}.tsx",

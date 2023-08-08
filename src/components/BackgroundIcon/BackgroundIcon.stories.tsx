@@ -4,19 +4,20 @@ import BackgroundIcon from "./BackgroundIcon";
 import {withDesign} from "storybook-addon-designs";
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
-
-const summary =
-  "##Summary\nThe Background icon component may contain various icons to visualize or to give information as an image.\n\n";
-const context =
-  "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
-const figmaLink =
-  "##Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
-const markdown = summary + context + figmaLink;
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
 export default {
   title: "Components/BackgroundIcon",
   component: BackgroundIcon,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
+      },
+    },
+  },
   argTypes: {
     icon: {
       description: "Icon of the component from fortawesome",
@@ -51,13 +52,6 @@ export default {
       description:
         "Custom styles of the component. Styles are similar to css styles but in camel case",
       type: Object,
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: markdown,
-      },
     },
   },
 } as ComponentMeta<typeof BackgroundIcon>;

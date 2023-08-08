@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 # Creating stories of your own
 
-## We have a standardized way now of creating stories! It is encouraged that we follow proper documentation and be as informative as we can when creating our stories. 
+We have a standardized way now of creating stories! It is encouraged that we follow proper documentation and be as informative as we can when creating our stories. 
 
 1. #### Create a component named ```YourCompentName.stories.tsx``` under you component folder.
 
@@ -14,6 +14,7 @@ import { Meta } from '@storybook/addon-docs';
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import {withDesign} from "storybook-addon-designs";
+import componentSummary from './ComponentSummary';
 // Your component
 import BackgroundIcon from "./BackgroundIcon";
 // Other imports. In this case, we need to import the icons
@@ -21,24 +22,8 @@ import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
 ```
 
-3. #### Add a component meta. This will include a ```title, component, and decorators```. Here is an example:
+3. #### Add a component meta. This will include a ```title, component, decorators, and summary```. Here is an example:
 More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-```jsx
-export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
-  decorators: [withDesign],
-} as ComponentMeta<typeof BackgroundIcon>;
-```
-
-4. #### In your story file, before the component meta, create a summary of the component as a short description, some context as to why the component was created, as well as its figma link
-```jsx
-const summary = "##Summary\nThe Background icon component may contain various icons to visualize or to give information as an image.\n\n";
-const context = "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
-const figmaLink = "##Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
-const markdown = summary + context + figmaLink;
-```
-In the story's component meta, we should put the markdown variable in the description like so:
 ```jsx
 export default {
   title: "Components/BackgroundIcon",
@@ -47,14 +32,14 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: markdown, 
+        component: componentSummary,
       },
     },
   },
 } as ComponentMeta<typeof BackgroundIcon>;
 ```
 
-5. #### For better documentation, we should put the ```argTypes``` which include properties and their attributes in the component meta as well. Ideally, for each property, it would have a ```description, type, control, and defaultValue```. 
+4. #### For better documentation, we should put the ```argTypes``` which include properties and their attributes in the component meta as well. Ideally, for each property, it would have a ```description, type, control, and defaultValue```. 
   - ```description``` is a short message on what the property is about. 
   - ```type``` is the property's data type. 
   - ```control``` is the type of control it will show as in the storybook documentation. 
@@ -66,6 +51,13 @@ export default {
   title: "Components/BackgroundIcon",
   component: BackgroundIcon,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: componentSummary,
+      },
+    },
+  },
   argTypes: {
     icon: {
       description: "Icon of the component from fortawesome",
@@ -90,17 +82,10 @@ export default {
       type: Object,
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: markdown,
-      },
-    },
-  },
 } as ComponentMeta<typeof BackgroundIcon>;
 ``` 
 
-6. #### Next, add a template to be used for your stories:
+5. #### Next, add a template to be used for your stories:
 More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 ```jsx
 const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
@@ -108,7 +93,7 @@ const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
 );
 ```
 
-7. #### Then, bind the template and create your first story
+6. #### Then, bind the template and create your first story
 More on args: https://storybook.js.org/docs/react/writing-stories/args
 ```jsx
 export const StarXs = Template.bind({});
@@ -118,28 +103,28 @@ StarXs.args = {
 };
 ```
 
-8. #### Create other stories as you see fit!
+7. #### Create other stories as you see fit!
 
 ### Your story should look something like this:
 ```jsx
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
+import componentSummary from './ComponentSummary';
 import BackgroundIcon from "./BackgroundIcon";
 import {withDesign} from "storybook-addon-designs";
 import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
-
-const summary =
-  "##Summary\nThe Background icon component may contain various icons to visualize or to give information as an image.\n\n";
-const context =
-  "##Context\nThe Background component was added to create a visual of the information it is trying to portray.\n\n";
-const figmaLink =
-  "##Figma Link\nhttps://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=103-320&mode=design&t=QFaUGXlsf04huhew-0";
-const markdown = summary + context + figmaLink;
 
 export default {
   title: "Components/BackgroundIcon",
   component: BackgroundIcon,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: componentSummary,
+      },
+    },
+  },
   argTypes: {
     icon: {
       description: "Icon of the component from fortawesome",
@@ -162,13 +147,6 @@ export default {
       description:
         "Custom styles of the component. Styles are similar to css styles but in camel case",
       type: Object,
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component: markdown,
-      },
     },
   },
 } as ComponentMeta<typeof BackgroundIcon>;

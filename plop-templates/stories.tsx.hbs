@@ -2,12 +2,21 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {{name}} from "./{{name}}";
 import { withDesign } from 'storybook-addon-designs';
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/{{name}}",
   component: {{name}},
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
+      },
+    },
+  },
 } as ComponentMeta<typeof {{name}}>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
