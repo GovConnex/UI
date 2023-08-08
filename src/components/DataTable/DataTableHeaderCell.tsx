@@ -5,6 +5,11 @@ import {
   GcxDataTableHeaderSortIcon,
 } from "./DataTable.styles";
 import Typography from "../Typography";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faArrowDown, faArrowUp} from "@fortawesome/pro-solid-svg-icons";
+
+// Add the FontAwesome icons to the library
+library.add(faArrowDown, faArrowUp);
 
 export interface HeaderCellProps {
   children: React.ReactNode;

@@ -14,16 +14,23 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
 `;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   table-layout: fixed;
+  min-width: 0;
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
 
-export const GcxDataTableThead = styled.thead``;
+export const GcxDataTableThead = styled.thead`
+  min-width: 0;
+`;
 
-export const GcxDataTableTbody = styled.tbody``;
+export const GcxDataTableTbody = styled.tbody`
+  min-width: 0;
+`;
 
 export const GcxDataTableTr = styled.tr`
+  min-width: 0;
+
   :not(:last-child) {
     border-bottom: 1px solid #ebebeb;
   }
@@ -31,7 +38,7 @@ export const GcxDataTableTr = styled.tr`
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
   width: ${(p) => p.width};
-  overflow: hidden;
+  min-width: 0;
   user-select: none;
   text-align: left;
   border-bottom: 1px solid #ebebeb;
@@ -43,8 +50,7 @@ export const GcxDataTableTh = styled.th<{width?: string}>`
 `;
 
 export const GcxDataTableTd = styled.td`
-  min-height: 45px;
-  overflow: hidden;
+  min-width: 0;
 
   :not(:last-child) {
     border-right: 1px solid #ebebeb;
@@ -61,6 +67,24 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
   gap: ${(p) => p.theme.spacing.md};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
 
+  > * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > span:hover {
+    overflow: visible;
+    position: relative;
+    display: block;
+    background-color: ${(p) => p.theme.primary.base.black};
+    z-index: 10;
+    color: ${(p) => p.theme.primary.base.white};
+    padding: ${(p) => p.theme.spacing.xs};
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
   ${(p) =>
     p.hasDropdown &&
     `
@@ -75,25 +99,34 @@ export const DataCellMenu = styled(Menu)`
   min-width: 220px;
 `;
 
-export const GcxDataTableHeaderCellRoot = styled.div`
+export const GcxDataTableHeaderCellRoot = styled.div<{fullText?: string}>`
   display: flex;
   align-items: center;
-  padding: ${(p) => p.theme.spacing.sm};
+  overflow: hidden;
+  padding: ${(p) => p.theme.spacing.xs};
   color: ${(p) => p.theme.primary.base.black};
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`
   color: ${(p) => p.theme.primary.neutral["800"]};
-  margin-right: ${(p) => p.theme.spacing.md};
+  margin-right: ${(p) => p.theme.spacing.sm};
+  margin-left: ${(p) => p.theme.spacing.xs};
 `;
 
 export const GcxDataTableHeaderSortIcon = styled(Icon)`
   color: ${(p) => p.theme.primary.neutral["800"]};
-  margin-left: ${(p) => p.theme.spacing.md};
+  position: absolute;
+  margin-top: 4px;
+  right: ${(p) => p.theme.spacing.sm};
 `;
 
 export const GcxDataTablePagination = styled(Pagination)`
-  margin-top: ${(p) => p.theme.spacing.md};
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  padding: ${(p) => p.theme.spacing.sm} ${(p) => p.theme.spacing.sm} 0
+    ${(p) => p.theme.spacing.sm};
+  background-color: ${(p) => p.theme.primary.base.white};
 `;
 
 export const ResizerDrag = styled.div`

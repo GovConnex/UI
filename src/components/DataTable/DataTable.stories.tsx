@@ -271,8 +271,8 @@ const LONG_DATA_TABLE_DATA = [
   },
 ];
 
-export const WithLongData = Template.bind({});
-WithLongData.args = {
+export const WithLongDataAndSorting = Template.bind({});
+WithLongDataAndSorting.args = {
   data: LONG_DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS?.map((column) => ({
     ...column,
@@ -287,7 +287,7 @@ WithLongData.args = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let updateDynamicData = (column: any) => {};
 
-WithLongData.decorators = [
+WithLongDataAndSorting.decorators = [
   (Story) => {
     const [dynamicData, setDynamicData] = React.useState(LONG_DATA_TABLE_DATA);
     const [sortOrder, setSortOrder] = React.useState<"asc" | "desc">("asc");
@@ -322,7 +322,7 @@ WithLongData.decorators = [
 
     return (
       <div>
-        <Story args={{...WithLongData.args, data: dynamicData}} />
+        <Story args={{...WithLongDataAndSorting.args, data: dynamicData}} />
       </div>
     );
   },
