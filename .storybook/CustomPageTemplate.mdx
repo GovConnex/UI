@@ -1,5 +1,4 @@
-import { Title, Description, Primary, Stories, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Figma } from "storybook-addon-designs/blocks";
+import { Title, Preview, Description, Primary, Stories, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 
 Before creating a story, take time to read the instructions from [Introduction to Creating Stories](/story/introduction-to-creating-stories--page) for better documentation
 
@@ -10,7 +9,6 @@ Before creating a story, take time to read the instructions from [Introduction t
       <Description />
     </div>
     <div>
-      <Figma url="https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0"/>
       <Primary/>
       <div style={{ marginBottom: '20px' }}>
         <h2>Props</h2>
@@ -18,15 +16,6 @@ Before creating a story, take time to read the instructions from [Introduction t
       </div>
       <div style={{ borderBottom: '1px solid #ccc', marginBottom: '40px'}}></div>
       <Stories title={'Other Examples'}>
-        {(storyName, story) => (
-          <div key={storyName}>
-            <h2>{storyName}</h2>
-            {story.parameters?.docs?.description?.story && (
-              <p>{story.parameters.docs.description.story}</p>
-            )}
-            <Story name={storyName} />
-          </div>
-        )}
       </Stories>
       
     </div>
