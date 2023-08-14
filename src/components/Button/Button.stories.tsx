@@ -1,9 +1,9 @@
-import React, {PropsWithChildren} from "react";
+import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Button from "./Button";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
-import {faCoffee, faBook} from "@fortawesome/pro-solid-svg-icons";
+import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
 
@@ -90,37 +90,42 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-const LinkTemplate: ComponentStory<typeof Button> = (args) => (
-  <Button
-    as={(props: PropsWithChildren<unknown>) => (
-      <a href="" {...props}>
-        {props.children}
-      </a>
-    )}
-    {...args}
-  />
-);
 
-export const Primary = Template.bind({});
+export const Basic = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  children: "Primary Button",
+Basic.args = {
+  children: "Basic Example Button",
   startAdornment: <Icon icon={faCoffee} />,
   endAdornment: <Icon icon={faCoffee} />,
 };
 
-Primary.parameters = {
+Basic.parameters = {
   design: {
     type: "figma",
     url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0",
   },
+};
+
+export const BrandButtons = () => Template.bind({});
+BrandButtons.parameters = {
   docs: {
     figma: {
-      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0",
+      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patte[…]type=design&node-id=101%3A531&mode=design&t=fNHDlUnouxNjgChh-1",
     },
+  },
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  children: "Primary Button",
+  variant: "primary",
+};
+
+Primary.parameters = {
+  docs: {
     description: {
       story:
-        '## Alternate Variant\n\nAnother variant of the Button component.\n\n```jsx\n<Button label="Alternate Button" />\n```',
+        "Use primary buttons to highlight the most important actions like confirmation and  also guide users to the most essential actions like adding alert, and adding issues.",
     },
   },
 };
@@ -133,107 +138,48 @@ Secondary.args = {
 
 Secondary.parameters = {
   docs: {
+    description: {
+      story:
+        "Use secondary buttons when none of the actions are more important than the others. Secondary buttons can also be used as for secondary actions that complements the primary actions from the primary buttons.",
+    },
+  },
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  children: "Tertiary Button",
+  variant: "tertiary",
+};
+
+Tertiary.parameters = {
+  docs: {
+    description: {
+      story:
+        "Utilize tertiary buttons when there subtle actions required so that users won’t get distracted from the main actions by the primary and secondary buttons.",
+    },
+  },
+};
+
+export const SupportButtons = () => Template.bind({});
+SupportButtons.parameters = {
+  docs: {
     figma: {
-      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0",
-    },
-    description: {
-      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0",
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
+      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patte[…]type=design&node-id=101%3A792&mode=design&t=rhJrQVBgPQ3GXl7T-1",
     },
   },
 };
 
-export const PrimaryLg = Template.bind({});
-PrimaryLg.args = {
-  children: "Primary Lg Button",
-  size: "lg",
-  variant: "primary",
+export const Success = Template.bind({});
+Success.args = {
+  children: "Success Button",
+  variant: "danger",
 };
 
-PrimaryLg.parameters = {
+Success.parameters = {
   docs: {
     description: {
       story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const PrimarySm = Template.bind({});
-PrimarySm.args = {
-  children: "Primary Sm Button",
-  size: "sm",
-  variant: "primary",
-};
-
-PrimarySm.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const Text = Template.bind({});
-Text.args = {
-  children: "Text Button",
-  variant: "text",
-  startAdornment: <Icon icon={faBook} />,
-};
-
-Text.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const ButtonAsALink = LinkTemplate.bind({});
-ButtonAsALink.args = {
-  children: "Text Button",
-  variant: "text",
-  startAdornment: <Icon icon={faBook} />,
-};
-
-ButtonAsALink.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const IconButton = Template.bind({});
-IconButton.args = {
-  iconOnly: true,
-  children: <Icon icon={faBook} />,
-};
-
-IconButton.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const IsLoading = Template.bind({});
-IsLoading.args = {
-  isLoading: true,
-  children: <Icon icon={faBook} />,
-};
-
-IsLoading.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
+        "Utilize success buttons the highlight positive actions or outcomes like confirming a successful action or completing significant tasks.",
     },
   },
 };
@@ -248,103 +194,22 @@ Danger.parameters = {
   docs: {
     description: {
       story:
-        "Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
+        "Use Danger buttons to convey dangerous and critical actions that requires immediate decision from the users.",
     },
   },
 };
 
-export const DangerSm = Template.bind({});
-DangerSm.args = {
-  children: "Danger Button",
+export const Warning = Template.bind({});
+Warning.args = {
+  children: "Warning Button",
   variant: "danger",
-  size: "sm",
 };
 
-DangerSm.parameters = {
+Warning.parameters = {
   docs: {
     description: {
       story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const DangerLg = Template.bind({});
-DangerLg.args = {
-  children: "Danger Button",
-  variant: "danger",
-  size: "lg",
-};
-
-DangerLg.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const SecondaryDanger = Template.bind({});
-SecondaryDanger.args = {
-  children: "Secondary Danger Button",
-  variant: "secondaryDanger",
-};
-
-SecondaryDanger.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const SecondaryDangerSm = Template.bind({});
-SecondaryDangerSm.args = {
-  children: "Secondary Danger Button",
-  variant: "secondaryDanger",
-  size: "sm",
-};
-
-SecondaryDangerSm.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const SecondaryDangerLg = Template.bind({});
-SecondaryDangerLg.args = {
-  children: "Secondary Danger Button",
-  variant: "secondaryDanger",
-  size: "lg",
-};
-
-SecondaryDangerLg.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
-    },
-  },
-};
-
-export const SecondaryDangerDisabled = Template.bind({});
-SecondaryDangerDisabled.args = {
-  children: "Secondary Danger Button",
-  variant: "secondaryDanger",
-  size: "lg",
-  disabled: true,
-};
-
-SecondaryDangerDisabled.parameters = {
-  docs: {
-    description: {
-      story:
-        "Test Using Markdown-formatted descriptions in the parameters field allows you to provide detailed usage explanations directly within your stories and have them automatically rendered in the documentation panel. This can help users understand how to use your component effectively.",
+        "Utilize warning buttons to highlight important alerts or actions that  have a potential negative impact and requires user attention.",
     },
   },
 };

@@ -31,22 +31,26 @@ const storyDecorator = (Story, context) => {
     marginBottom: '30px',
   };
 
+  const figmaUrl = parameters.docs?.figma?.url ? 
+    `https://www.figma.com/embed?embed_host=share&url=${parameters.docs?.figma?.url }` : '';
+
   if (!parameters.docs.disable) {
     return (
+      <div>
+        {parameters.docs?.figma?.url && context.viewMode === 'docs' && (
+        <iframe
+          title="Figma Design"
+          width="800"
+          height="600"
+          src={figmaUrl}
+        ></iframe>
+      )}
       <ThemeProvider rawTheme={parameters.theme || lightTheme}>
         <div>
           <Story {...context}/>
-          <div style={containerStyles}></div>
-          {parameters.docs?.figma?.url && (
-            <iframe
-              title="Figma Design"
-              width="800"
-              height="600"
-              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0"
-            ></iframe>
-          )}
         </div>
       </ThemeProvider>
+      </div>
     );
   }
 
