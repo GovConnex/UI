@@ -75,18 +75,6 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
     text-overflow: ellipsis;
   }
 
-  > span:hover {
-    overflow: visible;
-    position: relative;
-    display: block;
-    background-color: ${(p) => p.theme.primary.base.black};
-    z-index: 10;
-    color: ${(p) => p.theme.primary.base.white};
-    padding: ${(p) => p.theme.spacing.xs};
-    border-radius: 5px;
-    white-space: nowrap;
-  }
-
   ${(p) =>
     p.hasDropdown &&
     `
@@ -95,6 +83,29 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
       outline: ${p.theme.primary.base.brand} solid ${p.theme.borderWidth.lg};
     }
   `}
+
+  /* Custom tooltip styles */
+  position: relative;
+
+  /* Show the tooltip on hover */
+  &:hover::after {
+    content: attr(data-title); /* Set the tooltip text */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: ${(p) => p.theme.core.background.bgInversePrimary};
+    color: #fff;
+    padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
+    border-radius: ${(p) => p.theme.spacing.xs};
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
 `;
 
 export const DataCellMenu = styled(Menu)`
