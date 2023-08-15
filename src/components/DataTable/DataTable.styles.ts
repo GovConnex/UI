@@ -75,18 +75,6 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
     text-overflow: ellipsis;
   }
 
-  > span:hover {
-    overflow: visible;
-    position: relative;
-    display: block;
-    background-color: ${(p) => p.theme.primary.base.black};
-    z-index: 10;
-    color: ${(p) => p.theme.primary.base.white};
-    padding: ${(p) => p.theme.spacing.xs};
-    border-radius: 5px;
-    white-space: nowrap;
-  }
-
   ${(p) =>
     p.hasDropdown &&
     `
