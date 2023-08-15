@@ -271,4 +271,27 @@ describe("DataTable", () => {
     const resizer = table.querySelector(".isResizing");
     expect(resizer).toBeInTheDocument();
   });
+
+  test("check if title attribute gets cell value", async () => {
+    const renderTable = () => {
+      return render(
+        <DataTable
+          data={DATA_TABLE_DATA}
+          columns={DATA_TABLE_COLUMNS_WITH_RESIZE?.map((column) => {
+            return {
+              ...column,
+              icon: undefined,
+            };
+          })}
+          showPagination={false}
+          showSelection={false}
+        />
+      );
+    };
+
+    const {getByRole} = renderTable();
+    const table = getByRole("table");
+    const firstDataCell = table.querySelector("tbody tr:first-child td>div");
+    expect(firstDataCell).toHaveAttribute("title", "Value 1");
+  });
 });
