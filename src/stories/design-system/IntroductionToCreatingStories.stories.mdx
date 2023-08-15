@@ -14,29 +14,30 @@ We have a standardized way now of creating stories! It is encouraged that we fol
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import {withDesign} from "storybook-addon-designs";
-import componentSummary from './ComponentSummary';
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 // Your component
-import BackgroundIcon from "./BackgroundIcon";
+import Button from "./Button";
 // Other imports. In this case, we need to import the icons
-import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
-import {faStar as faStarLight} from "@fortawesome/pro-light-svg-icons";
+import Icon from "../Icon";
+import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
 ```
 
 3. #### Add a component meta. This will include a ```title, component, decorators, and summary```. Here is an example:
 More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 ```jsx
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/Button",
+  component: Button,
   decorators: [withDesign],
   parameters: {
     docs: {
       description: {
-        component: componentSummary,
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
       },
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof Button>;
 ```
 
 4. #### For better documentation, we should put the ```argTypes``` which include properties and their attributes in the component meta as well. Ideally, for each property, it would have a ```description, type, control, and defaultValue```. 
@@ -48,153 +49,350 @@ export default {
 Below is an example of it:
 ```jsx
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/Button",
+  component: Button,
   decorators: [withDesign],
   parameters: {
     docs: {
       description: {
-        component: componentSummary,
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
       },
     },
   },
   argTypes: {
-    icon: {
-      description: "Icon of the component from fortawesome",
+    disabled: {
+      description: "Toggle button to be disabled or not",
+      type: "boolean",
     },
-    size: {
-      description: "Size of the component",
+    children: {
+      description: "Button text",
+      type: "string",
+    },
+    variant: {
+      description: "Different types of buttons",
       type: "string",
       control: {
         type: "select",
         options: [
-          "xs",
-          "sm",
-          "lg",
-          "xl",
+          "primary",
+          "secondary",
+          "tertiary",
+          "text",
+          "danger",
+          "secondaryDanger",
         ],
       },
-      defaultValue: "sm",
     },
-    cs: {
-      description:
-        "Custom styles of the component. Styles are similar to css styles but in camel case",
+    size: {
+      description: "Button sizes",
+      type: "string",
+      control: {
+        type: "select",
+        options: ["sm", "md", "lg"],
+      },
+    },
+    iconOnly: {
+      description: "Toggle whether button includes text or is icon only",
+      type: "boolean",
+    },
+    shape: {
+      description: "Button shape",
+      type: "string",
+      control: {
+        type: "select",
+        options: ["rect", "circle"],
+      },
+    },
+    title: {
+      description: "Button title",
+      type: "string",
+    },
+    isLoading: {
+      description: "Indicates whether button is loading or not",
+      type: "boolean",
+    },
+    noPadding: {
+      description: "Indicates whether there is no padding",
+      type: "boolean",
+    },
+    startAdornment: {
+      description: "Adornments or icons to put at the beginning of the button",
+    },
+    endAdornment: {
+      description: "Adornments or icons to put at the end of the button",
+    },
+    style: {
+      description: "CSS style of the button",
       type: Object,
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof Button>;
 ``` 
 
 5. #### Next, add a template to be used for your stories:
 More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 ```jsx
-const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
-  <BackgroundIcon {...args} />
-);
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 ```
 
 6. #### Then, bind the template and create your first story
 More on args: https://storybook.js.org/docs/react/writing-stories/args
 ```jsx
-export const StarXs = Template.bind({});
-StarXs.args = {
-  icon: faStar,
-  size: "xs",
+export const Basic = Template.bind({});
+Basic.args = {
+  children: "Basic Example Button",
+  startAdornment: <Icon icon={faCoffee} />,
+  endAdornment: <Icon icon={faCoffee} />,
 };
 ```
 
-7. #### Create other stories as you see fit!
+7. #### For figma links, specify the url like this
+```jsx
+export const BrandButtons = () => Template.bind({});
+BrandButtons.parameters = {
+  docs: {
+    figma: {
+      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patte[…]type=design&node-id=101%3A531&mode=design&t=fNHDlUnouxNjgChh-1",
+    },
+  },
+};
+```
+
+8. #### For description on stories, specify like so
+```jsx
+export const Primary = Template.bind({});
+Primary.args = {
+  children: "Primary Button",
+  variant: "primary",
+};
+
+Primary.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use primary buttons to highlight the most important actions like confirmation and  also guide users to the most essential actions like adding alert, and adding issues.",
+    },
+  },
+};
+```
+
+9. #### Create other stories as you see fit!
 
 ### Your story should look something like this:
 ```jsx
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
-import componentSummary from './ComponentSummary';
-import BackgroundIcon from "./BackgroundIcon";
+import Button from "./Button";
 import {withDesign} from "storybook-addon-designs";
-import {faSearch, faStar} from "@fortawesome/pro-solid-svg-icons";
+import Icon from "../Icon";
+import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/BackgroundIcon",
-  component: BackgroundIcon,
+  title: "Components/Button",
+  component: Button,
   decorators: [withDesign],
   parameters: {
     docs: {
       description: {
-        component: componentSummary,
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
       },
     },
   },
   argTypes: {
-    icon: {
-      description: "Icon of the component from fortawesome",
+    disabled: {
+      description: "Toggle button to be disabled or not",
+      type: "boolean",
     },
-    size: {
-      description: "Size of the component",
+    children: {
+      description: "Button text",
+      type: "string",
+    },
+    variant: {
+      description: "Different types of buttons",
       type: "string",
       control: {
         type: "select",
         options: [
-          "xs",
-          "sm",
-          "lg",
-          "xl",
+          "primary",
+          "secondary",
+          "tertiary",
+          "text",
+          "danger",
+          "secondaryDanger",
         ],
       },
-      defaultValue: "sm",
     },
-    cs: {
-      description:
-        "Custom styles of the component. Styles are similar to css styles but in camel case",
+    size: {
+      description: "Button sizes",
+      type: "string",
+      control: {
+        type: "select",
+        options: ["sm", "md", "lg"],
+      },
+    },
+    iconOnly: {
+      description: "Toggle whether button includes text or is icon only",
+      type: "boolean",
+    },
+    shape: {
+      description: "Button shape",
+      type: "string",
+      control: {
+        type: "select",
+        options: ["rect", "circle"],
+      },
+    },
+    title: {
+      description: "Button title",
+      type: "string",
+    },
+    isLoading: {
+      description: "Indicates whether button is loading or not",
+      type: "boolean",
+    },
+    noPadding: {
+      description: "Indicates whether there is no padding",
+      type: "boolean",
+    },
+    startAdornment: {
+      description: "Adornments or icons to put at the beginning of the button",
+    },
+    endAdornment: {
+      description: "Adornments or icons to put at the end of the button",
+    },
+    style: {
+      description: "CSS style of the button",
       type: Object,
     },
   },
-} as ComponentMeta<typeof BackgroundIcon>;
+} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof BackgroundIcon> = (args: any) => (
-  <BackgroundIcon {...args} />
-);
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const HeartSvg = Template.bind({});
-HeartSvg.args = {
-  icon: (
-    <svg fill="currentColor" viewBox="0 0 1024 1024">
-      <path d="M923 283.6c-13.4-31.1-32.6-58.9-56.9-82.8-24.3-23.8-52.5-42.4-84-55.5-32.5-13.5-66.9-20.3-102.4-20.3-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5-24.4 23.9-43.5 51.7-56.9 82.8-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3 0.1-35.3-7-69.6-20.9-101.9z" />
-    </svg>
-  ),
+export const Basic = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Basic.args = {
+  children: "Basic Example Button",
+  startAdornment: <Icon icon={faCoffee} />,
+  endAdornment: <Icon icon={faCoffee} />,
 };
-HeartSvg.parameters = {
+
+Basic.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/rsh0H6PDD6bMrYyX93eTmW/Bipartisan-Design-System?node-id=463%3A21035",
+    url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=101-115&mode=design&t=6N7BMl7js5fsUXtU-0",
   },
 };
 
-export const StarXs = Template.bind({});
-StarXs.args = {
-  icon: faStar,
-  size: "xs",
+export const BrandButtons = () => Template.bind({});
+BrandButtons.parameters = {
+  docs: {
+    figma: {
+      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patte[…]type=design&node-id=101%3A531&mode=design&t=fNHDlUnouxNjgChh-1",
+    },
+  },
 };
 
-export const StarSm = Template.bind({});
-StarSm.args = {
-  icon: faStar,
-  size: "sm",
+export const Primary = Template.bind({});
+Primary.args = {
+  children: "Primary Button",
+  variant: "primary",
 };
 
-export const StarLg = Template.bind({});
-StarLg.args = {
-  icon: faStar,
-  size: "lg",
+Primary.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use primary buttons to highlight the most important actions like confirmation and  also guide users to the most essential actions like adding alert, and adding issues.",
+    },
+  },
 };
 
-export const RedIcon = Template.bind({});
-RedIcon.args = {
-  icon: faSearch,
-  size: "3x",
-  cs: {
-    color: "secondary.red.700",
-    backgroundColor: "secondary.red.100",
+export const Secondary = Template.bind({});
+Secondary.args = {
+  children: "Secondary Button",
+  variant: "secondary",
+};
+
+Secondary.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use secondary buttons when none of the actions are more important than the others. Secondary buttons can also be used as for secondary actions that complements the primary actions from the primary buttons.",
+    },
+  },
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  children: "Tertiary Button",
+  variant: "tertiary",
+};
+
+Tertiary.parameters = {
+  docs: {
+    description: {
+      story:
+        "Utilize tertiary buttons when there subtle actions required so that users won’t get distracted from the main actions by the primary and secondary buttons.",
+    },
+  },
+};
+
+export const SupportButtons = () => Template.bind({});
+SupportButtons.parameters = {
+  docs: {
+    figma: {
+      url: "https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patte[…]type=design&node-id=101%3A792&mode=design&t=rhJrQVBgPQ3GXl7T-1",
+    },
+  },
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  children: "Success Button",
+  variant: "danger",
+};
+
+Success.parameters = {
+  docs: {
+    description: {
+      story:
+        "Utilize success buttons the highlight positive actions or outcomes like confirming a successful action or completing significant tasks.",
+    },
+  },
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  children: "Danger Button",
+  variant: "danger",
+};
+
+Danger.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use Danger buttons to convey dangerous and critical actions that requires immediate decision from the users.",
+    },
+  },
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  children: "Warning Button",
+  variant: "danger",
+};
+
+Warning.parameters = {
+  docs: {
+    description: {
+      story:
+        "Utilize warning buttons to highlight important alerts or actions that  have a potential negative impact and requires user attention.",
+    },
   },
 };
 ```
