@@ -51,7 +51,7 @@ const DataTableDataCell = ({
   return (
     <>
       <GcxDataTableDataCellRoot
-        title={`${textContent}`}
+        title={textContent}
         hasDropdown={!!menuOptions.length}
         ref={anchorEl}
         className={className}
