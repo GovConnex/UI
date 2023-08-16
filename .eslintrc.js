@@ -36,5 +36,9 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/ban-types": "off",
+        "jsx-a11y/img-has-alt": "error",
+        "jsx-a11y/alt-text": "error",
+        "jsx-a11y/aria-role": "error",
+        "jsx-a11y/aria-props": "error",
     }
 }
