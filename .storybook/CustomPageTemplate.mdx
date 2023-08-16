@@ -5,18 +5,18 @@ Before creating a story, take time to read the instructions from [Introduction t
 <React.Fragment>
   <div style={{ padding: '20px' }}>
     <div style={{ borderBottom: '1px solid #ccc', marginBottom: '20px' }}>
-      <div style={{marginBottom: '10px'}}><Title /></div>
-      <div style={{marginBottom: '10px', color: 'orange', fontSize: '13px'}}><i>NOTE: Create a summary of the component as a short description, some context as to why the component was created, as well as its figma link</i></div>
+      <div style={{marginBottom: '10px'}}><Title/></div>
       <Description />
     </div>
     <div>
-      <h2 style={{ borderBottom: '1px solid #ccc'}}>Primary Component</h2>
-      <Primary />
+      <h2>Basic Example</h2>
+      <Primary/>
       <div style={{ marginBottom: '20px' }}>
+        <h2>Props</h2>
         <ArgsTable story={PRIMARY_STORY} />
       </div>
-      <h2 style={{ borderBottom: '1px solid #ccc'}}></h2>
-      <Stories />
+      <div style={{ borderBottom: '1px solid #ccc', marginBottom: '40px'}}></div>
+      <Stories/>
     </div>
   </div>
 </React.Fragment>

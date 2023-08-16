@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from "../src/theming";
 import { themes } from "@storybook/theming";
 import { ThemeProvider } from "../src/components";
 import CustomPageTemplate from './CustomPageTemplate.mdx';
+import { Figma } from "storybook-addon-designs/blocks";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -24,4 +25,44 @@ const providerFn = ({ theme, children }) => {
   return <ThemeProvider rawTheme={theme}>{children}</ThemeProvider>;
 };
 
+const storyDecorator = (Story, context) => {
+  const { parameters } = context;
+  const containerStyles = {
+    marginBottom: '30px',
+  };
+
+  const figmaUrl = parameters.docs?.figma?.url ? 
+    `https://www.figma.com/embed?embed_host=share&url=${parameters.docs?.figma?.url }` : '';
+
+  if (!parameters.docs.disable) {
+    return (
+      <div>
+        {parameters.docs?.figma?.url && context.viewMode === 'docs' && (
+        <iframe
+          title="Figma Design"
+          width="800"
+          height="600"
+          src={figmaUrl}
+        ></iframe>
+      )}
+      <ThemeProvider rawTheme={parameters.theme || lightTheme}>
+        <div>
+          <Story {...context}/>
+        </div>
+      </ThemeProvider>
+      </div>
+    );
+  }
+
+  return <Story {...context} />;
+};
+
 addDecorator(withThemes(null, [lightTheme, darkTheme], { providerFn }));
+addDecorator(storyDecorator);
+
+
+
+
+
+
+

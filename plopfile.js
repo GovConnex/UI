@@ -19,15 +19,9 @@ module.exports = plop => {
             },
             {
                 type: "input",
-                name: "summary",
+                name: "description",
                 message: "Description of your component",
-                validate: requireField("summary"),
-            },
-            {
-                type: "input",
-                name: "purpose",
-                message: "Purpose of your component",
-                validate: requireField("purpose"),
+                validate: requireField("description"),
             },
             {
                 type: "input",

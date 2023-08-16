@@ -22,12 +22,13 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof {{name}}> = (args) => <{{name}} {...args} />;
 
-export const Example = Template.bind({});
+export const Basic = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
+Basic.args = {
+  children: "Testing this example"
 };
 
-Example.parameters = {
+Basic.parameters = {
 //  design: {
 //    type: "figma",
 //    url: ""
