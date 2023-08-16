@@ -7,7 +7,8 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:jsx-a11y/recommended"
+        "plugin:jsx-a11y/recommended",
+        "plugin:styled-components-a11y/recommended"
     ],
     "overrides": [
         {
@@ -30,15 +31,12 @@ module.exports = {
     "plugins": [
         "react",
         "@typescript-eslint",
-        "jsx-a11y"
+        "jsx-a11y",
+        "styled-components-a11y"
     ],
     "rules": {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/ban-types": "off",
-        "jsx-a11y/img-has-alt": "error",
-        "jsx-a11y/alt-text": "error",
-        "jsx-a11y/aria-role": "error",
-        "jsx-a11y/aria-props": "error",
     }
 }
