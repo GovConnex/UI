@@ -8,7 +8,20 @@ describe("DropdownController", () => {
     render(
       <DropdownController
         rootButton={() => <div>Test</div>}
-        overlay={(toggleVis) => <div onClick={() => toggleVis()}>MenuItem</div>}
+        overlay={(toggleVis) => (
+          <div
+            onClick={() => toggleVis()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                toggleVis();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            MenuItem
+          </div>
+        )}
       />
     );
   });

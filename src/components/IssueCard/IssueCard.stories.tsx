@@ -13,6 +13,7 @@ export default {
 const Template: ComponentStory<typeof IssueCard> = (args) => <IssueCard {...args} />;
 
 const LinkTemplate: ComponentStory<typeof IssueCard> = (args) => (
+  //eslint-disable-next-line jsx-a11y/anchor-is-valid
   <a href="">
     <IssueCard {...args} />
   </a>

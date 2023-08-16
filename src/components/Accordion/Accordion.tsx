@@ -53,6 +53,12 @@ const Accordion = (props: AccordionProps) => {
     e.stopPropagation();
   }
 
+  function handleChildKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Enter") {
+      handleChild(event as any); // Call the click handler when Enter is pressed
+    }
+  }
+
   return (
     <StyledAccordion>
       <Root onClick={handleClick} onMouseDown={handleMousedown}>
@@ -61,7 +67,12 @@ const Accordion = (props: AccordionProps) => {
         {endAdornment ? (
           endAdornment
         ) : (
-          <div onClick={handleChild}>
+          <div
+            onClick={handleChild}
+            onKeyDown={handleChildKeyDown}
+            role="button"
+            tabIndex={0}
+          >
             <Chevron open={open}>
               <SvgIcon icon="chevron-down" />
             </Chevron>

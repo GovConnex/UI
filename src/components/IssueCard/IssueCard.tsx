@@ -123,7 +123,16 @@ const IssueCard = ({
           )}
         </Actions>
         {isMenuShown && (
-          <div onClick={(e) => e.preventDefault()}>
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={(e) => e.preventDefault()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+              }
+            }}
+          >
             <Portal container={menuContainer} disablePortal={!menuContainer}>
               <Menu
                 data-cy="issue-card-menu"

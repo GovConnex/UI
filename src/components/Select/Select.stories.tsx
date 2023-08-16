@@ -30,7 +30,21 @@ Error.args = {
   title: "Select",
   chipValue: "All",
   error: "Error message",
-  dropdown: ({close}) => <div onClick={close}>Dropdown</div>,
+  dropdown: ({close}) => (
+    <div
+      onClick={close}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          close();
+        }
+      }}
+    >
+      Dropdown
+    </div>
+  ),
   // children: [
   //   <div>Option 1</div>,
   //   <div>Option 2</div>,

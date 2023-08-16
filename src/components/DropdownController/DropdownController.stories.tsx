@@ -19,7 +19,20 @@ export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   rootButton: () => <div>Test</div>,
-  overlay: (toggleVis) => <div onClick={() => toggleVis()}>MenuItem</div>,
+  overlay: (toggleVis) => (
+    <div
+      onClick={() => toggleVis()}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          toggleVis();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
+      MenuItem
+    </div>
+  ),
 };
 
 Example.parameters = {
