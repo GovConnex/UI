@@ -17,6 +17,9 @@ module.exports = {
     "@storybook/addon-storyshots",
     "@storybook/addon-storyshots-puppeteer"
   ],
+  storyshots: {
+    framework: 'storybook-puppeteer',
+  },
   framework: "@storybook/react",
   staticDirs: ["../static"],
   typescript: {
