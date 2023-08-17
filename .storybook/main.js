@@ -13,7 +13,9 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@react-theming/storybook-addon",
-    "storybook-addon-designs"
+    "storybook-addon-designs",
+    "@storybook/addon-storyshots",
+    "@storybook/addon-storyshots-puppeteer"
   ],
   framework: "@storybook/react",
   staticDirs: ["../static"],

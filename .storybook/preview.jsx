@@ -4,8 +4,7 @@ import { withThemes } from '@react-theming/storybook-addon';
 import { lightTheme, darkTheme } from "../src/theming";
 import { themes } from "@storybook/theming";
 import { ThemeProvider } from "../src/components";
-import CustomPageTemplate from './CustomPageTemplate.mdx';
-import { Figma } from "storybook-addon-designs/blocks";
+import CustomPage from './CustomPageTemplate';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -17,7 +16,7 @@ export const parameters = {
   },
   docs: {
     theme: themes.dark,
-    page: CustomPageTemplate,
+    page: CustomPage,
   },
 }
 
@@ -27,9 +26,6 @@ const providerFn = ({ theme, children }) => {
 
 const storyDecorator = (Story, context) => {
   const { parameters } = context;
-  const containerStyles = {
-    marginBottom: '30px',
-  };
 
   const figmaUrl = parameters.docs?.figma?.url ? 
     `https://www.figma.com/embed?embed_host=share&url=${parameters.docs?.figma?.url }` : '';
