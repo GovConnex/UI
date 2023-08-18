@@ -21,11 +21,14 @@ describe('Component Screenshots', () => {
     failureThresholdType: 'percent'
   };
 
+  const path = require('path');
+  const parentPath = path.resolve(__dirname, '..', '..', 'storybook-static');
+  const fileUrl = `file://${parentPath}`;
 
   const scenarios = [
-    ['Scenario 1', 'file:///Users/dawncarrasco/Documents/React_component_library/UI/storybook-static/index.html?path=/story/components-button--basic'],
-    ['Scenario 2', 'file:///Users/dawncarrasco/Documents/React_component_library/UI/storybook-static/index.html?path=/story/components-banner--info'],
-    ['Scenario 3', 'file:///Users/dawncarrasco/Documents/React_component_library/UI/storybook-static/index.html?path=/story/components-box--example'],
+    ['Scenario 1', `${fileUrl}/index.html?path=/story/components-button--basic`],
+    ['Scenario 2', `${fileUrl}/index.html?path=/story/components-banner--info`],
+    ['Scenario 3', `${fileUrl}/index.html?path=/story/components-box--example`],
     // add more scenarios here
   ];
   
