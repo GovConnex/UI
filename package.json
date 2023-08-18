@@ -6,7 +6,7 @@
     "build:tokens": "./tokens-build.sh",
     "prepublishOnly": "rm -rf dist && rollup -c",
     "test": "jest --testPathIgnorePatterns \"src/puppeteer-tests/.*\" --env=jsdom",
-    "test:storyshots": "jest src/puppeteer-tests/mytest.test.js --env=node --config=jest.config.js --runInBand --detectOpenHandles",
+    "test:storyshots": "yarn build && jest src/puppeteer-tests/storyshots-puppeteer.test.js --env=node --config=jest.config.js --runInBand --detectOpenHandles",
     "prestart": "yarn run build:tokens",
     "start": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
