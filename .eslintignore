@@ -23,6 +23,7 @@ local-key.pem
 
 # testing
 /coverage
+/src/puppeteer-tests
 
 # production
 /build
