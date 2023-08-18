@@ -26,9 +26,9 @@ describe('Component Screenshots', () => {
   const fileUrl = `file://${parentPath}`;
 
   const scenarios = [
-    ['Scenario 1', `${fileUrl}/index.html?path=/story/components-button--basic`],
-    ['Scenario 2', `${fileUrl}/index.html?path=/story/components-banner--info`],
-    ['Scenario 3', `${fileUrl}/index.html?path=/story/components-box--example`],
+    ['Button', `${fileUrl}/index.html?path=/story/components-button--basic`],
+    ['Banner', `${fileUrl}/index.html?path=/story/components-banner--info`],
+    ['Box', `${fileUrl}/index.html?path=/story/components-box--example`],
     // add more scenarios here
   ];
   
