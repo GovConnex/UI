@@ -61,14 +61,14 @@ position: relative;
     variant === "primary" &&
     `
     color: ${theme.core.content.contentInversePrimary};
-    background-color: ${theme.extended.state.primaryBase};
+    background-color: ${theme.extended.state.brandBase};
 
     &:hover {
-      background-color: ${theme.extended.state.primaryHover};
+      background-color: ${theme.extended.state.brandHover};
     }
 
     &:focus {
-      background-color: ${theme.extended.state.primaryHover};
+      background-color: ${theme.extended.state.brandHover};
     }
 
     &:disabled {
