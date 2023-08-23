@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../Typography";
 import StyledChip, {StyledAdornment, StyledChipIcon} from "./Chip.styles";
-import {faCircleXmark} from "@fortawesome/pro-solid-svg-icons";
+import {faXmark} from "@fortawesome/pro-solid-svg-icons";
 
 export type ChipRole = "default" | "info" | "success" | "warning" | "error" | "primary"; // Determines colour
 export type ChipPriority = "high" | "low";
@@ -37,7 +37,7 @@ const Chip = ({
       {endAdornment ? (
         <StyledAdornment position={"end"}>{endAdornment}</StyledAdornment>
       ) : null}
-      {onDelete ? <StyledChipIcon icon={faCircleXmark} onClick={onDelete} /> : null}
+      {onDelete ? <StyledChipIcon icon={faXmark} onClick={onDelete} /> : null}
     </StyledChip>
   );
 };

@@ -25,8 +25,8 @@ const propsToBg = (theme: DefaultTheme, role: ChipRole, priority: ChipPriority) 
       low: theme.extended.support.successLight,
     },
     primary: {
-      high: theme.core.background.bgPrimary,
-      low: theme.primary.brand[50],
+      high: theme.core.content.contentBrandPrimary,
+      low: theme.core.content.contentBrandTertiary,
     },
   })[role][priority];
 
@@ -67,7 +67,7 @@ const StyledChip = styled.div<{
   padding: 0 ${({theme}) => theme.spacing.xs};
   height: ${({theme, size}) => theme.spacing[size]};
   line-height: ${({theme, size}) => theme.spacing[size]};
-  border-radius: ${({theme}) => theme.borderRadius.sm};
+  border-radius: ${({theme}) => theme.borderRadius.minimal};
   color: ${({theme, role, priority}) => propsToColour(theme, role, priority)};
   display: inline-flex;
   justify-content: center;

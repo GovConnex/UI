@@ -36,6 +36,8 @@ declare module "styled-components" {
         bgInverseSecondary: string;
       };
       content: {
+        contentBrandTertiary: string;
+        contentBrandPrimary: string;
         contentPrimary: string;
         contentSecondary: string;
         contentTertiary: string;
