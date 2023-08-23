@@ -25,7 +25,7 @@ describe("StyledButton", () => {
     const button = getByRole("button");
     expect(button).toBeInTheDocument();
     expect(button).toHaveStyle(`
-      background-color: ${lightTheme.extended.state.primaryBase};
+      background-color: ${lightTheme.extended.state.brandBase};
     `);
   });
 

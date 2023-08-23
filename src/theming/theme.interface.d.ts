@@ -53,6 +53,8 @@ declare module "styled-components" {
     };
     extended: {
       state: {
+        brandBase: string;
+        brandHover: string;
         primaryBase: string;
         primaryHover: string;
         secondaryBase: string;
