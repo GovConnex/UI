@@ -2,6 +2,8 @@ import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Chip from "./Chip";
 import {withDesign} from "storybook-addon-designs";
+import Icon from "../Icon";
+import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -99,6 +101,13 @@ ErrorLowPriority.args = {
 export const LongText = Template.bind({});
 LongText.args = {
   children: "This is a looooooooooooooong text",
+};
+
+export const WithAdornment = Template.bind({});
+WithAdornment.args = {
+  children: "With Adornment",
+  startAdornment: <Icon icon={faCoffee} />,
+  endAdornment: <Icon icon={faCoffee} />,
 };
 
 export const Deletable = Template.bind({});

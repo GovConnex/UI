@@ -73,7 +73,15 @@ const StyledChip = styled.div<{
   justify-content: center;
   align-items: center;
   cursor: default;
-  white-space: no-wrap;
+  max-width: 300px;
+`;
+
+export const StyledChipTextWrapper = styled.span`
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
 `;
 
 export const StyledChipIcon = styled(Icon)`
@@ -83,7 +91,7 @@ export const StyledChipIcon = styled(Icon)`
   height: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
 `;
 
-export const StyledAdornment = styled.div<{position: string}>`
+export const StyledAdornment = styled.span<{position: string}>`
   ${(props) =>
     `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
   vertical-align: middle;
