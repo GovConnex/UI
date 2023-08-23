@@ -76,8 +76,8 @@ const StyledChip = styled.div<{
   max-width: 300px;
 `;
 
-export const StyledChipTextWrapper = styled.span`
-  width: 90%;
+export const StyledChipTextWrapper = styled.span<{hasDelete?: any}>`
+  width: ${(props) => (props.hasDelete ? "90%" : "100%")};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

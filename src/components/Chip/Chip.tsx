@@ -61,7 +61,7 @@ const Chip = ({
 
   return (
     <StyledChip role={role} size={size} priority={priority} {...props}>
-      <StyledChipTextWrapper>
+      <StyledChipTextWrapper hasDelete={onDelete}>
         {startAdornment ? (
           <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
         ) : null}
