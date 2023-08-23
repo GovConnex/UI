@@ -135,6 +135,10 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
    * Accepts a react node to render on the left side/start of the tab
    */
   startAdornment?: React.ReactElement;
+  /**
+   * Accepts a react node to render on the right side/end of the tab
+   */
+  endAdornment?: React.ReactElement;
 }
 
 /**
@@ -150,6 +154,7 @@ Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
     <StyledTab selected={false} ref={ref} {...props}>
       {props.startAdornment ? props.startAdornment : null}
       <StyledTypography>{props.label}</StyledTypography>
+      {props.endAdornment ? props.endAdornment : null}
     </StyledTab>
   );
 });

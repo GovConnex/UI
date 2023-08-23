@@ -3,6 +3,8 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Tabs from "./Tabs";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
+import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
+import Chip from "../Chip";
 // @ts-ignore
 import mdx from "./Tabs.mdx";
 
@@ -42,7 +44,7 @@ Example.args = {
       key="2"
       label="Tab with icon"
       value="tab2"
-      startAdornment={<Icon icon={["fas", "coffee"]} />}
+      startAdornment={<Icon icon={faCoffee} />}
     />,
     <Tabs.Tab key="3" disabled label="Disabled tab" value="tab3" />,
     <Tabs.Tab
@@ -50,6 +52,12 @@ Example.args = {
       key="4"
       label="Another tab"
       value="tab4"
+    />,
+    <Tabs.Tab
+      key="5"
+      label="With Chip"
+      value="tab5"
+      endAdornment={<Chip children="4" priority="low" />}
     />,
   ],
 };

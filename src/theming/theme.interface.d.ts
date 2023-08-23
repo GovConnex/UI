@@ -46,6 +46,7 @@ declare module "styled-components" {
         contentInverseTertiary: string;
       };
       border: {
+        borderMedium: string;
         borderLight: string;
         borderDark: string;
         borderFocus: string;
