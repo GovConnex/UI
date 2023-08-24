@@ -1,6 +1,7 @@
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Chip from "./Chip";
+import Avatar from "../Avatar";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
 import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
@@ -115,7 +116,7 @@ LongText.args = {
 export const WithAdornment = Template.bind({});
 WithAdornment.args = {
   children: "With Adornment",
-  startAdornment: <Icon icon={faCoffee} />,
+  startAdornment: <Avatar alt={"DC Test"} />,
   endAdornment: <Icon icon={faCoffee} />,
 };
 

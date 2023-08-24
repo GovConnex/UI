@@ -102,6 +102,14 @@ export const StyledAdornment = styled.span<{position: string}>`
   ${(props) =>
     `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
   vertical-align: middle;
+
+  > .avatar {
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+  }
 `;
 
 export default StyledChip;

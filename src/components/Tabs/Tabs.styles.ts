@@ -23,6 +23,13 @@ const SectionHighlight = styled.span<{
   width: number;
   offset: number;
 }>`
+  filter: ${({
+    theme: {
+      funcShadow: {buttons},
+    },
+  }) =>
+    `drop-shadow(${buttons["0"].x}px ${buttons["0"].y}px ${buttons["0"].blur}px ${buttons["0"].color}) drop-shadow(${buttons["1"].x}px ${buttons["1"].y}px ${buttons["1"].blur}px ${buttons["1"].color}) drop-shadow(${buttons["2"].x}px ${buttons["2"].y}px ${buttons["2"].blur}px ${buttons["2"].color})`};
+
   ${({theme, width, offset}) =>
     ` 
     height: calc(100% - 8px);
