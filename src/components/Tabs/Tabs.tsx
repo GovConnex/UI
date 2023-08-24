@@ -134,7 +134,11 @@ const Tabs = (props: TabsProps) => {
         return child;
       })}
       {props.isSection ? (
-        <SectionHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
+        <SectionHighlight
+          data-testid="section-highlight"
+          offset={bottomBarParts.offset}
+          width={bottomBarParts.width}
+        />
       ) : (
         <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
       )}

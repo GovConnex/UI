@@ -9,19 +9,18 @@ const StyledTab = styled.button<{
     ` 
     padding-left: ${theme.spacing.sm};
     padding-right: ${theme.spacing.sm};
-    height: ${isSection ? "32px" : "40px"};
+    height: ${isSection ? "24px" : "40px"};
     border: 0 solid transparent;
     position: relative;
     white-space: nowrap;
     color: ${
-      selected ? theme.core.content.contentPrimary : theme.core.content.contentTertiary
+      selected ? theme.core.content.contentPrimary : theme.core.content.contentSecondary
     };
     z-index: ${selected ? "1" : "0"};
     background-color:${isSection ? "transparent" : theme.core.background.bgPrimary};
     &:disabled {
-        background-color:${theme.core.background.bgSecondary};
         cursor: not-allowed;
-        color: ${theme.extended.state.disabled};
+        color: ${theme.core.content.contentTertiary};
       }
 
        cursor: pointer;
