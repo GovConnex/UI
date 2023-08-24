@@ -4,12 +4,21 @@ import Chip from "./Chip";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
 import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/Chip",
   component: Chip,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
+      },
+    },
+  },
 } as ComponentMeta<typeof Chip>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args

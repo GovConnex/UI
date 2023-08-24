@@ -41,6 +41,7 @@ export interface GlobalTheme {
   };
   spacing: Spacing;
   borderRadius: {
+    base: string;
     minimal: string;
     xs: string;
     sm: string;

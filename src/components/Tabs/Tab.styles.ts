@@ -3,19 +3,21 @@ import Typography from "../Typography";
 
 const StyledTab = styled.button<{
   selected: boolean;
+  isSection?: boolean;
 }>`
-  ${({theme, selected}) =>
+  ${({theme, selected, isSection}) =>
     ` 
     padding-left: ${theme.spacing.sm};
     padding-right: ${theme.spacing.sm};
-    height: 40px;
+    height: ${isSection ? "32px" : "40px"};
     border: 0 solid transparent;
     position: relative;
     white-space: nowrap;
     color: ${
       selected ? theme.core.content.contentPrimary : theme.core.content.contentTertiary
     };
-    background-color:${theme.core.background.bgPrimary};
+    z-index: ${selected ? "1" : "0"};
+    background-color:${isSection ? "transparent" : theme.core.background.bgPrimary};
     &:disabled {
         background-color:${theme.core.background.bgSecondary};
         cursor: not-allowed;
@@ -26,7 +28,8 @@ const StyledTab = styled.button<{
     gap:${theme.spacing.xs};
     display:flex;
     align-items:center;
-    justify-conent:center;`}
+    justify-conent:center;
+    `}
 `;
 
 const StyledTypography = styled(Typography)`
