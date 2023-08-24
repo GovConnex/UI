@@ -107,8 +107,8 @@ export const StyledAdornment = styled.span<{position: string}>`
     display: inline-block;
     vertical-align: text-bottom;
     text-align: center;
-    line-height: 20px;
-    height: 20px;
+    line-height: 18px;
+    height: 18px;
   }
 `;
 
