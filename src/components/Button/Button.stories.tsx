@@ -4,6 +4,7 @@ import Button from "./Button";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
 import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
+import {faFaceSmile} from "@fortawesome/pro-regular-svg-icons";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
 
@@ -169,13 +170,14 @@ SupportButtons.parameters = {
   },
 };
 
-export const Success = Template.bind({});
-Success.args = {
+export const SuccessPrimary = Template.bind({});
+SuccessPrimary.args = {
   children: "Success Button",
-  variant: "danger",
+  variant: "primary",
+  subtype: "success",
 };
 
-Success.parameters = {
+SuccessPrimary.parameters = {
   docs: {
     description: {
       story:
@@ -184,13 +186,28 @@ Success.parameters = {
   },
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-  children: "Danger Button",
-  variant: "danger",
+export const SuccessSecondary = Template.bind({});
+SuccessSecondary.args = {
+  children: "Success Button",
+  variant: "secondary",
+  subtype: "success",
 };
 
-Danger.parameters = {
+export const SuccessTertiary = Template.bind({});
+SuccessTertiary.args = {
+  children: "Success Button",
+  variant: "tertiary",
+  subtype: "success",
+};
+
+export const ErrorPrimary = Template.bind({});
+ErrorPrimary.args = {
+  children: "Error Button",
+  variant: "primary",
+  subtype: "error",
+};
+
+ErrorPrimary.parameters = {
   docs: {
     description: {
       story:
@@ -199,17 +216,86 @@ Danger.parameters = {
   },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  children: "Warning Button",
-  variant: "danger",
+export const ErrorSecondary = Template.bind({});
+ErrorSecondary.args = {
+  children: "Error Button",
+  variant: "secondary",
+  subtype: "error",
 };
 
-Warning.parameters = {
+export const ErrorTertiary = Template.bind({});
+ErrorTertiary.args = {
+  children: "Error Button",
+  variant: "tertiary",
+  subtype: "error",
+};
+
+export const InfoPrimary = Template.bind({});
+InfoPrimary.args = {
+  children: "Info Button",
+  variant: "primary",
+  subtype: "info",
+};
+
+export const InfoSecondary = Template.bind({});
+InfoSecondary.args = {
+  children: "Info Button",
+  variant: "secondary",
+  subtype: "info",
+};
+
+export const InfoTertiary = Template.bind({});
+InfoTertiary.args = {
+  children: "Info Button",
+  variant: "tertiary",
+  subtype: "info",
+};
+
+export const WarningPrimary = Template.bind({});
+WarningPrimary.args = {
+  children: "Warning Button",
+  variant: "primary",
+  subtype: "warning",
+};
+
+WarningPrimary.parameters = {
   docs: {
     description: {
       story:
         "Utilize warning buttons to highlight important alerts or actions that  have a potential negative impact and requires user attention.",
     },
   },
+};
+
+export const WarningSecondary = Template.bind({});
+WarningSecondary.args = {
+  children: "Warning Button",
+  variant: "secondary",
+  subtype: "warning",
+};
+
+export const WarningTertiary = Template.bind({});
+WarningTertiary.args = {
+  children: "Warning Button",
+  variant: "tertiary",
+  subtype: "warning",
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  isLoading: true,
+  variant: "danger",
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: "Disabled Button",
+  disabled: true,
+  startAdornment: <Icon icon={faCoffee} />,
+  endAdornment: <Icon icon={faCoffee} />,
+};
+
+export const SingularIcon = Template.bind({});
+SingularIcon.args = {
+  children: <Icon icon={faFaceSmile} />,
 };
