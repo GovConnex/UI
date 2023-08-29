@@ -1,0 +1,79 @@
+Group: Navigation
+
+Tabs enable transitions between different views within the same context.
+<br/><br/>
+
+## Best Practices
+
+### ✅ Do
+
+- Tabs should represent content that is similar and related.
+- Use the `selected` state to show if the tab is selected.
+- Only one tab should be active at a time.
+- Incorporate text, icons, and other non-interactive content within the tab.
+
+### 🚫 Don’t
+
+- Avoid using tabs for content that is unrelated and dissimilar.
+- Tabs should not serve as the primary navigation.
+- Avoid using tabs for navigating to other pages; opt for navigation or links instead.
+- Avoid including interactive elements like buttons and links within the tab component.
+<br/><br/>
+
+## Content Guidelines
+
+While writing button labels, consistently utilize title case, as opposed to sentence case. 
+
+### ✅ Do
+
+- Pinned Alerts
+- Recent Activities
+
+### 🚫 Don’t
+
+- Pinned alerts
+- Recent activities
+
+Keep tab labels concise with minimal wording.
+
+### ✅ Do
+
+- Notification
+- Security
+
+### 🚫 Don’t
+
+- Settings for your notification
+- Password and two-factor authentications
+<br/><br/>
+
+## Variants
+
+| Variant Name | Description |
+| --- | --- |
+| Page Tabs | Page tabs alter the entire page view, allowing transitions between different views. For instance, shifting from profile overview to biography. |
+| Section Tabs | Inline tabs changes the view of specific sections without impacting other page areas. For example, transitioning from recent activities to pinned alerts in the Dashboard. |
+| With Badge | Incorporating a badge provides supplementary information about the tabs, such as indicating the presence of overdue tasks. |
+| With Icon | Icon provides additional context about the tab's content. |
+<br/><br/>
+
+## FAQs
+
+### Whats the difference between Page Tabs and Section Tabs?
+
+Page tabs serve to modify the complete page view. For example, while viewing a representative's profile, switching from their biography to their electorate changes the entire page. Conversely, section tabs enable view changes solely within specific sections, without affecting other page areas. An instance would be toggling between recent activities and pinned alerts in the Dashboard.
+<br/><br/>
+
+##Figma Link
+https://www.figma.com/file/yJ8kQwyMxuTZudD90MxgOU/%F0%9F%93%90-Components-and-Patterns?type=design&node-id=160%3A5910&mode=design&t=PWjHcK9IhvdVaSfj-1
+<br/><br/>
+
+Additional props passed into `Tabs.Tab` will be forwarded along to the underlying
+button element.
+
+```jsx
+<Tabs value="defaultTab">
+  <Tabs.Tab onClick={() => {doSomthing()}} key="3" value="defaultTab" label="Tab1"/>
+</Tabs>
+```
+<br/><br/>

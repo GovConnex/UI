@@ -37,7 +37,7 @@ describe("Chip", () => {
     const chip = getByRole("default");
     expect(chip).toBeInTheDocument();
     expect(chip).toHaveStyle(`
-      background-color: ${lightTheme.core.background.bgSecondary};
+      background-color: ${lightTheme.core.content.contentInversePrimary};
     `);
   });
 

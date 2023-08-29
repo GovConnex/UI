@@ -6,7 +6,7 @@ const propsToBg = (theme: DefaultTheme, role: ChipRole, priority: ChipPriority) 
   ({
     default: {
       high: theme.core.background.bgSecondary,
-      low: theme.core.background.bgSecondary,
+      low: theme.core.content.contentInversePrimary,
     },
     info: {
       high: theme.extended.support.infoBase,
@@ -34,7 +34,7 @@ const propsToColour = (theme: DefaultTheme, role: ChipRole, priority: ChipPriori
   ({
     default: {
       high: theme.core.content.contentPrimary,
-      low: theme.core.content.contentPrimary,
+      low: theme.core.content.contentTertiary,
     },
     info: {
       high: theme.core.content.contentInversePrimary,
@@ -74,6 +74,13 @@ const StyledChip = styled.div<{
   align-items: center;
   cursor: default;
   max-width: 300px;
+
+  ${(props) =>
+    props.role === "default" &&
+    props.priority === "low" &&
+    `
+    border: 1px solid ${props.theme.core.border.borderMedium};
+  `}
 `;
 
 export const StyledChipTextWrapper = styled.span<{hasDelete?: any}>`
@@ -95,6 +102,14 @@ export const StyledAdornment = styled.span<{position: string}>`
   ${(props) =>
     `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
   vertical-align: middle;
+
+  > .avatar {
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    line-height: 18px;
+    height: 18px;
+  }
 `;
 
 export default StyledChip;

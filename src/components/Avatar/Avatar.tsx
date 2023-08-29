@@ -78,6 +78,7 @@ const Avatar = ({variant = "circle", size = "md", alt, src, ...rest}: AvatarProp
 
   return (
     <StyledAvatar
+      className="avatar"
       backgroundColor={backgroundColor}
       size={size}
       variant={variant}

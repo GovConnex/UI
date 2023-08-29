@@ -21,6 +21,12 @@ export interface BoxShadow {
   type: string;
 }
 
+export interface FuncShadow {
+  0: BoxShadow;
+  1: BoxShadow;
+  2: BoxShadow;
+}
+
 export interface Spacing {
   xxs: string;
   xs: string;
@@ -41,6 +47,7 @@ export interface GlobalTheme {
   };
   spacing: Spacing;
   borderRadius: {
+    base: string;
     minimal: string;
     xs: string;
     sm: string;
@@ -59,6 +66,9 @@ export interface GlobalTheme {
     md: BoxShadow;
     lg: BoxShadow;
     xl: BoxShadow;
+  };
+  funcShadow: {
+    buttons: FuncShadow;
   };
 }
 

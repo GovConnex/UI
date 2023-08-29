@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useState} from "react";
-import {BottomHighlight, StyledTabs} from "./Tabs.styles";
+import {BottomHighlight, SectionHighlight, StyledTabs} from "./Tabs.styles";
 import {StyledTab, StyledTypography} from "./Tab.styles";
 
 // Helpers
@@ -40,6 +40,10 @@ export interface TabsProps {
    * The content of `Tabs`.
    */
   children?: React.ReactNode;
+  /**
+   * Indicates whether tab is page or section
+   */
+  isSection?: boolean;
   /**
    * The value of the currently selected `Tab`.
    */
@@ -94,11 +98,21 @@ const Tabs = (props: TabsProps) => {
     const collection = TabsRef.current?.children;
     if (!collection) return;
     if (!props.value) return;
-    updateSelected(props.value, getIndexOfCollectionValue(props.value, collection));
+
+    const index = getIndexOfCollectionValue(props.value, collection);
+    let initialWidth = collection[index].getBoundingClientRect().width;
+
+    // Add 8px to the width on the first load
+    if (bottomBarParts.width === 0) {
+      initialWidth += 8;
+      setBottomBarParts({width: initialWidth, offset: bottomBarParts.offset});
+    } else {
+      updateSelected(props.value, index);
+    }
   }, []);
 
   return (
-    <StyledTabs ref={TabsRef}>
+    <StyledTabs ref={TabsRef} isSection={props.isSection}>
       {React.Children.map(props.children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
@@ -109,15 +123,25 @@ const Tabs = (props: TabsProps) => {
             },
             selected: selected.value === child.props?.value,
             key: `tab-${i}`,
+            isSection: props.isSection,
           } as {
             onClick: React.DOMAttributes<HTMLButtonElement>;
             selected: boolean;
             key: string;
+            isSection: boolean;
           });
         }
         return child;
       })}
-      <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
+      {props.isSection ? (
+        <SectionHighlight
+          data-testid="section-highlight"
+          offset={bottomBarParts.offset}
+          width={bottomBarParts.width}
+        />
+      ) : (
+        <BottomHighlight offset={bottomBarParts.offset} width={bottomBarParts.width} />
+      )}
     </StyledTabs>
   );
 };
@@ -132,9 +156,17 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
    */
   label: string;
   /**
+   * Indicates whether tab is page or section
+   */
+  isSection?: boolean;
+  /**
    * Accepts a react node to render on the left side/start of the tab
    */
   startAdornment?: React.ReactElement;
+  /**
+   * Accepts a react node to render on the right side/end of the tab
+   */
+  endAdornment?: React.ReactElement;
 }
 
 /**
@@ -142,7 +174,9 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
  * `Tabs.Tab` is a tab cell
  * @param {value} value of the current tab
  * @param {string} label rendered on tab
+ * @param {boolean} isSection is page or section
  * @param {React.ReactNode} startAdornment a react node to render on the left side/start of the tab
+ * @param {React.ReactNode} endAdornment a react node to render on the right side/end of the tab
  *
  */
 Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
@@ -150,6 +184,7 @@ Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
     <StyledTab selected={false} ref={ref} {...props}>
       {props.startAdornment ? props.startAdornment : null}
       <StyledTypography>{props.label}</StyledTypography>
+      {props.endAdornment ? props.endAdornment : null}
     </StyledTab>
   );
 });
