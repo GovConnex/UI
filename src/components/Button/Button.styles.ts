@@ -20,7 +20,7 @@ const StyledButton = styled.button<{
   isLoading: boolean;
   noPadding?: boolean;
 }>`
-position: relative;
+  position: relative;
   align-items: center;
   cursor: pointer;
   padding: ${(props) =>
@@ -56,12 +56,6 @@ position: relative;
     text-decoration: none;
   }
 
-  &:focus:not(:disabled) {
-    outline: ${({theme}) =>
-      `${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};`}
-    outline-offset: ${({theme}) => `${theme.borderWidth.lg};`}
-  }
-
   ${({theme, variant, subtype, isLoading}) =>
     variant === "primary" &&
     subtype === "default" &&
@@ -82,6 +76,11 @@ position: relative;
         isLoading ? theme.extended.state.brandBase : theme.extended.state.disabled
       };
       color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus}
+      outline-offset: ${theme.borderWidth.lg}
     }
   `}
 
@@ -147,14 +146,47 @@ position: relative;
       background-color: ${theme.extended.state.primaryHover};
     }
 
-    &:focus {
+    &:focus:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
+      border: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
     }
 
     &:disabled {
       border: 1px solid ${theme.core.border.borderMedium}
       background-color: ${theme.extended.state.disabled};
       color: ${theme.core.content.contentTertiary};
+    }
+  `}
+
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
+    subtype === "success" &&
+    `
+    color: ${theme.extended.support.successDark};
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid ${theme.extended.support.successDark};
+
+    &:hover {
+      background-color: ${theme.extended.support.successLight};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.successLight};
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${
+        isLoading
+          ? `${theme.borderWidth.md} solid ${theme.extended.support.successDark}`
+          : "none"
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
     }
   `}
 
@@ -188,6 +220,26 @@ position: relative;
     `
     background-color: transparent;
     color: ${theme.core.content.contentPrimary};
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+    }
+
+    &:disabled {
+      color: ${theme.core.content.contentTertiary};
+    }
+  `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "success" &&
+    `
+    background-color: transparent;
+    color: ${theme.extended.support.successDark};
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
+    }
 
     &:disabled {
       color: ${theme.core.content.contentTertiary};
@@ -223,10 +275,18 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
       border-top-color: ${theme.core.content.contentInversePrimary}
     `}
 
-    ${({theme, variant}) =>
+    ${({theme, subtype, variant}) =>
       (variant === "secondary" || variant === "tertiary") &&
+      subtype === "default" &&
       `
       border-top-color: ${theme.core.content.contentPrimary}
+    `}
+
+    ${({theme, subtype, variant}) =>
+      (variant === "secondary" || variant === "tertiary") &&
+      subtype === "success" &&
+      `
+      border-top-color: ${theme.extended.support.successDark}
     `}
 
     ${({theme, variant}) =>
