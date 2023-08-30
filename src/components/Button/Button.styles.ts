@@ -63,11 +63,7 @@ const StyledButton = styled.button<{
     color: ${theme.core.content.contentInversePrimary};
     background-color: ${theme.extended.state.brandBase};
 
-    &:hover {
-      background-color: ${theme.extended.state.brandHover};
-    }
-
-    &:focus {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.state.brandHover};
     }
 
@@ -79,6 +75,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.state.brandHover};
       outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
       outline-offset: ${theme.borderWidth.lg};
     }
@@ -91,11 +88,7 @@ const StyledButton = styled.button<{
     color: ${theme.core.content.contentInversePrimary};
     background-color: ${theme.extended.support.successBase};
 
-    &:hover {
-      background-color: ${theme.extended.support.successDark};
-    }
-
-    &:focus {
+    &:hover:not(:disabled)  {
       background-color: ${theme.extended.support.successDark};
     }
 
@@ -107,6 +100,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.successDark};
       outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successBase};
       outline-offset: ${theme.borderWidth.lg};
     }
@@ -119,11 +113,7 @@ const StyledButton = styled.button<{
     color: ${theme.core.content.contentInversePrimary};
     background-color: ${theme.extended.support.errorBase};
 
-    &:hover {
-      background-color: ${theme.extended.support.errorDark};
-    }
-
-    &:focus {
+    &:hover:not(:disabled)  {
       background-color: ${theme.extended.support.errorDark};
     }
 
@@ -135,6 +125,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.errorDark};
       outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorBase};
       outline-offset: ${theme.borderWidth.lg};
     }
@@ -147,11 +138,7 @@ const StyledButton = styled.button<{
     color: ${theme.core.content.contentInversePrimary};
     background-color: ${theme.extended.support.warningBase};
 
-    &:hover {
-      background-color: ${theme.extended.support.warningDark};
-    }
-
-    &:focus {
+    &:hover:not(:disabled)  {
       background-color: ${theme.extended.support.warningDark};
     }
 
@@ -163,6 +150,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.warningDark};
       outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningBase};
       outline-offset: ${theme.borderWidth.lg};
     }
@@ -175,11 +163,7 @@ const StyledButton = styled.button<{
     color: ${theme.core.content.contentInversePrimary};
     background-color: ${theme.extended.support.infoBase};
 
-    &:hover {
-      background-color: ${theme.extended.support.infoDark};
-    }
-
-    &:focus {
+    &:hover:not(:disabled)  {
       background-color: ${theme.extended.support.infoDark};
     }
 
@@ -191,6 +175,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.infoDark};
       outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoBase};
       outline-offset: ${theme.borderWidth.lg};
     }
@@ -226,7 +211,7 @@ const StyledButton = styled.button<{
     background-color: ${theme.extended.state.primaryBase};
     border: ${theme.borderWidth.md} solid ${theme.core.border.borderLight};
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
     }
 
@@ -250,11 +235,7 @@ const StyledButton = styled.button<{
     background-color: transparent;
     border: ${theme.borderWidth.md} solid ${theme.extended.support.successDark};
 
-    &:hover {
-      background-color: ${theme.extended.support.successLight};
-    }
-
-    &:focus {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.support.successLight};
     }
     
@@ -268,8 +249,8 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
 
-
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.successLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
     }
   `}
@@ -282,11 +263,7 @@ const StyledButton = styled.button<{
     background-color: transparent;
     border: ${theme.borderWidth.md} solid ${theme.extended.support.errorDark};
 
-    &:hover {
-      background-color: ${theme.extended.support.errorLight};
-    }
-
-    &:focus {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.support.errorLight};
     }
     
@@ -300,8 +277,8 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
 
-
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.errorLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
     }
   `}
@@ -314,11 +291,7 @@ const StyledButton = styled.button<{
     background-color: transparent;
     border: ${theme.borderWidth.md} solid ${theme.extended.support.warningDark};
 
-    &:hover {
-      background-color: ${theme.extended.support.warningLight};
-    }
-
-    &:focus {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.support.warningLight};
     }
     
@@ -332,8 +305,8 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
 
-
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.warningLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
     }
   `}
@@ -346,11 +319,7 @@ const StyledButton = styled.button<{
     background-color: transparent;
     border: ${theme.borderWidth.md} solid ${theme.extended.support.infoDark};
 
-    &:hover {
-      background-color: ${theme.extended.support.infoLight};
-    }
-
-    &:focus {
+    &:hover:not(:disabled) {
       background-color: ${theme.extended.support.infoLight};
     }
     
@@ -364,8 +333,8 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
 
-
     &:focus:not(:disabled) {
+      ackground-color: ${theme.extended.support.infoLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
     }
   `}
@@ -401,7 +370,12 @@ const StyledButton = styled.button<{
     background-color: transparent;
     color: ${theme.core.content.contentPrimary};
 
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.state.primaryHover};
+    }
+
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.state.primaryHover};
       border: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
     }
 
@@ -417,7 +391,12 @@ const StyledButton = styled.button<{
     background-color: transparent;
     color: ${theme.extended.support.successDark};
 
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.support.successLight};
+    }
+
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.successLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
     }
 
@@ -433,7 +412,12 @@ const StyledButton = styled.button<{
     background-color: transparent;
     color: ${theme.extended.support.errorDark};
 
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.support.errorLight};
+    }
+
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.errorLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
     }
 
@@ -449,7 +433,12 @@ const StyledButton = styled.button<{
     background-color: transparent;
     color: ${theme.extended.support.warningDark};
 
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.support.warningLight};
+    }
+
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.warningLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
     }
 
@@ -465,7 +454,12 @@ const StyledButton = styled.button<{
     background-color: transparent;
     color: ${theme.extended.support.infoDark};
 
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.support.infoLight};
+    }
+
     &:focus:not(:disabled) {
+      background-color: ${theme.extended.support.infoLight};
       border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
     }
 
