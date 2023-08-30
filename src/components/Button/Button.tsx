@@ -1,7 +1,12 @@
 import React, {ComponentType} from "react";
 import {Spacing, TypographySize} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
-import {StyledButton, StyledAdornment, StyledSpinner} from "./Button.styles";
+import {
+  StyledButton,
+  StyledAdornment,
+  StyledSpinner,
+  StyledSpinnerContainer,
+} from "./Button.styles";
 
 export type ButtonVariant =
   | "primary"
@@ -10,6 +15,7 @@ export type ButtonVariant =
   | "text"
   | "danger"
   | "secondaryDanger";
+export type ButtonSubtype = "default" | "info" | "success" | "error" | "warning";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 
@@ -17,6 +23,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   disabled?: boolean;
   children?: React.ReactNode;
   variant?: ButtonVariant;
+  subtype?: ButtonSubtype;
   size?: ButtonSize;
   iconOnly?: boolean;
   shape?: ButtonShape;
@@ -60,6 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant,
+      subtype,
       shape,
       size,
       title,
@@ -80,6 +88,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || isLoading}
         variant={variant || "primary"}
+        subtype={subtype || "default"}
         size={size || "md"}
         iconOnly={iconOnly}
         iconOnlySize={iconOnlySizeMap[size || "md"]}
@@ -93,7 +102,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           <StyledAdornment>{startAdornment}</StyledAdornment>
         ) : null}
 
-        {isLoading ? <StyledSpinner variant={variant ?? "primary"} /> : null}
+        {isLoading ? (
+          <StyledSpinnerContainer>
+            <StyledSpinner
+              variant={variant ?? "primary"}
+              subtype={subtype ?? "default"}
+            />{" "}
+          </StyledSpinnerContainer>
+        ) : null}
 
         {iconOnly && !isLoading ? (
           children

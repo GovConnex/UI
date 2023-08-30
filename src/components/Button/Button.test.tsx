@@ -14,7 +14,7 @@ describe("StyledButton", () => {
     );
   };
 
-  it("renders primary button", () => {
+  it("renders default primary button", () => {
     const {getByRole} = renderStyledButton({
       variant: "primary",
       shape: "rect",
@@ -29,7 +29,7 @@ describe("StyledButton", () => {
     `);
   });
 
-  it("renders secondary button", () => {
+  it("renders default secondary button", () => {
     const {getByRole} = renderStyledButton({
       variant: "secondary",
       shape: "rect",
@@ -40,7 +40,214 @@ describe("StyledButton", () => {
     const button = getByRole("button");
     expect(button).toBeInTheDocument();
     expect(button).toHaveStyle(`
-      background-color: ${lightTheme.extended.state.secondaryBase};
+      background-color: ${lightTheme.extended.state.primaryBase};
+    `);
+  });
+
+  it("renders default tertiary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "tertiary",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders success primary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "primary",
+      subtype: "success",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: ${lightTheme.extended.support.successBase};
+    `);
+  });
+
+  it("renders success secondary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "secondary",
+      subtype: "success",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders success tertiary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "tertiary",
+      subtype: "success",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders error primary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "primary",
+      subtype: "error",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: ${lightTheme.extended.support.errorBase};
+    `);
+  });
+
+  it("renders error secondary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "secondary",
+      subtype: "error",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders error tertiary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "tertiary",
+      subtype: "error",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders warning primary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "primary",
+      subtype: "warning",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: ${lightTheme.extended.support.warningBase};
+    `);
+  });
+
+  it("renders warning secondary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "secondary",
+      subtype: "warning",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders warning tertiary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "tertiary",
+      subtype: "warning",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders info primary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "primary",
+      subtype: "info",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: ${lightTheme.extended.support.infoBase};
+    `);
+  });
+
+  it("renders info secondary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "secondary",
+      subtype: "info",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
+    `);
+  });
+
+  it("renders info tertiary button", () => {
+    const {getByRole} = renderStyledButton({
+      variant: "tertiary",
+      subtype: "info",
+      shape: "rect",
+      size: "md",
+      isLoading: false,
+    });
+
+    const button = getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveStyle(`
+      background-color: transparent;
     `);
   });
 
