@@ -131,6 +131,20 @@ Primary.parameters = {
   },
 };
 
+export const PrimaryDisabled = Template.bind({});
+PrimaryDisabled.args = {
+  children: "Primary Button Disabled",
+  variant: "primary",
+  disabled: true,
+};
+
+export const PrimaryLoading = Template.bind({});
+PrimaryLoading.args = {
+  children: "Primary Button Loading",
+  variant: "primary",
+  isLoading: true,
+};
+
 export const Secondary = Template.bind({});
 Secondary.args = {
   children: "Secondary Button",
@@ -146,6 +160,20 @@ Secondary.parameters = {
   },
 };
 
+export const SecondaryDisabled = Template.bind({});
+SecondaryDisabled.args = {
+  children: "Secondary Button Disabled",
+  variant: "secondary",
+  disabled: true,
+};
+
+export const SecondaryLoading = Template.bind({});
+SecondaryLoading.args = {
+  children: "Secondary Button Loading",
+  variant: "secondary",
+  isLoading: true,
+};
+
 export const Tertiary = Template.bind({});
 Tertiary.args = {
   children: "Tertiary Button",
@@ -159,6 +187,20 @@ Tertiary.parameters = {
         "Utilize tertiary buttons when there subtle actions required so that users won’t get distracted from the main actions by the primary and secondary buttons.",
     },
   },
+};
+
+export const TertiaryDisabled = Template.bind({});
+TertiaryDisabled.args = {
+  children: "Tertiary Button Disabled",
+  variant: "tertiary",
+  disabled: true,
+};
+
+export const TertiaryLoading = Template.bind({});
+TertiaryLoading.args = {
+  children: "Tertiary Button Loading",
+  variant: "tertiary",
+  isLoading: true,
 };
 
 export const SupportButtons = () => Template.bind({});
@@ -186,6 +228,22 @@ SuccessPrimary.parameters = {
   },
 };
 
+export const SuccessPrimaryDisabled = Template.bind({});
+SuccessPrimaryDisabled.args = {
+  children: "Success Primary Button Disabled",
+  variant: "primary",
+  subtype: "success",
+  disabled: true,
+};
+
+export const SuccessPrimaryLoading = Template.bind({});
+SuccessPrimaryLoading.args = {
+  children: "Success Primary Button Loading",
+  variant: "primary",
+  subtype: "success",
+  isLoading: true,
+};
+
 export const SuccessSecondary = Template.bind({});
 SuccessSecondary.args = {
   children: "Success Button",
@@ -193,11 +251,43 @@ SuccessSecondary.args = {
   subtype: "success",
 };
 
+export const SuccessSecondaryDisabled = Template.bind({});
+SuccessSecondaryDisabled.args = {
+  children: "Success Secondary Button Disabled",
+  variant: "secondary",
+  subtype: "success",
+  disabled: true,
+};
+
+export const SuccessSecondaryLoading = Template.bind({});
+SuccessSecondaryLoading.args = {
+  children: "Success Secondary Button Loading",
+  variant: "secondary",
+  subtype: "success",
+  isLoading: true,
+};
+
 export const SuccessTertiary = Template.bind({});
 SuccessTertiary.args = {
   children: "Success Button",
   variant: "tertiary",
   subtype: "success",
+};
+
+export const SuccessTertiaryDisabled = Template.bind({});
+SuccessTertiaryDisabled.args = {
+  children: "Success Tertiary Button Disabled",
+  variant: "tertiary",
+  subtype: "success",
+  disabled: true,
+};
+
+export const SuccessTertiaryLoading = Template.bind({});
+SuccessTertiaryLoading.args = {
+  children: "Success Tertiary Button Loading",
+  variant: "tertiary",
+  subtype: "success",
+  isLoading: true,
 };
 
 export const ErrorPrimary = Template.bind({});
@@ -216,11 +306,43 @@ ErrorPrimary.parameters = {
   },
 };
 
+export const ErrorPrimaryDisabled = Template.bind({});
+ErrorPrimaryDisabled.args = {
+  children: "Error Primary Button Disabled",
+  variant: "primary",
+  subtype: "error",
+  disabled: true,
+};
+
+export const ErrorPrimaryLoading = Template.bind({});
+ErrorPrimaryLoading.args = {
+  children: "Error Primary Button Loading",
+  variant: "primary",
+  subtype: "error",
+  isLoading: true,
+};
+
 export const ErrorSecondary = Template.bind({});
 ErrorSecondary.args = {
   children: "Error Button",
   variant: "secondary",
   subtype: "error",
+};
+
+export const ErrorSecondaryDisabled = Template.bind({});
+ErrorSecondaryDisabled.args = {
+  children: "Error Secondary Button Disabled",
+  variant: "secondary",
+  subtype: "error",
+  disabled: true,
+};
+
+export const ErrorSecondaryLoading = Template.bind({});
+ErrorSecondaryLoading.args = {
+  children: "Error Secondary Button Loading",
+  variant: "secondary",
+  subtype: "error",
+  isLoading: true,
 };
 
 export const ErrorTertiary = Template.bind({});
@@ -230,11 +352,43 @@ ErrorTertiary.args = {
   subtype: "error",
 };
 
+export const ErrorTertiaryDisabled = Template.bind({});
+ErrorTertiaryDisabled.args = {
+  children: "Error Tertiary Button Disabled",
+  variant: "tertiary",
+  subtype: "error",
+  disabled: true,
+};
+
+export const ErrorTertiaryLoading = Template.bind({});
+ErrorTertiaryLoading.args = {
+  children: "Error Tertiary Button Loading",
+  variant: "tertiary",
+  subtype: "error",
+  isLoading: true,
+};
+
 export const InfoPrimary = Template.bind({});
 InfoPrimary.args = {
   children: "Info Button",
   variant: "primary",
   subtype: "info",
+};
+
+export const InfoPrimaryDisabled = Template.bind({});
+InfoPrimaryDisabled.args = {
+  children: "Info Primary Button Disabled",
+  variant: "primary",
+  subtype: "info",
+  disabled: true,
+};
+
+export const InfoPrimaryLoading = Template.bind({});
+InfoPrimaryLoading.args = {
+  children: "Info Primary Button Loading",
+  variant: "primary",
+  subtype: "info",
+  isLoading: true,
 };
 
 export const InfoSecondary = Template.bind({});
@@ -244,11 +398,43 @@ InfoSecondary.args = {
   subtype: "info",
 };
 
+export const InfoSecondaryDisabled = Template.bind({});
+InfoSecondaryDisabled.args = {
+  children: "Info Secondary Button Disabled",
+  variant: "secondary",
+  subtype: "info",
+  disabled: true,
+};
+
+export const InfoSecondaryLoading = Template.bind({});
+InfoSecondaryLoading.args = {
+  children: "Info Secondary Button Loading",
+  variant: "secondary",
+  subtype: "info",
+  isLoading: true,
+};
+
 export const InfoTertiary = Template.bind({});
 InfoTertiary.args = {
   children: "Info Button",
   variant: "tertiary",
   subtype: "info",
+};
+
+export const InfoTertiaryDisabled = Template.bind({});
+InfoTertiaryDisabled.args = {
+  children: "Info Tertiary Button Disabled",
+  variant: "tertiary",
+  subtype: "info",
+  disabled: true,
+};
+
+export const InfoTertiaryLoading = Template.bind({});
+InfoTertiaryLoading.args = {
+  children: "Info Tertiary Button Loading",
+  variant: "tertiary",
+  subtype: "info",
+  isLoading: true,
 };
 
 export const WarningPrimary = Template.bind({});
@@ -267,11 +453,43 @@ WarningPrimary.parameters = {
   },
 };
 
+export const WarningPrimaryDisabled = Template.bind({});
+WarningPrimaryDisabled.args = {
+  children: "Warning Primary Button Disabled",
+  variant: "primary",
+  subtype: "warning",
+  disabled: true,
+};
+
+export const WarningPrimaryLoading = Template.bind({});
+WarningPrimaryLoading.args = {
+  children: "Warning Primary Button Loading",
+  variant: "primary",
+  subtype: "warning",
+  isLoading: true,
+};
+
 export const WarningSecondary = Template.bind({});
 WarningSecondary.args = {
   children: "Warning Button",
   variant: "secondary",
   subtype: "warning",
+};
+
+export const WarningSecondaryDisabled = Template.bind({});
+WarningSecondaryDisabled.args = {
+  children: "Warning Secondary Button Disabled",
+  variant: "secondary",
+  subtype: "warning",
+  disabled: true,
+};
+
+export const WarningSecondaryLoading = Template.bind({});
+WarningSecondaryLoading.args = {
+  children: "Warning Secondary Button Loading",
+  variant: "secondary",
+  subtype: "warning",
+  isLoading: true,
 };
 
 export const WarningTertiary = Template.bind({});
@@ -281,18 +499,20 @@ WarningTertiary.args = {
   subtype: "warning",
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
-  variant: "danger",
+export const WarningTertiaryDisabled = Template.bind({});
+WarningTertiaryDisabled.args = {
+  children: "Warning Tertiary Button Disabled",
+  variant: "tertiary",
+  subtype: "warning",
+  disabled: true,
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  children: "Disabled Button",
-  disabled: true,
-  startAdornment: <Icon icon={faCoffee} />,
-  endAdornment: <Icon icon={faCoffee} />,
+export const WarningTertiaryLoading = Template.bind({});
+WarningTertiaryLoading.args = {
+  children: "Warning Tertiary Button Loading",
+  variant: "tertiary",
+  subtype: "warning",
+  isLoading: true,
 };
 
 export const SingularIcon = Template.bind({});

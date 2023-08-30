@@ -79,8 +79,8 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
-      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus}
-      outline-offset: ${theme.borderWidth.lg}
+      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline-offset: ${theme.borderWidth.lg};
     }
   `}
 
@@ -108,6 +108,90 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successBase};
+      outline-offset: ${theme.borderWidth.lg};
+    }
+  `}
+
+  ${({theme, variant, subtype, isLoading}) =>
+    variant === "primary" &&
+    subtype === "error" &&
+    `
+    color: ${theme.core.content.contentInversePrimary};
+    background-color: ${theme.extended.support.errorBase};
+
+    &:hover {
+      background-color: ${theme.extended.support.errorDark};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.errorDark};
+    }
+
+    &:disabled {
+      background-color: ${
+        isLoading ? theme.extended.support.errorBase : theme.extended.state.disabled
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorBase};
+      outline-offset: ${theme.borderWidth.lg};
+    }
+  `}
+
+  ${({theme, variant, subtype, isLoading}) =>
+    variant === "primary" &&
+    subtype === "warning" &&
+    `
+    color: ${theme.core.content.contentInversePrimary};
+    background-color: ${theme.extended.support.warningBase};
+
+    &:hover {
+      background-color: ${theme.extended.support.warningDark};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.warningDark};
+    }
+
+    &:disabled {
+      background-color: ${
+        isLoading ? theme.extended.support.warningBase : theme.extended.state.disabled
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningBase};
+      outline-offset: ${theme.borderWidth.lg};
+    }
+  `}
+
+  ${({theme, variant, subtype, isLoading}) =>
+    variant === "primary" &&
+    subtype === "info" &&
+    `
+    color: ${theme.core.content.contentInversePrimary};
+    background-color: ${theme.extended.support.infoBase};
+
+    &:hover {
+      background-color: ${theme.extended.support.infoDark};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.infoDark};
+    }
+
+    &:disabled {
+      background-color: ${
+        isLoading ? theme.extended.support.infoBase : theme.extended.state.disabled
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoBase};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -190,6 +274,102 @@ const StyledButton = styled.button<{
     }
   `}
 
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
+    subtype === "error" &&
+    `
+    color: ${theme.extended.support.errorDark};
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid ${theme.extended.support.errorDark};
+
+    &:hover {
+      background-color: ${theme.extended.support.errorLight};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.errorLight};
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${
+        isLoading
+          ? `${theme.borderWidth.md} solid ${theme.extended.support.errorDark}`
+          : "none"
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+    }
+  `}
+
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
+    subtype === "warning" &&
+    `
+    color: ${theme.extended.support.warningDark};
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid ${theme.extended.support.warningDark};
+
+    &:hover {
+      background-color: ${theme.extended.support.warningLight};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.warningLight};
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${
+        isLoading
+          ? `${theme.borderWidth.md} solid ${theme.extended.support.warningDark}`
+          : "none"
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+    }
+  `}
+
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
+    subtype === "info" &&
+    `
+    color: ${theme.extended.support.infoDark};
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid ${theme.extended.support.infoDark};
+
+    &:hover {
+      background-color: ${theme.extended.support.infoLight};
+    }
+
+    &:focus {
+      background-color: ${theme.extended.support.infoLight};
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${
+        isLoading
+          ? `${theme.borderWidth.md} solid ${theme.extended.support.infoDark}`
+          : "none"
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+    }
+  `}
+
   ${({theme, variant}) =>
     variant === "secondaryDanger" &&
     `
@@ -245,6 +425,54 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
   `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "error" &&
+    `
+    background-color: transparent;
+    color: ${theme.extended.support.errorDark};
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+    }
+
+    &:disabled {
+      color: ${theme.core.content.contentTertiary};
+    }
+  `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "warning" &&
+    `
+    background-color: transparent;
+    color: ${theme.extended.support.warningDark};
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+    }
+
+    &:disabled {
+      color: ${theme.core.content.contentTertiary};
+    }
+  `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "info" &&
+    `
+    background-color: transparent;
+    color: ${theme.extended.support.infoDark};
+
+    &:focus:not(:disabled) {
+      border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+    }
+
+    &:disabled {
+      color: ${theme.core.content.contentTertiary};
+    }
+  `}
 `;
 
 const StyledTypography = styled(Typography)`
@@ -287,6 +515,27 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
       subtype === "success" &&
       `
       border-top-color: ${theme.extended.support.successDark}
+    `}
+
+    ${({theme, subtype, variant}) =>
+      (variant === "secondary" || variant === "tertiary") &&
+      subtype === "error" &&
+      `
+      border-top-color: ${theme.extended.support.errorDark}
+    `}
+
+    ${({theme, subtype, variant}) =>
+      (variant === "secondary" || variant === "tertiary") &&
+      subtype === "warning" &&
+      `
+      border-top-color: ${theme.extended.support.warningDark}
+    `}
+
+    ${({theme, subtype, variant}) =>
+      (variant === "secondary" || variant === "tertiary") &&
+      subtype === "info" &&
+      `
+      border-top-color: ${theme.extended.support.infoDark}
     `}
 
     ${({theme, variant}) =>
