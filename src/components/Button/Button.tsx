@@ -98,7 +98,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         style={style}
         {...rest}
       >
-        {startAdornment && !isLoading ? (
+        {startAdornment && !isLoading && !iconOnly ? (
           <StyledAdornment>{startAdornment}</StyledAdornment>
         ) : null}
 
@@ -112,14 +112,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : null}
 
         {iconOnly && !isLoading ? (
-          children
+          <StyledAdornment>{startAdornment || endAdornment || children}</StyledAdornment>
         ) : !isLoading ? (
-          <Typography as="span" variant="label" size={typographyMap[size || "md"]}>
+          <Typography as="span" variant="label" size="md">
             {children || title}
           </Typography>
         ) : null}
 
-        {endAdornment && !isLoading ? (
+        {endAdornment && !isLoading && !iconOnly ? (
           <StyledAdornment>{endAdornment}</StyledAdornment>
         ) : null}
       </StyledButton>
