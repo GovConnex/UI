@@ -26,9 +26,9 @@ const StyledButton = styled.button<{
   padding: ${(props) =>
     props.isLoading
       ? `${props.noPadding ? "0" : props.theme.spacing.xs}`
-      : `${props.noPadding ? "0" : props.size === "lg" ? "5px" : props.theme.spacing.xxs} ${
-          props.noPadding ? "0" : props.theme.spacing.xs
-        }`};
+      : `${
+          props.noPadding ? "0" : props.size === "lg" ? "5px" : props.theme.spacing.xxs
+        } ${props.noPadding ? "0" : props.theme.spacing.xs}`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly ? props.theme.borderRadius.base : "100%"};
   border: 0 solid transparent;

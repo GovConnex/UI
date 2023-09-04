@@ -110,7 +110,7 @@ ErrorLowPriority.args = {
 
 export const LongText = Template.bind({});
 LongText.args = {
-  children: "This is a looooooooooooooong text",
+  children: "This is a looooooooooooooooooooooooooooooong text",
 };
 
 export const WithAdornment = Template.bind({});

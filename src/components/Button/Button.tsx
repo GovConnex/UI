@@ -1,5 +1,5 @@
 import React, {ComponentType} from "react";
-import {Spacing, TypographySize} from "../../theming/global-theme.interface";
+import {Spacing} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
 import {
   StyledButton,
@@ -35,12 +35,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   noPadding?: boolean;
   style?: React.CSSProperties;
 }
-
-const typographyMap: Record<ButtonSize, keyof TypographySize> = {
-  lg: "md",
-  md: "sm",
-  sm: "sm",
-};
 
 const iconOnlySizeMap: Record<ButtonSize, keyof Spacing> = {
   lg: "xl",

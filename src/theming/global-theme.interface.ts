@@ -28,6 +28,7 @@ export interface FuncShadow {
 }
 
 export interface Spacing {
+  "2xs": string;
   xxs: string;
   xs: string;
   sm: string;

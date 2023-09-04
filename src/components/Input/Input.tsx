@@ -126,7 +126,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       {error || hint ? (
         <Typography
           variant="body"
-          color={error ? "secondary.red.500" : "primary.neutral.400"}
+          color={error ? "secondary.red.500" : "core.content.contentTertiary"}
           size="sm"
           noMargin
         >
