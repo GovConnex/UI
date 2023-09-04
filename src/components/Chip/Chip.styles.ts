@@ -105,6 +105,7 @@ export const StyledAdornment = styled.span<{position: string}>`
     `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
   line-height: 16px;
   height: 16px;
+  width: 16px;
 
   > .avatar {
     display: inline-block;
@@ -112,6 +113,7 @@ export const StyledAdornment = styled.span<{position: string}>`
     text-align: center;
     line-height: 16px;
     height: 16px;
+    width: 16px;
   }
 `;
 

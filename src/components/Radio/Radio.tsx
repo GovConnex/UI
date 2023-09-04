@@ -58,7 +58,12 @@ const Radio = (props: RadioProps) => {
               {label}
             </Typography>
             {description ? (
-              <Typography noMargin variant="body" size="sm" color="primary.neutral.400">
+              <Typography
+                noMargin
+                variant="body"
+                size="sm"
+                color="core.content.contentTertiary"
+              >
                 {description}
               </Typography>
             ) : null}
