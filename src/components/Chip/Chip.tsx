@@ -68,7 +68,7 @@ const Chip = ({
         <Typography
           variant="label"
           as="span"
-          size={size === "lg" ? "sm" : "xs"}
+          size="sm"
           noMargin
           title={textContent}
         >

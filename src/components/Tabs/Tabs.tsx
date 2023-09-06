@@ -27,7 +27,8 @@ function getIndexOfCollectionValue(
 function getOffsetWidth(selectedIndex: number, collection: HTMLCollection) {
   let offset = 0;
   for (let i = 0; i <= selectedIndex - 1; i++) {
-    const w = collection[i].getBoundingClientRect().width;
+    const w = collection[i]?.getBoundingClientRect()?.width || 0;
+
     offset += w;
   }
   return offset;
@@ -86,7 +87,7 @@ const Tabs = (props: TabsProps) => {
     const collection = TabsRef.current?.children;
     if (!collection) return;
 
-    const bottomBarWidth = collection[index].getBoundingClientRect().width;
+    const bottomBarWidth = collection[index]?.getBoundingClientRect()?.width || 0;
     const bottomBarOffset = getOffsetWidth(index, collection);
 
     setSelected({value: value});
@@ -100,7 +101,7 @@ const Tabs = (props: TabsProps) => {
     if (!props.value) return;
 
     const index = getIndexOfCollectionValue(props.value, collection);
-    let initialWidth = collection[index].getBoundingClientRect().width;
+    let initialWidth = collection[index]?.getBoundingClientRect()?.width || 0;
 
     // Add 8px to the width on the first load
     if (bottomBarParts.width === 0) {
@@ -115,21 +116,18 @@ const Tabs = (props: TabsProps) => {
     <StyledTabs ref={TabsRef} isSection={props.isSection}>
       {React.Children.map(props.children, (child, i) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, {
-            onClick: () => {
-              updateSelected(child.props.value, i);
-              props.onChange && props.onChange(child.props.value);
-              child.props.onClick && child.props.onClick();
-            },
-            selected: selected.value === child.props?.value,
-            key: `tab-${i}`,
-            isSection: props.isSection,
-          } as {
-            onClick: React.DOMAttributes<HTMLButtonElement>;
-            selected: boolean;
-            key: string;
-            isSection: boolean;
-          });
+          return (() => {
+            return React.cloneElement(child, {
+              onClick: () => {
+                updateSelected(child.props.value, i);
+                props.onChange && props.onChange(child.props.value);
+                child.props.onClick && child.props.onClick();
+              },
+              selected: selected.value === child.props?.value,
+              key: `tab-${i}`,
+              isSection: props.isSection,
+            } as React.HTMLProps<HTMLButtonElement>); // Explicitly define the type here
+          })();
         }
         return child;
       })}
