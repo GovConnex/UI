@@ -37,10 +37,12 @@ const StyledButton = styled.button<{
   text-decoration: none !important;
   height: auto;
 
-  ${({iconOnly, noPadding, theme}) =>
+  ${({iconOnly, theme}) =>
     iconOnly
       ? `
-      padding: ${noPadding ? "0" : theme.spacing.xs};
+      height: ${theme.spacing.lg};
+      width: ${theme.spacing.lg};
+      padding: 0px;
       align-items: center;
       justify-content: center;
       `
