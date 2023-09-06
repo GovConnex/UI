@@ -65,7 +65,13 @@ const Chip = ({
         {startAdornment ? (
           <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>
         ) : null}
-        <Typography variant="label" as="span" size={size} noMargin title={textContent}>
+        <Typography
+          variant="label"
+          as="span"
+          size={size === "lg" ? "sm" : "xs"}
+          noMargin
+          title={textContent}
+        >
           {children}
         </Typography>
         {endAdornment ? (

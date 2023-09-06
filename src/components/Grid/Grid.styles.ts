@@ -16,7 +16,7 @@ export const StyledGrid = styled.div`
   @media (min-width: 1360px) {
     grid-template-columns: repeat(12, 1fr);
     gap: ${(props) => props.theme.spacing.lg};
-    padding: ${(props) => props.theme.spacing.xxl};
+    padding: ${(props) => props.theme.spacing.lg} ${(props) => props.theme.spacing.lg};
   }
 `;
 

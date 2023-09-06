@@ -26,25 +26,23 @@ const StyledButton = styled.button<{
   padding: ${(props) =>
     props.isLoading
       ? `${props.noPadding ? "0" : props.theme.spacing.xs}`
-      : `${props.noPadding ? "0" : props.theme.spacing.xxs} ${
-          props.noPadding ? "0" : props.theme.spacing.xs
-        }`};
+      : `${
+          props.noPadding ? "0" : props.size === "lg" ? "5px" : props.theme.spacing.xxs
+        } ${props.noPadding ? "0" : props.theme.spacing.xs}`};
   border-radius: ${(props) =>
-    props.shape === "rect" || !props.iconOnly ? props.theme.borderRadius.xs : "100%"};
+    props.shape === "rect" || !props.iconOnly ? props.theme.borderRadius.base : "100%"};
   border: 0 solid transparent;
   display: flex;
   gap: 12px;
   text-decoration: none !important;
   height: auto;
 
-  ${({iconOnly, theme, iconOnlySize}) =>
+  ${({iconOnly, noPadding, theme}) =>
     iconOnly
       ? `
-      width: ${theme.spacing[iconOnlySize]};
-      height: ${theme.spacing[iconOnlySize]};
+      padding: ${noPadding ? "0" : theme.spacing.xs};
       align-items: center;
       justify-content: center;
-      padding: 0;
       `
       : ""}
 
@@ -55,6 +53,12 @@ const StyledButton = styled.button<{
   &:focus {
     text-decoration: none;
   }
+
+  ${({theme, variant}) =>
+    variant === "primary" &&
+    `
+    filter: drop-shadow(${theme.funcShadow.buttons["0"].x}px ${theme.funcShadow.buttons["0"].y}px ${theme.funcShadow.buttons["0"].blur}px ${theme.funcShadow.buttons["0"].color}) drop-shadow(${theme.funcShadow.buttons["1"].x}px ${theme.funcShadow.buttons["1"].y}px ${theme.funcShadow.buttons["1"].blur}px ${theme.funcShadow.buttons["1"].color}) drop-shadow(${theme.funcShadow.buttons["2"].x}px ${theme.funcShadow.buttons["2"].y}px ${theme.funcShadow.buttons["2"].blur}px ${theme.funcShadow.buttons["2"].color}); 
+  `}
 
   ${({theme, variant, subtype, isLoading}) =>
     variant === "primary" &&
@@ -217,7 +221,8 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
-      border: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline-offset: ${theme.borderWidth.lg};
     }
 
     &:disabled {

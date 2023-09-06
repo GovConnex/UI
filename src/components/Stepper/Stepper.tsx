@@ -67,9 +67,11 @@ const Stepper = ({activeStep = 0, steps = []}: StepperProps) => {
             <InfoWrapper>
               <Typography
                 color={
-                  isPassed(activeStep + 1, index)
-                    ? "core.border.borderFocus"
-                    : "primary.neutral.500"
+                  isPassed(activeStep, index)
+                    ? "core.content.contentPrimary"
+                    : activeStep === index
+                    ? "core.content.contentBrandPrimary"
+                    : "core.content.contentTertiary"
                 }
                 variant="label"
                 noMargin
@@ -79,8 +81,8 @@ const Stepper = ({activeStep = 0, steps = []}: StepperProps) => {
               <Typography
                 color={
                   isPassed(activeStep + 1, index)
-                    ? "primary.neutral.900"
-                    : "primary.neutral.600"
+                    ? "core.content.contentSecondary"
+                    : "core.content.contentTertiary"
                 }
                 size="sm"
                 noMargin

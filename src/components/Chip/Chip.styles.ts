@@ -96,19 +96,24 @@ export const StyledChipIcon = styled(Icon)`
   border-radius: 50%;
   width: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
   height: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
+  width: 16px;
+  height: 16px;
 `;
 
 export const StyledAdornment = styled.span<{position: string}>`
   ${(props) =>
     `margin-${props.position === "end" ? "left" : "right"}: ${props.theme.spacing.xs}`};
-  vertical-align: middle;
+  line-height: 16px;
+  height: 16px;
+  width: 16px;
 
   > .avatar {
     display: inline-block;
     vertical-align: text-bottom;
     text-align: center;
-    line-height: 18px;
-    height: 18px;
+    line-height: 16px;
+    height: 16px;
+    width: 16px;
   }
 `;
 

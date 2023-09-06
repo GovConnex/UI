@@ -17,7 +17,7 @@ export const StyledPageHeader = styled.div`
   }
 
   @media (min-width: 1360px) {
-    padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.xxl};
+    padding: ${(props) => props.theme.spacing.md} ${(props) => props.theme.spacing.lg};
   }
 `;
 
