@@ -60,6 +60,37 @@ const StyledButton = styled.button<{
     filter: drop-shadow(${theme.funcShadow.buttons["0"].x}px ${theme.funcShadow.buttons["0"].y}px ${theme.funcShadow.buttons["0"].blur}px ${theme.funcShadow.buttons["0"].color}) drop-shadow(${theme.funcShadow.buttons["1"].x}px ${theme.funcShadow.buttons["1"].y}px ${theme.funcShadow.buttons["1"].blur}px ${theme.funcShadow.buttons["1"].color}) drop-shadow(${theme.funcShadow.buttons["2"].x}px ${theme.funcShadow.buttons["2"].y}px ${theme.funcShadow.buttons["2"].blur}px ${theme.funcShadow.buttons["2"].color}); 
   `}
 
+  ${({theme, variant, noPadding, isLoading, size}) =>
+    (variant === "secondary" || variant === "secondaryDanger") &&
+    `
+    padding: ${
+      isLoading
+        ? `${noPadding ? "0" : `calc(${theme.spacing.xs} - ${theme.borderWidth.md})`}`
+        : `${
+            noPadding
+              ? "0"
+              : size === "lg"
+              ? `calc(5px - ${theme.borderWidth.md})`
+              : `calc(${theme.spacing.xxs} - ${theme.borderWidth.md})`
+          } ${noPadding ? "0" : `calc(${theme.spacing.xs} - ${theme.borderWidth.md})`}`
+    };
+  `}
+
+  ${({theme, variant, noPadding, isLoading, size, subtype}) =>
+    (variant === "secondary" || variant === "secondaryDanger") &&
+    subtype !== "default" &&
+    `
+    &:disabled {
+      padding: ${
+        isLoading
+          ? `${noPadding ? "0" : theme.spacing.xs}`
+          : `${noPadding ? "0" : size === "lg" ? "5px" : theme.spacing.xxs} ${
+              noPadding ? "0" : theme.spacing.xs
+            }`
+      };
+    }
+  `}
+
   ${({theme, variant, subtype, isLoading}) =>
     variant === "primary" &&
     subtype === "default" &&
