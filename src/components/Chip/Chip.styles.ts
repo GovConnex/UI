@@ -98,6 +98,7 @@ export const StyledChipIcon = styled(Icon)`
   height: calc(${({theme}) => theme.spacing.xs} + ${({theme}) => theme.spacing.xxs});
   width: 16px;
   height: 16px;
+  vertical-align: text-bottom;
 `;
 
 export const StyledAdornment = styled.span<{position: string}>`

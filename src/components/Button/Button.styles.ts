@@ -37,10 +37,12 @@ const StyledButton = styled.button<{
   text-decoration: none !important;
   height: auto;
 
-  ${({iconOnly, noPadding, theme}) =>
+  ${({iconOnly, theme}) =>
     iconOnly
       ? `
-      padding: ${noPadding ? "0" : theme.spacing.xs};
+      height: ${theme.spacing.lg};
+      width: ${theme.spacing.lg};
+      padding: 0px;
       align-items: center;
       justify-content: center;
       `
@@ -58,6 +60,37 @@ const StyledButton = styled.button<{
     variant === "primary" &&
     `
     filter: drop-shadow(${theme.funcShadow.buttons["0"].x}px ${theme.funcShadow.buttons["0"].y}px ${theme.funcShadow.buttons["0"].blur}px ${theme.funcShadow.buttons["0"].color}) drop-shadow(${theme.funcShadow.buttons["1"].x}px ${theme.funcShadow.buttons["1"].y}px ${theme.funcShadow.buttons["1"].blur}px ${theme.funcShadow.buttons["1"].color}) drop-shadow(${theme.funcShadow.buttons["2"].x}px ${theme.funcShadow.buttons["2"].y}px ${theme.funcShadow.buttons["2"].blur}px ${theme.funcShadow.buttons["2"].color}); 
+  `}
+
+  ${({theme, variant, noPadding, isLoading, size}) =>
+    (variant === "secondary" || variant === "secondaryDanger") &&
+    `
+    padding: ${
+      isLoading
+        ? `${noPadding ? "0" : `calc(${theme.spacing.xs} - ${theme.borderWidth.md})`}`
+        : `${
+            noPadding
+              ? "0"
+              : size === "lg"
+              ? `calc(5px - ${theme.borderWidth.md})`
+              : `calc(${theme.spacing.xxs} - ${theme.borderWidth.md})`
+          } ${noPadding ? "0" : `calc(${theme.spacing.xs} - ${theme.borderWidth.md})`}`
+    };
+  `}
+
+  ${({theme, variant, noPadding, isLoading, size, subtype}) =>
+    (variant === "secondary" || variant === "secondaryDanger") &&
+    subtype !== "default" &&
+    `
+    &:disabled {
+      padding: ${
+        isLoading
+          ? `${noPadding ? "0" : theme.spacing.xs}`
+          : `${noPadding ? "0" : size === "lg" ? "5px" : theme.spacing.xxs} ${
+              noPadding ? "0" : theme.spacing.xs
+            }`
+      };
+    }
   `}
 
   ${({theme, variant, subtype, isLoading}) =>
@@ -256,7 +289,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.successLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
     }
   `}
 
@@ -284,7 +317,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.errorLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
     }
   `}
 
@@ -312,7 +345,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.warningLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
     }
   `}
 
@@ -339,8 +372,8 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
-      ackground-color: ${theme.extended.support.infoLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+      background-color: ${theme.extended.support.infoLight};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
     }
   `}
 
@@ -381,7 +414,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
-      border: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
     }
 
     &:disabled {
@@ -402,7 +435,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.successLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
     }
 
     &:disabled {
@@ -423,7 +456,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.errorLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
     }
 
     &:disabled {
@@ -444,7 +477,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.warningLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
     }
 
     &:disabled {
@@ -465,7 +498,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.infoLight};
-      border: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
     }
 
     &:disabled {
