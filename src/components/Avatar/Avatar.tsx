@@ -10,6 +10,7 @@ export interface AvatarProps {
   src?: string;
   /** The alt text for the image */
   alt?: string;
+  bgColorInverse?: boolean;
   className?: string;
   onClick?: () => void;
   onMouseEnter?: () => void;
@@ -67,7 +68,7 @@ const colourVariants = [
   "#FFC107",
 ];
 
-const Avatar = ({variant = "circle", size = "md", alt, src, ...rest}: AvatarProps) => {
+const Avatar = ({variant = "circle", size = "md", alt, bgColorInverse, src, ...rest}: AvatarProps) => {
   const [errorSrc, setErrorSrc] = React.useState<string | null>(null);
   const showAvatar = src && src !== errorSrc;
   const initials = getInitials(alt || "?") || "";
@@ -79,6 +80,7 @@ const Avatar = ({variant = "circle", size = "md", alt, src, ...rest}: AvatarProp
   return (
     <StyledAvatar
       className="avatar"
+      bgColorInverse={bgColorInverse}
       backgroundColor={backgroundColor}
       size={size}
       variant={variant}

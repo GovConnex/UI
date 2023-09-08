@@ -7,11 +7,12 @@ const StyledCard = styled.div<{
   padding?: keyof Spacing;
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
+  noPadding?: boolean;
 }>(
-  ({theme, hoverStyle, focused, selected, padding}) =>
+  ({theme, hoverStyle, focused, selected, padding, noPadding}) =>
     `
   background: ${theme.core?.background?.bgPrimary};
-  padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
+  padding: ${noPadding? "0px" : `calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
     focused || selected ? ` - ${theme.borderWidth.md}` : ""
   })`};
   margin-bottom: ${theme.spacing.xs};

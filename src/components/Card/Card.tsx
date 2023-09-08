@@ -8,10 +8,11 @@ export interface CardProps {
   children?: React.ReactNode;
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
+  noPadding?: boolean;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({focused, hoverStyle = "shadow", selected, children, padding, ...rest}, ref) => {
+  ({focused, hoverStyle = "shadow", selected, children, padding, noPadding, ...rest}, ref) => {
     return (
       <StyledCard
         ref={ref}
@@ -19,6 +20,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         selected={selected}
         focused={!!focused}
         padding={padding}
+        noPadding={noPadding}
         {...rest}
       >
         {children}
