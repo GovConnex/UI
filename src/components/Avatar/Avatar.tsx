@@ -68,7 +68,14 @@ const colourVariants = [
   "#FFC107",
 ];
 
-const Avatar = ({variant = "circle", size = "md", alt, bgColorInverse, src, ...rest}: AvatarProps) => {
+const Avatar = ({
+  variant = "circle",
+  size = "md",
+  alt,
+  bgColorInverse,
+  src,
+  ...rest
+}: AvatarProps) => {
   const [errorSrc, setErrorSrc] = React.useState<string | null>(null);
   const showAvatar = src && src !== errorSrc;
   const initials = getInitials(alt || "?") || "";

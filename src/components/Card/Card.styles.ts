@@ -12,9 +12,13 @@ const StyledCard = styled.div<{
   ({theme, hoverStyle, focused, selected, padding, noPadding}) =>
     `
   background: ${theme.core?.background?.bgPrimary};
-  padding: ${noPadding? "0px" : `calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
-    focused || selected ? ` - ${theme.borderWidth.md}` : ""
-  })`};
+  padding: ${
+    noPadding
+      ? "0px"
+      : `calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
+          focused || selected ? ` - ${theme.borderWidth.md}` : ""
+        })`
+  };
   margin-bottom: ${theme.spacing.xs};
   transition: border-color 300ms ease-out;
   border-width: ${focused || selected ? theme.borderWidth.lg : theme.borderWidth.md};

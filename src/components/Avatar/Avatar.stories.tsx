@@ -127,5 +127,5 @@ export const Size4xlNoImgInverse = Template.bind({});
 Size4xlNoImgInverse.args = {
   alt: "Cooper Darling-Blair",
   size: "4xl",
-  bgColorInverse: true
+  bgColorInverse: true,
 };

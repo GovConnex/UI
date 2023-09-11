@@ -12,7 +12,10 @@ export interface CardProps {
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({focused, hoverStyle = "shadow", selected, children, padding, noPadding, ...rest}, ref) => {
+  (
+    {focused, hoverStyle = "shadow", selected, children, padding, noPadding, ...rest},
+    ref
+  ) => {
     return (
       <StyledCard
         ref={ref}

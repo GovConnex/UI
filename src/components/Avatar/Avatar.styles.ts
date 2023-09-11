@@ -17,7 +17,8 @@ export const StyledAvatarRoot = styled.div<{
   overflow: hidden;
   user-select: none;
 
-  background-color: ${({backgroundColor, bgColorInverse, theme}) => bgColorInverse ? theme.core.background.bgInversePrimary : backgroundColor};
+  background-color: ${({backgroundColor, bgColorInverse, theme}) =>
+    bgColorInverse ? theme.core.background.bgInversePrimary : backgroundColor};
   color: white;
   font-weight: 600;
   white-space: nowrap;
@@ -33,7 +34,7 @@ export const StyledAvatarRoot = styled.div<{
           return `
             border-radius: 2px;
           `;
-        else if (size === "3xl" || size === "4xl" )
+        else if (size === "3xl" || size === "4xl")
           return `
             border-radius: 8px;
           `;
