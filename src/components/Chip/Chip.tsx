@@ -6,6 +6,7 @@ import StyledChip, {
   StyledChipIcon,
 } from "./Chip.styles";
 import {faXmark} from "@fortawesome/pro-solid-svg-icons";
+import {customStyles} from "../../core/styleFunctions";
 
 export type ChipRole = "default" | "info" | "success" | "warning" | "error" | "primary"; // Determines colour
 export type ChipPriority = "high" | "low";
@@ -18,6 +19,7 @@ export interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: ChipSize;
   priority?: ChipPriority;
   role?: ChipRole;
+  cs?: customStyles;
 }
 
 const Chip = ({
@@ -28,6 +30,7 @@ const Chip = ({
   role = "default",
   size = "md",
   priority = "low",
+  cs,
   ...props
 }: ChipProps) => {
   const [textContent, setTextContent] = useState("");
@@ -60,7 +63,7 @@ const Chip = ({
   }
 
   return (
-    <StyledChip role={role} size={size} priority={priority} {...props}>
+    <StyledChip role={role} size={size} priority={priority} cs={cs} {...props}>
       <StyledChipTextWrapper hasDelete={onDelete}>
         {startAdornment ? (
           <StyledAdornment position={"start"}>{startAdornment}</StyledAdornment>

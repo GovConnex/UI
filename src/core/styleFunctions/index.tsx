@@ -25,6 +25,7 @@ type ShorthandCSS = {
   bg?: CSS.Properties["background"];
   direction?: CSS.Properties["flexDirection"];
   flexGrow?: CSS.Properties["flexGrow"] | number;
+  backgroundColor?: CSS.Properties["backgroundColor"] | string;
 };
 
 type breakpoints = {
@@ -187,6 +188,11 @@ const experimental_passCustomStyles = (args: any) => {
 
         // Handle flexGrow specifically, which is a number
         if (cssProp === "flexGrow") {
+          css = {...css, [cssProp]: styles[k]};
+        }
+
+        // Handle backgroundColor specifically, which is a string
+        if (cssProp === "backgroundColor") {
           css = {...css, [cssProp]: styles[k]};
         }
 
