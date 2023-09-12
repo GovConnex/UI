@@ -4,6 +4,7 @@ import {Size, Variant} from "./Avatar";
 export const StyledAvatarRoot = styled.div<{
   backgroundColor: string;
   bgColorInverse?: boolean;
+  isTransparentImage?: boolean;
   size: Size;
   variant: Variant;
 }>`
@@ -17,8 +18,15 @@ export const StyledAvatarRoot = styled.div<{
   overflow: hidden;
   user-select: none;
 
-  background-color: ${({backgroundColor, bgColorInverse, theme}) =>
-    bgColorInverse ? theme.core.background.bgInversePrimary : backgroundColor};
+  background-color: ${({backgroundColor, bgColorInverse, isTransparentImage, theme}) =>
+    isTransparentImage
+      ? theme.core.background.bgPrimary
+      : bgColorInverse
+      ? theme.core.background.bgInversePrimary
+      : backgroundColor};
+
+  border: ${({isTransparentImage, theme}) =>
+    isTransparentImage ? `1px solid ${theme.core.border.borderLight}` : "none"};
   color: white;
   font-weight: 600;
   white-space: nowrap;

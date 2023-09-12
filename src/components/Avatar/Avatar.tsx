@@ -83,6 +83,7 @@ const Avatar = ({
     ((initials?.charCodeAt(0) || 0) + (initials?.charCodeAt(1) || 0)) %
     colourVariants.length;
   const backgroundColor = colourVariants[colourIndex];
+  const isTransparentImage = src?.includes(".png");
 
   return (
     <StyledAvatar
@@ -92,6 +93,7 @@ const Avatar = ({
       size={size}
       variant={variant}
       title={alt}
+      isTransparentImage={isTransparentImage}
       {...rest}
     >
       {showAvatar ? (
