@@ -113,7 +113,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.state.brandHover};
-      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline: ${theme.borderWidth.md} solid ${theme.core.border.borderFocus};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -138,7 +138,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.successDark};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successBase};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.successBase};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -163,7 +163,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.errorDark};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorBase};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.errorBase};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -188,7 +188,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.warningDark};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningBase};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.warningBase};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -213,7 +213,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.infoDark};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoBase};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.infoBase};
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
@@ -236,7 +236,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.secondary.red["800"]};
-      outline: ${theme.borderWidth.lg} solid ${theme.secondary.red["800"]};
+      outline: ${theme.borderWidth.md} solid ${theme.secondary.red["800"]};
     }
   `}
 
@@ -254,7 +254,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
-      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline: ${theme.borderWidth.md} solid ${theme.core.border.borderFocus};
       outline-offset: ${theme.borderWidth.lg};
     }
 
@@ -289,7 +289,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.successLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.successDark};
     }
   `}
 
@@ -317,7 +317,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.errorLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.errorDark};
     }
   `}
 
@@ -345,7 +345,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.warningLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.warningDark};
     }
   `}
 
@@ -373,7 +373,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.infoLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.infoDark};
     }
   `}
 
@@ -397,7 +397,7 @@ const StyledButton = styled.button<{
     &:focus:not(:disabled) {
       background-color: ${theme.secondary.red["50"]};
       border-color: transparent;
-      outline: ${theme.borderWidth.lg} solid ${theme.foundation.error};
+      outline: ${theme.borderWidth.md} solid ${theme.foundation.error};
     }
   `}
 
@@ -414,7 +414,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.state.primaryHover};
-      outline: ${theme.borderWidth.lg} solid ${theme.core.border.borderFocus};
+      outline: ${theme.borderWidth.md} solid ${theme.core.border.borderFocus};
     }
 
     &:disabled {
@@ -435,7 +435,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.successLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.successDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.successDark};
     }
 
     &:disabled {
@@ -456,7 +456,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.errorLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.errorDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.errorDark};
     }
 
     &:disabled {
@@ -477,7 +477,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.warningLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.warningDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.warningDark};
     }
 
     &:disabled {
@@ -498,7 +498,7 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: ${theme.extended.support.infoLight};
-      outline: ${theme.borderWidth.lg} solid ${theme.extended.support.infoDark};
+      outline: ${theme.borderWidth.md} solid ${theme.extended.support.infoDark};
     }
 
     &:disabled {

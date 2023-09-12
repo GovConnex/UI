@@ -12,6 +12,11 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
   strategy?: PositioningStrategy;
   cs?: customStyles;
   isBlock?: boolean;
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 const Popover = React.forwardRef<HTMLSpanElement, PopoverProps>(
@@ -31,6 +36,11 @@ const Popover = React.forwardRef<HTMLSpanElement, PopoverProps>(
           style={{...props.style, ...styles.popper}}
           {...attributes.popper}
           cs={props.cs}
+          onClick={props.onClick}
+          onMouseEnter={props.onMouseEnter}
+          onMouseLeave={props.onMouseLeave}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
         >
           {props.children}
         </StyledPopover>
