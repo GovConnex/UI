@@ -23,7 +23,7 @@ const StyledTab = styled.button<{
         color: ${theme.core.content.contentTertiary};
       }
 
-       cursor: pointer;
+    cursor: pointer;
     gap:${theme.spacing.xs};
     display:flex;
     align-items:center;
@@ -33,6 +33,10 @@ const StyledTab = styled.button<{
 
 const StyledTypography = styled(Typography)`
   margin-bottom: 0;
+
+  > * {
+    cursor: pointer;
+  }
 `;
 
 export {StyledTypography, StyledTab};

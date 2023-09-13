@@ -5,6 +5,7 @@ const StyledTabs = styled.div<{isSection?: boolean}>`
   position: relative;
   overflow: scroll;
   width: max-content;
+  cursor: pointer;
 
   ${({theme, isSection}) => `
     ${
@@ -23,6 +24,7 @@ const SectionHighlight = styled.span<{
   width: number;
   offset: number;
 }>`
+  cursor: pointer;
   filter: ${({
     theme: {
       funcShadow: {buttons},
