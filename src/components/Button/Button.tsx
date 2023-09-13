@@ -33,6 +33,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   title?: string;
   isLoading?: boolean;
   noPadding?: boolean;
+  isFullWidth?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -72,6 +73,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading = false,
       disabled = false,
       noPadding = false,
+      isFullWidth = false,
       style,
       ...rest
     },
@@ -89,6 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         shape={shape || "rect"}
         isLoading={isLoading}
         noPadding={noPadding}
+        isFullWidth={isFullWidth}
         style={style}
         {...rest}
       >

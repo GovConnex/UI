@@ -28,7 +28,7 @@ const StyledCard = styled.div<{
       ? theme.core?.border?.borderFocus
       : theme.core?.border?.borderLight
   };
-  border-radius: ${theme.borderRadius.xs};
+  border-radius: ${theme.borderRadius.base};
   box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
 
   ${

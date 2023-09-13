@@ -19,6 +19,7 @@ const StyledButton = styled.button<{
   size: ButtonSize;
   isLoading: boolean;
   noPadding?: boolean;
+  isFullWidth?: boolean;
 }>`
   position: relative;
   align-items: center;
@@ -55,6 +56,12 @@ const StyledButton = styled.button<{
   &:focus {
     text-decoration: none;
   }
+
+  ${({isFullWidth}) =>
+    isFullWidth &&
+    `
+    width: 100%;
+  `}
 
   ${({theme, variant}) =>
     variant === "primary" &&

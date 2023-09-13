@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useState} from "react";
 import {BottomHighlight, SectionHighlight, StyledTabs} from "./Tabs.styles";
 import {StyledTab, StyledTypography} from "./Tab.styles";
+import Typography from "../Typography";
 
 // Helpers
 
@@ -181,7 +182,11 @@ Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
   return (
     <StyledTab selected={false} ref={ref} {...props}>
       {props.startAdornment ? props.startAdornment : null}
-      <StyledTypography>{props.label}</StyledTypography>
+      <StyledTypography>
+        <Typography variant="label" size="md">
+          {props.label}
+        </Typography>
+      </StyledTypography>
       {props.endAdornment ? props.endAdornment : null}
     </StyledTab>
   );
