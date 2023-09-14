@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof Popover> = (args) => {
       </Button>
       {showPopper && (
         <Popover {...args} anchorEl={exampleRef}>
-          I'm popper!
+          Testing this looooooooooooooooooooooooooooooong popper!
         </Popover>
       )}
     </div>

@@ -7,13 +7,18 @@ const StyledCard = styled.div<{
   padding?: keyof Spacing;
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
+  noPadding?: boolean;
 }>(
-  ({theme, hoverStyle, focused, selected, padding}) =>
+  ({theme, hoverStyle, focused, selected, padding, noPadding}) =>
     `
   background: ${theme.core?.background?.bgPrimary};
-  padding: ${`calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
-    focused || selected ? ` - ${theme.borderWidth.md}` : ""
-  })`};
+  padding: ${
+    noPadding
+      ? "0px"
+      : `calc(${padding ? theme.spacing[padding] : theme.spacing.sm}${
+          focused || selected ? ` - ${theme.borderWidth.md}` : ""
+        })`
+  };
   margin-bottom: ${theme.spacing.xs};
   transition: border-color 300ms ease-out;
   border-width: ${focused || selected ? theme.borderWidth.lg : theme.borderWidth.md};
@@ -23,7 +28,7 @@ const StyledCard = styled.div<{
       ? theme.core?.border?.borderFocus
       : theme.core?.border?.borderLight
   };
-  border-radius: ${theme.borderRadius.xs};
+  border-radius: ${theme.borderRadius.base};
   box-shadow: ${focused ? shadowFromProp(theme.boxShadow.sm) : "none"};
 
   ${

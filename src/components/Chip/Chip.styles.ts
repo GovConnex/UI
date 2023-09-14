@@ -1,6 +1,7 @@
 import styled, {DefaultTheme} from "styled-components";
 import Icon from "../Icon";
 import {ChipPriority, ChipRole, ChipSize} from "./Chip";
+import {addCustomStyles, customStyles} from "../../core/styleFunctions";
 
 const propsToBg = (theme: DefaultTheme, role: ChipRole, priority: ChipPriority) =>
   ({
@@ -62,6 +63,7 @@ const StyledChip = styled.div<{
   size: ChipSize;
   priority: ChipPriority;
   role: ChipRole;
+  cs?: customStyles;
 }>`
   background-color: ${({theme, role, priority}) => propsToBg(theme, role, priority)};
   padding: 0 ${({theme}) => theme.spacing.xs};
@@ -81,6 +83,8 @@ const StyledChip = styled.div<{
     `
     border: 1px solid ${props.theme.core.border.borderMedium};
   `}
+
+  ${(props) => addCustomStyles(props)};
 `;
 
 export const StyledChipTextWrapper = styled.span<{hasDelete?: any}>`

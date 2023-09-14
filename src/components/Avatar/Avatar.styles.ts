@@ -3,6 +3,8 @@ import {Size, Variant} from "./Avatar";
 
 export const StyledAvatarRoot = styled.div<{
   backgroundColor: string;
+  bgColorInverse?: boolean;
+  isTransparentImage?: boolean;
   size: Size;
   variant: Variant;
 }>`
@@ -16,12 +18,20 @@ export const StyledAvatarRoot = styled.div<{
   overflow: hidden;
   user-select: none;
 
-  background-color: ${({backgroundColor}) => backgroundColor};
+  background-color: ${({backgroundColor, bgColorInverse, isTransparentImage, theme}) =>
+    isTransparentImage
+      ? theme.core.background.bgPrimary
+      : bgColorInverse
+      ? theme.core.background.bgInversePrimary
+      : backgroundColor};
+
+  border: ${({isTransparentImage, theme}) =>
+    isTransparentImage ? `1px solid ${theme.core.border.borderLight}` : "none"};
   color: white;
   font-weight: 600;
   white-space: nowrap;
 
-  ${({variant, size}) => {
+  ${({variant, size, theme}) => {
     switch (variant) {
       case "circle":
         return `
@@ -31,6 +41,10 @@ export const StyledAvatarRoot = styled.div<{
         if (size === "sm")
           return `
             border-radius: 2px;
+          `;
+        else if (size === "3xl" || size === "4xl")
+          return `
+            border-radius: ${theme.borderRadius.base};
           `;
         else
           return `
