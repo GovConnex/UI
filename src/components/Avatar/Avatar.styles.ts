@@ -31,7 +31,7 @@ export const StyledAvatarRoot = styled.div<{
   font-weight: 600;
   white-space: nowrap;
 
-  ${({variant, size}) => {
+  ${({variant, size, theme}) => {
     switch (variant) {
       case "circle":
         return `
@@ -44,7 +44,7 @@ export const StyledAvatarRoot = styled.div<{
           `;
         else if (size === "3xl" || size === "4xl")
           return `
-            border-radius: 8px;
+            border-radius: ${theme.borderRadius.base};
           `;
         else
           return `
