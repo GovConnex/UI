@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledTabs = styled.div<{isSection?: boolean}>`
   display: flex;
   position: relative;
-  overflow: scroll;
+  overflow: auto;
   width: max-content;
   cursor: pointer;
 
