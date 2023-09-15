@@ -26,6 +26,8 @@ type ShorthandCSS = {
   direction?: CSS.Properties["flexDirection"];
   flexGrow?: CSS.Properties["flexGrow"] | number;
   backgroundColor?: CSS.Properties["backgroundColor"] | string;
+  zIndex?: CSS.Properties["zIndex"] | number;
+  transition?: CSS.Properties["transition"] | string;
 };
 
 type breakpoints = {
@@ -186,13 +188,13 @@ const experimental_passCustomStyles = (args: any) => {
           css = {...css, [cssProp]: getValueFromPath(theme, n)};
         }
 
-        // Handle flexGrow specifically, which is a number
-        if (cssProp === "flexGrow") {
+        // Handle flexGrow or zindex specifically, which is a number
+        if (cssProp === "flexGrow" || cssProp === "zIndex") {
           css = {...css, [cssProp]: styles[k]};
         }
 
         // Handle backgroundColor specifically, which is a string
-        if (cssProp === "backgroundColor") {
+        if (cssProp === "backgroundColor" || cssProp === "transition") {
           css = {...css, [cssProp]: styles[k]};
         }
 
