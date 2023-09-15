@@ -28,6 +28,7 @@ type ShorthandCSS = {
   backgroundColor?: CSS.Properties["backgroundColor"] | string;
   zIndex?: CSS.Properties["zIndex"] | number;
   transition?: CSS.Properties["transition"] | string;
+  filter?: CSS.Properties["filter"] | string;
 };
 
 type breakpoints = {
@@ -194,7 +195,11 @@ const experimental_passCustomStyles = (args: any) => {
         }
 
         // Handle backgroundColor specifically, which is a string
-        if (cssProp === "backgroundColor" || cssProp === "transition") {
+        if (
+          cssProp === "backgroundColor" ||
+          cssProp === "transition" ||
+          cssProp === "filter"
+        ) {
           css = {...css, [cssProp]: styles[k]};
         }
 

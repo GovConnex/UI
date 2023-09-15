@@ -61,6 +61,7 @@ export interface ExtendedBoxProps extends BoxProps {
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   zIndex?: number;
   transition?: string;
+  filter?: string;
 }
 
 /**
