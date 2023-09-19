@@ -92,7 +92,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         isLoading={isLoading}
         noPadding={noPadding}
         isFullWidth={isFullWidth}
-        hasChildren={!!children || !!title}
+        hasChildren={!!children || !!title || !!startAdornment || !!endAdornment}
         style={style}
         {...rest}
       >
