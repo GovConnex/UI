@@ -519,3 +519,17 @@ export const SingularIcon = Template.bind({});
 SingularIcon.args = {
   children: <Icon icon={faFaceSmile} />,
 };
+
+export const LoadingWithText = Template.bind({});
+LoadingWithText.args = {
+  children: "Loading with text width",
+  variant: "primary",
+  isLoading: true,
+};
+
+export const LoadingWithoutText = Template.bind({});
+LoadingWithoutText.args = {
+  children: "",
+  variant: "primary",
+  isLoading: true,
+};

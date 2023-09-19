@@ -5,7 +5,7 @@ import {
   StyledButton,
   StyledAdornment,
   StyledSpinner,
-  StyledSpinnerContainer,
+  StyledLoadingTypography,
 } from "./Button.styles";
 
 export type ButtonVariant =
@@ -92,6 +92,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         isLoading={isLoading}
         noPadding={noPadding}
         isFullWidth={isFullWidth}
+        hasChildren={!!children || !!title}
         style={style}
         {...rest}
       >
@@ -100,12 +101,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : null}
 
         {isLoading ? (
-          <StyledSpinnerContainer>
+          <>
+            {startAdornment ? (
+              <StyledAdornment isLoading={isLoading}>{startAdornment}</StyledAdornment>
+            ) : null}
             <StyledSpinner
               variant={variant ?? "primary"}
               subtype={subtype ?? "default"}
-            />{" "}
-          </StyledSpinnerContainer>
+            />
+            <StyledLoadingTypography>
+              <Typography as="span" variant="label" size="md">
+                {children || title}
+              </Typography>
+            </StyledLoadingTypography>
+            {endAdornment ? (
+              <StyledAdornment isLoading={isLoading}>{endAdornment}</StyledAdornment>
+            ) : null}
+          </>
         ) : null}
 
         {iconOnly && !isLoading ? (
