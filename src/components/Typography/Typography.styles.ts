@@ -35,6 +35,17 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
       text-decoration: inherit;
       color: inherit;
     }
+
+    > * {
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      margin-top: inherit;
+      margin-bottom: inherit;
+      color: inherit;
+    }
   `;
   return acc;
 }, {} as any);
