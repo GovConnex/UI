@@ -102,15 +102,8 @@ const Tabs = (props: TabsProps) => {
     if (!props.value) return;
 
     const index = getIndexOfCollectionValue(props.value, collection);
-    let initialWidth = collection[index]?.getBoundingClientRect()?.width || 0;
 
-    // Add 8px to the width on the first load
-    if (bottomBarParts.width === 0) {
-      initialWidth += 8;
-      setBottomBarParts({width: initialWidth, offset: bottomBarParts.offset});
-    } else {
-      updateSelected(props.value, index);
-    }
+    updateSelected(props.value, index);
   }, []);
 
   return (

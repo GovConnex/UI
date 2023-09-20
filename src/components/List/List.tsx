@@ -1,5 +1,10 @@
 import React from "react";
-import {StyledList, StyledListItem, StyledListItemStart} from "./List.styles";
+import {
+  StyledList,
+  StyledListItem,
+  StyledListItemStart,
+  StyledAdornment,
+} from "./List.styles";
 import Typography from "../Typography";
 import {VariantsProp} from "../Typography/Typography.types";
 import {TypographySize} from "../../theming/global-theme.interface";
@@ -16,6 +21,7 @@ export interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   size?: TypographySize;
+  color?: string;
 }
 
 interface TypoVariant {
@@ -45,12 +51,16 @@ export const ListItem = (props: ListItemProps) => {
   return (
     <StyledListItem {...props} button={props.button}>
       <StyledListItemStart>
-        {props.startAdornment ? <span>{props.startAdornment}</span> : null}
-        <Typography variant={variant} size={size as any} noMargin>
+        {props.startAdornment ? (
+          <StyledAdornment color={props.color}>{props.startAdornment}</StyledAdornment>
+        ) : null}
+        <Typography variant={variant} size={size as any} color={props.color} noMargin>
           {props.children}
         </Typography>
       </StyledListItemStart>
-      {props.endAdornment ? <span>{props.endAdornment}</span> : null}
+      {props.endAdornment ? (
+        <StyledAdornment color={props.color}>{props.endAdornment}</StyledAdornment>
+      ) : null}
     </StyledListItem>
   );
 };

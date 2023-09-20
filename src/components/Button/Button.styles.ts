@@ -3,11 +3,12 @@ import {ButtonVariant, ButtonShape, ButtonSize, ButtonSubtype} from "./Button";
 import {Spacing} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
 
-const StyledAdornment = styled.span`
+const StyledAdornment = styled.span<{isLoading?: boolean}>`
   display: flex;
   align-items: bottom;
   justify-content: center;
   margin-bottom: 1px;
+  visibility: ${(props) => (props.isLoading ? "hidden" : "visible")};
 `;
 
 const StyledButton = styled.button<{
@@ -18,6 +19,7 @@ const StyledButton = styled.button<{
   shape: ButtonShape;
   size: ButtonSize;
   isLoading: boolean;
+  hasChildren?: boolean;
   noPadding?: boolean;
   isFullWidth?: boolean;
 }>`
@@ -25,18 +27,17 @@ const StyledButton = styled.button<{
   align-items: center;
   cursor: pointer;
   padding: ${(props) =>
-    props.isLoading
-      ? `${props.noPadding ? "0" : props.theme.spacing.xs}`
-      : `${
-          props.noPadding ? "0" : props.size === "lg" ? "5px" : props.theme.spacing.xxs
-        } ${props.noPadding ? "0" : props.theme.spacing.xs}`};
+    `${props.noPadding ? "0" : props.size === "lg" ? "5px" : props.theme.spacing.xxs} ${
+      props.noPadding ? "0" : props.theme.spacing.xs
+    }`};
   border-radius: ${(props) =>
     props.shape === "rect" || !props.iconOnly ? props.theme.borderRadius.base : "100%"};
   border: 0 solid transparent;
   display: flex;
   gap: 12px;
   text-decoration: none !important;
-  height: auto;
+  height: ${(props) => (props.isLoading && !props.hasChildren ? "32px" : "auto")};
+  width: ${(props) => (props.isLoading && !props.hasChildren ? "32px" : "auto")};
 
   ${({iconOnly, theme}) =>
     iconOnly
@@ -522,78 +523,74 @@ const spinner = keyframes`
 `;
 
 const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype}>`
- &:before {
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    animation: ${spinner} .6s linear infinite;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: ${spinner} 0.6s linear infinite;
 
-    ${({theme, variant}) =>
-      variant === "primary" &&
-      `
+  ${({theme, variant}) =>
+    variant === "primary" &&
+    `
       border-top-color: ${theme.core.content.contentInversePrimary}
     `}
 
-    ${({theme, subtype, variant}) =>
-      (variant === "secondary" || variant === "tertiary") &&
-      subtype === "default" &&
-      `
+  ${({theme, subtype, variant}) =>
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "default" &&
+    `
       border-top-color: ${theme.core.content.contentPrimary}
     `}
 
     ${({theme, subtype, variant}) =>
-      (variant === "secondary" || variant === "tertiary") &&
-      subtype === "success" &&
-      `
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "success" &&
+    `
       border-top-color: ${theme.extended.support.successDark}
     `}
 
     ${({theme, subtype, variant}) =>
-      (variant === "secondary" || variant === "tertiary") &&
-      subtype === "error" &&
-      `
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "error" &&
+    `
       border-top-color: ${theme.extended.support.errorDark}
     `}
 
     ${({theme, subtype, variant}) =>
-      (variant === "secondary" || variant === "tertiary") &&
-      subtype === "warning" &&
-      `
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "warning" &&
+    `
       border-top-color: ${theme.extended.support.warningDark}
     `}
 
     ${({theme, subtype, variant}) =>
-      (variant === "secondary" || variant === "tertiary") &&
-      subtype === "info" &&
-      `
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "info" &&
+    `
       border-top-color: ${theme.extended.support.infoDark}
     `}
 
     ${({theme, variant}) =>
-      variant === "danger" &&
-      `
+    variant === "danger" &&
+    `
       border-top-color: ${theme.extended.state.secondaryBase}
     `}
 `;
 
-const StyledSpinnerContainer = styled.div`
-  position: relative;
-  width: 20px;
-  height: 20px;
+const StyledLoadingTypography = styled.span`
+  visibility: hidden;
 `;
 
 export {
   StyledButton,
   StyledSpinner,
-  StyledSpinnerContainer,
+  StyledLoadingTypography,
   StyledAdornment,
   StyledTypography,
 };

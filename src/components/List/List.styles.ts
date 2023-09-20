@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {getValueFromPath} from "../../core/styleFunctions";
+
+export const StyledAdornment = styled.span<{color?: string}>`
+  color: ${({theme, color}) => (color ? getValueFromPath(theme, color) : "inherit")};
+`;
 
 export const StyledList = styled.div<{scroll?: boolean}>`
   ${({scroll}) =>
