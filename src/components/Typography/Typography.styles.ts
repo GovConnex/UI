@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {getValueFromPath} from "../../core/styleFunctions";
 import {Variants} from "./Typography.types";
+import {addCustomStyles, customStyles} from "../../core/styleFunctions";
 
 export const FONT_WEIGHTS = {
   Regular: 400,
@@ -11,7 +12,7 @@ export const FONT_WEIGHTS = {
 
 export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
   // @ts-ignore ignore
-  acc[key] = styled(Variants[key])<{size: string}>`
+  acc[key] = styled(Variants[key])<{size: string; cs?: customStyles}>`
     font-family: ${({theme, size}) => theme.typography[key][size]?.fontFamily};
     font-weight: ${({theme, size}) =>
       FONT_WEIGHTS[theme.typography[key][size]?.fontWeight as keyof typeof FONT_WEIGHTS]};
@@ -23,6 +24,8 @@ export const variantComponents = Object.keys(Variants).reduce((acc, key) => {
     text-decoration: ${({theme, size}) => theme.typography[key][size]?.textDecoration};
     color: ${({theme, color}) => (color ? getValueFromPath(theme, color) : "inherit")};
     ${({noMargin}) => noMargin && "margin: 0;"};
+
+    ${(props) => addCustomStyles(props)};
 
     & p {
       font-family: inherit;
