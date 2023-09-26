@@ -52,14 +52,14 @@ const StackedList = ({data, title, endAdornment}: StackedListProps) => {
 
   return (
     <StyledStackedList>
-      <Root onClick={handleClick}>
+      <Root>
         <StyledHeader>
-          <StyledHeaderStart>
+          <StyledHeaderStart onClick={handleClick}>
             <Chevron open={open}>
               <Icon icon={faChevronRight} />
             </Chevron>
           </StyledHeaderStart>
-          <Typography variant="heading" size="xs">
+          <Typography onClick={handleClick} variant="heading" size="xs">
             {title}
           </Typography>
           <StyledHeaderEnd>{endAdornment}</StyledHeaderEnd>
