@@ -22,7 +22,6 @@ interface StackedListItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const StackedListItem: React.FC<StackedListItemProps> = ({
   children,
-  disabled,
   className,
   startAdornment,
   endAdornment,

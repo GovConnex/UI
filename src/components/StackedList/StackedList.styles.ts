@@ -33,3 +33,32 @@ export const StyledFooterButton = styled.div`
   padding: ${(props) =>
     `${props.theme.spacing.xs} ${props.theme.spacing.sm} ${props.theme.spacing.sm} 0px`};
 `;
+
+export const Root = styled.div`
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const Collapse = styled.div<{height: string}>`
+  ${({height}) => `
+    min-height: 0px;
+        height: ${height};
+        min-height: 0px;
+        overflow: hidden;
+        transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition-duration: 237ms;
+    `};
+`;
+
+export const Chevron = styled.div<{open: boolean}>`
+  ${({open}) => `
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: ${open ? "rotate(90deg)" : "rotate(0deg)"}; 
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    `};
+`;
