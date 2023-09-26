@@ -35,3 +35,4 @@ export {default as GridBox} from "./GridBox";
 export {default as Tabs} from "./Tabs";
 export * from "./MenuList";
 export * from "./List";
+export * from "./StackedList";
