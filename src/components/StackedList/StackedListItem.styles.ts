@@ -10,6 +10,9 @@ export const StyledStackedListItem = styled.div<{cs?: customStyles}>`
   align-items: center;
   gap: ${(props) => props.theme.spacing.sm};
 
+  &:last-child {
+    padding-bottom: ${(props) => props.theme.spacing.sm};
+  }
   ${(cs) => addCustomStyles(cs)};
 `;
 

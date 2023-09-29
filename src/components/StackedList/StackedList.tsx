@@ -103,7 +103,7 @@ export const StackedList = ({
               </StackedListItem>
             ))
           : null}
-        {data && data.length ? (
+        {data && data.length && extendedDisplayData && extendedDisplayData.length ? (
           <StackedListItem
             startAdornment={
               <StyledFooterButton onClick={handleShowAll}>
