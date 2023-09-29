@@ -1,6 +1,6 @@
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
-import StackedList from "./StackedList";
+import {StackedList} from "./StackedList";
 import {withDesign} from "storybook-addon-designs";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
@@ -186,4 +186,9 @@ Other.args = {
       ),
     },
   ],
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  title: "Empty Stacked List",
 };

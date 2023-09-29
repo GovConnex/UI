@@ -1,1 +1,1 @@
-export {default} from "./StackedList";
+export {StackedList, StackedListItem} from "./StackedList";

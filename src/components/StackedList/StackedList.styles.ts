@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StyledStackedList = styled.div`
-  border-radius: ${(props) => props.theme.borderRadius.md};
+  border-radius: ${(props) => props.theme.borderRadius.base};
   overflow: hidden;
+  border: 1px solid ${(props) => props.theme.core.border.borderLight};
 `;
 
 export const StyledHeader = styled.div`
@@ -32,6 +33,18 @@ export const StyledFooterButton = styled.div`
   color: ${(props) => props.theme.core.content.contentPrimary};
   padding: ${(props) =>
     `${props.theme.spacing.xs} ${props.theme.spacing.sm} ${props.theme.spacing.sm} 0px`};
+`;
+
+export const StyledEmptyList = styled.div`
+  background-color: ${(props) => props.theme.core.background.bgPrimary};
+  padding: ${(props) =>
+    `${props.theme.spacing.xs} ${props.theme.spacing.md} ${props.theme.spacing.md} ${props.theme.spacing.md}`};
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.theme.core.content.contentTertiary};
+  gap: ${(props) => props.theme.spacing.sm};
+  justify-content: center;
+  text-align: center;
 `;
 
 export const Root = styled.div`

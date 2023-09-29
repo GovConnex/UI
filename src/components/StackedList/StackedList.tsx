@@ -5,6 +5,7 @@ import {
   StyledHeaderStart,
   StyledHeaderEnd,
   StyledFooterButton,
+  StyledEmptyList,
   Root,
   Collapse,
   Chevron,
@@ -20,6 +21,7 @@ export interface StackedListProps {
    */
   data?: any[];
   title?: string;
+  emptyContentMessage?: string;
   endAdornment?: React.ReactNode;
 }
 
@@ -30,10 +32,15 @@ export interface StackedListProps {
  * Component Demo: [StackedList](https://ui.govconnex.com/?path=/story/components-StackedList--example)
  *
  */
-const StackedList = ({data, title, endAdornment}: StackedListProps) => {
+export const StackedList = ({
+  data,
+  title,
+  emptyContentMessage,
+  endAdornment,
+}: StackedListProps) => {
   // Get the height of the content
   const content = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = React.useState(`${content.current?.scrollHeight}px`);
+  const [height, setHeight] = React.useState("auto");
   const [open, setOpen] = React.useState(true);
   const [showAll, setShowAll] = React.useState(false);
 
@@ -66,18 +73,24 @@ const StackedList = ({data, title, endAdornment}: StackedListProps) => {
         </StyledHeader>
       </Root>
       <Collapse ref={content} height={height}>
-        {initialDisplayData && initialDisplayData.length
-          ? initialDisplayData.map((item) => (
-              <StackedListItem
-                startAdornment={item.startAdornment}
-                endAdornment={item.endAdornment}
-                superText={item.superText}
-                subText={item.subText}
-              >
-                {item.children}
-              </StackedListItem>
-            ))
-          : null}
+        {initialDisplayData && initialDisplayData.length ? (
+          initialDisplayData.map((item) => (
+            <StackedListItem
+              startAdornment={item.startAdornment}
+              endAdornment={item.endAdornment}
+              superText={item.superText}
+              subText={item.subText}
+            >
+              {item.children}
+            </StackedListItem>
+          ))
+        ) : (
+          <StyledEmptyList>
+            <Typography variant="label" size="md">
+              {emptyContentMessage || "No content to be displayed"}
+            </Typography>
+          </StyledEmptyList>
+        )}
         {showAll && extendedDisplayData && extendedDisplayData.length
           ? extendedDisplayData.map((item) => (
               <StackedListItem
@@ -90,18 +103,20 @@ const StackedList = ({data, title, endAdornment}: StackedListProps) => {
               </StackedListItem>
             ))
           : null}
-        <StackedListItem
-          startAdornment={
-            <StyledFooterButton onClick={handleShowAll}>
-              <Typography variant="label" size="md">
-                {showAll ? "Show less" : "Show all"}
-              </Typography>
-            </StyledFooterButton>
-          }
-        ></StackedListItem>
+        {data && data.length ? (
+          <StackedListItem
+            startAdornment={
+              <StyledFooterButton onClick={handleShowAll}>
+                <Typography variant="label" size="md">
+                  {showAll ? "Show less" : "Show all"}
+                </Typography>
+              </StyledFooterButton>
+            }
+          ></StackedListItem>
+        ) : null}
       </Collapse>
     </StyledStackedList>
   );
 };
 
-export default StackedList;
+export {default as StackedListItem} from "./StackedListItem";
