@@ -17,11 +17,23 @@ import {faChevronRight} from "@fortawesome/pro-regular-svg-icons";
 
 export interface StackedListProps {
   /**
-   * content of the StackedList
+   * content of the stackedList
    */
   data?: any[];
+
+  /**
+   * title or header
+   */
   title?: string;
+
+  /**
+   * message when stackedlist is empty
+   */
   emptyContentMessage?: string;
+
+  /**
+   * element at the end of the stackedlist header
+   */
   endAdornment?: React.ReactNode;
 }
 
