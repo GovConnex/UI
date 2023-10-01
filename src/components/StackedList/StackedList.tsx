@@ -61,7 +61,7 @@ export const StackedList = ({
     <StyledStackedList>
       <Root>
         <StyledHeader>
-          <StyledHeaderStart onClick={handleClick}>
+          <StyledHeaderStart data-testid="chevron" onClick={handleClick}>
             <Chevron open={open}>
               <Icon icon={faChevronRight} />
             </Chevron>
@@ -72,7 +72,7 @@ export const StackedList = ({
           <StyledHeaderEnd>{endAdornment}</StyledHeaderEnd>
         </StyledHeader>
       </Root>
-      <Collapse ref={content} height={height}>
+      <Collapse ref={content} height={height} data-testid="collapse">
         {initialDisplayData && initialDisplayData.length ? (
           initialDisplayData.map((item) => (
             <StackedListItem
@@ -85,7 +85,7 @@ export const StackedList = ({
             </StackedListItem>
           ))
         ) : (
-          <StyledEmptyList>
+          <StyledEmptyList data-testid="empty-state">
             <Typography variant="label" size="md">
               {emptyContentMessage || "No content to be displayed"}
             </Typography>
@@ -105,6 +105,7 @@ export const StackedList = ({
           : null}
         {data && data.length && extendedDisplayData && extendedDisplayData.length ? (
           <StackedListItem
+            data-testid="show-all"
             startAdornment={
               <StyledFooterButton onClick={handleShowAll}>
                 <Typography variant="label" size="md">
