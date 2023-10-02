@@ -12,6 +12,7 @@ export const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.sm};
+  color: ${(props) => props.theme.core.content.contentPrimary};
 `;
 
 export const StyledHeaderStart = styled.div`
