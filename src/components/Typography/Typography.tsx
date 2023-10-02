@@ -2,6 +2,7 @@ import React from "react";
 import {VariantsProp, Variants} from "./Typography.types";
 import {variantComponents} from "./Typography.styles";
 import {TypographySize} from "../../theming/global-theme.interface";
+import {customStyles} from "../../core/styleFunctions";
 
 export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "size"> {
   /**
@@ -27,6 +28,7 @@ export interface TypographyProps extends Omit<React.HTMLProps<HTMLElement>, "siz
    *  @default md
    */
   size?: keyof TypographySize;
+  cs?: customStyles;
 }
 
 /**
@@ -47,6 +49,7 @@ const Typography = ({
   variant = "body",
   size = "md",
   color,
+  cs,
   ...props
 }: TypographyProps) => {
   const selectedVariantValue = Variants[variant as keyof typeof Variants];
@@ -55,7 +58,7 @@ const Typography = ({
     : "body";
   const VariantComponent = variantComponents[validatedVariant];
   return (
-    <VariantComponent color={color} size={size} {...props}>
+    <VariantComponent color={color} size={size} cs={cs} {...props}>
       {children}
     </VariantComponent>
   );
