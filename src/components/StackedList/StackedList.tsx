@@ -117,6 +117,7 @@ export const StackedList = ({
           : null}
         {data && data.length && extendedDisplayData && extendedDisplayData.length ? (
           <StackedListItem
+            isShowAll={true}
             data-testid="show-all"
             startAdornment={
               <StyledFooterButton onClick={handleShowAll}>

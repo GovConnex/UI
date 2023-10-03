@@ -2,19 +2,20 @@ import styled from "styled-components";
 import Typography from "../Typography";
 import {addCustomStyles, customStyles} from "../../core/styleFunctions";
 
-export const StyledStackedListItem = styled.div<{cs?: customStyles}>`
+export const StyledStackedListItem = styled.div<{cs?: customStyles; isShowAll?: boolean}>`
   background-color: ${(props) => props.theme.core.background.bgPrimary};
   padding: ${(props) => `${props.theme.spacing["2xs"]} ${props.theme.spacing.sm}`}};
   display: flex;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.sm};
+  gap: ${(props) => props.theme.spacing.xs};
 
   &:first-child {
     padding-top: 0px;
   }
 
   &:last-child {
-    padding-bottom: ${(props) => props.theme.spacing.sm};
+    padding-bottom: ${(props) =>
+      props.isShowAll ? props.theme.spacing.xs : props.theme.spacing.sm};
   }
   ${(cs) => addCustomStyles(cs)};
 `;

@@ -32,8 +32,12 @@ export const StyledHeaderEnd = styled.div`
 export const StyledFooterButton = styled.div`
   text-decoration: underline;
   color: ${(props) => props.theme.core.content.contentPrimary};
-  padding: ${(props) =>
-    `${props.theme.spacing.xs} ${props.theme.spacing.sm} ${props.theme.spacing.xs} 0px`};
+  cursor: pointer;
+  padding: ${(props) => `0px ${props.theme.spacing.sm} ${props.theme.spacing.xs} 0px`};
+
+  > * {
+    cursor: pointer;
+  }
 `;
 
 export const StyledEmptyList = styled.div`
