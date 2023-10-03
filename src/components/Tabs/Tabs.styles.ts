@@ -34,18 +34,18 @@ const SectionHighlight = styled.span<{
 
   ${({theme, width, offset}) =>
     ` 
-    height: calc(100% - 8px);
+    height: calc(100% - 5px);
     width: ${width}px;
     left: ${offset + 8}px;
     background-color: ${theme.extended.state.primaryBase};
-    border-radius: ${theme.borderRadius.base};
+    border-radius: 6px;
     position: absolute;
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition-property: all;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0ms;
-    bottom: 4px;
+    bottom: 2px;
 `}
 `;
 

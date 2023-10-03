@@ -53,7 +53,7 @@ describe("Tabs", () => {
     const tabButton = getByTestId("section-highlight");
     expect(tabButton).toBeInTheDocument();
     expect(tabButton).toHaveStyle(`
-      border-radius: ${lightTheme.borderRadius.base};
+      border-radius: 6px;
     `);
   });
 });
