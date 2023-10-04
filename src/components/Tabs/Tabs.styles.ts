@@ -35,8 +35,8 @@ const SectionHighlight = styled.span<{
   ${({theme, width, offset}) =>
     ` 
     height: calc(100% - 5px);
-    width: ${width}px;
-    left: ${offset + 8}px;
+    width: ${width + 8}px;
+    left: ${offset + 4}px;
     background-color: ${theme.extended.state.primaryBase};
     border-radius: 6px;
     position: absolute;
@@ -45,7 +45,7 @@ const SectionHighlight = styled.span<{
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0ms;
-    bottom: 2px;
+    bottom: 4px;
 `}
 `;
 
