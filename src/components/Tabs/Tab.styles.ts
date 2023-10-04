@@ -9,7 +9,7 @@ const StyledTab = styled.button<{
     ` 
     padding-left: ${theme.spacing.sm};
     padding-right: ${theme.spacing.sm};
-    height: ${isSection ? "24px" : "40px"};
+    height: ${isSection ? "14px" : "40px"};
     border: 0 solid transparent;
     position: relative;
     white-space: nowrap;
