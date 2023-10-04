@@ -192,3 +192,185 @@ export const Empty = Template.bind({});
 Empty.args = {
   title: "Empty Stacked List",
 };
+
+export const Scrollable = Template.bind({});
+Scrollable.args = {
+  title: (
+    <>
+      <span style={{paddingRight: "5px"}}>Scrollable</span>
+      <Chip children="Experimental" priority="high" />
+    </>
+  ),
+  isScrollable: true,
+  endAdornment: (
+    <Button iconOnly variant="secondary">
+      <Icon icon={faPlus} />
+    </Button>
+  ),
+  data: [
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 1</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 1",
+      startAdornment: <Avatar alt={"DC Test"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: "Testing child 2",
+      subText: "Subtext 2",
+      startAdornment: <Avatar alt={"AC Best"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: "Testing child 3",
+      subText: "Subtext 3",
+      startAdornment: <Avatar alt={"BC Lester"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 4</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 4",
+      startAdornment: <Avatar alt={"DC Rest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 5</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 5",
+      startAdornment: <Avatar alt={"DC Sest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 6</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 6",
+      startAdornment: <Avatar alt={"DC West"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 7</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 7",
+      startAdornment: <Avatar alt={"DC Vest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 8</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 8",
+      startAdornment: <Avatar alt={"PC Vest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 9</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 9",
+      startAdornment: <Avatar alt={"AC Vest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: (
+        <span>
+          <span style={{paddingRight: "5px"}}>Testing child 10</span>
+          <span style={{paddingRight: "5px"}}>
+            <Chip children="Chip 2" priority="low" role={role} />
+          </span>
+          <Chip children="Chip 1" priority="low" />
+        </span>
+      ),
+      subText: "Subtext 10",
+      startAdornment: <Avatar alt={"PL Vest"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+  ],
+};

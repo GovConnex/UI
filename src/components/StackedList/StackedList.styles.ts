@@ -52,6 +52,11 @@ export const StyledEmptyList = styled.div`
   text-align: center;
 `;
 
+export const StyledScrollableWrapper = styled.div`
+  max-height: 400px;
+  overflow: auto;
+`;
+
 export const Root = styled.div`
   cursor: pointer;
   user-select: none;
