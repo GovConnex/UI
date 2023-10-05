@@ -8,11 +8,12 @@ export const StyledStackedList = styled.div`
 
 export const StyledHeader = styled.div`
   background-color: ${(props) => props.theme.core.background.bgPrimary};
-  padding: ${(props) => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
+  padding: ${(props) => `0px ${props.theme.spacing.sm}`};
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.sm};
   color: ${(props) => props.theme.core.content.contentPrimary};
+  height: 50px;
 `;
 
 export const StyledHeaderStart = styled.div`
@@ -20,6 +21,15 @@ export const StyledHeaderStart = styled.div`
   gap: ${(props) => props.theme.spacing.sm};
   align-items: center;
   vertical-align: middle;
+`;
+
+export const StyledHeaderStartWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: ${(props) => props.theme.spacing.sm};
 `;
 
 export const StyledHeaderEnd = styled.div`
@@ -53,7 +63,7 @@ export const StyledEmptyList = styled.div`
 `;
 
 export const StyledScrollableWrapper = styled.div`
-  max-height: 400px;
+  max-height: 350px;
   overflow: auto;
 `;
 

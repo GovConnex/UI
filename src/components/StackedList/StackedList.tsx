@@ -7,6 +7,7 @@ import {
   StyledFooterButton,
   StyledEmptyList,
   StyledScrollableWrapper,
+  StyledHeaderStartWrapper,
   Root,
   Collapse,
   Chevron,
@@ -71,7 +72,7 @@ export const StackedList = ({
 
   const handleClick = () => {
     setOpen(!open);
-    setHeight((prev) => (prev === "0px" ? `${content.current?.scrollHeight}px` : "0px"));
+    setHeight((prev) => (prev === "0px" ? "auto" : "0px"));
   };
 
   const handleShowAll = () => {
@@ -83,14 +84,16 @@ export const StackedList = ({
     <StyledStackedList>
       <Root>
         <StyledHeader>
-          <StyledHeaderStart data-testid="chevron" onClick={handleClick}>
-            <Chevron open={open}>
-              <Icon icon={faChevronRight} />
-            </Chevron>
-          </StyledHeaderStart>
-          <Typography onClick={handleClick} variant="heading" size="xs">
-            {title}
-          </Typography>
+          <StyledHeaderStartWrapper onClick={handleClick}>
+            <StyledHeaderStart data-testid="chevron">
+              <Chevron open={open}>
+                <Icon icon={faChevronRight} />
+              </Chevron>
+            </StyledHeaderStart>
+            <Typography variant="heading" size="xs">
+              {title}
+            </Typography>
+          </StyledHeaderStartWrapper>
           <StyledHeaderEnd>{endAdornment}</StyledHeaderEnd>
         </StyledHeader>
       </Root>
