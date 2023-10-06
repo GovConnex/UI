@@ -11,7 +11,7 @@ const StyledTabs = styled.div<{isSection?: boolean}>`
     ${
       isSection &&
       `
-      padding: ${theme.spacing.xs};
+      padding: ${theme.spacing.xs} 0px;
       border-radius: ${theme.borderRadius.base};
       background-color: ${theme.core.background.bgTertiary};
       border: 1px solid ${theme.core.border.borderLight};
@@ -35,7 +35,7 @@ const SectionHighlight = styled.span<{
   ${({theme, width, offset}) =>
     ` 
     height: calc(100% - 6px);
-    width: ${width + 10}px;
+    width: ${width - 6}px;
     left: ${offset + 3}px;
     background-color: ${theme.extended.state.primaryBase};
     border-radius: 6px;

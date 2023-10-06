@@ -6,6 +6,8 @@ import {
   StyledHeaderEnd,
   StyledFooterButton,
   StyledEmptyList,
+  StyledScrollableWrapper,
+  StyledHeaderStartWrapper,
   Root,
   Collapse,
   Chevron,
@@ -24,7 +26,7 @@ export interface StackedListProps {
   /**
    * title or header
    */
-  title?: string;
+  title?: React.ReactNode;
 
   /**
    * message when stackedlist is empty
@@ -35,6 +37,11 @@ export interface StackedListProps {
    * element at the end of the stackedlist header
    */
   endAdornment?: React.ReactNode;
+
+  /**
+   * indicate whether stacked list is scrollable or not
+   */
+  isScrollable?: boolean;
 }
 
 /**
@@ -47,6 +54,7 @@ export interface StackedListProps {
 export const StackedList = ({
   data,
   title,
+  isScrollable,
   emptyContentMessage,
   endAdornment,
 }: StackedListProps) => {
@@ -56,12 +64,15 @@ export const StackedList = ({
   const [open, setOpen] = React.useState(true);
   const [showAll, setShowAll] = React.useState(false);
 
-  const initialDisplayData = data && data.length ? [...data].slice(0, 5) : [];
-  const extendedDisplayData = data && data.length ? [...data].slice(5) : [];
+  const initialDisplayData =
+    data && data.length ? (isScrollable ? data : [...data].slice(0, 5)) : [];
+
+  const extendedDisplayData =
+    data && data.length ? (isScrollable ? [] : [...data].slice(5)) : [];
 
   const handleClick = () => {
     setOpen(!open);
-    setHeight((prev) => (prev === "0px" ? `${content.current?.scrollHeight}px` : "0px"));
+    setHeight((prev) => (prev === "0px" ? "auto" : "0px"));
   };
 
   const handleShowAll = () => {
@@ -73,29 +84,46 @@ export const StackedList = ({
     <StyledStackedList>
       <Root>
         <StyledHeader>
-          <StyledHeaderStart data-testid="chevron" onClick={handleClick}>
-            <Chevron open={open}>
-              <Icon icon={faChevronRight} />
-            </Chevron>
-          </StyledHeaderStart>
-          <Typography onClick={handleClick} variant="heading" size="xs">
-            {title}
-          </Typography>
+          <StyledHeaderStartWrapper onClick={handleClick}>
+            <StyledHeaderStart data-testid="chevron">
+              <Chevron open={open}>
+                <Icon icon={faChevronRight} />
+              </Chevron>
+            </StyledHeaderStart>
+            <Typography variant="heading" size="xs">
+              {title}
+            </Typography>
+          </StyledHeaderStartWrapper>
           <StyledHeaderEnd>{endAdornment}</StyledHeaderEnd>
         </StyledHeader>
       </Root>
       <Collapse ref={content} height={height} data-testid="collapse">
         {initialDisplayData && initialDisplayData.length ? (
-          initialDisplayData.map((item) => (
-            <StackedListItem
-              startAdornment={item.startAdornment}
-              endAdornment={item.endAdornment}
-              superText={item.superText}
-              subText={item.subText}
-            >
-              {item.children}
-            </StackedListItem>
-          ))
+          isScrollable ? (
+            <StyledScrollableWrapper>
+              {initialDisplayData.map((item) => (
+                <StackedListItem
+                  startAdornment={item.startAdornment}
+                  endAdornment={item.endAdornment}
+                  superText={item.superText}
+                  subText={item.subText}
+                >
+                  {item.children}
+                </StackedListItem>
+              ))}
+            </StyledScrollableWrapper>
+          ) : (
+            initialDisplayData.map((item) => (
+              <StackedListItem
+                startAdornment={item.startAdornment}
+                endAdornment={item.endAdornment}
+                superText={item.superText}
+                subText={item.subText}
+              >
+                {item.children}
+              </StackedListItem>
+            ))
+          )
         ) : (
           <StyledEmptyList data-testid="empty-state">
             <Typography variant="label" size="md">
@@ -115,7 +143,11 @@ export const StackedList = ({
               </StackedListItem>
             ))
           : null}
-        {data && data.length && extendedDisplayData && extendedDisplayData.length ? (
+        {data &&
+        data.length &&
+        extendedDisplayData &&
+        extendedDisplayData.length &&
+        !isScrollable ? (
           <StackedListItem
             isShowAll={true}
             data-testid="show-all"

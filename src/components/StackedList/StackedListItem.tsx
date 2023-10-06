@@ -12,8 +12,8 @@ interface StackedListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
-  superText?: string;
-  subText?: string;
+  superText?: React.ReactNode;
+  subText?: React.ReactNode;
   disabled?: boolean;
   className?: string;
   "data-cy"?: string;

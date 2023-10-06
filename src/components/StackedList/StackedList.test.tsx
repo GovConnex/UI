@@ -64,4 +64,23 @@ describe("StackedList", () => {
     const showAll = getByTestId("show-all");
     expect(showAll).toBeInTheDocument();
   });
+
+  test("should not display show all when scrollable is set", () => {
+    const {queryByText} = renderStackedList({
+      title: "Details",
+      isScrollable: true,
+      data: [
+        {children: "Test One"},
+        {children: "Test Two"},
+        {children: "Test Three"},
+        {children: "Test Four"},
+        {children: "Test Five"},
+        {children: "Test Six"},
+        {children: "Test Seven"},
+      ],
+    });
+
+    const showAll = queryByText("Show all");
+    expect(showAll).not.toBeInTheDocument();
+  });
 });
