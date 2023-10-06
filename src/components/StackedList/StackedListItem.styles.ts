@@ -4,7 +4,10 @@ import {addCustomStyles, customStyles} from "../../core/styleFunctions";
 
 export const StyledStackedListItem = styled.div<{cs?: customStyles; isShowAll?: boolean}>`
   background-color: ${(props) => props.theme.core.background.bgPrimary};
-  padding: ${(props) => `${props.theme.spacing["2xs"]} ${props.theme.spacing.sm}`}};
+  padding: ${(props) =>
+    `${props.theme.spacing["2xs"]} ${
+      props.isShowAll ? props.theme.spacing.xs : props.theme.spacing.sm
+    }`}};
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.xs};
@@ -14,8 +17,7 @@ export const StyledStackedListItem = styled.div<{cs?: customStyles; isShowAll?: 
   }
 
   &:last-child {
-    padding-bottom: ${(props) =>
-      props.isShowAll ? props.theme.spacing.xs : props.theme.spacing.sm};
+    padding-bottom: ${(props) => (props.isShowAll ? "0px" : props.theme.spacing.sm)};
   }
   ${(cs) => addCustomStyles(cs)};
 `;
@@ -44,6 +46,7 @@ export const StyledChildTypography = styled(Typography)`
 
 export const StyledTextWrapper = styled.div`
   display: block;
+  width: 100%;
 `;
 
 export default StyledStackedListItem;
