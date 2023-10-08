@@ -2,12 +2,21 @@ import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Banner from "./Banner";
 import {withDesign} from "storybook-addon-designs";
+import ComponentSummary from "./ComponentSummary.mdx";
+import ReactDOMServer from "react-dom/server";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/Banner",
   component: Banner,
   decorators: [withDesign],
+  parameters: {
+    docs: {
+      description: {
+        component: ReactDOMServer.renderToString(<ComponentSummary />),
+      },
+    },
+  },
 } as ComponentMeta<typeof Banner>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -18,6 +27,14 @@ Info.args = {
   title: "Title",
   description: "Description",
   variant: "info",
+  primaryButton: {
+    label: "Primary Button",
+    onClick: () => {},
+  },
+  secondaryButton: {
+    label: "Secondary Button",
+    onClick: () => {},
+  },
 };
 
 export const Warning = Template.bind({});
