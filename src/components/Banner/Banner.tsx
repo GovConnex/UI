@@ -10,6 +10,14 @@ import {
   MainContentContainer,
 } from "./Banner.styles";
 import {ButtonSubtype} from "../Button/Button";
+import {
+  faCheckCircle,
+  faClose,
+  faExclamationCircle,
+  faExclamationTriangle,
+  faInfoCircle,
+} from "@fortawesome/pro-regular-svg-icons";
+import {useTheme} from "styled-components";
 
 export interface BannerProps {
   /**
@@ -38,10 +46,10 @@ export interface BannerProps {
 }
 
 const variantMap = {
-  info: "info-circle",
-  warning: "exclamation-triangle",
-  error: "exclamation-circle",
-  success: "check-circle",
+  info: faInfoCircle,
+  warning: faExclamationTriangle,
+  error: faExclamationCircle,
+  success: faCheckCircle,
 };
 
 /**
@@ -60,10 +68,13 @@ const Banner = (props: BannerProps) => {
     secondaryButton,
     onClose,
   } = props;
+  const theme = useTheme();
   return (
     <StyledBanner variant={variant}>
-      {/* <Icon icon={`far,` && (variantMap[ variant ] as IconProp)} /> */}
-      <Icon icon={["far", "heart"] as IconProp} />
+      <Icon
+        icon={variantMap[variant] as IconProp}
+        color={theme.extended.support[`${variant}Base`]}
+      />
       <MainContentContainer>
         <StyledTextWrapper variant={variant}>
           <Typography noMargin variant="label">
@@ -101,12 +112,13 @@ const Banner = (props: BannerProps) => {
       {onClose && (
         <Button
           iconOnly
-          startAdornment={<Icon icon={"close" as IconProp} />}
+          startAdornment={<Icon icon={faClose as IconProp} />}
           onClick={onClose}
           variant="tertiary"
           subtype={variant as ButtonSubtype}
           style={{marginLeft: "auto"}}
           size="sm"
+          aria-label="Close"
         />
       )}
     </StyledBanner>

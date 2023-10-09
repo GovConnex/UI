@@ -35,6 +35,7 @@ Info.args = {
     label: "Secondary Button",
     onClick: () => {},
   },
+  onClose: undefined,
 };
 
 export const Warning = Template.bind({});

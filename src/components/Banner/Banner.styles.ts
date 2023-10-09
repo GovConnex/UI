@@ -14,6 +14,7 @@ const StyledBanner = styled.div<{
 const MainContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: -2px;
   gap: ${(props) => props.theme.spacing.sm};
 `
 
