@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, fireEvent} from "@testing-library/react";
+import {render, fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import {ThemeProvider} from "styled-components";
 import Banner, {BannerProps} from "./Banner"; // Adjust the import to your file structure
