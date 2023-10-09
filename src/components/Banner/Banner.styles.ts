@@ -16,18 +16,18 @@ const MainContentContainer = styled.div`
   flex-direction: column;
   margin-top: -2px;
   gap: ${(props) => props.theme.spacing.sm};
-`
+`;
 
-const StyledTextWrapper = styled.div<{variant: "success" | "warning" | "error" | "info";}>`
+const StyledTextWrapper = styled.div<{variant: "success" | "warning" | "error" | "info"}>`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing["2xs"]};
-  color: ${(props) => props.theme.extended.support[ `${props.variant}Dark` ]};
-  `
+  color: ${(props) => props.theme.extended.support[`${props.variant}Dark`]};
+`;
 
 const ButtonWrapper = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing["2xs"]};
-`
+`;
 
 export {StyledBanner, StyledTextWrapper, ButtonWrapper, MainContentContainer};
