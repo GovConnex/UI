@@ -34,6 +34,10 @@ export interface InputProps
    * renders a red error text at the bottom of the input
    */
   error?: string;
+  /**
+   * indicates whether padding should be removed
+   */
+  noPadding?: boolean;
 }
 
 export const debounce = (fn: Function, ms: number) => {
@@ -58,6 +62,7 @@ export const DebouncedInput = ({
   value,
   onChange = noop,
   delayMs = 500,
+  noPadding,
   ...props
 }: DebouncedInputProps) => {
   const [inputValue, setInputValue] = useState(value);
@@ -81,6 +86,7 @@ export const DebouncedInput = ({
   return (
     <Input
       value={inputValue}
+      noPadding={noPadding}
       onChange={(e) => setInputValue(e.target.value)}
       {...props}
     />
@@ -91,7 +97,16 @@ export const DebouncedInput = ({
  * `Input` is a extendable input component
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {label, hint, startAdornment, endAdornment, error, fullWidth, ...rest} = props;
+  const {
+    label,
+    hint,
+    startAdornment,
+    endAdornment,
+    error,
+    fullWidth,
+    noPadding,
+    ...rest
+  } = props;
 
   return (
     <StyledInputWrapper fullWidth={!!fullWidth}>
@@ -107,8 +122,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
             {props.startAdornment}
           </StyledAdornment>
         ) : null}
-
         <StyledInput
+          noPadding={noPadding}
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}

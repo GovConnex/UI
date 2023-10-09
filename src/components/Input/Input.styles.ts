@@ -32,13 +32,14 @@ const StyledInputWrapper = styled.div<{fullWidth: boolean}>(
 
 const StyledInput = styled.input<{
   error: boolean;
+  noPadding?: boolean;
   fullWidth: boolean;
   adornmentPadding: "left" | "right" | null;
 }>(
-  ({theme, error, fullWidth, adornmentPadding}) =>
+  ({theme, error, fullWidth, adornmentPadding, noPadding}) =>
     `
-  padding-top: ${theme.spacing.xs};
-  padding-bottom: ${theme.spacing.xs};
+  padding-top: ${noPadding ? "0px" : theme.spacing.xs};
+  padding-bottom: ${noPadding ? "0px" : theme.spacing.xs};
   padding-left: calc(${theme.spacing.sm} + ${
     adornmentPadding === "left" ? "26px" : "0px"
   });
@@ -49,7 +50,7 @@ const StyledInput = styled.input<{
   width: ${fullWidth ? "100%" : "initial"};
   background-color: transparent;
 
-  border-radius: ${theme.borderRadius.xs};
+  border-radius: ${noPadding ? theme.borderRadius.minimal : theme.borderRadius.xs};
   border-color:${error ? theme.secondary.red[500] : theme.primary.neutral[200]};
   border-style:solid;
   border-width:1px;
@@ -64,14 +65,22 @@ const StyledInput = styled.input<{
   &:focus {
     border-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
     border-width:2px;
-    padding-top: calc(${theme.spacing.xs} - 1px);
-    padding-bottom: calc(${theme.spacing.xs} - 1px);
-    padding-left: calc((${theme.spacing.sm} + ${
-      adornmentPadding === "left" ? "26px" : "0px"
-    }) - 1px);
-    padding-right: calc((${theme.spacing.sm} + ${
-      adornmentPadding === "right" ? "26px" : "0px"
-    }) - 1px);
+    padding-top: ${noPadding ? "0px" : `calc(${theme.spacing.xs} - 1px)`};
+    padding-bottom: ${noPadding ? "0px" : `calc(${theme.spacing.xs} - 1px)`};
+    padding-left: ${
+      noPadding
+        ? "0px"
+        : `calc((${theme.spacing.sm} + ${
+            adornmentPadding === "left" ? "26px" : "0px"
+          }) - 1px)`
+    };
+    padding-right: ${
+      noPadding
+        ? "0px"
+        : `calc((${theme.spacing.sm} + ${
+            adornmentPadding === "right" ? "26px" : "0px"
+          }) - 1px)`
+    };
   }
 
   &:hover {
