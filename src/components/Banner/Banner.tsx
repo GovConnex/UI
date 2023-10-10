@@ -73,7 +73,7 @@ const Banner = (props: BannerProps) => {
     <StyledBanner variant={variant}>
       <Icon
         icon={variantMap[variant] as IconProp}
-        color={theme.extended.support[`${variant}Base`]}
+        color={theme.extended.support[`${variant}Dark`]}
       />
       <MainContentContainer>
         <StyledTextWrapper variant={variant}>

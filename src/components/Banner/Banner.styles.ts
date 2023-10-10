@@ -8,7 +8,7 @@ const StyledBanner = styled.div<{
   gap: ${(props) => props.theme.spacing.sm};
   padding: ${(props) => props.theme.spacing.sm};
   border-radius: ${(props) => props.theme.borderRadius.base};
-  border: 1px solid ${(props) => props.theme.extended.support[`${props.variant}Base`]};
+  background-color: ${(props) => props.theme.extended.support[`${props.variant}Light`]};
 `;
 
 const MainContentContainer = styled.div`

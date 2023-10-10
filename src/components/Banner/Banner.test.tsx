@@ -32,7 +32,7 @@ describe("Banner component", () => {
     });
 
     expect(container.firstChild).toHaveStyle(`
-      border-color: ${lightTheme.extended.support.infoBase};
+    background-color: ${lightTheme.extended.support.infoLight};
     `);
 
     rerender(
@@ -42,10 +42,8 @@ describe("Banner component", () => {
     );
 
     expect(container.firstChild).toHaveStyle(`
-      border-color: ${lightTheme.extended.support.warningBase};
+      background-color: ${lightTheme.extended.support.warningLight};
     `);
-
-    // Add more variants
   });
 
   it("fires primary button click event", () => {
