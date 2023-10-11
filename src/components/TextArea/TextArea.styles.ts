@@ -26,22 +26,28 @@ const StyledTextArea = styled.textarea<{
   fullWidth: boolean;
   adornmentPadding: "left" | "right" | null;
   resize: boolean | undefined;
+  squashHeight?: boolean;
+  noPadding?: boolean;
 }>(
-  ({theme, error, fullWidth, adornmentPadding, resize}) =>
+  ({theme, error, fullWidth, adornmentPadding, resize, squashHeight, noPadding}) =>
     `
-  padding-top: ${theme.spacing.xs};
-  padding-bottom: ${theme.spacing.xs};
-  padding-left: calc(${theme.spacing.sm} + ${
-    adornmentPadding === "left" ? "26px" : "0px"
-  });
-  padding-right: calc(${theme.spacing.sm} + ${
-    adornmentPadding === "right" ? "26px" : "0px"
-  });
+  padding-top: ${noPadding ? "0px" : theme.spacing.xs};
+  padding-bottom: ${noPadding ? "0px" : theme.spacing.xs};
+  padding-left: ${
+    noPadding
+      ? "0px"
+      : `calc(${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"})`
+  };
+  padding-right: ${
+    noPadding
+      ? "0px"
+      : `calc(${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"})`
+  };
 
   width: ${fullWidth ? "100%" : "initial"};
   background-color: transparent;
 
-  border-radius: ${theme.borderRadius.xs};
+  border-radius: ${noPadding ? theme.borderRadius.minimal : theme.borderRadius.xs};
   border-color:${error ? theme.secondary.red[500] : theme.primary.neutral[200]};
   border-style:solid;
   border-width:1px;
@@ -49,7 +55,7 @@ const StyledTextArea = styled.textarea<{
   font-size:${theme.typography.body.md.fontSize};
   background-color: ${theme.primary.base.white};
 
-  min-height: 22px;
+  min-height: ${squashHeight ? "0px" : "22px"};
 
   ${resize ? "resize: auto;" : "resize:none;"}
 

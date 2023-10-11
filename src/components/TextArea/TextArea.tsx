@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   StyledAdornment,
   StyledTextArea,
@@ -38,6 +38,16 @@ export interface TextAreaProps
    * allows resize of the textarea
    */
   resize?: boolean;
+
+  /**
+   * makes min height to zero
+   */
+  squashHeight?: boolean;
+
+  /**
+   * indicates whether padding should be removed
+   */
+  noPadding?: boolean;
 }
 
 /**
@@ -46,8 +56,35 @@ export interface TextAreaProps
  * Component Demo: [TextArea](https://ui.govconnex.com/?path=/story/components-textarea--example)
  */
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const {label, hint, startAdornment, endAdornment, error, fullWidth, resize, ...rest} =
-    props;
+  const {
+    label,
+    hint,
+    startAdornment,
+    endAdornment,
+    error,
+    fullWidth,
+    resize,
+    squashHeight,
+    noPadding,
+    ...rest
+  } = props;
+
+  const autoResize = () => {
+    const textArea = document.querySelector("#textArea") as HTMLTextAreaElement;
+
+    if (textArea) {
+      textArea.rows = 1; // Reset rows to 1 to recalculate the new number of rows
+
+      const rowsNeeded = Math.ceil(textArea.scrollHeight / 20); // Calculate the new number of rows
+      textArea.rows = rowsNeeded; // Set the new number of rows
+    }
+  };
+
+  useEffect(() => {
+    if (squashHeight) {
+      autoResize();
+    }
+  }, []);
 
   return (
     <StyledTextAreaWrapper>
@@ -65,10 +102,13 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         ) : null}
 
         <StyledTextArea
+          id="textArea"
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}
           resize={resize}
+          noPadding={noPadding}
+          squashHeight={squashHeight}
           ref={ref}
           {...rest}
         ></StyledTextArea>

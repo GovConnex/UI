@@ -40,12 +40,16 @@ const StyledInput = styled.input<{
     `
   padding-top: ${noPadding ? "0px" : theme.spacing.xs};
   padding-bottom: ${noPadding ? "0px" : theme.spacing.xs};
-  padding-left: calc(${theme.spacing.sm} + ${
-    adornmentPadding === "left" ? "26px" : "0px"
-  });
-  padding-right: calc(${theme.spacing.sm} + ${
-    adornmentPadding === "right" ? "26px" : "0px"
-  });
+  padding-left: ${
+    noPadding
+      ? "0px"
+      : `calc(${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"})`
+  };
+  padding-right: ${
+    noPadding
+      ? "0px"
+      : `calc(${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"})`
+  };
 
   width: ${fullWidth ? "100%" : "initial"};
   background-color: transparent;
