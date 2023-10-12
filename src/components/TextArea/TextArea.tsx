@@ -94,9 +94,14 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         </Typography>
       ) : null}
 
-      <StyledTextAreaContainer fullWidth={!!fullWidth}>
+      <StyledTextAreaContainer squashHeight={squashHeight} fullWidth={!!fullWidth}>
         {startAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="left">
+          <StyledAdornment
+            squashHeight={squashHeight}
+            noPadding={noPadding}
+            disabled={props.disabled || false}
+            position="left"
+          >
             {props.startAdornment}
           </StyledAdornment>
         ) : null}
@@ -114,7 +119,12 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         ></StyledTextArea>
 
         {endAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="right">
+          <StyledAdornment
+            squashHeight={squashHeight}
+            noPadding={noPadding}
+            disabled={props.disabled || false}
+            position="right"
+          >
             {props.endAdornment}
           </StyledAdornment>
         ) : null}
