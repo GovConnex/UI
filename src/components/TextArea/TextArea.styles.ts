@@ -87,12 +87,13 @@ const StyledTextArea = styled.textarea<{
   `
 );
 
-const StyledTextAreaWrapper = styled.div(
-  ({theme}) =>
+const StyledTextAreaWrapper = styled.div<{fullWidth?: boolean}>(
+  ({theme, fullWidth}) =>
     `
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.xs};
+  width: ${fullWidth ? "100%" : "auto"}
   `
 );
 

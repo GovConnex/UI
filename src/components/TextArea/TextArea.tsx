@@ -87,7 +87,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   }, []);
 
   return (
-    <StyledTextAreaWrapper>
+    <StyledTextAreaWrapper fullWidth={fullWidth}>
       {label ? (
         <Typography noMargin variant="label" size="md">
           {label}
