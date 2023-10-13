@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {
   StyledAdornment,
   StyledTextArea,
@@ -48,6 +48,11 @@ export interface TextAreaProps
    * indicates whether padding should be removed
    */
   noPadding?: boolean;
+
+  /**
+   * overrides the adornment color
+   */
+  adornmentColor?: string;
 }
 
 /**
@@ -66,8 +71,11 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     resize,
     squashHeight,
     noPadding,
+    adornmentColor,
     ...rest
   } = props;
+
+  const [overridePositionTop, setOverridePositionTop] = useState(0);
 
   const autoResize = () => {
     const textArea = document.querySelector("#textArea") as HTMLTextAreaElement;
@@ -75,8 +83,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     if (textArea) {
       textArea.rows = 1; // Reset rows to 1 to recalculate the new number of rows
 
-      const rowsNeeded = Math.ceil(textArea.scrollHeight / 20); // Calculate the new number of rows
+      const rowsNeeded = Math.ceil(textArea.scrollHeight / 18); // Calculate the new number of rows
       textArea.rows = rowsNeeded; // Set the new number of rows
+      setOverridePositionTop((rowsNeeded - 1) * 8);
     }
   };
 
@@ -99,6 +108,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
           <StyledAdornment
             squashHeight={squashHeight}
             noPadding={noPadding}
+            adornmentColor={adornmentColor}
+            overridePositionTop={`${overridePositionTop}px`}
             disabled={props.disabled || false}
             position="left"
           >
@@ -122,6 +133,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
           <StyledAdornment
             squashHeight={squashHeight}
             noPadding={noPadding}
+            adornmentColor={adornmentColor}
+            overridePositionTop={`${overridePositionTop}px`}
             disabled={props.disabled || false}
             position="right"
           >

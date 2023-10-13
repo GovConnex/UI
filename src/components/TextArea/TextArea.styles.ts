@@ -1,17 +1,35 @@
 import styled from "styled-components";
+import {getValueFromPath} from "../../core/styleFunctions";
 
 const StyledAdornment = styled.span<{
   position: string;
   disabled: boolean;
   noPadding?: boolean;
   squashHeight?: boolean;
-}>(({theme, position, disabled, noPadding, squashHeight}) => ({
-  [position]: noPadding ? theme.spacing.xs : theme.spacing.sm,
-  paddingTop: noPadding ? "0px" : theme.spacing.xs,
-  position: "absolute",
-  pointerEvents: squashHeight ? "auto" : "none",
-  opacity: disabled ? 0.3 : 1,
-}));
+  adornmentColor?: string;
+  overridePositionTop?: string;
+}>(
+  ({
+    theme,
+    position,
+    disabled,
+    noPadding,
+    squashHeight,
+    adornmentColor,
+    overridePositionTop,
+  }) => ({
+    [position]: noPadding ? theme.spacing.xs : theme.spacing.sm,
+    paddingTop: overridePositionTop
+      ? overridePositionTop
+      : noPadding
+      ? "0px"
+      : theme.spacing.xs,
+    position: "absolute",
+    pointerEvents: squashHeight ? "auto" : "none",
+    opacity: adornmentColor ? 1 : disabled ? 0.3 : 1,
+    color: adornmentColor ? getValueFromPath(theme, adornmentColor) : "inherit",
+  })
+);
 
 const StyledTextAreaContainer = styled.div<{fullWidth: boolean; squashHeight?: boolean}>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,14 +57,14 @@ const StyledTextArea = styled.textarea<{
   padding-left: ${
     noPadding
       ? adornmentPadding === "left"
-        ? "20px"
+        ? "26px"
         : "0px"
       : `calc(${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"})`
   };
   padding-right: ${
     noPadding
       ? adornmentPadding === "right"
-        ? "20px"
+        ? "26px"
         : "0px"
       : `calc(${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"})`
   };
