@@ -6,6 +6,7 @@ import {
   StyledTextAreaWrapper,
 } from "./TextArea.styles";
 import Typography from "../Typography";
+import {Spacing} from "../../theming/global-theme.interface";
 
 export interface TextAreaProps
   extends Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, "label"> {
@@ -53,6 +54,11 @@ export interface TextAreaProps
    * overrides the adornment color
    */
   adornmentColor?: string;
+
+  /**
+   * overrides the padding
+   */
+  overridePadding?: keyof Spacing;
 }
 
 /**
@@ -72,6 +78,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     squashHeight,
     noPadding,
     adornmentColor,
+    overridePadding,
     ...rest
   } = props;
 
@@ -83,9 +90,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     if (textArea) {
       textArea.rows = 1; // Reset rows to 1 to recalculate the new number of rows
 
-      const rowsNeeded = Math.ceil(textArea.scrollHeight / 18); // Calculate the new number of rows
+      const rowsNeeded = Math.ceil((textArea.scrollHeight - 8) / 18); // Calculate the new number of rows
       textArea.rows = rowsNeeded; // Set the new number of rows
-      setOverridePositionTop((rowsNeeded - 1) * 8);
+      setOverridePositionTop((rowsNeeded - 1) * 8 + 4);
     }
   };
 
@@ -124,6 +131,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
           error={!!error}
           resize={resize}
           noPadding={noPadding}
+          overridePadding={overridePadding}
           squashHeight={squashHeight}
           ref={ref}
           {...rest}

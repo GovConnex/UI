@@ -6,6 +6,7 @@ import {
   StyledInput,
   StyledInputWrapper,
 } from "./Input.styles";
+import {Spacing} from "../../theming/global-theme.interface";
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label"> {
@@ -38,6 +39,11 @@ export interface InputProps
    * indicates whether padding should be removed
    */
   noPadding?: boolean;
+
+  /**
+   * overrides the padding
+   */
+  overridePadding?: keyof Spacing;
 }
 
 export const debounce = (fn: Function, ms: number) => {
@@ -63,6 +69,7 @@ export const DebouncedInput = ({
   onChange = noop,
   delayMs = 500,
   noPadding,
+  overridePadding,
   ...props
 }: DebouncedInputProps) => {
   const [inputValue, setInputValue] = useState(value);
@@ -87,6 +94,7 @@ export const DebouncedInput = ({
     <Input
       value={inputValue}
       noPadding={noPadding}
+      overridePadding={overridePadding}
       onChange={(e) => setInputValue(e.target.value)}
       {...props}
     />
@@ -105,6 +113,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     error,
     fullWidth,
     noPadding,
+    overridePadding,
     ...rest
   } = props;
 
@@ -124,6 +133,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         ) : null}
         <StyledInput
           noPadding={noPadding}
+          overridePadding={overridePadding}
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {getValueFromPath} from "../../core/styleFunctions";
+import {Spacing} from "../../theming/global-theme.interface";
 
 const StyledAdornment = styled.span<{
   position: string;
@@ -49,24 +50,62 @@ const StyledTextArea = styled.textarea<{
   resize: boolean | undefined;
   squashHeight?: boolean;
   noPadding?: boolean;
+  overridePadding?: keyof Spacing;
 }>(
-  ({theme, error, fullWidth, adornmentPadding, resize, squashHeight, noPadding}) =>
+  ({
+    theme,
+    error,
+    fullWidth,
+    adornmentPadding,
+    resize,
+    squashHeight,
+    noPadding,
+    overridePadding,
+  }) =>
     `
-  padding-top: ${noPadding ? "0px" : theme.spacing.xs};
-  padding-bottom: ${noPadding ? "0px" : theme.spacing.xs};
+  padding-top: ${
+    overridePadding
+      ? theme.spacing[overridePadding]
+      : noPadding
+      ? "0px"
+      : theme.spacing.xs
+  };
+  padding-bottom: ${
+    overridePadding
+      ? theme.spacing[overridePadding]
+      : noPadding
+      ? "0px"
+      : theme.spacing.xs
+  };
   padding-left: ${
     noPadding
       ? adornmentPadding === "left"
         ? "26px"
+        : overridePadding
+        ? theme.spacing[overridePadding]
         : "0px"
-      : `calc(${theme.spacing.sm} + ${adornmentPadding === "left" ? "26px" : "0px"})`
+      : `calc(${theme.spacing.sm} + ${
+          adornmentPadding === "left"
+            ? "26px"
+            : overridePadding
+            ? theme.spacing[overridePadding]
+            : "0px"
+        })`
   };
   padding-right: ${
     noPadding
       ? adornmentPadding === "right"
         ? "26px"
+        : overridePadding
+        ? theme.spacing[overridePadding]
         : "0px"
-      : `calc(${theme.spacing.sm} + ${adornmentPadding === "right" ? "26px" : "0px"})`
+      : `calc(${theme.spacing.sm} + ${
+          adornmentPadding === "right"
+            ? "26px"
+            : overridePadding
+            ? theme.spacing[overridePadding]
+            : "0px"
+        })`
   };
 
   width: ${fullWidth ? "100%" : "initial"};
@@ -78,6 +117,8 @@ const StyledTextArea = styled.textarea<{
   border-width:1px;
 
   font-size:${theme.typography.body.md.fontSize};
+  font-weight: inherit;
+  color: ${theme.core.content.contentPrimary};
   background-color: ${theme.primary.base.white};
 
   min-height: ${squashHeight ? "0px" : "22px"};
@@ -86,13 +127,15 @@ const StyledTextArea = styled.textarea<{
 
   &:focus {
     outline: none;
-    border-width: 2px;
+    border-width: 1px;
     border-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};
   }
 
   &:disabled{
     background-color:${theme.core.background.bgSecondary};
     cursor: no-drop;
+    color: ${theme.core.content.contentTertiary};
+    stroke: ${theme.extended.state.disabled};
   }
 
   &:disabled::placeholder{
