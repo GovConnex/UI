@@ -2,7 +2,22 @@ import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import Icon from "../Icon";
 import Typography from "../Typography";
-import {StyledBanner, StyledTextWrapper} from "./Banner.styles";
+import Button from "../Button";
+import {
+  StyledBanner,
+  StyledTextWrapper,
+  ButtonWrapper,
+  MainContentContainer,
+} from "./Banner.styles";
+import {ButtonSubtype} from "../Button/Button";
+import {
+  faCheckCircle,
+  faClose,
+  faExclamationCircle,
+  faExclamationTriangle,
+  faInfoCircle,
+} from "@fortawesome/pro-regular-svg-icons";
+import {useTheme} from "styled-components";
 
 export interface BannerProps {
   /**
@@ -17,13 +32,24 @@ export interface BannerProps {
    * variant of the banner
    */
   variant?: "info" | "warning" | "error" | "success";
+
+  primaryButton?: {
+    label: string;
+    onClick: () => void;
+  };
+  secondaryButton?: {
+    label: string;
+    onClick: () => void;
+  };
+
+  onClose?: () => void;
 }
 
 const variantMap = {
-  info: "info-circle",
-  warning: "exclamation-triangle",
-  error: "exclamation-circle",
-  success: "check-circle",
+  info: faInfoCircle,
+  warning: faExclamationTriangle,
+  error: faExclamationCircle,
+  success: faCheckCircle,
 };
 
 /**
@@ -34,18 +60,67 @@ const variantMap = {
  *
  */
 const Banner = (props: BannerProps) => {
-  const {title, description, variant = "info"} = props;
+  const {
+    title,
+    description,
+    variant = "info",
+    primaryButton,
+    secondaryButton,
+    onClose,
+  } = props;
+  const theme = useTheme();
   return (
     <StyledBanner variant={variant}>
-      <Icon icon={variantMap[variant] as IconProp} />
-      <StyledTextWrapper>
-        <Typography noMargin variant="label">
-          {title}
-        </Typography>
-        <Typography noMargin variant="body" size="sm">
-          {description}
-        </Typography>
-      </StyledTextWrapper>
+      <Icon
+        icon={variantMap[variant] as IconProp}
+        color={theme.extended.support[`${variant}Dark`]}
+      />
+      <MainContentContainer>
+        <StyledTextWrapper variant={variant}>
+          <Typography noMargin variant="label">
+            {title}
+          </Typography>
+          <Typography noMargin variant="body" size="sm">
+            {description}
+          </Typography>
+        </StyledTextWrapper>
+        {(primaryButton || secondaryButton) && (
+          <ButtonWrapper>
+            {primaryButton && (
+              <Button
+                variant="secondary"
+                subtype={variant as ButtonSubtype}
+                onClick={primaryButton.onClick}
+                size="sm"
+              >
+                {primaryButton.label}
+              </Button>
+            )}
+            {secondaryButton && (
+              <Button
+                variant="tertiary"
+                subtype={variant as ButtonSubtype}
+                onClick={secondaryButton.onClick}
+                size="sm"
+              >
+                {secondaryButton.label}
+              </Button>
+            )}
+          </ButtonWrapper>
+        )}
+      </MainContentContainer>
+      {onClose && (
+        <Button
+          iconOnly
+          startAdornment={<Icon icon={faClose as IconProp} />}
+          onClick={onClose}
+          variant="tertiary"
+          subtype={variant as ButtonSubtype}
+          style={{marginLeft: "auto"}}
+          size="sm"
+          aria-label="Close"
+        />
+      )}
     </StyledBanner>
   );
 };
