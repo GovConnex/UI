@@ -82,7 +82,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     ...rest
   } = props;
 
-  const [overridePositionTop, setOverridePositionTop] = useState(0);
+  const [overridePositionTop, setOverridePositionTop] = useState("");
 
   const autoResize = () => {
     const textArea = document.querySelector("#textArea") as HTMLTextAreaElement;
@@ -92,7 +92,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
       const rowsNeeded = Math.ceil((textArea.scrollHeight - 8) / 18); // Calculate the new number of rows
       textArea.rows = rowsNeeded; // Set the new number of rows
-      setOverridePositionTop((rowsNeeded - 1) * 8 + 4);
+      setOverridePositionTop(`${(rowsNeeded - 1) * 8 + 4}px`);
     }
   };
 
@@ -116,7 +116,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
             squashHeight={squashHeight}
             noPadding={noPadding}
             adornmentColor={adornmentColor}
-            overridePositionTop={`${overridePositionTop}px`}
+            overridePositionTop={overridePositionTop}
             disabled={props.disabled || false}
             position="left"
           >
@@ -142,7 +142,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
             squashHeight={squashHeight}
             noPadding={noPadding}
             adornmentColor={adornmentColor}
-            overridePositionTop={`${overridePositionTop}px`}
+            overridePositionTop={overridePositionTop}
             disabled={props.disabled || false}
             position="right"
           >
