@@ -42,6 +42,49 @@ Error.args = {
   hint: "this is a hint",
 };
 
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  placeholder: "Search",
+  fullWidth: true,
+};
+
+export const StartAdornment = Template.bind({});
+StartAdornment.args = {
+  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+  placeholder: "Search",
+};
+
+export const EndAdornment = Template.bind({});
+EndAdornment.args = {
+  endAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+  placeholder: "Search",
+};
+
+export const WithHint = Template.bind({});
+WithHint.args = {
+  hint: "This is a hint",
+  placeholder: "Search",
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  error: "This is an error",
+  placeholder: "Search",
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "This is the label",
+  placeholder: "Search",
+};
+
+export const OverridePadding = Template.bind({});
+OverridePadding.args = {
+  overridePadding: "sm",
+  noPadding: true,
+  value: "testing this",
+};
+
 Default.parameters = {
   design: {
     type: "figma",

@@ -33,8 +33,52 @@ Resize.args = {
   resize: true,
 };
 
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  fullWidth: true,
+  placeholder: "Search",
+};
+
+export const StartAdornment = Template.bind({});
+StartAdornment.args = {
+  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+  placeholder: "Search",
+};
+
 export const EndAdornment = Template.bind({});
 EndAdornment.args = {
   endAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
   placeholder: "Search",
+};
+
+export const WithHint = Template.bind({});
+WithHint.args = {
+  hint: "This is a hint",
+  placeholder: "Search",
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  error: "This is an error",
+  placeholder: "Search",
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "This is the label",
+  placeholder: "Search",
+};
+
+export const AdornmentColor = Template.bind({});
+AdornmentColor.args = {
+  startAdornment: <Icon icon={faSearch} />,
+  placeholder: "Search",
+  adornmentColor: "blue",
+};
+
+export const OverridePadding = Template.bind({});
+OverridePadding.args = {
+  overridePadding: "xl",
+  noPadding: true,
+  children: "testing this",
 };

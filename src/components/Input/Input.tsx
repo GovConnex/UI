@@ -125,13 +125,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         </Typography>
       ) : null}
 
-      <StyledInputContainer fullWidth={!!fullWidth}>
+      <StyledInputContainer data-testid="input-container" fullWidth={!!fullWidth}>
         {startAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="left">
+          <StyledAdornment
+            data-testid="start-adornment"
+            disabled={props.disabled || false}
+            position="left"
+          >
             {props.startAdornment}
           </StyledAdornment>
         ) : null}
         <StyledInput
+          data-testid="input"
           noPadding={noPadding}
           overridePadding={overridePadding}
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
@@ -142,7 +147,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         ></StyledInput>
 
         {endAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="right">
+          <StyledAdornment
+            data-testid="end-adornment"
+            disabled={props.disabled || false}
+            position="right"
+          >
             {props.endAdornment}
           </StyledAdornment>
         ) : null}

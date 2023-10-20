@@ -110,9 +110,14 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         </Typography>
       ) : null}
 
-      <StyledTextAreaContainer squashHeight={squashHeight} fullWidth={!!fullWidth}>
+      <StyledTextAreaContainer
+        data-testid="text-area-container"
+        squashHeight={squashHeight}
+        fullWidth={!!fullWidth}
+      >
         {startAdornment ? (
           <StyledAdornment
+            data-testid="start-adornment"
             squashHeight={squashHeight}
             noPadding={noPadding}
             adornmentColor={adornmentColor}
@@ -126,6 +131,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
         <StyledTextArea
           id="textArea"
+          data-testid="text-area"
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}
@@ -139,6 +145,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
         {endAdornment ? (
           <StyledAdornment
+            data-testid="end-adornment"
             squashHeight={squashHeight}
             noPadding={noPadding}
             adornmentColor={adornmentColor}
