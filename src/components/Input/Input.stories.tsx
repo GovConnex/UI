@@ -35,13 +35,6 @@ Disabled.args = {
   startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  placeholder: "Search",
-  error: "an error message",
-  hint: "this is a hint",
-};
-
 export const FullWidth = Template.bind({});
 FullWidth.args = {
   placeholder: "Search",
