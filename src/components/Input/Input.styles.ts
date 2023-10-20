@@ -142,7 +142,7 @@ const StyledInput = styled.input<{
 
   &:disabled{
     background-color:${theme.core.background.bgSecondary};
-    color${theme.core.content.contentTertiary}
+    color: ${theme.core.content.contentTertiary};
     cursor: no-drop;
     stroke: ${theme.extended.state.disabled};
   }
