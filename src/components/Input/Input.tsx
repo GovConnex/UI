@@ -6,6 +6,7 @@ import {
   StyledInput,
   StyledInputWrapper,
 } from "./Input.styles";
+import {Spacing} from "../../theming/global-theme.interface";
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label"> {
@@ -34,6 +35,15 @@ export interface InputProps
    * renders a red error text at the bottom of the input
    */
   error?: string;
+  /**
+   * indicates whether padding should be removed
+   */
+  noPadding?: boolean;
+
+  /**
+   * overrides the padding
+   */
+  overridePadding?: keyof Spacing;
 }
 
 export const debounce = (fn: Function, ms: number) => {
@@ -58,6 +68,8 @@ export const DebouncedInput = ({
   value,
   onChange = noop,
   delayMs = 500,
+  noPadding,
+  overridePadding,
   ...props
 }: DebouncedInputProps) => {
   const [inputValue, setInputValue] = useState(value);
@@ -81,6 +93,8 @@ export const DebouncedInput = ({
   return (
     <Input
       value={inputValue}
+      noPadding={noPadding}
+      overridePadding={overridePadding}
       onChange={(e) => setInputValue(e.target.value)}
       {...props}
     />
@@ -91,7 +105,17 @@ export const DebouncedInput = ({
  * `Input` is a extendable input component
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {label, hint, startAdornment, endAdornment, error, fullWidth, ...rest} = props;
+  const {
+    label,
+    hint,
+    startAdornment,
+    endAdornment,
+    error,
+    fullWidth,
+    noPadding,
+    overridePadding,
+    ...rest
+  } = props;
 
   return (
     <StyledInputWrapper fullWidth={!!fullWidth}>
@@ -101,14 +125,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         </Typography>
       ) : null}
 
-      <StyledInputContainer fullWidth={!!fullWidth}>
+      <StyledInputContainer data-testid="input-container" fullWidth={!!fullWidth}>
         {startAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="left">
+          <StyledAdornment
+            data-testid="start-adornment"
+            disabled={props.disabled || false}
+            position="left"
+          >
             {props.startAdornment}
           </StyledAdornment>
         ) : null}
-
         <StyledInput
+          data-testid="input"
+          noPadding={noPadding}
+          overridePadding={overridePadding}
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}
@@ -117,7 +147,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         ></StyledInput>
 
         {endAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="right">
+          <StyledAdornment
+            data-testid="end-adornment"
+            disabled={props.disabled || false}
+            position="right"
+          >
             {props.endAdornment}
           </StyledAdornment>
         ) : null}

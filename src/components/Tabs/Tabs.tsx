@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {BottomHighlight, SectionHighlight, StyledTabs} from "./Tabs.styles";
 import {StyledTab, StyledTypography} from "./Tab.styles";
 import Typography from "../Typography";
@@ -95,8 +95,7 @@ const Tabs = (props: TabsProps) => {
     setBottomBarParts({width: bottomBarWidth, offset: bottomBarOffset});
   }
 
-  // on layout set selected tab
-  useLayoutEffect(() => {
+  useEffect(() => {
     const collection = TabsRef.current?.children;
     if (!collection) return;
     if (!props.value) return;
@@ -104,7 +103,7 @@ const Tabs = (props: TabsProps) => {
     const index = getIndexOfCollectionValue(props.value, collection);
 
     updateSelected(props.value, index);
-  }, []);
+  }, [props.value, props.children]);
 
   return (
     <StyledTabs ref={TabsRef} isSection={props.isSection}>

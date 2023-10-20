@@ -148,17 +148,13 @@ export const StackedList = ({
         extendedDisplayData &&
         extendedDisplayData.length &&
         !isScrollable ? (
-          <StackedListItem
-            isShowAll={true}
-            data-testid="show-all"
-            startAdornment={
-              <StyledFooterButton onClick={handleShowAll}>
-                <Typography variant="label" size="md">
-                  {showAll ? "Show less" : "Show all"}
-                </Typography>
-              </StyledFooterButton>
-            }
-          ></StackedListItem>
+          <StackedListItem isShowAll={true} data-testid="show-all">
+            <StyledFooterButton>
+              <Typography variant="label" size="md" onClick={handleShowAll}>
+                {showAll ? "Show less" : "Show all"}
+              </Typography>
+            </StyledFooterButton>
+          </StackedListItem>
         ) : null}
       </Collapse>
     </StyledStackedList>

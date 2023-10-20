@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   StyledAdornment,
   StyledTextArea,
@@ -6,6 +6,7 @@ import {
   StyledTextAreaWrapper,
 } from "./TextArea.styles";
 import Typography from "../Typography";
+import {Spacing} from "../../theming/global-theme.interface";
 
 export interface TextAreaProps
   extends Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, "label"> {
@@ -38,6 +39,26 @@ export interface TextAreaProps
    * allows resize of the textarea
    */
   resize?: boolean;
+
+  /**
+   * makes min height to zero
+   */
+  squashHeight?: boolean;
+
+  /**
+   * indicates whether padding should be removed
+   */
+  noPadding?: boolean;
+
+  /**
+   * overrides the adornment color
+   */
+  adornmentColor?: string;
+
+  /**
+   * overrides the padding
+   */
+  overridePadding?: keyof Spacing;
 }
 
 /**
@@ -46,35 +67,92 @@ export interface TextAreaProps
  * Component Demo: [TextArea](https://ui.govconnex.com/?path=/story/components-textarea--example)
  */
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const {label, hint, startAdornment, endAdornment, error, fullWidth, resize, ...rest} =
-    props;
+  const {
+    label,
+    hint,
+    startAdornment,
+    endAdornment,
+    error,
+    fullWidth,
+    resize,
+    squashHeight,
+    noPadding,
+    adornmentColor,
+    overridePadding,
+    ...rest
+  } = props;
+
+  const [overridePositionTop, setOverridePositionTop] = useState("");
+
+  const autoResize = () => {
+    const textArea = document.querySelector("#textArea") as HTMLTextAreaElement;
+
+    if (textArea) {
+      textArea.rows = 1; // Reset rows to 1 to recalculate the new number of rows
+
+      const rowsNeeded = Math.ceil((textArea.scrollHeight - 8) / 18); // Calculate the new number of rows
+      textArea.rows = rowsNeeded; // Set the new number of rows
+      setOverridePositionTop(`${(rowsNeeded - 1) * 8 + 4}px`);
+    }
+  };
+
+  useEffect(() => {
+    if (squashHeight) {
+      autoResize();
+    }
+  }, []);
 
   return (
-    <StyledTextAreaWrapper>
+    <StyledTextAreaWrapper fullWidth={fullWidth}>
       {label ? (
         <Typography noMargin variant="label" size="md">
           {label}
         </Typography>
       ) : null}
 
-      <StyledTextAreaContainer fullWidth={!!fullWidth}>
+      <StyledTextAreaContainer
+        data-testid="text-area-container"
+        squashHeight={squashHeight}
+        fullWidth={!!fullWidth}
+      >
         {startAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="left">
+          <StyledAdornment
+            data-testid="start-adornment"
+            squashHeight={squashHeight}
+            noPadding={noPadding}
+            adornmentColor={adornmentColor}
+            overridePositionTop={overridePositionTop}
+            disabled={props.disabled || false}
+            position="left"
+          >
             {props.startAdornment}
           </StyledAdornment>
         ) : null}
 
         <StyledTextArea
+          id="textArea"
+          data-testid="text-area"
           adornmentPadding={startAdornment ? "left" : endAdornment ? "right" : null}
           fullWidth={!!fullWidth}
           error={!!error}
           resize={resize}
+          noPadding={noPadding}
+          overridePadding={overridePadding}
+          squashHeight={squashHeight}
           ref={ref}
           {...rest}
         ></StyledTextArea>
 
         {endAdornment ? (
-          <StyledAdornment disabled={props.disabled || false} position="right">
+          <StyledAdornment
+            data-testid="end-adornment"
+            squashHeight={squashHeight}
+            noPadding={noPadding}
+            adornmentColor={adornmentColor}
+            overridePositionTop={overridePositionTop}
+            disabled={props.disabled || false}
+            position="right"
+          >
             {props.endAdornment}
           </StyledAdornment>
         ) : null}
