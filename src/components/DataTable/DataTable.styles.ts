@@ -14,11 +14,12 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   background: ${(p) => p.theme.primary.base.white};
 `;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
-  table-layout: fixed;
+  display: table;
   min-width: 0;
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
+  overflow: hidden;
 `;
 
 export const GcxDataTableThead = styled.thead`

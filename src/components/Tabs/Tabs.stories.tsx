@@ -3,7 +3,7 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Tabs from "./Tabs";
 import {withDesign} from "storybook-addon-designs";
 import Icon from "../Icon";
-import {faCoffee} from "@fortawesome/pro-solid-svg-icons";
+import {faCoffee, faPlus} from "@fortawesome/pro-solid-svg-icons";
 import Chip from "../Chip";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
@@ -146,4 +146,18 @@ SectionTabs.parameters = {
     type: "figma",
     url: "https://www.figma.com/file/pQqcx1z6rSV8MVmokydQMr/%F0%9F%93%90-Bipartisan-Design-System?node-id=83%3A9542",
   },
+};
+
+export const IconOnly = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+IconOnly.args = {
+  value: "tab1",
+  onChange: (e: any) => {
+    console.log(e);
+  },
+  isSection: true,
+  children: [
+    <Tabs.Tab key="1" iconOnly value="tab1" startAdornment={<Icon icon={faCoffee} />} />,
+    <Tabs.Tab key="2" iconOnly value="tab2" endAdornment={<Icon icon={faPlus} />} />,
+  ],
 };

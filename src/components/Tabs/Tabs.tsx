@@ -145,7 +145,7 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   /**
    * Label rendered on tab
    */
-  label: string;
+  label?: string;
   /**
    * Indicates whether tab is page or section
    */
@@ -158,6 +158,11 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
    * Accepts a react node to render on the right side/end of the tab
    */
   endAdornment?: React.ReactElement;
+
+  /**
+   * Indicates whether it is icon only and no text
+   */
+  iconOnly?: boolean;
 }
 
 /**
@@ -174,11 +179,13 @@ Tabs.Tab = React.forwardRef<HTMLButtonElement, TabProps>(({...props}, ref) => {
   return (
     <StyledTab selected={false} ref={ref} {...props}>
       {props.startAdornment ? props.startAdornment : null}
-      <StyledTypography>
-        <Typography variant="label" size="md">
-          {props.label}
-        </Typography>
-      </StyledTypography>
+      {!props.iconOnly && (
+        <StyledTypography>
+          <Typography variant="label" size="md">
+            {props.label}
+          </Typography>
+        </StyledTypography>
+      )}
       {props.endAdornment ? props.endAdornment : null}
     </StyledTab>
   );
