@@ -17,6 +17,7 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
   onMouseLeave?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  "data-cy"?: string;
 }
 
 const Popover = React.forwardRef<HTMLSpanElement, PopoverProps>(
@@ -31,6 +32,7 @@ const Popover = React.forwardRef<HTMLSpanElement, PopoverProps>(
     return (
       <span ref={ref}>
         <StyledPopover
+          data-cy={props["data-cy"]}
           ref={setPopperElement}
           isBlock={props.isBlock || false}
           style={{...props.style, ...styles.popper}}
