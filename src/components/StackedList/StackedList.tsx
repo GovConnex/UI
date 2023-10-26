@@ -47,6 +47,11 @@ export interface StackedListProps {
    * indicate whether list shows all in the beginning
    */
   isShowAll?: boolean;
+
+  /**
+   * indicates item flex alignment
+   */
+  itemAlignment?: string;
 }
 
 /**
@@ -63,6 +68,7 @@ export const StackedList = ({
   emptyContentMessage,
   endAdornment,
   isShowAll,
+  itemAlignment,
 }: StackedListProps) => {
   // Get the height of the content
   const content = React.useRef<HTMLDivElement>(null);
@@ -113,6 +119,7 @@ export const StackedList = ({
                   endAdornment={item.endAdornment}
                   superText={item.superText}
                   subText={item.subText}
+                  itemAlignment={itemAlignment}
                 >
                   {item.children}
                 </StackedListItem>
@@ -125,6 +132,7 @@ export const StackedList = ({
                 endAdornment={item.endAdornment}
                 superText={item.superText}
                 subText={item.subText}
+                itemAlignment={itemAlignment}
               >
                 {item.children}
               </StackedListItem>
@@ -144,6 +152,7 @@ export const StackedList = ({
                 endAdornment={item.endAdornment}
                 superText={item.superText}
                 subText={item.subText}
+                itemAlignment={itemAlignment}
               >
                 {item.children}
               </StackedListItem>
@@ -154,7 +163,11 @@ export const StackedList = ({
         extendedDisplayData &&
         extendedDisplayData.length &&
         !isScrollable ? (
-          <StackedListItem isShowAll={true} data-testid="show-all">
+          <StackedListItem
+            isShowAll={true}
+            data-testid="show-all"
+            itemAlignment={itemAlignment}
+          >
             <StyledFooterButton>
               <Typography variant="label" size="md" onClick={handleShowAll}>
                 {showAll ? "Show less" : "Show all"}

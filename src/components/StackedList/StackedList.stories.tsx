@@ -188,6 +188,44 @@ Other.args = {
   ],
 };
 
+export const AlignmentSet = Template.bind({});
+AlignmentSet.args = {
+  title: "Alignment Set Details",
+  itemAlignment: "flex-start",
+  data: [
+    {
+      children: "Testing child 1",
+      superText: "Supertext 1",
+      startAdornment: <Avatar alt={"DC Test"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: "Testing child 2",
+      superText: "Supertext 2",
+      startAdornment: <Avatar alt={"AC Best"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+    {
+      children: "Testing child 3",
+      superText: "Supertext 3",
+      startAdornment: <Avatar alt={"BC Lester"} variant="square" size="lg" />,
+      endAdornment: (
+        <Button iconOnly variant="secondary">
+          <Icon icon={faEllipsis} />
+        </Button>
+      ),
+    },
+  ],
+};
+
 export const Empty = Template.bind({});
 Empty.args = {
   title: "Empty Stacked List",
