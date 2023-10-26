@@ -42,6 +42,11 @@ export interface StackedListProps {
    * indicate whether stacked list is scrollable or not
    */
   isScrollable?: boolean;
+
+  /**
+   * indicate whether list shows all in the beginning
+   */
+  isShowAll?: boolean;
 }
 
 /**
@@ -57,12 +62,13 @@ export const StackedList = ({
   isScrollable,
   emptyContentMessage,
   endAdornment,
+  isShowAll,
 }: StackedListProps) => {
   // Get the height of the content
   const content = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState("auto");
   const [open, setOpen] = React.useState(true);
-  const [showAll, setShowAll] = React.useState(false);
+  const [showAll, setShowAll] = React.useState(isShowAll);
 
   const initialDisplayData =
     data && data.length ? (isScrollable ? data : [...data].slice(0, 5)) : [];
