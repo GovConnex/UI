@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Spacing} from "../../theming/global-theme.interface";
 import {shadowFromProp} from "../style-utils";
+import {addCustomStyles} from "../../core/styleFunctions";
 
 const StyledCard = styled.div<{
   focused: boolean;
@@ -8,8 +9,9 @@ const StyledCard = styled.div<{
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
   noPadding?: boolean;
-}>(
-  ({theme, hoverStyle, focused, selected, padding, noPadding}) =>
+  cs?: any;
+}>`
+  ${({theme, hoverStyle, focused, selected, padding, noPadding}) =>
     `
   background: ${theme.core?.background?.bgPrimary};
   padding: ${
@@ -44,9 +46,10 @@ const StyledCard = styled.div<{
       &:hover { background-color: ${theme.extended.state.secondaryHover}; }; `
       : null
   };
-        
-  `
-);
+  `}
+
+  ${(prop) => addCustomStyles(prop)};
+`;
 
 // const StyledCard = styled.div<{
 //   cs?:any,
