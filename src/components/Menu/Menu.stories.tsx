@@ -274,11 +274,11 @@ WithBackendFiltering.args = {
   placement: "bottom-start",
   textWidth: "180px",
   hasSearch: true,
-  onSearch: (filteredValues) => {
-    console.log("filtered values", filteredValues);
+  onSearch: (value) => {
+    console.log("searched values", value);
   },
   onOptionSelect: (option) => {
     console.log(option);
   },
-  filteredOptions: filteredOptions,
+  options: filteredOptions,
 };

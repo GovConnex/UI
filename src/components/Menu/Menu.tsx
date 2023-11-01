@@ -50,7 +50,6 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
   onSearch?: (filteredOptions: any) => void;
-  filteredOptions?: any;
   bottomAdornment?: React.ReactNode;
   hasSearch?: boolean;
   textWidth?: string;
@@ -64,7 +63,6 @@ const Menu = ({
   onClose,
   onOptionSelect,
   onSearch,
-  filteredOptions = [],
   textWidth,
   hasSearch,
   bottomAdornment,
@@ -78,7 +76,7 @@ const Menu = ({
 
   useEffect(() => {
     if (typeof onSearch === "function") {
-      setSortedOptions(filteredOptions);
+      setSortedOptions(options);
     } else {
       setSortedOptions(sortByCategory(options));
     }
@@ -126,7 +124,7 @@ const Menu = ({
     setSearchTerm(value);
 
     if (typeof onSearch === "function") {
-      onSearch(sortedOptions);
+      onSearch(value);
     } else {
       const dataListNew = value
         ? [...options].filter(
