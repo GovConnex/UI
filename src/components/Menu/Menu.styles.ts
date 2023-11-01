@@ -14,3 +14,14 @@ export const StyledMenuList = styled(MenuList)`
   }) => `drop-shadow(${md.x}px ${md.y}px ${md.blur}px ${md.color})`};
   font-size: ${(props) => props.theme.typography.body.sm.fontSize};
 `;
+
+export const StyledSearchBar = styled.div`
+  padding: ${(props) => props.theme.spacing.xs};
+  position: sticky;
+  top: 0;
+  z-index: 1;
+`;
+
+export const StyledBottomAdornment = styled.div`
+  padding: ${(props) => props.theme.spacing.xs};
+`;

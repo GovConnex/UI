@@ -1,11 +1,16 @@
-import React, {useMemo} from "react";
+import React, {useEffect} from "react";
 import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
-import {StyledMenuList} from "./Menu.styles";
+import Input from "../Input/Input";
+import {StyledMenuList, StyledSearchBar, StyledBottomAdornment} from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
 import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
 import {useKey} from "rooks";
+import {customStyles} from "../../core/styleFunctions";
+import Icon from "../SvgIcon/Icon";
+import {faSearch} from "@fortawesome/pro-regular-svg-icons";
+import Typography from "../Typography/Typography";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;
@@ -44,6 +49,11 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: Placement;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
+  onSearch?: (filteredOptions: any) => void;
+  bottomAdornment?: React.ReactNode;
+  hasSearch?: boolean;
+  textWidth?: string;
+  cs?: customStyles;
 }
 
 const Menu = ({
@@ -52,11 +62,30 @@ const Menu = ({
   placement = "bottom-start",
   onClose,
   onOptionSelect,
+  onSearch,
+  textWidth,
+  hasSearch,
+  bottomAdornment,
+  cs,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [sortedOptions, setSortedOptions] = React.useState<MenuOption[]>([]);
+  const searchInputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const sortedOptions = useMemo(() => sortByCategory(options), [options]);
+  useEffect(() => {
+    if (typeof onSearch === "function") {
+      setSortedOptions(options);
+    } else {
+      setSortedOptions(sortByCategory(options));
+    }
+
+    // Focus the search input when the component mounts
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [options]);
 
   useKey(["ArrowDown"], (e) => {
     e.preventDefault();
@@ -76,7 +105,7 @@ const Menu = ({
   useKey(["Enter"], (e) => {
     e.preventDefault();
 
-    const option = options[selectedIndex];
+    const option = sortedOptions[selectedIndex];
 
     if (option) {
       onOptionSelect && onOptionSelect(option);
@@ -90,24 +119,58 @@ const Menu = ({
     onClose && onClose();
   });
 
+  const handleSearch = (e: any) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (typeof onSearch === "function") {
+      onSearch(value);
+    } else {
+      const dataListNew = value
+        ? [...options].filter(
+            (item: any) => item?.text?.toLowerCase()?.includes(value?.toLowerCase())
+          )
+        : [...options];
+
+      setSortedOptions(sortByCategory([...dataListNew]));
+    }
+  };
+
   return (
     <ClickAwayListener onClickAway={onClose || null}>
       <Popover anchorEl={anchorEl} placement={placement}>
-        <StyledMenuList {...rest}>
+        <StyledMenuList cs={cs} {...rest}>
+          {hasSearch ? (
+            <StyledSearchBar>
+              <Input
+                fullWidth
+                ref={searchInputRef}
+                data-cy="filter-issue-search"
+                type="search"
+                value={searchTerm}
+                onChange={handleSearch}
+                startAdornment={
+                  <Typography noMargin color="core.content.contentTertiary">
+                    <Icon icon={faSearch} size="lg" />
+                  </Typography>
+                }
+              />
+            </StyledSearchBar>
+          ) : null}
           {sortedOptions.map((option, idx, array) => {
             const prev = array[idx - 1] || null;
 
             return (
               <span key={`item-${idx}-${new Date().getTime()}`}>
-                {prev === null ||
-                  (prev.category !== option.category && (
-                    <MenuListHeading>{option.category}</MenuListHeading>
-                  ))}
+                {(prev === null || prev.category !== option.category) && (
+                  <MenuListHeading>{option.category}</MenuListHeading>
+                )}
 
                 <MenuListItem
                   data-cy={option["data-cy"]}
                   button
                   style={option.style}
+                  textWidth={textWidth}
                   onSelect={() => {
                     if (onOptionSelect) {
                       onOptionSelect(option);
@@ -130,6 +193,9 @@ const Menu = ({
               </span>
             );
           })}
+          {bottomAdornment ? (
+            <StyledBottomAdornment>{bottomAdornment}</StyledBottomAdornment>
+          ) : null}
         </StyledMenuList>
       </Popover>
     </ClickAwayListener>
