@@ -210,12 +210,12 @@ WithActionRows.args = {
     },
     {
       children: <div>Menu Row</div>,
-      menuOptions: [
+      onOptionSelect(option) {
+        console.log(option);
+      },
+      options: [
         {
           text: "Test",
-          onSelect(option) {
-            console.log(option);
-          },
         },
       ],
     },

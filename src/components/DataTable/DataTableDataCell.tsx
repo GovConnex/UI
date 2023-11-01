@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {DataCellMenu, GcxDataTableDataCellRoot} from "./DataTable.styles";
-import {MenuOption} from "../Menu/Menu";
+import {MenuOption, MenuProps} from "../Menu/Menu";
 
 export interface DataCellProps {
   children: React.ReactNode;
   menuOptions?: MenuOption[];
+  menuProps?: MenuProps;
   className?: string;
   onChange?: (option: MenuOption) => void;
 }
@@ -14,6 +15,7 @@ export interface DataCellProps {
 const DataTableDataCell = ({
   onChange,
   menuOptions = [],
+  menuProps,
   children,
   className,
 }: DataCellProps) => {
@@ -52,20 +54,26 @@ const DataTableDataCell = ({
     <>
       <GcxDataTableDataCellRoot
         title={textContent}
-        hasDropdown={!!menuOptions.length}
+        hasDropdown={!!menuOptions.length || !!menuProps?.options?.length}
         ref={anchorEl}
         className={className}
         onClick={() => setShowMenu(!showMenu)}
       >
         {children}
       </GcxDataTableDataCellRoot>
-      {showMenu && menuOptions?.length ? (
+      {showMenu && (menuOptions?.length || menuProps?.options?.length) ? (
         <DataCellMenu
           placement="bottom-start"
           anchorEl={anchorEl}
-          onOptionSelect={onChange}
           options={menuOptions}
-          onClose={() => setShowMenu(false)}
+          {...menuProps}
+          onOptionSelect={(option: any) => {
+            onChange && onChange(option);
+            menuProps?.onOptionSelect && menuProps.onOptionSelect(option);
+          }}
+          onClose={() => {
+            setShowMenu(false);
+          }}
         />
       ) : null}
     </>
