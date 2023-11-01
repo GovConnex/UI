@@ -61,7 +61,7 @@ const DataTableDataCell = ({
       </GcxDataTableDataCellRoot>
       {showMenu && menuOptions?.length ? (
         <DataCellMenu
-          placement="bottom"
+          placement="bottom-start"
           anchorEl={anchorEl}
           onOptionSelect={onChange}
           options={menuOptions}

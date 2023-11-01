@@ -26,8 +26,8 @@ const DataTableHeaderCell = ({column}: any) => {
       </Typography>
       {column.canSort && column.isSorted ? (
         <GcxDataTableHeaderSortIcon
-          size={"xs"}
-          icon={["fas", column.isSortedDesc ? "arrow-up" : "arrow-down"]}
+          size={"md"}
+          icon={["far", column.isSortedDesc ? "arrow-up" : "arrow-down"]}
         />
       ) : null}
     </GcxDataTableHeaderCellRoot>

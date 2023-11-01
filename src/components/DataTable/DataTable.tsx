@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from "react";
-
+import Checkbox from "../Checkbox";
 import {
   useFlexLayout,
   usePagination,
@@ -25,24 +25,7 @@ import {
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-
-// Data table built from react-table. Pagination, sortby etc can be SS or CS
-
-const SelectionCheckbox = React.forwardRef(() => {
-  return (
-    <>
-      {/*<Checkbox*/}
-      {/*  ref={resolvedRef}*/}
-      {/*  {...props}*/}
-      {/*  id={"DataTableCheckbox-" + id}*/}
-      {/*  onChange={(...params) => {*/}
-      {/*    // onChange is passed as third param to Carbon Checkbox's onChange, normally 1st*/}
-      {/*    props.onChange(params[2]);*/}
-      {/*  }}*/}
-      {/*/>*/}
-    </>
-  );
-});
+import {MenuOption} from "../Menu/Menu";
 
 export interface DataTableProps {
   /**
@@ -100,6 +83,17 @@ export interface DataTableProps {
    * @default false
    */
   fullWidth?: boolean;
+
+  /**
+   * Action rows to display at the bottom of the table.
+   */
+  actionRows?: DataTableActionRowProps[];
+}
+
+export interface DataTableActionRowProps {
+  children: React.ReactNode;
+  menuOptions?: MenuOption[];
+  onChange?: (option: MenuOption) => void;
 }
 
 /**
@@ -122,6 +116,7 @@ const DataTable = ({
   showPagination = true,
   showSelection = true,
   fullWidth = true,
+  actionRows = [],
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -136,6 +131,8 @@ const DataTable = ({
     []
   );
 
+  // Documentation exists here:
+  // https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md#column-options
   // @ts-ignore
   const {
     getTableProps,
@@ -180,16 +177,16 @@ const DataTable = ({
                 // The header can use the table's getToggleAllRowsSelectedProps method
                 // to render a checkbox
                 Header: ({getToggleAllRowsSelectedProps}: any) => (
-                  <div>
-                    <SelectionCheckbox {...getToggleAllRowsSelectedProps()} />
-                  </div>
+                  <DataTableDataCell
+                    children={<Checkbox {...getToggleAllRowsSelectedProps()} />}
+                  ></DataTableDataCell>
                 ),
                 // The cell can use the individual row's getToggleRowSelectedProps method
                 // to the render a checkbox
                 Cell: ({row}: any) => (
-                  <div>
-                    <SelectionCheckbox {...row.getToggleRowSelectedProps()} />
-                  </div>
+                  <DataTableDataCell
+                    children={<Checkbox {...row.getToggleRowSelectedProps()} />}
+                  ></DataTableDataCell>
                 ),
                 defaultCanSort: false,
                 maxWidth: 0,
@@ -240,16 +237,15 @@ const DataTable = ({
   );
 
   useEffect(() => {
-    const selectedRowsStillPresent = Object.keys(selectedRowIds).every(
-      (rowIndex: any) => data[rowIndex]
-    );
-    if (onSelectedIdsChangeProp && selectedRowsStillPresent)
+    if (onSelectedIdsChangeProp && typeof selectedRowIds === "object") {
       onSelectedIdsChangeProp(
-        Object.keys(selectedRowIds).map((rowIndex: any) => data[rowIndex].id)
+        Object.keys(selectedRowIds)
+          .map((rowIndex: any) => data[rowIndex]?.id)
+          ?.filter(Boolean) || []
       );
+    }
   }, [selectedRowIds, onSelectedIdsChangeProp, data]);
 
-  // if (loading) return <InlineLoading />;
   return (
     <GcxDataTableRoot className={classNames(className)}>
       <GcxDataTableWrapper fullWidth={fullWidth}>
@@ -298,6 +294,17 @@ const DataTable = ({
                 </GcxDataTableTr>
               );
             })}
+            {actionRows?.map((actionRow) => (
+              <GcxDataTableTr>
+                <GcxDataTableTd>
+                  <DataTableDataCell
+                    onChange={actionRow?.onChange}
+                    menuOptions={actionRow?.menuOptions}
+                    children={actionRow?.children}
+                  />
+                </GcxDataTableTd>
+              </GcxDataTableTr>
+            ))}
           </GcxDataTableTbody>
         </GcxDataTable>
         {/* Pagination shown by default, but can be hidden */}
