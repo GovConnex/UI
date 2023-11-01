@@ -6,6 +6,7 @@ import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
 import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
 import {useKey} from "rooks";
+import {customStyles} from "../../core/styleFunctions";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;
@@ -44,6 +45,8 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: Placement;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
+  textWidth?: string;
+  cs?: customStyles;
 }
 
 const Menu = ({
@@ -52,6 +55,8 @@ const Menu = ({
   placement = "bottom-start",
   onClose,
   onOptionSelect,
+  textWidth,
+  cs,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -93,21 +98,21 @@ const Menu = ({
   return (
     <ClickAwayListener onClickAway={onClose || null}>
       <Popover anchorEl={anchorEl} placement={placement}>
-        <StyledMenuList {...rest}>
+        <StyledMenuList cs={cs} {...rest}>
           {sortedOptions.map((option, idx, array) => {
             const prev = array[idx - 1] || null;
 
             return (
               <span key={`item-${idx}-${new Date().getTime()}`}>
-                {prev === null ||
-                  (prev.category !== option.category && (
-                    <MenuListHeading>{option.category}</MenuListHeading>
-                  ))}
+                {(prev === null || prev.category !== option.category) && (
+                  <MenuListHeading>{option.category}</MenuListHeading>
+                )}
 
                 <MenuListItem
                   data-cy={option["data-cy"]}
                   button
                   style={option.style}
+                  textWidth={textWidth}
                   onSelect={() => {
                     if (onOptionSelect) {
                       onOptionSelect(option);

@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import {addCustomStyles, customStyles} from "../../core/styleFunctions";
 
-export const StyledMenuList = styled.div`
+export const StyledMenuList = styled.div<{cs?: customStyles}>`
   overflow: auto;
   position: relative;
+  padding: ${(props) => props.theme.spacing.xs};
+
+  ${(props) => addCustomStyles(props)};
 `;
 
 export const StyledMenuListHeading = styled.div<{
@@ -11,9 +15,8 @@ export const StyledMenuListHeading = styled.div<{
 }>`
   ${({uppercase}) => uppercase && "text-transform: uppercase;"}
 
-  color: ${(props) => props.theme.primary.base.black};
-  padding: ${(props) => `${props.theme.spacing.xs} ${props.theme.spacing.sm}`};
-  font-size: ${(props) => props.theme.typography.body.sm.fontSize};
+  color: ${(props) => props.theme.core.content.contentSecondary};
+  padding: ${(props) => `${props.theme.spacing["2xs"]} ${props.theme.spacing.xs}`};
 
   ${(props) =>
     props.sticky &&

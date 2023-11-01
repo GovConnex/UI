@@ -4,6 +4,7 @@ import Typography from "../Typography";
 import StyledMenuListItem, {
   StyledMenuListItemEnd,
   StyledMenuListItemStart,
+  StyledMenuListItemText,
 } from "./MenuListItem.styles";
 
 interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -13,6 +14,7 @@ interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   cursor?: boolean;
+  textWidth?: string;
 
   // checked?: boolean;
   disabled?: boolean;
@@ -30,6 +32,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   button,
   startAdornment,
   endAdornment,
+  textWidth,
   ...props
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -51,9 +54,11 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <Typography as="span" variant="body" size="md" noMargin>
-          {children}
-        </Typography>
+        <StyledMenuListItemText textWidth={textWidth}>
+          <Typography as="span" variant="body" size="md" noMargin>
+            {children}
+          </Typography>
+        </StyledMenuListItemText>
       </StyledMenuListItemStart>
       <StyledMenuListItemEnd>{endAdornment}</StyledMenuListItemEnd>
     </StyledMenuListItem>

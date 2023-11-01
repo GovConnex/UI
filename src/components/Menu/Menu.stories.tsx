@@ -3,6 +3,7 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Menu from "./Menu";
 import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
+import Avatar from "../Avatar/Avatar";
 import Icon from "../Icon";
 import {faUser} from "@fortawesome/pro-solid-svg-icons";
 import styled from "styled-components";
@@ -69,12 +70,42 @@ export const Headings = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Headings.args = {
   placement: "bottom-start",
+  cs: {width: "250px"},
+  textWidth: "200px",
   options: [
-    {text: "Menu Option", category: "Animals"},
-    {text: "Menu Option", category: "Animals"},
-    {text: "Menu Option", category: "Animals"},
-    {text: "Menu Option", category: "Animals"},
-    {text: "Menu Option", category: "Plants"},
-    {text: "Menu Option", category: "Plants"},
+    {
+      text: "Hon Anthony Albanese MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Anthony Albanese MP" />,
+    },
+    {
+      text: "Hon Dr Anne Aly MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Dr Anne Aly MP" />,
+    },
+    {
+      text: "Hon Karen Andrews MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Karen Andrews MP" />,
+    },
+    {
+      text: "Dr Michelle Ananda-Rajah MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Dr Michelle Ananda-Rajah MP" />,
+    },
+    {
+      text: "Advisory Committe on Clinical Trials",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Advisory Committe on Clinical Trials" />
+      ),
+    },
+    {
+      text: "Australian Competition and Challenge",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Australian Competition and Challenge" />
+      ),
+    },
   ],
 };
