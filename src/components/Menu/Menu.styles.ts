@@ -21,3 +21,7 @@ export const StyledSearchBar = styled.div`
   top: 0;
   z-index: 1;
 `;
+
+export const StyledBottomAdornment = styled.div`
+  padding: ${(props) => props.theme.spacing.xs};
+`;

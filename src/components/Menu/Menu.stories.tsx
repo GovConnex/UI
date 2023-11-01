@@ -169,3 +169,60 @@ WithSearch.args = {
     },
   ],
 };
+
+export const WithBottomAdornment = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithBottomAdornment.args = {
+  placement: "bottom-start",
+  textWidth: "180px",
+  hasSearch: true,
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
+  bottomAdornment: (
+    <Button
+      style={{display: "block", textAlign: "center"}}
+      isFullWidth
+      variant="tertiary"
+      key="clear-frequency-filter"
+    >
+      Clear Selection
+    </Button>
+  ),
+  options: [
+    {
+      text: "Hon Anthony Albanese MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Anthony Albanese MP" />,
+    },
+    {
+      text: "Hon Dr Anne Aly MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Dr Anne Aly MP" />,
+    },
+    {
+      text: "Hon Karen Andrews MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Karen Andrews MP" />,
+    },
+    {
+      text: "Dr Michelle Ananda-Rajah MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Dr Michelle Ananda-Rajah MP" />,
+    },
+    {
+      text: "Advisory Committe on Clinical Trials",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Advisory Committe on Clinical Trials" />
+      ),
+    },
+    {
+      text: "Australian Competition and Challenge",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Australian Competition and Challenge" />
+      ),
+    },
+  ],
+};

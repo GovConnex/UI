@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
 import Input from "../Input/Input";
-import {StyledMenuList, StyledSearchBar} from "./Menu.styles";
+import {StyledMenuList, StyledSearchBar, StyledBottomAdornment} from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
 import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
@@ -49,6 +49,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: Placement;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
+  bottomAdornment?: React.ReactNode;
   hasSearch?: boolean;
   textWidth?: string;
   cs?: customStyles;
@@ -62,6 +63,7 @@ const Menu = ({
   onOptionSelect,
   textWidth,
   hasSearch,
+  bottomAdornment,
   cs,
   ...rest
 }: MenuProps) => {
@@ -181,6 +183,9 @@ const Menu = ({
               </span>
             );
           })}
+          {bottomAdornment ? (
+            <StyledBottomAdornment>{bottomAdornment}</StyledBottomAdornment>
+          ) : null}
         </StyledMenuList>
       </Popover>
     </ClickAwayListener>
