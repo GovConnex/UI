@@ -90,9 +90,10 @@ export interface DataTableProps {
   actionRows?: DataTableActionRowProps[];
 }
 
-export interface DataTableActionRowProps extends MenuProps {
+export interface DataTableActionRowProps {
   children: React.ReactNode;
   onChange?: (option: MenuOption) => void;
+  menuProps?: MenuProps;
 }
 
 /**
@@ -298,7 +299,7 @@ const DataTable = ({
                 <GcxDataTableTd>
                   <DataTableDataCell
                     onChange={actionRow?.onChange}
-                    menuProps={actionRow}
+                    menuProps={actionRow?.menuProps}
                     children={actionRow?.children}
                   />
                 </GcxDataTableTd>
