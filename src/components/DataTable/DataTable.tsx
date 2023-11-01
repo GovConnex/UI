@@ -25,7 +25,7 @@ import {
 } from "./DataTable.styles";
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
-import {MenuOption} from "../Menu/Menu";
+import {MenuOption, MenuProps} from "../Menu/Menu";
 
 export interface DataTableProps {
   /**
@@ -90,9 +90,8 @@ export interface DataTableProps {
   actionRows?: DataTableActionRowProps[];
 }
 
-export interface DataTableActionRowProps {
+export interface DataTableActionRowProps extends MenuProps {
   children: React.ReactNode;
-  menuOptions?: MenuOption[];
   onChange?: (option: MenuOption) => void;
 }
 
@@ -299,7 +298,7 @@ const DataTable = ({
                 <GcxDataTableTd>
                   <DataTableDataCell
                     onChange={actionRow?.onChange}
-                    menuOptions={actionRow?.menuOptions}
+                    menuProps={actionRow}
                     children={actionRow?.children}
                   />
                 </GcxDataTableTd>
