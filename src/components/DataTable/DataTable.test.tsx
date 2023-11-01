@@ -149,14 +149,16 @@ describe("DataTable", () => {
           },
           {
             children: <div>Menu Row</div>,
-            onOptionSelect(option) {
-              console.log(option);
-            },
-            options: [
-              {
-                text: "Test",
+            menuProps: {
+              onOptionSelect(option) {
+                console.log(option);
               },
-            ],
+              options: [
+                {
+                  text: "Test",
+                },
+              ],
+            },
           },
         ]}
       />

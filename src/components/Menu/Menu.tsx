@@ -44,7 +44,7 @@ export function sortByCategory(options: MenuOption[]) {
 }
 
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
-  anchorEl: React.RefObject<HTMLElement>;
+  anchorEl?: React.RefObject<HTMLElement>;
   options: MenuOption[];
   placement?: Placement;
   onClose?: () => void;
