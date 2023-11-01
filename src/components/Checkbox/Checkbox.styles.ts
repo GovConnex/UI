@@ -35,6 +35,8 @@ export const StyledFakeCheckbox = styled.div<{checked?: boolean}>`
 `;
 
 export const StyledCheckboxLabel = styled.label<{withHoverStyle: boolean}>`
+  min-width: 20px;
+  min-height: 20px;
   align-items: center;
   display: flex;
   cursor: pointer;

@@ -137,6 +137,35 @@ const DATA_TABLE_DATA = [
 ];
 
 describe("DataTable", () => {
+  test("renders the DataTable component with action rows", async () => {
+    render(
+      <DataTable
+        data={DATA_TABLE_DATA}
+        columns={DATA_TABLE_COLUMNS}
+        showPagination={false}
+        actionRows={[
+          {
+            children: <div>Action Row</div>,
+          },
+          {
+            children: <div>Menu Row</div>,
+            menuOptions: [
+              {
+                text: "Test",
+                onSelect(option) {
+                  console.log(option);
+                },
+              },
+            ],
+          },
+        ]}
+      />
+    );
+
+    expect(await screen.findByText(/Action Row/i, {exact: false})).toBeInTheDocument();
+    expect(await screen.findByText(/Menu Row/i, {exact: false})).toBeInTheDocument();
+  });
+
   test("renders the DataTable component with pagination", async () => {
     render(
       <DataTable

@@ -32,10 +32,6 @@ export const GcxDataTableTbody = styled.tbody`
 
 export const GcxDataTableTr = styled.tr`
   min-width: 0;
-
-  :not(:last-child) {
-    border-bottom: 1px solid #ebebeb;
-  }
 `;
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
@@ -45,19 +41,11 @@ export const GcxDataTableTh = styled.th<{width?: string}>`
   text-align: left;
   border-bottom: 1px solid #ebebeb;
   position: relative;
-
-  :not(:last-child) {
-    border-right: 1px solid #ebebeb;
-  }
 `;
 
 export const GcxDataTableTd = styled.td`
   min-width: 0;
   border-bottom: 1px solid #ebebeb;
-
-  :not(:last-child) {
-    border-right: 1px solid #ebebeb;
-  }
 `;
 
 // Data cell styles
@@ -69,6 +57,9 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
   box-sizing: border-box;
   gap: ${(p) => p.theme.spacing.md};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 40px;
 
   > * {
     white-space: nowrap;
@@ -81,7 +72,9 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
     `
     cursor: pointer;
     &:active {
-      outline: ${p.theme.primary.base.brand} solid ${p.theme.borderWidth.lg};
+      background: ${p.theme.core.background.bgSecondary};
+      outline: ${p.theme.borderWidth.sm} solid ${p.theme.primary.base.brand};
+      outline-offset: -${p.theme.borderWidth.lg};
     }
   `}
 `;
@@ -94,20 +87,21 @@ export const GcxDataTableHeaderCellRoot = styled.div<{fullText?: string}>`
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: ${(p) => p.theme.spacing.xs};
+  gap: ${(p) => p.theme.spacing.xs};
+  padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
   color: ${(p) => p.theme.primary.base.black};
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`
   color: ${(p) => p.theme.primary.neutral["800"]};
-  margin-right: ${(p) => p.theme.spacing.sm};
-  margin-left: ${(p) => p.theme.spacing.xs};
+  margin: 0;
+  padding: 0;
 `;
 
 export const GcxDataTableHeaderSortIcon = styled(Icon)`
   color: ${(p) => p.theme.primary.neutral["800"]};
   position: absolute;
-  margin-top: 4px;
+  margin: 0;
   right: ${(p) => p.theme.spacing.sm};
 `;
 

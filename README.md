@@ -72,6 +72,8 @@ Then you might want to start a `watch` job to auto re-build as you edit componen
 yarn watch
 ```
 
+TROUBLESHOOTING — If you have issues getting it to work (like `useContext` errors or other weird React internals), try removing `node_modules` and `yarn install --frozen-lockfile` on both sides before re-building, re-linking, and re-starting the app.
+
 ### Figma Tokens Plugin
 
 Design tokens are pushed to the repo via the Figma Tokens Plugin to:

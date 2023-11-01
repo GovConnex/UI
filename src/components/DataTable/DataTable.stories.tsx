@@ -199,6 +199,29 @@ const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
   },
 ];
 
+export const WithActionRows = Template.bind({});
+WithActionRows.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  showPagination: false,
+  actionRows: [
+    {
+      children: <div>Action Row</div>,
+    },
+    {
+      children: <div>Menu Row</div>,
+      menuOptions: [
+        {
+          text: "Test",
+          onSelect(option) {
+            console.log(option);
+          },
+        },
+      ],
+    },
+  ],
+};
+
 // Another example, but with resize property in column config
 export const WithoutResizeColumnConfig = Template.bind({});
 WithoutResizeColumnConfig.args = {
