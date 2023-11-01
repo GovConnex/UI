@@ -66,12 +66,72 @@ Example.parameters = {
   },
 };
 
-export const Headings = Template.bind({});
+export const WithCategory = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Headings.args = {
+WithCategory.args = {
   placement: "bottom-start",
   cs: {width: "250px"},
-  textWidth: "200px",
+  textWidth: "180px",
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
+  options: [
+    {
+      text: "Hon Anthony Albanese MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Anthony Albanese MP" />,
+    },
+    {
+      text: "Hon Dr Anne Aly MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Dr Anne Aly MP" />,
+    },
+    {
+      text: "Hon Karen Andrews MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Hon Karen Andrews MP" />,
+    },
+    {
+      text: "Dr Michelle Ananda-Rajah MP",
+      category: "Representatives",
+      startAdornment: <Avatar variant="square" alt="Dr Michelle Ananda-Rajah MP" />,
+    },
+    {
+      text: "Advisory Committe on Clinical Trials",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Advisory Committe on Clinical Trials" />
+      ),
+    },
+    {
+      text: "Australian Competition and Challenge",
+      category: "Departments and Agencies",
+      startAdornment: (
+        <Avatar variant="square" alt="Australian Competition and Challenge" />
+      ),
+    },
+  ],
+};
+
+WithCategory.parameters = {
+  docs: {
+    description: {
+      story:
+        "Uses cs attribute, text width, option select function that writes to the console, and category.",
+    },
+  },
+};
+
+export const WithSearch = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithSearch.args = {
+  placement: "bottom-start",
+  cs: {width: "250px", height: "200px"},
+  textWidth: "180px",
+  hasSearch: true,
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
   options: [
     {
       text: "Hon Anthony Albanese MP",
