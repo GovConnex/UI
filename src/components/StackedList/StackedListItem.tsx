@@ -19,6 +19,7 @@ interface StackedListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   "data-cy"?: string;
   cs?: customStyles;
   isShowAll?: boolean;
+  itemAlignment?: string;
 }
 
 export const StackedListItem: React.FC<StackedListItemProps> = ({
@@ -30,11 +31,13 @@ export const StackedListItem: React.FC<StackedListItemProps> = ({
   subText,
   cs,
   isShowAll,
+  itemAlignment,
   ...props
 }) => {
   return (
     <StyledStackedListItem
       isShowAll={isShowAll}
+      itemAlignment={itemAlignment}
       cs={cs}
       {...props}
       data-cy={props["data-cy"]}

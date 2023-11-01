@@ -43,6 +43,7 @@ export interface BannerProps {
   };
 
   onClose?: () => void;
+  "data-cy"?: string;
 }
 
 const variantMap = {
@@ -70,7 +71,7 @@ const Banner = (props: BannerProps) => {
   } = props;
   const theme = useTheme();
   return (
-    <StyledBanner variant={variant}>
+    <StyledBanner variant={variant} data-cy={props["data-cy"]}>
       <Icon
         icon={variantMap[variant] as IconProp}
         color={theme.extended.support[`${variant}Dark`]}

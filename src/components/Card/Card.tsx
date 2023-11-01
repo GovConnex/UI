@@ -1,6 +1,7 @@
 import React from "react";
 import {Spacing} from "../../theming/global-theme.interface";
 import StyledCard from "./Card.styles";
+import {customStyles} from "../../core/styleFunctions";
 
 export interface CardProps {
   focused?: boolean;
@@ -9,11 +10,12 @@ export interface CardProps {
   selected?: boolean;
   hoverStyle?: "none" | "shadow" | "regress";
   noPadding?: boolean;
+  cs?: customStyles;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
-    {focused, hoverStyle = "shadow", selected, children, padding, noPadding, ...rest},
+    {focused, hoverStyle = "shadow", selected, children, padding, noPadding, cs, ...rest},
     ref
   ) => {
     return (
@@ -24,6 +26,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         focused={!!focused}
         padding={padding}
         noPadding={noPadding}
+        cs={cs}
         {...rest}
       >
         {children}
