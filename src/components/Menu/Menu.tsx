@@ -49,6 +49,8 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: Placement;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
+  onSearch?: (filteredOptions: any) => void;
+  filteredOptions?: any;
   bottomAdornment?: React.ReactNode;
   hasSearch?: boolean;
   textWidth?: string;
@@ -61,6 +63,8 @@ const Menu = ({
   placement = "bottom-start",
   onClose,
   onOptionSelect,
+  onSearch,
+  filteredOptions = [],
   textWidth,
   hasSearch,
   bottomAdornment,
@@ -73,7 +77,11 @@ const Menu = ({
   const searchInputRef = React.useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    setSortedOptions(sortByCategory(options));
+    if (typeof onSearch === "function") {
+      setSortedOptions(filteredOptions);
+    } else {
+      setSortedOptions(sortByCategory(options));
+    }
 
     // Focus the search input when the component mounts
     if (searchInputRef.current) {
@@ -117,13 +125,17 @@ const Menu = ({
     const value = e.target.value;
     setSearchTerm(value);
 
-    const dataListNew = value
-      ? [...options].filter(
-          (item: any) => item?.text?.toLowerCase()?.includes(value?.toLowerCase())
-        )
-      : [...options];
+    if (typeof onSearch === "function") {
+      onSearch(sortedOptions);
+    } else {
+      const dataListNew = value
+        ? [...options].filter(
+            (item: any) => item?.text?.toLowerCase()?.includes(value?.toLowerCase())
+          )
+        : [...options];
 
-    setSortedOptions(sortByCategory([...dataListNew]));
+      setSortedOptions(sortByCategory([...dataListNew]));
+    }
   };
 
   return (

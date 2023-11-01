@@ -43,6 +43,7 @@ export const Example = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Example.args = {
   placement: "bottom-start",
+  onSearch: undefined,
   options: [
     {text: "Menu Option", startAdornment: <GreenDot />},
     {
@@ -72,6 +73,7 @@ WithCategory.args = {
   placement: "bottom-start",
   cs: {width: "250px"},
   textWidth: "180px",
+  onSearch: undefined,
   onOptionSelect: (option) => {
     console.log(option);
   },
@@ -129,6 +131,7 @@ WithSearch.args = {
   cs: {width: "250px", height: "200px"},
   textWidth: "180px",
   hasSearch: true,
+  onSearch: undefined,
   onOptionSelect: (option) => {
     console.log(option);
   },
@@ -176,6 +179,7 @@ WithBottomAdornment.args = {
   placement: "bottom-start",
   textWidth: "180px",
   hasSearch: true,
+  onSearch: undefined,
   onOptionSelect: (option) => {
     console.log(option);
   },
@@ -225,4 +229,56 @@ WithBottomAdornment.args = {
       ),
     },
   ],
+};
+
+export const WithBackendFiltering = Template.bind({});
+const filteredOptions = [
+  {
+    text: "Hon Anthony Albanese MP",
+    category: "Representatives",
+    startAdornment: <Avatar variant="square" alt="Hon Anthony Albanese MP" />,
+  },
+  {
+    text: "Hon Dr Anne Aly MP",
+    category: "Representatives",
+    startAdornment: <Avatar variant="square" alt="Hon Dr Anne Aly MP" />,
+  },
+  {
+    text: "Hon Karen Andrews MP",
+    category: "Representatives",
+    startAdornment: <Avatar variant="square" alt="Hon Karen Andrews MP" />,
+  },
+  {
+    text: "Dr Michelle Ananda-Rajah MP",
+    category: "Representatives",
+    startAdornment: <Avatar variant="square" alt="Dr Michelle Ananda-Rajah MP" />,
+  },
+  {
+    text: "Advisory Committe on Clinical Trials",
+    category: "Departments and Agencies",
+    startAdornment: (
+      <Avatar variant="square" alt="Advisory Committe on Clinical Trials" />
+    ),
+  },
+  {
+    text: "Australian Competition and Challenge",
+    category: "Departments and Agencies",
+    startAdornment: (
+      <Avatar variant="square" alt="Australian Competition and Challenge" />
+    ),
+  },
+];
+
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithBackendFiltering.args = {
+  placement: "bottom-start",
+  textWidth: "180px",
+  hasSearch: true,
+  onSearch: (filteredValues) => {
+    console.log("filtered values", filteredValues);
+  },
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
+  filteredOptions: filteredOptions,
 };
