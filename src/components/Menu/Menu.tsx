@@ -143,6 +143,7 @@ const Menu = ({
           {hasSearch ? (
             <StyledSearchBar>
               <Input
+                name="input"
                 fullWidth
                 ref={searchInputRef}
                 data-cy="filter-issue-search"

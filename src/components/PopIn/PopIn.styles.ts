@@ -5,8 +5,9 @@ export const PopInContainer = styled.div<{
   show: boolean;
   position?: "top" | "bottom";
   offset?: string;
+  positionType?: string;
 }>`
-  position: absolute;
+  position: ${({positionType}) => (positionType ? positionType : "absolute")};
   z-index: 1000;
   transition:
     transform 0.3s ease-in-out,

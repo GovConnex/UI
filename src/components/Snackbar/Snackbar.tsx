@@ -85,6 +85,11 @@ export interface PopinSnackbarProps extends SnackbarProps {
    * The ID of the container to render the PopIn in, if using the portal.
    */
   portalContainer?: string | HTMLElement | null;
+
+  /**
+   * Indicates position type if fixed, absolute, etc.
+   */
+  positionType?: string;
 }
 
 /**
@@ -115,20 +120,21 @@ const Snackbar = (props: SnackbarProps) => {
   return (
     <Box
       cs={{
-        backgroundColor: "core.background.bgInversePrimary",
-        borderRadius: "borderRadius.xs",
+        bg: "core.background.bgInversePrimary",
+        borderRadius: "borderRadius.base",
         boxShadow: "boxShadow.sm",
         color: "primary.neutral.100",
         display: "flex",
         flexDirection: "row",
-        padding: "spacing.sm",
+        paddingX: "spacing.sm",
+        paddingY: "spacing.xs",
         alignItems: "center",
       }}
     >
       {props.startAdornment ? (
         <Box
           cs={{
-            marginRight: "spacing.md",
+            marginRight: "spacing.sm",
           }}
         >
           {props.startAdornment}
@@ -137,7 +143,7 @@ const Snackbar = (props: SnackbarProps) => {
       <Box
         cs={{
           flex: 1,
-          marginRight: "spacing.md",
+          marginRight: "spacing.xs",
         }}
       >
         <Typography variant="body" noMargin>
@@ -156,7 +162,8 @@ const Snackbar = (props: SnackbarProps) => {
         {props.actions?.map((action, index) => (
           <Button
             key={index}
-            variant="text"
+            variant="tertiary"
+            subtype="success"
             size="sm"
             onClick={action.onClick}
             noPadding
@@ -184,6 +191,7 @@ export const PopinSnackbar = (props: PopinSnackbarProps) => {
       setShow={props.setShow}
       timeoutSeconds={props.timeoutSeconds}
       position={props.position}
+      positionType={props.positionType}
       offset={props.offset}
       disablePortal={props.disablePortal}
       portalContainer={props.portalContainer}

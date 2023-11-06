@@ -92,6 +92,7 @@ export const DebouncedInput = ({
 
   return (
     <Input
+      name="input"
       value={inputValue}
       noPadding={noPadding}
       overridePadding={overridePadding}
