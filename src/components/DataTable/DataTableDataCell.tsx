@@ -58,7 +58,7 @@ const DataTableDataCell = ({
         title={textContent}
         hasDropdown={!!onClick || !!menuOptions.length || !!menuProps?.options}
         ref={anchorEl}
-        className={className}
+        className={className + " " + (showMenu ? "showMenu" : "")}
         onClick={() => {
           if (onClick) {
             onClick();
