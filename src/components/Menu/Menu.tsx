@@ -91,16 +91,18 @@ const Menu = ({
     } else {
       setSortedOptions(sortByCategory(options));
     }
+  }, [options]);
 
-    // Focus the search input when the component mounts
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-
+  useEffect(() => {
     if (onOpen) {
       onOpen();
     }
-  }, [options]);
+
+    // Focus the search input when the component mounts
+    if (searchInputRef?.current) {
+      searchInputRef?.current.focus({preventScroll: true});
+    }
+  }, []);
 
   useKey(["ArrowDown"], (e) => {
     e.preventDefault();
