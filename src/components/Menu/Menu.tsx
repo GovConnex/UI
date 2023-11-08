@@ -50,6 +50,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl?: React.RefObject<HTMLElement>;
   options: MenuOption[];
   placement?: Placement;
+  onOpen?: () => void;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
   onSearch?: (filteredOptions: any) => void;
@@ -66,6 +67,7 @@ const Menu = ({
   anchorEl,
   options,
   placement = "bottom-start",
+  onOpen,
   onClose,
   onOptionSelect,
   onSearch,
@@ -93,6 +95,10 @@ const Menu = ({
     // Focus the search input when the component mounts
     if (searchInputRef.current) {
       searchInputRef.current.focus();
+    }
+
+    if (onOpen) {
+      onOpen();
     }
   }, [options]);
 

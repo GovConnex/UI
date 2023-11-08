@@ -50,7 +50,9 @@ export const GcxDataTableTd = styled.td`
 
 // Data cell styles
 
-export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
+export const GcxDataTableDataCellRoot = styled.div<{
+  hasDropdown: boolean;
+}>`
   display: flex;
   height: 100%;
   align-items: center;
@@ -71,7 +73,8 @@ export const GcxDataTableDataCellRoot = styled.div<{hasDropdown: boolean}>`
     p.hasDropdown &&
     `
     cursor: pointer;
-    &:active {
+    &:active,
+    &.showMenu {
       background: ${p.theme.core.background.bgSecondary};
       outline: ${p.theme.borderWidth.sm} solid ${p.theme.primary.base.brand};
       outline-offset: -${p.theme.borderWidth.lg};
