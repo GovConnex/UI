@@ -1,7 +1,9 @@
 import React from "react";
 import {render} from "../test-utils";
+import {screen, waitFor} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-import {sortByCategory} from "./Menu";
+import {sortByCategory, ButtonMenu} from "./Menu";
 
 describe("Menu", () => {
   test("renders the Menu component", () => {
@@ -80,6 +82,33 @@ describe("Menu", () => {
         {other: "1"},
       ];
       expect(sortByCategory(options)).toEqual(expected);
+    });
+  });
+
+  describe("ButtonMenu", () => {
+    it("renders correctly and responds to click events", () => {
+      render(
+        <ButtonMenu
+          menuProps={{
+            options: [
+              {
+                text: "Hon Anthony Albanese MP",
+              },
+            ],
+          }}
+        />
+      );
+
+      const button = screen.getByRole("button");
+      expect(button).toBeInTheDocument();
+
+      userEvent.click(button);
+
+      // wait for Anthony Albanese to appear
+      waitFor(() => {
+        const option = screen.getByText("Hon Anthony Albanese MP");
+        expect(option).toBeInTheDocument();
+      });
     });
   });
 });

@@ -13,6 +13,11 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
    * add custom styles through `cs`
    */
   cs?: customStyles;
+
+  /**
+   * Allow for adding cypress attributes.
+   */
+  "data-cy"?: string;
 }
 
 export interface ExtendedBoxProps extends BoxProps {
@@ -85,7 +90,12 @@ const Box = React.forwardRef<HTMLDivElement, ExtendedBoxProps>(function Box(
 ) {
   // WARN does not pass onClick, etc to the div element
   return (
-    <StyledBox ref={ref} cs={{...props}}>
+    <StyledBox
+      ref={ref}
+      cs={{...props}}
+      data-cy={props["data-cy"]}
+      className={props["className"]}
+    >
       {props.children}
     </StyledBox>
   );

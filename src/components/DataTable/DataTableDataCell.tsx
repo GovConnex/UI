@@ -8,12 +8,14 @@ export interface DataCellProps {
   menuProps?: MenuProps;
   className?: string;
   onChange?: (option: MenuOption) => void;
+  onClick?: () => void;
 }
 
 // active state: purple border
 
 const DataTableDataCell = ({
   onChange,
+  onClick,
   menuOptions = [],
   menuProps,
   children,
@@ -54,14 +56,19 @@ const DataTableDataCell = ({
     <>
       <GcxDataTableDataCellRoot
         title={textContent}
-        hasDropdown={!!menuOptions.length || !!menuProps?.options?.length}
+        hasDropdown={!!onClick || !!menuOptions.length || !!menuProps?.options}
         ref={anchorEl}
         className={className}
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={() => {
+          if (onClick) {
+            onClick();
+          }
+          setShowMenu(!showMenu);
+        }}
       >
         {children}
       </GcxDataTableDataCellRoot>
-      {showMenu && (menuOptions?.length || menuProps?.options?.length) ? (
+      {showMenu && (menuOptions?.length || menuProps?.options) ? (
         <DataCellMenu
           placement="bottom-start"
           anchorEl={anchorEl}
@@ -72,6 +79,9 @@ const DataTableDataCell = ({
             menuProps?.onOptionSelect && menuProps.onOptionSelect(option);
           }}
           onClose={() => {
+            if (menuProps?.onClose) {
+              menuProps.onClose();
+            }
             setShowMenu(false);
           }}
         />

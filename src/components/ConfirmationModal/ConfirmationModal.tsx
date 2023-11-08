@@ -12,6 +12,7 @@ export interface ConfirmationModalButton {
   onClick: () => void;
   isLoading?: boolean;
   disabled?: boolean;
+  "data-cy"?: string;
 }
 
 export interface ConfirmationModalProps {
@@ -107,18 +108,21 @@ const ConfirmationModal = ({
           width: "100%",
         }}
       >
-        {buttons.map(({variant, text, onClick, isLoading, disabled}) => (
-          <Button
-            key={text}
-            variant={variant}
-            onClick={onClick}
-            size="lg"
-            isLoading={isLoading}
-            disabled={disabled}
-          >
-            {text}
-          </Button>
-        ))}
+        {buttons.map(
+          ({variant, text, onClick, isLoading, disabled, "data-cy": dataCy}) => (
+            <Button
+              key={text}
+              variant={variant}
+              onClick={onClick}
+              size="lg"
+              isLoading={isLoading}
+              disabled={disabled}
+              data-cy={dataCy}
+            >
+              {text}
+            </Button>
+          )
+        )}
       </Box>
     </StyledModalFeet>
   </Modal>
