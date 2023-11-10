@@ -23,13 +23,6 @@ export const StyledIssueCard = styled.div<{focused?: boolean}>`
   }
 `;
 
-export const Top = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin-bottom: ${(props) => props.theme.spacing.xs};
-`;
-
 export const Title = styled(Typography)`
   color: ${(props) => props.theme.core.content.contentPrimary};
   display: block;
