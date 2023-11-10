@@ -1,6 +1,5 @@
 import {
   StyledIssueCard,
-  Top,
   Title,
   Actions,
   Description,
@@ -11,7 +10,7 @@ import {
   LockIcon,
 } from "./IssueCard.styles";
 import React, {useState, useRef} from "react";
-import {Button, SvgIcon as Icon, Menu, Portal} from "../";
+import {Button, SvgIcon as Icon, Menu, Portal, Box} from "../";
 import {MenuOption} from "../Menu/Menu";
 
 interface IssueUserLinkUser {
@@ -48,6 +47,7 @@ export interface IssueCardProps {
   pinned: boolean;
   togglePinned: () => void;
   truncateDescription?: number;
+  startAdornment?: React.ReactNode;
 }
 
 const IssueCard = ({
@@ -63,6 +63,7 @@ const IssueCard = ({
   pinned,
   togglePinned,
   truncateDescription,
+  startAdornment,
 }: IssueCardProps) => {
   const {id, title, description, userLinks, shared} = issue;
   const [isMenuShown, setMenuShown] = useState(false);
@@ -71,10 +72,29 @@ const IssueCard = ({
 
   return (
     <StyledIssueCard data-cy={`issue-card-${id}`}>
-      <Top>
-        <Title variant="heading" size="xs" data-cy="issue-card-title">
-          {title}
-        </Title>
+      <Box
+        cs={{
+          display: "flex",
+          alignItems: "flex-start",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginBottom: "spacing.xs",
+        }}
+      >
+        <Box
+          cs={{
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
+            gap: "spacing.xs",
+            flexGrow: "1",
+          }}
+        >
+          {startAdornment}
+          <Title variant="heading" size="xs" data-cy="issue-card-title">
+            {title}
+          </Title>
+        </Box>
         <Actions>
           {!shared && (
             <LockIcon>
@@ -190,7 +210,7 @@ const IssueCard = ({
             </Portal>
           </div>
         )}
-      </Top>
+      </Box>
       <Description variant="body" size="md" data-cy="issue-card-description">
         {truncateDescription && description?.length >= truncateDescription
           ? description.slice(0, truncateDescription).trim() + "..."
