@@ -88,11 +88,17 @@ export interface DataTableProps {
    * Action rows to display at the bottom of the table.
    */
   actionRows?: DataTableActionRowProps[];
+
+  /**
+   * Data-cy attribute to apply to each row.
+   */
+  "data-cy-row"?: string | ((row: any) => string);
 }
 
 export interface DataTableActionRowProps {
   children: React.ReactNode;
   onChange?: (option: MenuOption) => void;
+  onClick?: () => void;
   menuProps?: MenuProps;
 }
 
@@ -117,6 +123,7 @@ const DataTable = ({
   showSelection = true,
   fullWidth = true,
   actionRows = [],
+  "data-cy-row": dataCyRow,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -244,7 +251,9 @@ const DataTable = ({
           ?.filter(Boolean) || []
       );
     }
-  }, [selectedRowIds, onSelectedIdsChangeProp, data]);
+    // IMPORTANT — Should only trigger when selectedRowIds changes
+    // Do not put anything else in the dependency array
+  }, [selectedRowIds]);
 
   return (
     <GcxDataTableRoot className={classNames(className)}>
@@ -280,7 +289,16 @@ const DataTable = ({
             {(manualPagination ? rows : pageRows).map((row: any) => {
               prepareRow(row);
               return (
-                <GcxDataTableTr {...row.getRowProps()}>
+                <GcxDataTableTr
+                  {...row.getRowProps()}
+                  data-cy={
+                    typeof dataCyRow === "string"
+                      ? dataCyRow
+                      : typeof dataCyRow === "function"
+                      ? dataCyRow(row)
+                      : undefined
+                  }
+                >
                   {row.cells.map((cell: any) => {
                     return (
                       <GcxDataTableTd
@@ -294,10 +312,11 @@ const DataTable = ({
                 </GcxDataTableTr>
               );
             })}
-            {actionRows?.map((actionRow) => (
-              <GcxDataTableTr>
+            {actionRows?.map((actionRow, idx) => (
+              <GcxDataTableTr key={idx}>
                 <GcxDataTableTd>
                   <DataTableDataCell
+                    onClick={actionRow?.onClick}
                     onChange={actionRow?.onChange}
                     menuProps={actionRow?.menuProps}
                     children={actionRow?.children}

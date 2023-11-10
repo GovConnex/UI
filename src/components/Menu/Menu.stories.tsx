@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
-import Menu from "./Menu";
+import Menu, {ButtonMenu} from "./Menu";
 import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 import Avatar from "../Avatar/Avatar";
@@ -17,18 +17,14 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Menu> = (args) => {
-  const exampleRef = React.useRef<HTMLButtonElement>(null);
-  const [showMenu, setShowMenu] = useState(false);
-
   return (
-    <div>
-      <Button ref={exampleRef} onClick={() => setShowMenu(!showMenu)}>
-        Toggle menu
-      </Button>
-      {showMenu && (
-        <Menu {...args} onClose={() => setShowMenu(false)} anchorEl={exampleRef} />
-      )}
-    </div>
+    <ButtonMenu
+      menuProps={{
+        ...args,
+      }}
+    >
+      Toggle menu
+    </ButtonMenu>
   );
 };
 

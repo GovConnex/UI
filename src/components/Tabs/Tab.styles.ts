@@ -17,11 +17,15 @@ const StyledTab = styled.button<{
       selected ? theme.core.content.contentPrimary : theme.core.content.contentSecondary
     };
     z-index: ${selected ? "1" : "0"};
-    background-color:${isSection ? "transparent" : theme.core.background.bgPrimary};
+    background-color: ${isSection ? "transparent" : theme.core.background.bgPrimary};
     &:disabled {
-        cursor: not-allowed;
-        color: ${theme.core.content.contentTertiary};
-      }
+      cursor: not-allowed;
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
 
     cursor: pointer;
     gap:${theme.spacing.xs};

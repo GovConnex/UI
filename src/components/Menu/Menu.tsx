@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
 import Input from "../Input/Input";
@@ -11,12 +11,15 @@ import {customStyles} from "../../core/styleFunctions";
 import Icon from "../SvgIcon/Icon";
 import {faSearch} from "@fortawesome/pro-regular-svg-icons";
 import Typography from "../Typography/Typography";
+import Button, {ButtonProps} from "../Button/Button";
+import Box from "../Box/Box";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   onSelect?: (option?: MenuOption) => void;
   text?: string | number;
+  children?: React.ReactNode;
   category?: string;
   style?: React.CSSProperties;
   "data-cy"?: string;
@@ -47,6 +50,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl?: React.RefObject<HTMLElement>;
   options: MenuOption[];
   placement?: Placement;
+  onOpen?: () => void;
   onClose?: () => void;
   onOptionSelect?: (option: MenuOption) => void;
   onSearch?: (filteredOptions: any) => void;
@@ -54,12 +58,16 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   hasSearch?: boolean;
   textWidth?: string;
   cs?: customStyles;
+  popoverCs?: customStyles;
+  itemsCs?: customStyles;
+  closeOnSelect?: boolean;
 }
 
 const Menu = ({
   anchorEl,
   options,
   placement = "bottom-start",
+  onOpen,
   onClose,
   onOptionSelect,
   onSearch,
@@ -67,6 +75,9 @@ const Menu = ({
   hasSearch,
   bottomAdornment,
   cs,
+  popoverCs,
+  itemsCs,
+  closeOnSelect = true,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -80,12 +91,18 @@ const Menu = ({
     } else {
       setSortedOptions(sortByCategory(options));
     }
+  }, [options]);
+
+  useEffect(() => {
+    if (onOpen) {
+      onOpen();
+    }
 
     // Focus the search input when the component mounts
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
+    if (searchInputRef?.current) {
+      searchInputRef?.current.focus({preventScroll: true});
     }
-  }, [options]);
+  }, []);
 
   useKey(["ArrowDown"], (e) => {
     e.preventDefault();
@@ -110,7 +127,9 @@ const Menu = ({
     if (option) {
       onOptionSelect && onOptionSelect(option);
       option.onSelect && option.onSelect(option);
-      onClose && onClose();
+      if (onClose && closeOnSelect) {
+        onClose();
+      }
     }
   });
 
@@ -138,7 +157,14 @@ const Menu = ({
 
   return (
     <ClickAwayListener onClickAway={onClose || null}>
-      <Popover anchorEl={anchorEl} placement={placement}>
+      <Popover
+        anchorEl={anchorEl}
+        placement={placement}
+        cs={{
+          zIndex: 1000,
+          ...popoverCs,
+        }}
+      >
         <StyledMenuList cs={cs} {...rest}>
           {hasSearch ? (
             <StyledSearchBar>
@@ -158,42 +184,44 @@ const Menu = ({
               />
             </StyledSearchBar>
           ) : null}
-          {sortedOptions.map((option, idx, array) => {
-            const prev = array[idx - 1] || null;
+          <Box className="MenuItems" cs={itemsCs}>
+            {sortedOptions.map((option, idx, array) => {
+              const prev = array[idx - 1] || null;
 
-            return (
-              <span key={`item-${idx}-${new Date().getTime()}`}>
-                {(prev === null || prev.category !== option.category) && (
-                  <MenuListHeading>{option.category}</MenuListHeading>
-                )}
+              return (
+                <span key={`item-${idx}-${new Date().getTime()}`}>
+                  {(prev === null || prev.category !== option.category) && (
+                    <MenuListHeading>{option.category}</MenuListHeading>
+                  )}
 
-                <MenuListItem
-                  data-cy={option["data-cy"]}
-                  button
-                  style={option.style}
-                  textWidth={textWidth}
-                  onSelect={() => {
-                    if (onOptionSelect) {
-                      onOptionSelect(option);
-                    }
+                  <MenuListItem
+                    data-cy={option["data-cy"]}
+                    button
+                    style={option.style}
+                    textWidth={textWidth}
+                    onSelect={() => {
+                      if (onOptionSelect) {
+                        onOptionSelect(option);
+                      }
 
-                    if (option.onSelect) {
-                      option.onSelect(option);
-                    }
+                      if (option.onSelect) {
+                        option.onSelect(option);
+                      }
 
-                    if (onClose) {
-                      onClose();
-                    }
-                  }}
-                  cursor={idx === selectedIndex}
-                  startAdornment={option.startAdornment}
-                  endAdornment={option.endAdornment}
-                >
-                  {option.text}
-                </MenuListItem>
-              </span>
-            );
-          })}
+                      if (onClose && closeOnSelect) {
+                        onClose();
+                      }
+                    }}
+                    cursor={idx === selectedIndex}
+                    startAdornment={option.startAdornment}
+                    endAdornment={option.endAdornment}
+                  >
+                    {option.children || option.text}
+                  </MenuListItem>
+                </span>
+              );
+            })}
+          </Box>
           {bottomAdornment ? (
             <StyledBottomAdornment>{bottomAdornment}</StyledBottomAdornment>
           ) : null}
@@ -202,5 +230,24 @@ const Menu = ({
     </ClickAwayListener>
   );
 };
+
+interface ButtonMenuProps extends ButtonProps {
+  menuProps: MenuProps;
+  wrapperProps?: customStyles;
+}
+
+export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenuProps) {
+  const buttonRef = useRef(null);
+  const [shown, setShown] = useState(false);
+
+  return (
+    <Box cs={wrapperProps}>
+      <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
+      {shown && (
+        <Menu {...menuProps} onClose={() => setShown(false)} anchorEl={buttonRef} />
+      )}
+    </Box>
+  );
+}
 
 export default Menu;
