@@ -2,6 +2,7 @@ import styled, {keyframes} from "styled-components";
 import {ButtonVariant, ButtonShape, ButtonSize, ButtonSubtype} from "./Button";
 import {Spacing} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
+import {getValueFromPath} from "../../core/styleFunctions";
 
 const StyledAdornment = styled.span<{isLoading?: boolean}>`
   display: flex;
@@ -512,6 +513,12 @@ const StyledButton = styled.button<{
     &:disabled {
       color: ${theme.core.content.contentTertiary};
     }
+  `}
+
+  ${({theme, color}) =>
+    color &&
+    `
+    color: ${getValueFromPath(theme, color)};
   `}
 `;
 
