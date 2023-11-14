@@ -163,7 +163,8 @@ const Snackbar = (props: SnackbarProps) => {
           <Button
             key={index}
             variant="tertiary"
-            subtype="success"
+            // Use style for now while there are no inverse buttons
+            subtype="inverse"
             size="sm"
             onClick={action.onClick}
             noPadding

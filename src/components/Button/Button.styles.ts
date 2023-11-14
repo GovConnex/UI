@@ -304,6 +304,30 @@ const StyledButton = styled.button<{
 
   ${({theme, subtype, variant, isLoading}) =>
     variant === "secondary" &&
+    subtype === "inverse" &&
+    `
+    color: white;
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid white;
+
+    &:hover:not(:disabled) {
+      background-color: gray;
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${isLoading ? `${theme.borderWidth.md} solid gray` : "none"};
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      background-color: gray;
+      outline: ${theme.borderWidth.md} solid white;
+    }
+  `}
+
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
     subtype === "error" &&
     `
     color: ${theme.extended.support.errorDark};
@@ -512,6 +536,27 @@ const StyledButton = styled.button<{
 
     &:disabled {
       color: ${theme.core.content.contentTertiary};
+    }
+  `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "inverse" &&
+    `
+    background-color: transparent;
+    color: white;
+
+    &:hover:not(:disabled)  {
+      background-color: gray;
+    }
+
+    &:focus:not(:disabled) {
+      background-color: gray;
+      outline: ${theme.borderWidth.md} solid gray;
+    }
+
+    &:disabled {
+      color: gray;
     }
   `}
 

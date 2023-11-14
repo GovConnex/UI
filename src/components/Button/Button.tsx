@@ -15,7 +15,13 @@ export type ButtonVariant =
   | "text"
   | "danger"
   | "secondaryDanger";
-export type ButtonSubtype = "default" | "info" | "success" | "error" | "warning";
+export type ButtonSubtype =
+  | "default"
+  | "info"
+  | "success"
+  | "error"
+  | "warning"
+  | "inverse";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 

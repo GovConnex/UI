@@ -32,6 +32,11 @@ export const GcxDataTableTbody = styled.tbody`
 
 export const GcxDataTableTr = styled.tr`
   min-width: 0;
+  border-bottom: 1px solid #ebebeb;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
@@ -45,7 +50,6 @@ export const GcxDataTableTh = styled.th<{width?: string}>`
 
 export const GcxDataTableTd = styled.td`
   min-width: 0;
-  border-bottom: 1px solid #ebebeb;
 `;
 
 // Data cell styles
@@ -92,7 +96,7 @@ export const GcxDataTableHeaderCellRoot = styled.div<{fullText?: string}>`
   overflow: hidden;
   gap: ${(p) => p.theme.spacing.xs};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
-  color: ${(p) => p.theme.primary.base.black};
+  color: ${(p) => p.theme.core.content.contentSecondary};
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`
