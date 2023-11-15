@@ -311,7 +311,7 @@ const StyledButton = styled.button<{
     border: ${theme.borderWidth.md} solid white;
 
     &:hover:not(:disabled) {
-      background-color: gray;
+      background-color: rgba(255, 255, 255, 0.05);
     }
     
     &:disabled {
@@ -321,7 +321,7 @@ const StyledButton = styled.button<{
     }
 
     &:focus:not(:disabled) {
-      background-color: gray;
+      background-color: rgba(255, 255, 255, 0.05);
       outline: ${theme.borderWidth.md} solid white;
     }
   `}
@@ -547,16 +547,16 @@ const StyledButton = styled.button<{
     color: white;
 
     &:hover:not(:disabled)  {
-      background-color: gray;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     &:focus:not(:disabled) {
-      background-color: gray;
+      background-color: rgba(255, 255, 255, 0.05);
       outline: ${theme.borderWidth.md} solid gray;
     }
 
     &:disabled {
-      color: gray;
+      color: white;
     }
   `}
 
