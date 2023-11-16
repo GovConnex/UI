@@ -32,6 +32,16 @@ export interface SelectProps {
   fullWidth?: boolean;
 
   /**
+   * height of the Select
+   */
+  height?: string;
+
+  /**
+   * height of the Select
+   */
+  padding?: string;
+
+  /**
    * maxHeight of the menu
    */
   maxHeight?: string;
@@ -71,6 +81,8 @@ const Select = (props: SelectProps) => {
     fullWidth = false,
     error,
     hint,
+    height,
+    padding,
     maxHeight,
     dropdown,
     title,
@@ -98,6 +110,8 @@ const Select = (props: SelectProps) => {
         }
         rootButton={({toggleVisibility, visible, ref}) => (
           <StyledSelect
+            height={height}
+            padding={padding}
             fullWidth={fullWidth}
             ref={ref}
             visible={visible}

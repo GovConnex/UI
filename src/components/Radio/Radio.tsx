@@ -24,7 +24,8 @@ export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> 
   /**
    * renders a text bellow the label
    */
-  description?: string;
+  description?: string | React.ReactNode;
+
   /**
    * renders an icon before the label and description
    */

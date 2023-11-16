@@ -6,7 +6,7 @@ const StyledRadio = styled.input(
 appearance: none;
 margin: 0;
 width: 20px;
-height: 20px; 
+height: 20px;
 min-width: 20px;
 min-height: 20px;
 border: 1px solid ${theme.primary.neutral[200]};
@@ -46,30 +46,13 @@ border-radius: 50%;
 
 const RadioLabel = styled.label<{variant: string}>(
   ({theme, variant}) => `
-
-${
-  variant === "card"
-    ? `
+${variant === "card" ? `
 div:hover {
-    background-color: ${theme.extended.state.secondaryHover};
-    border-color:${theme.primary.brand[300]};
-    border-width:2px;
-    padding: calc(${theme.spacing.sm} - 1px);
+  background-color: ${theme.extended.state.secondaryHover};
+  border-color:${theme.primary.brand[300]};
 }
-:focus-within {
-    div{
-        border-color:${theme.primary.brand[500]};
-        border-width:2px;
-        padding: calc(${theme.spacing.sm} - 1px);
-    }
-}
-`
-    : ""
-}
-
-
-`
-);
+` : ""}
+`);
 
 const RadioWrapper = styled.div<{checked: boolean; variant: string}>(
   ({theme, checked, variant}) => `
@@ -94,7 +77,7 @@ ${
   checked && variant === "card"
     ? `
     border-color:${theme.primary.brand[500]};
-    border-width:2px;
+    border-width:1px;
     border-style:solid;
     padding: calc(${theme.spacing.sm} - 1px);
 `
@@ -109,12 +92,9 @@ justify-content: ${variant === "default" ? "start" : "space-between"}};
 `
 );
 
-const RadioTextWrapper = styled.span(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({theme}) => `
-display: flex;
-flex-direction: column;
-`
-);
+const RadioTextWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
 
 export {StyledRadio, RadioLabel, RadioWrapper, RadioTextWrapper};

@@ -14,7 +14,6 @@ export default {
 const Template: ComponentStory<typeof Accordion> = (args) => (
   <div>
     <Accordion {...args} />
-    <Accordion {...args} />
   </div>
 );
 export const Example = Template.bind({});
@@ -32,9 +31,27 @@ Example.args = {
   ),
 };
 
-Example.parameters = {
-  //  design: {
-  //    type: "figma",
-  //    url: ""
-  //  }
+const ManualTemplate: ComponentStory<typeof Accordion> = (args) => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div>
+      <Accordion {...args} isOpen={open} />
+      <button onClick={() => setOpen(!open)}>toggle open</button>
+    </div>
+  )
+};
+export const ManualExample = ManualTemplate.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+ManualExample.args = {
+  label: "Manual accordion label",
+
+  children: (
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, nisl eget
+        aliquam tincidunt, nisl nisl aliquet nisl, nec
+      </p>
+    </div>
+  ),
 };
