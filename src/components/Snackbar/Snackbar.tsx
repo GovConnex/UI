@@ -129,6 +129,7 @@ const Snackbar = (props: SnackbarProps) => {
         paddingX: "spacing.sm",
         paddingY: "spacing.xs",
         alignItems: "center",
+        minHeight: "54px",
       }}
     >
       {props.startAdornment ? (

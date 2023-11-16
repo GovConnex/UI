@@ -628,6 +628,13 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
       border-top-color: ${theme.extended.support.infoDark}
     `}
 
+    ${({subtype, variant}) =>
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "inverse" &&
+    `
+      border-top-color: white;
+    `}
+
     ${({theme, variant}) =>
     variant === "danger" &&
     `
