@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Toggle from "./Toggle";
-import { withDesign } from 'storybook-addon-designs';
+import {withDesign} from "storybook-addon-designs";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
 import {faBook} from "@fortawesome/pro-solid-svg-icons";

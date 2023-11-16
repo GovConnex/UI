@@ -1,7 +1,14 @@
 import React from "react";
 import Typography from "../Typography";
 import {StyledAdornment} from "../Button/Button.styles";
-import {ToggleTextWrapper, ToggleWrapper, ToggleView, ToggleLabel, StyledToggle, ToggleIconWrapper} from "./Toggle.styles";
+import {
+  ToggleTextWrapper,
+  ToggleWrapper,
+  ToggleView,
+  ToggleLabel,
+  StyledToggle,
+  ToggleIconWrapper,
+} from "./Toggle.styles";
 
 export interface ToggleProps {
   /**
@@ -14,7 +21,7 @@ export interface ToggleProps {
    * renders the Toggle in different variants
    * @default `default`
    */
-  variant?: "default" | "single" | "card",
+  variant?: "default" | "single" | "card";
 
   /**
    * renders a text label next to the radio
@@ -30,7 +37,7 @@ export interface ToggleProps {
    * renders an icon before the label and description
    */
   startAdornment?: React.ReactNode;
-};
+}
 
 /**
  *
@@ -71,11 +78,7 @@ function Toggle({
           ) : null}
         </ToggleIconWrapper>
 
-        <StyledToggle
-          type="checkbox"
-          checked={checked}
-          {...rest}
-        />
+        <StyledToggle type="checkbox" checked={checked} {...rest} />
         <ToggleView />
       </ToggleWrapper>
     </ToggleLabel>

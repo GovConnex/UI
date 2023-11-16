@@ -39,7 +39,7 @@ const ManualTemplate: ComponentStory<typeof Accordion> = (args) => {
       <Accordion {...args} isOpen={open} />
       <button onClick={() => setOpen(!open)}>toggle open</button>
     </div>
-  )
+  );
 };
 export const ManualExample = ManualTemplate.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

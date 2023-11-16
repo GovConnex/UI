@@ -46,13 +46,18 @@ border-radius: 50%;
 
 const RadioLabel = styled.label<{variant: string}>(
   ({theme, variant}) => `
-${variant === "card" ? `
+${
+  variant === "card"
+    ? `
 div:hover {
   background-color: ${theme.extended.state.secondaryHover};
   border-color:${theme.primary.brand[300]};
 }
-` : ""}
-`);
+`
+    : ""
+}
+`
+);
 
 const RadioWrapper = styled.div<{checked: boolean; variant: string}>(
   ({theme, checked, variant}) => `

@@ -41,8 +41,9 @@ export const ToggleIconWrapper = styled.span<{variant: string}>(
   display: flex;
   gap: ${theme.spacing.sm};
   align-items: center;
-  ${variant === 'single' ? 'display: none;' : ''}
-`);
+  ${variant === "single" ? "display: none;" : ""}
+`
+);
 
 export const ToggleView = styled.div`
   top: 0;
@@ -53,7 +54,7 @@ export const ToggleView = styled.div`
   cursor: pointer;
 
   &::after {
-    content: ' ';
+    content: " ";
     display: block;
     border-radius: 50%;
     width: 16px;
@@ -83,17 +84,23 @@ export const StyledToggle = styled.input(
       transition: 0.2s;
     }
   }
-`);
+`
+);
 
 export const ToggleLabel = styled.label<{variant: string}>(
   ({theme, variant}) => `
-${variant === "card" ? `
+${
+  variant === "card"
+    ? `
 div:hover {
   background-color: ${theme.extended.state.secondaryHover};
   border-color:${theme.primary.brand[300]};
 }
-` : ""}
-`);
+`
+    : ""
+}
+`
+);
 
 export const ToggleTextWrapper = styled.span`
   display: flex;

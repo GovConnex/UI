@@ -3,7 +3,9 @@ import styled from "styled-components";
 const StyledAccordion = styled.div<{active: boolean}>`
   ${({theme, active}) => `
     background-color: ${theme.core.background.bgPrimary};
-    border: 1px solid ${active ? theme.core.border.borderBrand : theme.core.border.borderLight};
+    border: 1px solid ${
+      active ? theme.core.border.borderBrand : theme.core.border.borderLight
+    };
     border-radius: ${theme.borderRadius.sm};
     overflow: hidden;
     margin-bottom: ${theme.spacing.xs};
@@ -37,9 +39,11 @@ const Root = styled.div`
   `};
 `;
 
-const Collapse = styled.div<{height: string, active: boolean}>`
+const Collapse = styled.div<{height: string; active: boolean}>`
   ${({theme, height, active}) => `
-    box-shadow: 0 -1px 0 ${active ? theme.core.border.borderBrand : theme.core.border.borderLight};
+    box-shadow: 0 -1px 0 ${
+      active ? theme.core.border.borderBrand : theme.core.border.borderLight
+    };
     min-height: 0px;
     height: ${height};
     min-height: 0px;
