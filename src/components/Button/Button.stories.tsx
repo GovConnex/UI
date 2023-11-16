@@ -515,6 +515,52 @@ WarningTertiaryLoading.args = {
   isLoading: true,
 };
 
+export const InverseSecondary = Template.bind({});
+InverseSecondary.args = {
+  children: "Inverse Button",
+  variant: "secondary",
+  subtype: "inverse",
+};
+
+export const InverseSecondaryDisabled = Template.bind({});
+InverseSecondaryDisabled.args = {
+  children: "Inverse Secondary Button Disabled",
+  variant: "secondary",
+  subtype: "inverse",
+  disabled: true,
+};
+
+export const InverseSecondaryLoading = Template.bind({});
+InverseSecondaryLoading.args = {
+  children: "Inverse Secondary Button Loading",
+  variant: "secondary",
+  subtype: "inverse",
+  isLoading: true,
+};
+
+export const InverseTertiary = Template.bind({});
+InverseTertiary.args = {
+  children: "Inverse Button",
+  variant: "tertiary",
+  subtype: "inverse",
+};
+
+export const InverseTertiaryDisabled = Template.bind({});
+InverseTertiaryDisabled.args = {
+  children: "Inverse Tertiary Button Disabled",
+  variant: "tertiary",
+  subtype: "inverse",
+  disabled: true,
+};
+
+export const InverseTertiaryLoading = Template.bind({});
+InverseTertiaryLoading.args = {
+  children: "Inverse Tertiary Button Loading",
+  variant: "tertiary",
+  subtype: "inverse",
+  isLoading: true,
+};
+
 export const SingularIcon = Template.bind({});
 SingularIcon.args = {
   children: <Icon icon={faFaceSmile} />,

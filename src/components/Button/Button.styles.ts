@@ -2,6 +2,7 @@ import styled, {keyframes} from "styled-components";
 import {ButtonVariant, ButtonShape, ButtonSize, ButtonSubtype} from "./Button";
 import {Spacing} from "../../theming/global-theme.interface";
 import Typography from "../Typography";
+import {getValueFromPath} from "../../core/styleFunctions";
 
 const StyledAdornment = styled.span<{isLoading?: boolean}>`
   display: flex;
@@ -303,6 +304,30 @@ const StyledButton = styled.button<{
 
   ${({theme, subtype, variant, isLoading}) =>
     variant === "secondary" &&
+    subtype === "inverse" &&
+    `
+    color: white;
+    background-color: transparent;
+    border: ${theme.borderWidth.md} solid white;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    &:disabled {
+      background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
+      border ${isLoading ? `${theme.borderWidth.md} solid gray` : "none"};
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.05);
+      outline: ${theme.borderWidth.md} solid white;
+    }
+  `}
+
+  ${({theme, subtype, variant, isLoading}) =>
+    variant === "secondary" &&
     subtype === "error" &&
     `
     color: ${theme.extended.support.errorDark};
@@ -513,6 +538,33 @@ const StyledButton = styled.button<{
       color: ${theme.core.content.contentTertiary};
     }
   `}
+
+  ${({theme, subtype, variant}) =>
+    (variant === "text" || variant === "tertiary") &&
+    subtype === "inverse" &&
+    `
+    background-color: transparent;
+    color: white;
+
+    &:hover:not(:disabled)  {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &:focus:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.05);
+      outline: ${theme.borderWidth.md} solid gray;
+    }
+
+    &:disabled {
+      color: white;
+    }
+  `}
+
+  ${({theme, color}) =>
+    color &&
+    `
+    color: ${getValueFromPath(theme, color)};
+  `}
 `;
 
 const StyledTypography = styled(Typography)`
@@ -574,6 +626,13 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
     subtype === "info" &&
     `
       border-top-color: ${theme.extended.support.infoDark}
+    `}
+
+    ${({subtype, variant}) =>
+    (variant === "secondary" || variant === "tertiary") &&
+    subtype === "inverse" &&
+    `
+      border-top-color: white;
     `}
 
     ${({theme, variant}) =>

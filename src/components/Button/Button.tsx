@@ -15,7 +15,13 @@ export type ButtonVariant =
   | "text"
   | "danger"
   | "secondaryDanger";
-export type ButtonSubtype = "default" | "info" | "success" | "error" | "warning";
+export type ButtonSubtype =
+  | "default"
+  | "info"
+  | "success"
+  | "error"
+  | "warning"
+  | "inverse";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "rect" | "circle";
 
@@ -35,6 +41,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   noPadding?: boolean;
   isFullWidth?: boolean;
   style?: React.CSSProperties;
+  color?: string;
 }
 
 const iconOnlySizeMap: Record<ButtonSize, keyof Spacing> = {
@@ -75,6 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       noPadding = false,
       isFullWidth = false,
       style,
+      color,
       ...rest
     },
     ref
@@ -82,6 +90,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <StyledButton
         ref={ref}
+        color={color}
         disabled={disabled || isLoading}
         variant={variant || "primary"}
         subtype={subtype || "default"}

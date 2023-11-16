@@ -42,6 +42,11 @@ export interface PopInProps {
    * The ID of the container to render the PopIn in, if using the portal.
    */
   portalContainer?: string | HTMLElement | null;
+
+  /**
+   * Indicates position type if fixed, absolute, etc.
+   */
+  positionType?: string;
 }
 
 /**
@@ -61,6 +66,7 @@ const PopIn: React.FC<PopInProps> = ({
   timeoutSeconds = 3,
   disablePortal = false,
   portalContainer,
+  positionType,
 }) => {
   // For storing timeout ID, and ensuring timeout state is consistent
   const timeoutId = React.useRef<number | NodeJS.Timeout>();
@@ -79,7 +85,12 @@ const PopIn: React.FC<PopInProps> = ({
 
   return (
     <Portal disablePortal={disablePortal} container={portalContainer}>
-      <PopInContainer show={show} position={position} offset={offset}>
+      <PopInContainer
+        show={show}
+        position={position}
+        offset={offset}
+        positionType={positionType}
+      >
         {children}
       </PopInContainer>
     </Portal>
