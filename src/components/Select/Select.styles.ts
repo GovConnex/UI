@@ -5,10 +5,12 @@ const StyledSelect = styled.button<{
   error: boolean;
   fullWidth: boolean;
   visible: boolean;
+  height?: string;
+  padding?: string;
 }>(
-  ({theme, error, visible, fullWidth}) =>
+  ({theme, error, visible, fullWidth, height, padding}) =>
     `
-padding:0 ${theme.spacing.sm};
+padding: ${padding || `0 ${theme.spacing.sm}`};
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -20,7 +22,7 @@ border-style:solid;
 border-width:1px;
 font-size:${theme.typography.body.md.fontSize};
 background-color: ${theme.primary.base.white};
-height: 40px;
+height: ${height || "40px"};
 
 &:focus {
 outline-color:${error ? theme.secondary.red[500] : theme.primary.base.brand};

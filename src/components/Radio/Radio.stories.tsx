@@ -35,8 +35,7 @@ export const Card = Template.bind({});
 Card.args = {
   variant: "card",
   label: "Label",
-  description: "Description",
-  checked: true,
+  description: <div>Example</div>,
 };
 export const List = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
