@@ -56,7 +56,7 @@ function Toggle({
 }: ToggleProps) {
   return (
     <ToggleLabel>
-      <ToggleWrapper checked={!!checked} variant={variant}>
+      <ToggleWrapper variant={variant}>
         <ToggleIconWrapper variant={variant}>
           {startAdornment ? <StyledAdornment>{startAdornment}</StyledAdornment> : null}
           {label ? (
