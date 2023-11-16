@@ -7,9 +7,15 @@ ${
   variant === "card"
     ? `
 border-radius: ${theme.borderRadius.sm};
-border-color:${theme.primary.neutral[200]};
-border-style:solid;
-border-width:1px;
+border-color: ${theme.primary.neutral[200]};
+border-style: solid;
+border-width: 1px;
+background-color: ${theme.core.background.bgPrimary};
+
+:hover {
+  background-color: ${theme.extended.state.secondaryHover};
+  border-color:${theme.primary.brand[300]};
+}
 `
     : ""
 }
@@ -48,7 +54,7 @@ export const ToggleIconWrapper = styled.span<{variant: string}>(
 export const ToggleView = styled.div`
   top: 0;
   left: 0;
-  width: 36px;
+  min-width: 36px;
   border-radius: 12px;
   background: #bebebe;
   cursor: pointer;
@@ -87,20 +93,7 @@ export const StyledToggle = styled.input(
 `
 );
 
-export const ToggleLabel = styled.label<{variant: string}>(
-  ({theme, variant}) => `
-${
-  variant === "card"
-    ? `
-div:hover {
-  background-color: ${theme.extended.state.secondaryHover};
-  border-color:${theme.primary.brand[300]};
-}
-`
-    : ""
-}
-`
-);
+export const ToggleLabel = styled.label``;
 
 export const ToggleTextWrapper = styled.span`
   display: flex;

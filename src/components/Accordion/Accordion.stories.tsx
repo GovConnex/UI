@@ -2,6 +2,7 @@ import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Accordion from "./Accordion";
 import {withDesign} from "storybook-addon-designs";
+import Toggle from "../Toggle";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -46,6 +47,21 @@ export const ManualExample = ManualTemplate.bind({});
 ManualExample.args = {
   label: "Manual accordion label",
 
+  children: (
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, nisl eget
+        aliquam tincidunt, nisl nisl aliquet nisl, nec
+      </p>
+    </div>
+  ),
+};
+
+export const RootTemplate = ManualTemplate.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+RootTemplate.args = {
+  label: "Manual accordion label",
+  root: <Toggle variant="card" label="Toggle" description="Toggle description" />,
   children: (
     <div>
       <p>

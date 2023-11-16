@@ -21,7 +21,7 @@ export interface ToggleProps {
    * renders the Toggle in different variants
    * @default `default`
    */
-  variant?: "default" | "single" | "card";
+  variant?: "default" | "single" | "list" | "card";
 
   /**
    * renders a text label next to the radio
@@ -55,7 +55,7 @@ function Toggle({
   ...rest
 }: ToggleProps) {
   return (
-    <ToggleLabel variant={variant}>
+    <ToggleLabel>
       <ToggleWrapper checked={!!checked} variant={variant}>
         <ToggleIconWrapper variant={variant}>
           {startAdornment ? <StyledAdornment>{startAdornment}</StyledAdornment> : null}
