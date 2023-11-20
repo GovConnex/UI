@@ -69,7 +69,7 @@ function Toggle({
                   noMargin
                   variant="body"
                   size="sm"
-                  color="core.content.contentTertiary"
+                  color="core.content.contentSecondary"
                 >
                   {description}
                 </Typography>
