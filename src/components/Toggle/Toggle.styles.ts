@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-export const ToggleWrapper = styled.div<{checked: boolean; variant: string}>(
-  ({theme, checked, variant}) => `
-
+export const ToggleWrapper = styled.div<{variant: string}>(
+  ({theme, variant}) => `
 ${
   variant === "card"
     ? `
@@ -22,17 +21,6 @@ background-color: ${theme.core.background.bgPrimary};
 
 cursor: pointer;
 padding: ${variant === "single" ? 0 : theme.spacing.sm};
-
-${
-  checked && variant === "card"
-    ? `
-    border-color:${theme.primary.brand[500]};
-    border-width:1px;
-    border-style:solid;
-    padding: calc(${theme.spacing.sm} - 1px);
-`
-    : ""
-}
 
 display: flex;
 align-items: center;
