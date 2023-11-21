@@ -93,6 +93,11 @@ export interface DataTableProps {
    * Data-cy attribute to apply to each row.
    */
   "data-cy-row"?: string | ((row: any) => string);
+
+  /**
+   * Callback for when row is clicked.
+   */
+  onRowClick?: (dataItem: any) => void;
 }
 
 export interface DataTableActionRowProps {
@@ -124,6 +129,7 @@ const DataTable = ({
   fullWidth = true,
   actionRows = [],
   "data-cy-row": dataCyRow,
+  onRowClick,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -291,6 +297,13 @@ const DataTable = ({
               return (
                 <GcxDataTableTr
                   {...row.getRowProps()}
+                  onClick={
+                    onRowClick
+                      ? () => {
+                          onRowClick(row);
+                        }
+                      : () => {}
+                  }
                   data-cy={
                     typeof dataCyRow === "string"
                       ? dataCyRow
