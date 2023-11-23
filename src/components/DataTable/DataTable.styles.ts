@@ -42,6 +42,10 @@ export const GcxDataTableTr = styled.tr<{onClick?: any}>`
     p.onClick &&
     `
     cursor: pointer;
+
+    &:hover {
+      background-color: ${p.theme.core.background.bgSecondary};
+    }
   `}
 `;
 
