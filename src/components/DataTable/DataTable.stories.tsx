@@ -414,4 +414,18 @@ WithHorizontalOverflowAndFixedWidth.args = {
   showPagination: false,
   showSelection: false,
   fullWidth: false,
+  onRowClick: undefined,
+};
+
+export const WithRowClick = Template.bind({});
+WithRowClick.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
+  fullWidth: true,
+  onRowClick: () => {
+    console.log("row clicked");
+  },
 };

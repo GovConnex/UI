@@ -90,6 +90,11 @@ export interface PopinSnackbarProps extends SnackbarProps {
    * Indicates position type if fixed, absolute, etc.
    */
   positionType?: string;
+
+  /**
+   * Overrides z-index property.
+   */
+  overrideZIndex?: number;
 }
 
 /**
@@ -197,6 +202,7 @@ export const PopinSnackbar = (props: PopinSnackbarProps) => {
       offset={props.offset}
       disablePortal={props.disablePortal}
       portalContainer={props.portalContainer}
+      overrideZIndex={props.overrideZIndex}
     >
       <Snackbar actions={props.actions} startAdornment={props.startAdornment}>
         {props.children}

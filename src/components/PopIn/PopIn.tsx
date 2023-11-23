@@ -47,6 +47,11 @@ export interface PopInProps {
    * Indicates position type if fixed, absolute, etc.
    */
   positionType?: string;
+
+  /**
+   * Overrides z-index property.
+   */
+  overrideZIndex?: number;
 }
 
 /**
@@ -67,6 +72,7 @@ const PopIn: React.FC<PopInProps> = ({
   disablePortal = false,
   portalContainer,
   positionType,
+  overrideZIndex,
 }) => {
   // For storing timeout ID, and ensuring timeout state is consistent
   const timeoutId = React.useRef<number | NodeJS.Timeout>();
@@ -90,6 +96,7 @@ const PopIn: React.FC<PopInProps> = ({
         position={position}
         offset={offset}
         positionType={positionType}
+        overrideZIndex={overrideZIndex}
       >
         {children}
       </PopInContainer>

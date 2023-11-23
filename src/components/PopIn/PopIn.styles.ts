@@ -6,9 +6,11 @@ export const PopInContainer = styled.div<{
   position?: "top" | "bottom";
   offset?: string;
   positionType?: string;
+  overrideZIndex?: number;
 }>`
   position: ${({positionType}) => (positionType ? positionType : "absolute")};
-  z-index: 1000;
+  z-index: ${({overrideZIndex}) =>
+    overrideZIndex !== undefined ? overrideZIndex : 1000};
   transition:
     transform 0.3s ease-in-out,
     visibility 0.3s ease-in-out,

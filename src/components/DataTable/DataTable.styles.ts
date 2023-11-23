@@ -30,13 +30,23 @@ export const GcxDataTableTbody = styled.tbody`
   min-width: 0;
 `;
 
-export const GcxDataTableTr = styled.tr`
+export const GcxDataTableTr = styled.tr<{onClick?: any}>`
   min-width: 0;
   border-bottom: 1px solid #ebebeb;
 
   &:last-child {
     border-bottom: none;
   }
+
+  ${(p) =>
+    p.onClick &&
+    `
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${p.theme.core.background.bgSecondary};
+    }
+  `}
 `;
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
