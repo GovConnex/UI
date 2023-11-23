@@ -414,6 +414,7 @@ WithHorizontalOverflowAndFixedWidth.args = {
   showPagination: false,
   showSelection: false,
   fullWidth: false,
+  onRowClick: undefined
 };
 
 export const WithRowClick = Template.bind({});

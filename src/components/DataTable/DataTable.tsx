@@ -302,7 +302,7 @@ const DataTable = ({
                       ? () => {
                           onRowClick(row);
                         }
-                      : () => {}
+                      : undefined
                   }
                   data-cy={
                     typeof dataCyRow === "string"
