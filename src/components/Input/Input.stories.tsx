@@ -14,6 +14,10 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const TemplateFocused: ComponentStory<typeof Input> = (args) => (
+  // eslint-disable-next-line
+  <Input autoFocus {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -22,17 +26,41 @@ Default.args = {
   hint: "This is a hint",
 };
 
-export const Focused = Template.bind({});
+export const Enabled = Template.bind({});
+Enabled.args = {
+  placeholder: "Placeholder",
+  label: "Label",
+  hint: "Hint",
+  startAdornment: <Icon icon={faSearch} />,
+  endAdornment: <Icon icon={faSearch} />,
+};
+
+export const Focused = TemplateFocused.bind({});
 Focused.args = {
-  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
-  placeholder: "Search",
+  placeholder: "Placeholder",
+  label: "Label",
+  hint: "Hint",
+  startAdornment: <Icon icon={faSearch} />,
+  endAdornment: <Icon icon={faSearch} />,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder: "Search",
+  placeholder: "Placeholder",
+  label: "Label",
+  hint: "Hint",
+  startAdornment: <Icon icon={faSearch} />,
+  endAdornment: <Icon icon={faSearch} />,
   disabled: true,
-  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  error: "This is an error",
+  placeholder: "Placeholder",
+  label: "Label",
+  startAdornment: <Icon icon={faSearch} />,
+  endAdornment: <Icon icon={faSearch} />,
 };
 
 export const FullWidth = Template.bind({});
@@ -43,25 +71,19 @@ FullWidth.args = {
 
 export const StartAdornment = Template.bind({});
 StartAdornment.args = {
-  startAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+  startAdornment: <Icon icon={faSearch} />,
   placeholder: "Search",
 };
 
 export const EndAdornment = Template.bind({});
 EndAdornment.args = {
-  endAdornment: <Icon icon={faSearch} style={{opacity: "0.4"}} />,
+  endAdornment: <Icon icon={faSearch} />,
   placeholder: "Search",
 };
 
 export const WithHint = Template.bind({});
 WithHint.args = {
   hint: "This is a hint",
-  placeholder: "Search",
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-  error: "This is an error",
   placeholder: "Search",
 };
 

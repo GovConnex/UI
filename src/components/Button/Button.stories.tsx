@@ -515,6 +515,29 @@ WarningTertiaryLoading.args = {
   isLoading: true,
 };
 
+export const InversePrimary = Template.bind({});
+InversePrimary.args = {
+  children: "Inverse Button",
+  variant: "primary",
+  subtype: "inverse",
+};
+
+export const InversePrimaryDisabled = Template.bind({});
+InversePrimaryDisabled.args = {
+  children: "Inverse Primary Button Disabled",
+  variant: "primary",
+  subtype: "inverse",
+  disabled: true,
+};
+
+export const InversePrimaryLoading = Template.bind({});
+InversePrimaryLoading.args = {
+  children: "Inverse Primary Button Loading",
+  variant: "primary",
+  subtype: "inverse",
+  isLoading: true,
+};
+
 export const InverseSecondary = Template.bind({});
 InverseSecondary.args = {
   children: "Inverse Button",

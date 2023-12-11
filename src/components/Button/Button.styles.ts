@@ -226,6 +226,30 @@ const StyledButton = styled.button<{
       outline-offset: ${theme.borderWidth.lg};
     }
   `}
+
+  ${({theme, variant, subtype, isLoading}) =>
+    variant === "primary" &&
+    subtype === "inverse" &&
+    `
+    color: ${theme.core.content.contentPrimary};
+    background-color: ${theme.extended.state.primaryBase};
+
+    &:hover:not(:disabled)  {
+      background-color: ${theme.extended.state.primaryHover};
+    }
+
+    &:disabled {
+      background-color: ${
+        isLoading ? theme.extended.state.primaryBase : theme.extended.state.disabled
+      };
+      color: ${theme.core.content.contentTertiary};
+    }
+
+    &:focus:not(:disabled) {
+      outline: ${theme.borderWidth.md} solid ${theme.extended.state.primaryBase};
+      outline-offset: ${theme.borderWidth.lg};
+    }
+  `}
   
   ${({theme, variant, isLoading}) =>
     variant === "danger" &&
@@ -306,9 +330,9 @@ const StyledButton = styled.button<{
     variant === "secondary" &&
     subtype === "inverse" &&
     `
-    color: white;
+    color: ${theme.core.content.contentInversePrimary};
     background-color: transparent;
-    border: ${theme.borderWidth.md} solid white;
+    border: ${theme.borderWidth.md} solid ${theme.core.border.borderLight};
 
     &:hover:not(:disabled) {
       background-color: rgba(255, 255, 255, 0.05);
@@ -316,13 +340,17 @@ const StyledButton = styled.button<{
     
     &:disabled {
       background-color: ${isLoading ? "transparent" : theme.extended.state.disabled};
-      border ${isLoading ? `${theme.borderWidth.md} solid gray` : "none"};
+      border ${
+        isLoading
+          ? `${theme.borderWidth.md} solid ${theme.core.border.borderLight}`
+          : "none"
+      };
       color: ${theme.core.content.contentTertiary};
     }
 
     &:focus:not(:disabled) {
       background-color: rgba(255, 255, 255, 0.05);
-      outline: ${theme.borderWidth.md} solid white;
+      outline: ${theme.borderWidth.md} solid ${theme.core.border.borderLight};
     }
   `}
 
@@ -544,7 +572,7 @@ const StyledButton = styled.button<{
     subtype === "inverse" &&
     `
     background-color: transparent;
-    color: white;
+    color: ${theme.core.content.contentInversePrimary};
 
     &:hover:not(:disabled)  {
       background-color: rgba(255, 255, 255, 0.05);
@@ -552,11 +580,11 @@ const StyledButton = styled.button<{
 
     &:focus:not(:disabled) {
       background-color: rgba(255, 255, 255, 0.05);
-      outline: ${theme.borderWidth.md} solid gray;
+      outline: ${theme.borderWidth.md} solid ${theme.core.border.borderLight};
     }
 
     &:disabled {
-      color: white;
+      color: ${theme.core.content.contentInversePrimary};
     }
   `}
 
@@ -590,7 +618,7 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
   ${({theme, variant}) =>
     variant === "primary" &&
     `
-      border-top-color: ${theme.core.content.contentInversePrimary}
+      border-top-color: ${theme.core.content.contentInversePrimary};
     `}
 
   ${({theme, subtype, variant}) =>
@@ -626,6 +654,13 @@ const StyledSpinner = styled.div<{variant: ButtonVariant; subtype: ButtonSubtype
     subtype === "info" &&
     `
       border-top-color: ${theme.extended.support.infoDark}
+    `}
+
+    ${({theme, subtype, variant}) =>
+    variant === "primary" &&
+    subtype === "inverse" &&
+    `
+      border-top-color: ${theme.core.content.contentPrimary};
     `}
 
     ${({subtype, variant}) =>

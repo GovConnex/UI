@@ -5,6 +5,7 @@ import {withDesign} from "storybook-addon-designs";
 import Button from "../Button";
 import Avatar from "../Avatar/Avatar";
 import Icon from "../Icon";
+import Chip from "../Chip";
 import {faUser} from "@fortawesome/pro-solid-svg-icons";
 import styled from "styled-components";
 
@@ -19,6 +20,9 @@ export default {
 const Template: ComponentStory<typeof Menu> = (args) => {
   return (
     <ButtonMenu
+      variant="secondary"
+      startAdornment={<Icon icon={faUser} />}
+      endAdornment={<Chip priority="low">2</Chip>}
       menuProps={{
         ...args,
       }}
@@ -124,7 +128,10 @@ export const WithSearch = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 WithSearch.args = {
   placement: "bottom-start",
-  cs: {width: "250px", height: "200px"},
+  itemsCs: {
+    maxHeight: "200px",
+    overflowY: "auto",
+  },
   textWidth: "180px",
   hasSearch: true,
   onSearch: undefined,
@@ -178,6 +185,10 @@ WithBottomAdornment.args = {
   onSearch: undefined,
   onOptionSelect: (option) => {
     console.log(option);
+  },
+  itemsCs: {
+    maxHeight: "200px",
+    overflowY: "auto",
   },
   bottomAdornment: (
     <Button
