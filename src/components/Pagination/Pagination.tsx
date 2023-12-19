@@ -60,12 +60,13 @@ const Pagination = (props: PaginationProps) => {
     <StyledPagination className={props.className}>
       <>
         <div>
-          <Typography noMargin>
+          <Typography noMargin data-cy="datatable-page-number">
             Page {props.page} of {Math.ceil(props.totalItems / props.itemsPerPage)}
           </Typography>
 
           <Button
             variant="secondary"
+            data-cy="datatable-previous-button"
             onClick={() => props.onPageChange(props.page - 1)}
             disabled={props.page <= 1}
           >
@@ -74,6 +75,7 @@ const Pagination = (props: PaginationProps) => {
 
           <Button
             variant="secondary"
+            data-cy="datatable-next-button"
             onClick={() => props.onPageChange(props.page + 1)}
             disabled={props.page >= Math.ceil(props.totalItems / props.itemsPerPage)}
           >

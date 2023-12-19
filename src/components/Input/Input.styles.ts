@@ -45,14 +45,14 @@ const StyledInput = styled.input<{
       ? theme.spacing[overridePadding]
       : noPadding
       ? "0px"
-      : theme.spacing["2xs"]
+      : theme.spacing.xs
   };
   padding-bottom: ${
     overridePadding
       ? theme.spacing[overridePadding]
       : noPadding
       ? "0px"
-      : theme.spacing["2xs"]
+      : theme.spacing.xs
   };
   padding-left: ${
     noPadding
