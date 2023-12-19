@@ -2,11 +2,11 @@ import styled from "styled-components";
 import {Spacing} from "../../theming/global-theme.interface";
 
 const StyledAdornment = styled.span<{position: string; disabled: Boolean}>(
-  ({theme, position, disabled}) => ({
+  ({theme, position}) => ({
     [position]: theme.spacing.sm,
     position: "absolute",
     pointerEvents: "none",
-    opacity: disabled ? 0.3 : 1,
+    color: theme.core.content.contentTertiary,
   })
 );
 
@@ -85,7 +85,7 @@ const StyledInput = styled.input<{
   background-color: transparent;
 
   border-radius: ${noPadding ? theme.borderRadius.minimal : theme.borderRadius.xs};
-  border-color: ${error ? theme.secondary.red[500] : theme.primary.neutral[200]};
+  border-color: ${error ? theme.extended.support.errorBase : theme.primary.neutral[200]};
   border-style: solid;
   border-width: 1px;
 
@@ -100,7 +100,7 @@ const StyledInput = styled.input<{
   outline: none;
 
   &:focus {
-    border-color: ${error ? theme.secondary.red[500] : theme.primary.base.brand};
+    border-color: ${error ? theme.extended.support.errorBase : theme.primary.base.brand};
   }
 
   &:hover {
@@ -108,14 +108,18 @@ const StyledInput = styled.input<{
   }
 
   &:disabled {
-    background-color: ${theme.core.background.bgSecondary};
+    background-color: ${theme.extended.state.disabled};
     color: ${theme.core.content.contentTertiary};
     cursor: no-drop;
     stroke: ${theme.extended.state.disabled};
   }
 
-  &:disabled::placeholder {
-    color: ${theme.extended.state.disabled};
+  &::placeholder {
+    color: ${theme.core.content.contentTertiary};
+  }
+
+  &:active::placeholder {
+    color: ${theme.core.content.contentPrimary};
   }
   `
 );
