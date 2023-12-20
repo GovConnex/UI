@@ -368,7 +368,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
     icon: faUser,
     displayName: "Name",
     accessor: "name",
-    width: "300px",
+    width: 300,
   },
   {
     id: "D05",
@@ -377,7 +377,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
   {
     id: "D06",
@@ -386,7 +386,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
   {
     id: "D07",
@@ -394,7 +394,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
     Cell: DataCell,
     displayName: "Third Contact",
     accessor: "secondType", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
 ];
 

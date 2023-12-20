@@ -50,7 +50,6 @@ export const GcxDataTableTr = styled.tr<{onClick?: any}>`
 `;
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
-  width: ${(p) => p.width};
   min-width: 0;
   user-select: none;
   text-align: left;
