@@ -103,10 +103,6 @@ const StyledInput = styled.input<{
     border-color: ${error ? theme.extended.support.errorBase : theme.primary.base.brand};
   }
 
-  &:hover {
-    background-color: ${theme.extended.state.secondaryHover};
-  }
-
   &:disabled {
     background-color: ${theme.extended.state.disabled};
     color: ${theme.core.content.contentTertiary};

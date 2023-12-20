@@ -364,7 +364,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
   {
     id: "D04",
     Header: DataTableHeaderCell,
-    Cell: NameCell,
+    Cell: DataCell,
     icon: faUser,
     displayName: "Name",
     accessor: "name",
@@ -373,7 +373,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
   {
     id: "D05",
     Header: DataTableHeaderCell,
-    Cell: SupportCell,
+    Cell: DataCell,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
@@ -382,7 +382,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
   {
     id: "D06",
     Header: DataTableHeaderCell,
-    Cell: TagCell,
+    Cell: DataCell,
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
@@ -391,7 +391,7 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
   {
     id: "D07",
     Header: DataTableHeaderCell,
-    Cell: TagCell,
+    Cell: DataCell,
     displayName: "Third Contact",
     accessor: "secondType", // accessor is the "key" in the data
     width: "300px",
@@ -407,10 +407,7 @@ const TemplateWithWrapper: ComponentStory<typeof DataTable> = (args) => (
 export const WithHorizontalOverflowAndFixedWidth = TemplateWithWrapper.bind({});
 WithHorizontalOverflowAndFixedWidth.args = {
   data: LONG_DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH?.map((column) => ({
-    ...column,
-    Cell: DataCell,
-  })),
+  columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH,
   showPagination: false,
   showSelection: false,
   fullWidth: false,

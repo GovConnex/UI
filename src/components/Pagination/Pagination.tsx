@@ -7,6 +7,7 @@ import React, {useState, useRef, useMemo} from "react";
 import Button from "../Button";
 import Menu from "../Menu";
 import Typography from "../Typography";
+import Box from "../Box";
 import StyledPagination from "./Pagination.styles";
 import Icon from "../Icon";
 
@@ -85,25 +86,32 @@ const Pagination = (props: PaginationProps) => {
 
         <div>
           <Typography noMargin>Showing</Typography>
-
-          <Button
-            variant="secondary"
-            endAdornment={<Icon icon={faCaretDown} />}
-            ref={buttonRef}
-            onClick={() => setShowMenu(!showMenu)}
-          >
-            <Typography noMargin>{props.itemsPerPage}</Typography>
-          </Button>
-
-          {showMenu && (
-            <Menu
-              placement="bottom-start"
-              options={dropdownOptions}
-              anchorEl={buttonRef}
-              onClose={() => setShowMenu(false)}
-            />
-          )}
-
+          <Box>
+            <Button
+              variant="secondary"
+              endAdornment={<Icon icon={faCaretDown} />}
+              ref={buttonRef}
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              <Typography noMargin>{props.itemsPerPage}</Typography>
+            </Button>
+            {showMenu && (
+              <Menu
+                modifiers={[
+                  {
+                    name: "flip",
+                    options: {
+                      padding: 50,
+                    },
+                  },
+                ]}
+                placement="bottom-start"
+                options={dropdownOptions}
+                anchorEl={buttonRef}
+                onClose={() => setShowMenu(false)}
+              />
+            )}
+          </Box>
           <Typography noMargin>Items out of {props.totalItems}</Typography>
         </div>
       </>

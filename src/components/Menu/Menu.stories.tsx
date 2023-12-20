@@ -32,6 +32,25 @@ const Template: ComponentStory<typeof Menu> = (args) => {
   );
 };
 
+const TemplateBox: ComponentStory<typeof Menu> = (args) => {
+  return (
+    <div style={{height: "100%", width: "100%"}}>
+      <div style={{bottom: "40px", position: "absolute"}}>
+        <ButtonMenu
+          variant="secondary"
+          startAdornment={<Icon icon={faUser} />}
+          endAdornment={<Chip priority="low">2</Chip>}
+          menuProps={{
+            ...args,
+          }}
+        >
+          Toggle menu
+        </ButtonMenu>
+      </div>
+    </div>
+  );
+};
+
 const GreenDot = styled.div`
   background-color: green;
   width: 10px;
@@ -111,6 +130,16 @@ WithCategory.args = {
       startAdornment: (
         <Avatar variant="square" alt="Australian Competition and Challenge" />
       ),
+    },
+    {
+      text: "Inquiry One",
+      category: "Inquiries",
+      startAdornment: <Avatar variant="square" alt="Inquiry One" />,
+    },
+    {
+      text: "Inquiry Two",
+      category: "Inquiries",
+      startAdornment: <Avatar variant="square" alt="Inquiry Two" />,
     },
   ],
 };
@@ -278,6 +307,20 @@ const filteredOptions = [
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 WithBackendFiltering.args = {
+  placement: "bottom-start",
+  textWidth: "180px",
+  hasSearch: true,
+  onSearch: (value) => {
+    console.log("searched values", value);
+  },
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
+  options: filteredOptions,
+};
+
+export const MenuAtBottom = TemplateBox.bind({});
+MenuAtBottom.args = {
   placement: "bottom-start",
   textWidth: "180px",
   hasSearch: true,
