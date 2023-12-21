@@ -19,7 +19,7 @@ export interface HeaderCellProps {
 
 const DataTableHeaderCell = ({column}: any) => {
   return (
-    <GcxDataTableHeaderCellRoot>
+    <GcxDataTableHeaderCellRoot title={column.displayName}>
       {column.icon ? <GcxDataTableHeaderIcon size={"sm"} icon={column.icon} /> : null}
       <Typography variant="label" size="md" noMargin>
         {column.displayName}

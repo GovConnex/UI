@@ -26,6 +26,7 @@ export interface PaginationProps {
   onItemsPerPageChange: (newItemsPerPage: number) => void;
   itemsPerPageOptions?: (PaginationItemsPerPageOption | number)[];
   className?: string;
+  paddingForFlipMenu?: number;
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -101,7 +102,10 @@ const Pagination = (props: PaginationProps) => {
                   {
                     name: "flip",
                     options: {
-                      padding: 50,
+                      padding:
+                        props.paddingForFlipMenu !== undefined
+                          ? props.paddingForFlipMenu
+                          : 50,
                     },
                   },
                 ]}

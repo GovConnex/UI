@@ -408,7 +408,7 @@ export const WithHorizontalOverflowAndFixedWidth = TemplateWithWrapper.bind({});
 WithHorizontalOverflowAndFixedWidth.args = {
   data: LONG_DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH,
-  showPagination: false,
+  showPagination: true,
   showSelection: false,
   fullWidth: false,
   onRowClick: undefined,
@@ -417,7 +417,7 @@ WithHorizontalOverflowAndFixedWidth.args = {
 export const WithRowClick = Template.bind({});
 WithRowClick.args = {
   data: DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
+  columns: DATA_TABLE_COLUMNS,
   pageSize: 25,
   page: 1,
   numResults: 100,
@@ -425,4 +425,15 @@ WithRowClick.args = {
   onRowClick: () => {
     console.log("row clicked");
   },
+};
+
+export const WithMaxHeight = Template.bind({});
+WithMaxHeight.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
+  fullWidth: true,
+  maxHeight: 150,
 };

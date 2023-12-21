@@ -13,17 +13,25 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
   background: ${(p) => p.theme.primary.base.white};
 `;
+export const GxcDataTableInnerWrapper = styled.div<{maxHeight?: number}>`
+  overflow: auto;
+  max-height: ${(p) => (p.maxHeight !== undefined ? `${p.maxHeight}px` : "auto")};
+`;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   display: table;
   min-width: 0;
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
-  overflow: hidden;
+  position: relative;
 `;
 
 export const GcxDataTableThead = styled.thead`
   min-width: 0;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background: ${(p) => p.theme.primary.base.white};
 `;
 
 export const GcxDataTableTbody = styled.tbody`
@@ -54,7 +62,8 @@ export const GcxDataTableTh = styled.th<{width?: string}>`
   user-select: none;
   text-align: left;
   border-bottom: 1px solid #ebebeb;
-  position: relative;
+  position: sticky;
+  top: 0;
 `;
 
 export const GcxDataTableTd = styled.td`
@@ -106,6 +115,12 @@ export const GcxDataTableHeaderCellRoot = styled.div<{fullText?: string}>`
   gap: ${(p) => p.theme.spacing.xs};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
   color: ${(p) => p.theme.core.content.contentSecondary};
+
+  > * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`

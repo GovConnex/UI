@@ -168,7 +168,7 @@ const Menu = ({
         anchorEl={anchorEl}
         placement={placement}
         cs={{
-          zIndex: 1000,
+          zIndex: 799,
           ...popoverCs,
         }}
       >
