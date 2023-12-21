@@ -201,9 +201,13 @@ const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
 
 export const WithActionRows = Template.bind({});
 WithActionRows.args = {
+  maxHeight: 200,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
-  showPagination: false,
+  showPagination: true,
   actionRows: [
     {
       children: <div>Action Row</div>,
@@ -215,6 +219,24 @@ WithActionRows.args = {
           console.log(option);
         },
         options: [
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
           {
             text: "Test",
           },
@@ -364,37 +386,37 @@ const DATA_TABLE_COLUMNS_WITH_LONG_WIDTH = [
   {
     id: "D04",
     Header: DataTableHeaderCell,
-    Cell: NameCell,
+    Cell: DataCell,
     icon: faUser,
     displayName: "Name",
     accessor: "name",
-    width: "300px",
+    width: 300,
   },
   {
     id: "D05",
     Header: DataTableHeaderCell,
-    Cell: SupportCell,
+    Cell: DataCell,
     icon: faHeart,
     displayName: "Target Support",
     accessor: "value", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
   {
     id: "D06",
     Header: DataTableHeaderCell,
-    Cell: TagCell,
+    Cell: DataCell,
     icon: faContactCard,
     displayName: "Secondary Contact",
     accessor: "type", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
   {
     id: "D07",
     Header: DataTableHeaderCell,
-    Cell: TagCell,
+    Cell: DataCell,
     displayName: "Third Contact",
     accessor: "secondType", // accessor is the "key" in the data
-    width: "300px",
+    width: 300,
   },
 ];
 
@@ -407,11 +429,8 @@ const TemplateWithWrapper: ComponentStory<typeof DataTable> = (args) => (
 export const WithHorizontalOverflowAndFixedWidth = TemplateWithWrapper.bind({});
 WithHorizontalOverflowAndFixedWidth.args = {
   data: LONG_DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH?.map((column) => ({
-    ...column,
-    Cell: DataCell,
-  })),
-  showPagination: false,
+  columns: DATA_TABLE_COLUMNS_WITH_LONG_WIDTH,
+  showPagination: true,
   showSelection: false,
   fullWidth: false,
   onRowClick: undefined,
@@ -420,7 +439,7 @@ WithHorizontalOverflowAndFixedWidth.args = {
 export const WithRowClick = Template.bind({});
 WithRowClick.args = {
   data: DATA_TABLE_DATA,
-  columns: DATA_TABLE_COLUMNS_WITHOUT_RESIZE,
+  columns: DATA_TABLE_COLUMNS,
   pageSize: 25,
   page: 1,
   numResults: 100,
@@ -428,4 +447,15 @@ WithRowClick.args = {
   onRowClick: () => {
     console.log("row clicked");
   },
+};
+
+export const WithMaxHeight = Template.bind({});
+WithMaxHeight.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
+  fullWidth: true,
+  maxHeight: 150,
 };

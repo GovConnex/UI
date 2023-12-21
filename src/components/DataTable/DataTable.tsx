@@ -20,6 +20,7 @@ import {
   GcxDataTableThead,
   GcxDataTableTr,
   GcxDataTableWrapper,
+  GxcDataTableInnerWrapper,
   Resizer,
   ResizerDrag,
 } from "./DataTable.styles";
@@ -98,6 +99,16 @@ export interface DataTableProps {
    * Callback for when row is clicked.
    */
   onRowClick?: (dataItem: any) => void;
+
+  /**
+   * Max height of the table.
+   */
+  maxHeight?: number;
+
+  /**
+   * Padding for pagination menu to flip.
+   */
+  paddingForFlipPaginationMenu?: number;
 }
 
 export interface DataTableActionRowProps {
@@ -130,6 +141,8 @@ const DataTable = ({
   actionRows = [],
   "data-cy-row": dataCyRow,
   onRowClick,
+  maxHeight,
+  paddingForFlipPaginationMenu,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -139,7 +152,7 @@ const DataTable = ({
       // When using the useFlexLayout:
       minWidth: 30, // minWidth is only used as a limit for resizing
       width: 150, // width is used for both the flex-basis and flex-grow
-      maxWidth: 200, // maxWidth is only used as a limit for resizing
+      maxWidth: 500, // maxWidth is only used as a limit for resizing
     }),
     []
   );
@@ -264,84 +277,87 @@ const DataTable = ({
   return (
     <GcxDataTableRoot className={classNames(className)}>
       <GcxDataTableWrapper fullWidth={fullWidth}>
-        <GcxDataTable fullWidth={fullWidth} {...getTableProps()}>
-          <GcxDataTableThead>
-            {headerGroups.map((headerGroup: any) => (
-              <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column: any) => (
-                  <GcxDataTableTh width={column?.width} {...column.getHeaderProps()}>
-                    <div {...column.getSortByToggleProps()}>
-                      {" "}
-                      {column.render("Header")}
-                    </div>
+        <GxcDataTableInnerWrapper maxHeight={maxHeight}>
+          <GcxDataTable fullWidth={fullWidth} {...getTableProps()}>
+            <GcxDataTableThead>
+              {headerGroups.map((headerGroup: any) => (
+                <GcxDataTableTr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column: any) => (
+                    <GcxDataTableTh width={column?.width} {...column.getHeaderProps()}>
+                      <div {...column.getSortByToggleProps()}>
+                        {" "}
+                        {column.render("Header")}
+                      </div>
 
-                    {column.isResizable ? (
-                      <Resizer
-                        {...column.getResizerProps()}
-                        onClick={(e) => {
-                          e.preventDefault();
-                        }}
-                        className="isResizing"
-                      >
-                        <ResizerDrag />
-                      </Resizer>
-                    ) : null}
-                  </GcxDataTableTh>
-                ))}
-              </GcxDataTableTr>
-            ))}
-          </GcxDataTableThead>
-          <GcxDataTableTbody {...getTableBodyProps()}>
-            {(manualPagination ? rows : pageRows).map((row: any) => {
-              prepareRow(row);
-              return (
-                <GcxDataTableTr
-                  {...row.getRowProps()}
-                  onClick={
-                    onRowClick
-                      ? () => {
-                          onRowClick(row);
-                        }
-                      : undefined
-                  }
-                  data-cy={
-                    typeof dataCyRow === "string"
-                      ? dataCyRow
-                      : typeof dataCyRow === "function"
-                      ? dataCyRow(row)
-                      : undefined
-                  }
-                >
-                  {row.cells.map((cell: any) => {
-                    return (
-                      <GcxDataTableTd
-                        width={cell?.column?.width}
-                        {...cell.getCellProps()}
-                      >
-                        {cell.render("Cell")}
-                      </GcxDataTableTd>
-                    );
-                  })}
+                      {column.isResizable ? (
+                        <Resizer
+                          {...column.getResizerProps()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
+                          className="isResizing"
+                        >
+                          <ResizerDrag />
+                        </Resizer>
+                      ) : null}
+                    </GcxDataTableTh>
+                  ))}
                 </GcxDataTableTr>
-              );
-            })}
-            {actionRows?.map((actionRow, idx) => (
-              <GcxDataTableTr key={idx}>
-                <GcxDataTableTd>
-                  <DataTableDataCell
-                    onClick={actionRow?.onClick}
-                    onChange={actionRow?.onChange}
-                    menuProps={actionRow?.menuProps}
-                    children={actionRow?.children}
-                  />
-                </GcxDataTableTd>
-              </GcxDataTableTr>
-            ))}
-          </GcxDataTableTbody>
-        </GcxDataTable>
+              ))}
+            </GcxDataTableThead>
+            <GcxDataTableTbody {...getTableBodyProps()}>
+              {(manualPagination ? rows : pageRows).map((row: any) => {
+                prepareRow(row);
+                return (
+                  <GcxDataTableTr
+                    {...row.getRowProps()}
+                    onClick={
+                      onRowClick
+                        ? () => {
+                            onRowClick(row);
+                          }
+                        : undefined
+                    }
+                    data-cy={
+                      typeof dataCyRow === "string"
+                        ? dataCyRow
+                        : typeof dataCyRow === "function"
+                        ? dataCyRow(row)
+                        : undefined
+                    }
+                  >
+                    {row.cells.map((cell: any) => {
+                      return (
+                        <GcxDataTableTd
+                          width={cell?.column?.width}
+                          {...cell.getCellProps()}
+                        >
+                          {cell.render("Cell")}
+                        </GcxDataTableTd>
+                      );
+                    })}
+                  </GcxDataTableTr>
+                );
+              })}
+              {actionRows?.map((actionRow, idx) => (
+                <GcxDataTableTr key={idx}>
+                  <GcxDataTableTd>
+                    <DataTableDataCell
+                      onClick={actionRow?.onClick}
+                      onChange={actionRow?.onChange}
+                      menuProps={actionRow?.menuProps}
+                      children={actionRow?.children}
+                    />
+                  </GcxDataTableTd>
+                </GcxDataTableTr>
+              ))}
+            </GcxDataTableTbody>
+          </GcxDataTable>
+        </GxcDataTableInnerWrapper>
         {/* Pagination shown by default, but can be hidden */}
         {showPagination !== false && (
           <GcxDataTablePagination
+            paddingForFlipMenu={paddingForFlipPaginationMenu}
             itemsPerPage={pageSize}
             itemsPerPageOptions={[25, 50, 100]}
             page={page}

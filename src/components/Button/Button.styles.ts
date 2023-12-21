@@ -69,6 +69,10 @@ const StyledButton = styled.button<{
     variant === "primary" &&
     `
     filter: drop-shadow(${theme.funcShadow.buttons["0"].x}px ${theme.funcShadow.buttons["0"].y}px ${theme.funcShadow.buttons["0"].blur}px ${theme.funcShadow.buttons["0"].color}) drop-shadow(${theme.funcShadow.buttons["1"].x}px ${theme.funcShadow.buttons["1"].y}px ${theme.funcShadow.buttons["1"].blur}px ${theme.funcShadow.buttons["1"].color}) drop-shadow(${theme.funcShadow.buttons["2"].x}px ${theme.funcShadow.buttons["2"].y}px ${theme.funcShadow.buttons["2"].blur}px ${theme.funcShadow.buttons["2"].color}); 
+    
+    &:disabled {
+      filter: none;
+    }
   `}
 
   ${({theme, variant, noPadding, isLoading, size}) =>

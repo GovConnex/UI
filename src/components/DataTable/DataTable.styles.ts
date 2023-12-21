@@ -13,17 +13,24 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
   background: ${(p) => p.theme.primary.base.white};
 `;
+export const GxcDataTableInnerWrapper = styled.div<{maxHeight?: number}>`
+  overflow: auto;
+  max-height: ${(p) => (p.maxHeight !== undefined ? `${p.maxHeight}px` : "auto")};
+`;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   display: table;
   min-width: 0;
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
-  overflow: hidden;
 `;
 
 export const GcxDataTableThead = styled.thead`
   min-width: 0;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background: ${(p) => p.theme.primary.base.white};
 `;
 
 export const GcxDataTableTbody = styled.tbody`
@@ -50,12 +57,12 @@ export const GcxDataTableTr = styled.tr<{onClick?: any}>`
 `;
 
 export const GcxDataTableTh = styled.th<{width?: string}>`
-  width: ${(p) => p.width};
   min-width: 0;
   user-select: none;
   text-align: left;
   border-bottom: 1px solid #ebebeb;
-  position: relative;
+  position: sticky;
+  top: 0;
 `;
 
 export const GcxDataTableTd = styled.td`
@@ -107,6 +114,12 @@ export const GcxDataTableHeaderCellRoot = styled.div<{fullText?: string}>`
   gap: ${(p) => p.theme.spacing.xs};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.sm};
   color: ${(p) => p.theme.core.content.contentSecondary};
+
+  > * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const GcxDataTableHeaderIcon = styled(Icon)`
@@ -138,13 +151,12 @@ export const ResizerDrag = styled.div`
 export const Resizer = styled.div`
   cursor: col-resize;
   position: absolute;
-  padding-right: 10px;
+  padding-right: 2px;
   padding-left: 10px;
   top: 0;
-  right: -10px;
   bottom: 0;
   z-index: 1;
-
+  right: 0;
   &:hover ${ResizerDrag} {
     background-color: ${(p) => p.theme.primary.base.brand};
   }

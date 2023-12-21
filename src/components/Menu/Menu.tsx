@@ -13,6 +13,7 @@ import {faSearch} from "@fortawesome/pro-regular-svg-icons";
 import Typography from "../Typography/Typography";
 import Button, {ButtonProps} from "../Button/Button";
 import Box from "../Box/Box";
+import {Modifier} from "react-popper";
 
 export interface MenuOption {
   startAdornment?: React.ReactNode;
@@ -61,6 +62,8 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   popoverCs?: customStyles;
   itemsCs?: customStyles;
   closeOnSelect?: boolean;
+  isBlock?: boolean;
+  modifiers?: ReadonlyArray<Modifier<any>>;
 }
 
 const Menu = ({
@@ -78,6 +81,8 @@ const Menu = ({
   popoverCs,
   itemsCs,
   closeOnSelect = true,
+  isBlock = false,
+  modifiers,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -158,10 +163,12 @@ const Menu = ({
   return (
     <ClickAwayListener onClickAway={onClose || null}>
       <Popover
+        modifiers={modifiers}
+        isBlock={isBlock}
         anchorEl={anchorEl}
         placement={placement}
         cs={{
-          zIndex: 1000,
+          zIndex: 799,
           ...popoverCs,
         }}
       >
@@ -191,7 +198,9 @@ const Menu = ({
               return (
                 <span key={`item-${idx}-${new Date().getTime()}`}>
                   {(prev === null || prev.category !== option.category) && (
-                    <MenuListHeading>{option.category}</MenuListHeading>
+                    <MenuListHeading prevCategory={prev?.category}>
+                      {option.category}
+                    </MenuListHeading>
                   )}
 
                   <MenuListItem

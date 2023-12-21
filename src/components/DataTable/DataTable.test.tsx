@@ -59,7 +59,7 @@ const DATA_TABLE_COLUMNS_FIXED_WIDTH = [
     canResize: true,
     accessor: "name",
     minWidth: 225,
-    width: "300px",
+    width: 300,
   },
   {
     id: "D01",
@@ -70,7 +70,7 @@ const DATA_TABLE_COLUMNS_FIXED_WIDTH = [
     displayName: "Field 2",
     accessor: "value", // accessor is the "key" in the data
     minWidth: 225,
-    width: "300px",
+    width: 300,
   },
   {
     id: "D02",
@@ -81,7 +81,7 @@ const DATA_TABLE_COLUMNS_FIXED_WIDTH = [
     displayName: "Field 3",
     accessor: "type", // accessor is the "key" in the data
     minWidth: 225,
-    width: "300px",
+    width: 300,
   },
 ];
 
