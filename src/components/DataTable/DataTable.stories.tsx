@@ -201,9 +201,13 @@ const DATA_TABLE_COLUMNS_WITHOUT_RESIZE = [
 
 export const WithActionRows = Template.bind({});
 WithActionRows.args = {
+  maxHeight: 200,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
   data: DATA_TABLE_DATA,
   columns: DATA_TABLE_COLUMNS,
-  showPagination: false,
+  showPagination: true,
   actionRows: [
     {
       children: <div>Action Row</div>,
@@ -215,6 +219,24 @@ WithActionRows.args = {
           console.log(option);
         },
         options: [
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
+          {
+            text: "Test",
+          },
           {
             text: "Test",
           },

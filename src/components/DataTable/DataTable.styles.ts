@@ -23,7 +23,6 @@ export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   background-color: ${(p) => p.theme.primary.base.white};
   border-collapse: collapse;
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
-  position: relative;
 `;
 
 export const GcxDataTableThead = styled.thead`
@@ -152,13 +151,12 @@ export const ResizerDrag = styled.div`
 export const Resizer = styled.div`
   cursor: col-resize;
   position: absolute;
-  padding-right: 10px;
+  padding-right: 2px;
   padding-left: 10px;
   top: 0;
-  right: -10px;
   bottom: 0;
   z-index: 1;
-
+  right: 0;
   &:hover ${ResizerDrag} {
     background-color: ${(p) => p.theme.primary.base.brand};
   }
