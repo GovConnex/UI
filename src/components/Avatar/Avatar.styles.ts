@@ -67,7 +67,7 @@ export const StyledAvatarRoot = styled.div<{
         `;
       case "md":
         return `
-          font-size: 10px;
+          font-size: 8px;
           width: 18px;
           height: 18px;
         `;
