@@ -52,6 +52,16 @@ export interface StackedListProps {
    * indicates item flex alignment
    */
   itemAlignment?: string;
+
+  /**
+   * indicate whether the stacked list is opened by default
+   */
+  isDefaultOpen?: boolean;
+
+  /**
+   * child element to be put as single item
+   */
+  children?: React.ReactNode;
 }
 
 /**
@@ -69,11 +79,13 @@ export const StackedList = ({
   endAdornment,
   isShowAll,
   itemAlignment,
+  isDefaultOpen = true,
+  children,
 }: StackedListProps) => {
   // Get the height of the content
   const content = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = React.useState("auto");
-  const [open, setOpen] = React.useState(true);
+  const [height, setHeight] = React.useState(isDefaultOpen ? "auto" : "0px");
+  const [open, setOpen] = React.useState(isDefaultOpen);
   const [showAll, setShowAll] = React.useState(isShowAll);
 
   const initialDisplayData =
@@ -110,6 +122,7 @@ export const StackedList = ({
         </StyledHeader>
       </Root>
       <Collapse ref={content} height={height} data-testid="collapse">
+        {children ? <StyledScrollableWrapper>{children}</StyledScrollableWrapper> : null}
         {initialDisplayData && initialDisplayData.length ? (
           isScrollable ? (
             <StyledScrollableWrapper>
@@ -139,11 +152,13 @@ export const StackedList = ({
             ))
           )
         ) : (
-          <StyledEmptyList data-testid="empty-state">
-            <Typography variant="label" size="md">
-              {emptyContentMessage || "No content to be displayed"}
-            </Typography>
-          </StyledEmptyList>
+          !children && (
+            <StyledEmptyList data-testid="empty-state">
+              <Typography variant="label" size="md">
+                {emptyContentMessage || "No content to be displayed"}
+              </Typography>
+            </StyledEmptyList>
+          )
         )}
         {showAll && extendedDisplayData && extendedDisplayData.length
           ? extendedDisplayData.map((item) => (

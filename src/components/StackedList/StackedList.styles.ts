@@ -64,6 +64,7 @@ export const StyledEmptyList = styled.div`
 export const StyledScrollableWrapper = styled.div`
   max-height: 350px;
   overflow: auto;
+  background-color: ${(props) => props.theme.core.background.bgPrimary};
 `;
 
 export const Root = styled.div`
