@@ -412,3 +412,13 @@ Scrollable.args = {
     },
   ],
 };
+
+export const WithChild = Template.bind({});
+WithChild.args = {
+  title: "With Single Child",
+  children: (
+    <div style={{color: "white", backgroundColor: "red", width: "80px", height: "80px"}}>
+      has single child
+    </div>
+  ),
+};

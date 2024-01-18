@@ -11,11 +11,13 @@ export const StyledModalBack = styled.div`
   z-index: 999;
 `;
 
-export const StyledModal = styled.div`
+export const StyledModal = styled.div<{
+  overflow?: string;
+}>`
   z-index: 1000;
   max-width: calc(100% - ${(props) => props.theme.spacing.lg});
   max-height: calc(100% - ${(props) => props.theme.spacing.lg});
-  overflow: auto;
+  overflow: ${({overflow}) => (overflow ? overflow : "auto")};
   // width: 940px;
   margin: auto;
   display: flex;
