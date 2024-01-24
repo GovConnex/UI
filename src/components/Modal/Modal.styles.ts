@@ -62,11 +62,10 @@ export const StyledModalFeet = styled.div`
 export const StyledMobileModal = styled.div`
   z-index: 999;
   width: 100%;
-  height: 100vh;
+  height: -webkit-fill-available;
   position: fixed;
   overflow: auto;
   margin-top: env(safe-area-inset-top);
-  margin-bottom: env(safe-area-inset-bottom);
   top: 0;
   left: 0;
   display: flex;
