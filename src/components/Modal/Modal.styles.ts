@@ -66,6 +66,7 @@ export const StyledMobileModal = styled.div`
   position: fixed;
   overflow: auto;
   margin-top: env(safe-area-inset-top);
+  margin-bottom: env(safe-area-inset-bottom);
   top: 0;
   left: 0;
   display: flex;
