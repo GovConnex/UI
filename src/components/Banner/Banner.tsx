@@ -38,6 +38,8 @@ export interface BannerProps {
    */
   variant?: "info" | "warning" | "error" | "success";
 
+  icon?: IconProp;
+
   primaryButton?: {
     label: string;
     onClick: () => void;
@@ -49,8 +51,6 @@ export interface BannerProps {
 
   onClose?: () => void;
   "data-cy"?: string;
-
-  icon: IconProp;
 }
 
 const variantMap = {
