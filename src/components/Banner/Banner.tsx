@@ -18,6 +18,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/pro-regular-svg-icons";
 import {useTheme} from "styled-components";
+import { TypographySize } from "../../theming/global-theme.interface";
 
 export interface BannerProps {
   /**
@@ -28,6 +29,10 @@ export interface BannerProps {
    * description of the banner
    */
   description?: string;
+  /**
+   * text size of description
+   */
+  descriptionSize?: keyof TypographySize;
   /**
    * variant of the banner
    */
@@ -44,6 +49,8 @@ export interface BannerProps {
 
   onClose?: () => void;
   "data-cy"?: string;
+
+  icon: IconProp;
 }
 
 const variantMap = {
@@ -63,7 +70,9 @@ const variantMap = {
 const Banner = (props: BannerProps) => {
   const {
     title,
+    icon,
     description,
+    descriptionSize = "sm",
     variant = "info",
     primaryButton,
     secondaryButton,
@@ -73,7 +82,7 @@ const Banner = (props: BannerProps) => {
   return (
     <StyledBanner variant={variant} data-cy={props["data-cy"]}>
       <Icon
-        icon={variantMap[variant] as IconProp}
+        icon={icon || variantMap[variant] as IconProp}
         color={theme.extended.support[`${variant}Dark`]}
       />
       <MainContentContainer>
@@ -81,7 +90,7 @@ const Banner = (props: BannerProps) => {
           <Typography noMargin variant="label">
             {title}
           </Typography>
-          <Typography noMargin variant="body" size="sm">
+          <Typography noMargin variant="body" size={descriptionSize}>
             {description}
           </Typography>
         </StyledTextWrapper>
