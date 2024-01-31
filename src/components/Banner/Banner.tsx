@@ -18,7 +18,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/pro-regular-svg-icons";
 import {useTheme} from "styled-components";
-import { TypographySize } from "../../theming/global-theme.interface";
+import {TypographySize} from "../../theming/global-theme.interface";
 
 export interface BannerProps {
   /**
@@ -82,7 +82,7 @@ const Banner = (props: BannerProps) => {
   return (
     <StyledBanner variant={variant} data-cy={props["data-cy"]}>
       <Icon
-        icon={icon || variantMap[variant] as IconProp}
+        icon={icon || (variantMap[variant] as IconProp)}
         color={theme.extended.support[`${variant}Dark`]}
       />
       <MainContentContainer>
