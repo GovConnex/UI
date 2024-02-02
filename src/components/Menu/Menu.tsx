@@ -64,6 +64,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   closeOnSelect?: boolean;
   isBlock?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
+  noCategory?: boolean;
 }
 
 const Menu = ({
@@ -83,6 +84,7 @@ const Menu = ({
   closeOnSelect = true,
   isBlock = false,
   modifiers,
+  noCategory = false,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -197,7 +199,7 @@ const Menu = ({
 
               return (
                 <span key={`item-${idx}-${new Date().getTime()}`}>
-                  {(prev === null || prev.category !== option.category) && (
+                  {(!noCategory && (prev === null || prev.category !== option.category)) && (
                     <MenuListHeading prevCategory={prev?.category}>
                       {option.category}
                     </MenuListHeading>
