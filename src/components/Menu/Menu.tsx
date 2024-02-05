@@ -199,11 +199,12 @@ const Menu = ({
 
               return (
                 <span key={`item-${idx}-${new Date().getTime()}`}>
-                  {(!noCategory && (prev === null || prev.category !== option.category)) && (
-                    <MenuListHeading prevCategory={prev?.category}>
-                      {option.category}
-                    </MenuListHeading>
-                  )}
+                  {!noCategory &&
+                    (prev === null || prev.category !== option.category) && (
+                      <MenuListHeading prevCategory={prev?.category}>
+                        {option.category}
+                      </MenuListHeading>
+                    )}
 
                   <MenuListItem
                     data-cy={option["data-cy"]}
