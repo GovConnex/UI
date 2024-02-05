@@ -2,7 +2,12 @@ import React, {useEffect, useRef, useState} from "react";
 import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
 import Input from "../Input/Input";
-import {StyledMenuList, StyledSearchBar, StyledBottomAdornment} from "./Menu.styles";
+import {
+  StyledMenuList,
+  StyledSearchBar,
+  StyledBottomAdornment,
+  StyledButtonMenuWrapper,
+} from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
 import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
@@ -65,6 +70,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   isBlock?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
   noCategory?: boolean;
+  isButtonMenu?: boolean;
 }
 
 const Menu = ({
@@ -85,6 +91,7 @@ const Menu = ({
   isBlock = false,
   modifiers,
   noCategory = false,
+  isButtonMenu = false,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -163,7 +170,7 @@ const Menu = ({
   };
 
   return (
-    <ClickAwayListener onClickAway={onClose || null}>
+    <ClickAwayListener onClickAway={isButtonMenu ? null : onClose || null}>
       <Popover
         modifiers={modifiers}
         isBlock={isBlock}
@@ -254,10 +261,19 @@ export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenu
 
   return (
     <Box cs={wrapperProps}>
-      <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
-      {shown && (
-        <Menu {...menuProps} onClose={() => setShown(false)} anchorEl={buttonRef} />
-      )}
+      <ClickAwayListener onClickAway={() => setShown(false)}>
+        <StyledButtonMenuWrapper>
+          <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
+          {shown && (
+            <Menu
+              {...menuProps}
+              onClose={() => setShown(false)}
+              anchorEl={buttonRef}
+              isButtonMenu={true}
+            />
+          )}
+        </StyledButtonMenuWrapper>
+      </ClickAwayListener>
     </Box>
   );
 }
