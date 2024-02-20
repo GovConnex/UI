@@ -51,6 +51,14 @@ export const getInitials = (name?: string) => {
   return initials.join("");
 };
 
+const checkImageOnLoadSuccessful = (src: string) => {
+  const img = new Image();
+  img.src = src;
+
+  // Synchronously return true or false based on whether the image is complete
+  return img.complete && img.naturalWidth !== 0;
+};
+
 const colourVariants = [
   "#F44336",
   "#E91E63",
@@ -97,7 +105,12 @@ const Avatar = ({
       {...rest}
     >
       {showAvatar ? (
-        <StyledAvatarImage src={src} alt={alt} onError={() => setErrorSrc(src)} />
+        // Having this check to avoid unexpected rerendering in the app
+        checkImageOnLoadSuccessful(src) ? (
+          <StyledAvatarImage src={src} onError={() => setErrorSrc(src)} />
+        ) : (
+          <StyledAvatarImage alt={alt} onError={() => setErrorSrc(src)} />
+        )
       ) : null}
       {!showAvatar ? initials || "" : null}
     </StyledAvatar>
