@@ -70,7 +70,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   isBlock?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
   noCategory?: boolean;
-  isButtonMenu?: boolean;
+  isClickAway?: boolean;
 }
 
 const Menu = ({
@@ -91,7 +91,7 @@ const Menu = ({
   isBlock = false,
   modifiers,
   noCategory = false,
-  isButtonMenu = false,
+  isClickAway = true,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -170,7 +170,7 @@ const Menu = ({
   };
 
   return (
-    <ClickAwayListener onClickAway={isButtonMenu ? null : onClose || null}>
+    <ClickAwayListener onClickAway={isClickAway ? onClose || null : null}>
       <Popover
         modifiers={modifiers}
         isBlock={isBlock}
@@ -269,7 +269,7 @@ export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenu
               {...menuProps}
               onClose={() => setShown(false)}
               anchorEl={buttonRef}
-              isButtonMenu={true}
+              isClickAway={false}
             />
           )}
         </StyledButtonMenuWrapper>
