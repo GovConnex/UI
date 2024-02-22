@@ -1,35 +1,12 @@
 import React from "react";
 import {render} from "../test-utils";
-import Avatar, {getInitials, checkImageOnLoadSuccessful} from "./Avatar";
 
-class ImageMock {
-  src: string = "";
-  onload: (() => void) | null = null;
-  onerror: (() => void) | null = null;
-  complete: boolean = true;
-  naturalWidth: number = 1;
-  naturalHeight: number = 1;
-
-  constructor() {
-    this.onload && this.onload();
-    this.onerror && this.onerror();
-  }
-}
+import Avatar, {getInitials} from "./Avatar";
 
 describe("Avatar", () => {
-  it("checks if the image is loaded successfully", async () => {
-    // Mock the Image constructor
-    jest.spyOn(window, "Image").mockImplementation(() => new ImageMock() as any);
-
-    const imageUrl = "path/to/valid-image.jpg";
-    const result = await checkImageOnLoadSuccessful(imageUrl);
-    expect(result).toBe(true);
-
-    const {getByAltText} = render(<Avatar alt="John Doe" src={imageUrl} />);
+  it("should render an image when src is provided and no error", () => {
+    const {getByAltText} = render(<Avatar alt="John Doe" src="path/to/image.jpg" />);
     expect(getByAltText("John Doe")).toBeInTheDocument();
-
-    // Restore the original implementation of the Image constructor
-    jest.restoreAllMocks();
   });
 
   it("should display initials when src is not provided", () => {
@@ -42,8 +19,14 @@ describe("Avatar", () => {
     expect(getByText("?")).toBeInTheDocument();
   });
 
-  it("should display initials when image has not been loaded properly", () => {
+  it("should display initials when src results in an error", () => {
     const {getByText} = render(<Avatar alt="John Doe" src="path/to/invalid.jpg" />);
+    // Simulate image load error
+    const image = document.querySelector("img");
+    if (image) {
+      const errorEvent = new Event("error");
+      image.dispatchEvent(errorEvent);
+    }
     expect(getByText("JD")).toBeInTheDocument();
   });
 

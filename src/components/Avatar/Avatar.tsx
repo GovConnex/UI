@@ -51,14 +51,6 @@ export const getInitials = (name?: string) => {
   return initials.join("");
 };
 
-export const checkImageOnLoadSuccessful = (src: string) => {
-  const img = new Image();
-  img.src = src;
-
-  // Synchronously return true or false based on whether the image is complete
-  return img.complete && img.naturalWidth !== 0;
-};
-
 const colourVariants = [
   "#F44336",
   "#E91E63",
@@ -84,6 +76,8 @@ const Avatar = ({
   src,
   ...rest
 }: AvatarProps) => {
+  const [errorSrc, setErrorSrc] = React.useState<string | null>(null);
+  const showAvatar = src && src !== errorSrc;
   const initials = getInitials(alt || "?") || "";
   const colourIndex =
     ((initials?.charCodeAt(0) || 0) + (initials?.charCodeAt(1) || 0)) %
@@ -102,13 +96,10 @@ const Avatar = ({
       isTransparentImage={isTransparentImage}
       {...rest}
     >
-      {src &&
-      // Having this check to avoid unexpected rerendering in the app
-      checkImageOnLoadSuccessful(src) ? (
-        <StyledAvatarImage src={src} alt={alt} />
-      ) : (
-        initials || ""
-      )}
+      {showAvatar ? (
+        <StyledAvatarImage src={src} alt={alt} onError={() => setErrorSrc(src)} />
+      ) : null}
+      {!showAvatar ? initials || "" : null}
     </StyledAvatar>
   );
 };
