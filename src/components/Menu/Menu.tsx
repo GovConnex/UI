@@ -218,6 +218,7 @@ const Menu = ({
                     button
                     style={option.style}
                     textWidth={textWidth}
+                    title={option?.text?.toString() || ""}
                     onSelect={() => {
                       if (onOptionSelect) {
                         onOptionSelect(option);
