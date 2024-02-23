@@ -2,12 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Placement} from "@popperjs/core";
 import Popover from "../Popover";
 import Input from "../Input/Input";
-import {
-  StyledMenuList,
-  StyledSearchBar,
-  StyledBottomAdornment,
-  StyledButtonMenuWrapper,
-} from "./Menu.styles";
+import {StyledMenuList, StyledSearchBar, StyledBottomAdornment} from "./Menu.styles";
 import ClickAwayListener from "../ClickAwayListener/ClickAwayListener";
 import {MenuListHeading} from "../MenuList";
 import MenuListItem from "../MenuList/MenuListItem";
@@ -70,7 +65,6 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   isBlock?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
   noCategory?: boolean;
-  isClickAway?: boolean;
 }
 
 const Menu = ({
@@ -91,7 +85,6 @@ const Menu = ({
   isBlock = false,
   modifiers,
   noCategory = false,
-  isClickAway = true,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -169,8 +162,18 @@ const Menu = ({
     }
   };
 
+  const handleClickaway = (e: any) => {
+    // Check if the clicked element is the anchorEl, if so, prevent the clickaway logic
+    if (anchorEl?.current && anchorEl.current.contains(e.target)) {
+      return;
+    }
+
+    // Your regular clickaway logic here
+    onClose && onClose();
+  };
+
   return (
-    <ClickAwayListener onClickAway={isClickAway ? onClose || null : null}>
+    <ClickAwayListener onClickAway={handleClickaway}>
       <Popover
         modifiers={modifiers}
         isBlock={isBlock}
@@ -262,19 +265,16 @@ export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenu
 
   return (
     <Box cs={wrapperProps}>
-      <ClickAwayListener onClickAway={() => setShown(false)}>
-        <StyledButtonMenuWrapper>
-          <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
-          {shown && (
-            <Menu
-              {...menuProps}
-              onClose={() => setShown(false)}
-              anchorEl={buttonRef}
-              isClickAway={false}
-            />
-          )}
-        </StyledButtonMenuWrapper>
-      </ClickAwayListener>
+      <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
+      {shown && (
+        <Menu
+          {...menuProps}
+          onClose={() => {
+            setShown(false);
+          }}
+          anchorEl={buttonRef}
+        />
+      )}
     </Box>
   );
 }

@@ -25,7 +25,3 @@ export const StyledSearchBar = styled.div`
 export const StyledBottomAdornment = styled.div`
   padding: ${(props) => props.theme.spacing.xs};
 `;
-
-export const StyledButtonMenuWrapper = styled.div`
-  width: fit-content;
-`;
