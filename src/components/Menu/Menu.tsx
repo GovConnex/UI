@@ -64,6 +64,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   closeOnSelect?: boolean;
   isBlock?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
+  noCategory?: boolean;
 }
 
 const Menu = ({
@@ -83,6 +84,7 @@ const Menu = ({
   closeOnSelect = true,
   isBlock = false,
   modifiers,
+  noCategory = false,
   ...rest
 }: MenuProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
@@ -160,8 +162,18 @@ const Menu = ({
     }
   };
 
+  const handleClickaway = (e: any) => {
+    // Check if the clicked element is the anchorEl, if so, prevent the clickaway logic
+    if (anchorEl?.current && anchorEl.current.contains(e.target)) {
+      return;
+    }
+
+    // Your regular clickaway logic here
+    onClose && onClose();
+  };
+
   return (
-    <ClickAwayListener onClickAway={onClose || null}>
+    <ClickAwayListener onClickAway={handleClickaway}>
       <Popover
         modifiers={modifiers}
         isBlock={isBlock}
@@ -197,17 +209,19 @@ const Menu = ({
 
               return (
                 <span key={`item-${idx}-${new Date().getTime()}`}>
-                  {(prev === null || prev.category !== option.category) && (
-                    <MenuListHeading prevCategory={prev?.category}>
-                      {option.category}
-                    </MenuListHeading>
-                  )}
+                  {!noCategory &&
+                    (prev === null || prev.category !== option.category) && (
+                      <MenuListHeading prevCategory={prev?.category}>
+                        {option.category}
+                      </MenuListHeading>
+                    )}
 
                   <MenuListItem
                     data-cy={option["data-cy"]}
                     button
                     style={option.style}
                     textWidth={textWidth}
+                    title={option?.text?.toString() || ""}
                     onSelect={() => {
                       if (onOptionSelect) {
                         onOptionSelect(option);

@@ -51,6 +51,10 @@ const TemplateBox: ComponentStory<typeof Menu> = (args) => {
   );
 };
 
+const TemplateMenuOnly: ComponentStory<typeof Menu> = (args) => {
+  return <Menu {...args} />;
+};
+
 const GreenDot = styled.div`
   background-color: green;
   width: 10px;
@@ -329,6 +333,23 @@ MenuAtBottom.args = {
   },
   onOptionSelect: (option) => {
     console.log(option);
+  },
+  options: filteredOptions,
+};
+
+export const MenuOnly = TemplateMenuOnly.bind({});
+MenuOnly.args = {
+  placement: "bottom-start",
+  textWidth: "180px",
+  hasSearch: true,
+  onSearch: (value) => {
+    console.log("searched values", value);
+  },
+  onOptionSelect: (option) => {
+    console.log(option);
+  },
+  onClose: () => {
+    console.log("closing");
   },
   options: filteredOptions,
 };

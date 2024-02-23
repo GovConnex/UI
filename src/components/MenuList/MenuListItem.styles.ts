@@ -29,7 +29,7 @@ export const StyledMenuListItem = styled.div<{
 
 export const StyledMenuListItemStart = styled.div`
   display: flex;
-  gap: ${(props) => props.theme.spacing.sm};
+  gap: ${(props) => props.theme.spacing.xs};
   align-items: center;
   justify-content: space-between;
 `;

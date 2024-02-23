@@ -34,22 +34,22 @@ FixedHeight.args = {
   children: (
     <>
       <MenuListHeading>Not Sticky Heading</MenuListHeading>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
       <MenuListHeading sticky>Sticky Heading</MenuListHeading>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
-      <MenuListItem>MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
+      <MenuListItem title="Menu List Item Title">MenuList Item</MenuListItem>
     </>
   ),
 };

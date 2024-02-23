@@ -15,6 +15,7 @@ interface MenuListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   endAdornment?: React.ReactNode;
   cursor?: boolean;
   textWidth?: string;
+  title?: string;
 
   // checked?: boolean;
   disabled?: boolean;
@@ -33,6 +34,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
   startAdornment,
   endAdornment,
   textWidth,
+  title,
   ...props
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -54,7 +56,7 @@ export const MenuListItem: React.FC<MenuListItemProps> = ({
       <StyledMenuListItemStart>
         {/* Put the icon here */}
         {startAdornment}
-        <StyledMenuListItemText textWidth={textWidth}>
+        <StyledMenuListItemText textWidth={textWidth} title={title}>
           <Typography as="span" variant="body" size="md" noMargin>
             {children}
           </Typography>
