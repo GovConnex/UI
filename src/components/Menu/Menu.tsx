@@ -267,13 +267,7 @@ export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenu
     <Box cs={wrapperProps}>
       <Button ref={buttonRef} onClick={() => setShown(!shown)} {...buttonProps} />
       {shown && (
-        <Menu
-          {...menuProps}
-          onClose={() => {
-            setShown(false);
-          }}
-          anchorEl={buttonRef}
-        />
+        <Menu {...menuProps} onClose={() => setShown(false)} anchorEl={buttonRef} />
       )}
     </Box>
   );
