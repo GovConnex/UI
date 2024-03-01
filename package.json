@@ -119,6 +119,8 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@popperjs/core": "^2.11.6",
     "classnames": "^2.3.2",
+    "date-fns": "^2.11.0",
+    "react-datepicker": "^2.14.0",
     "react-helmet": "^6.1.0",
     "react-popper": "^2.3.0",
     "react-table": "^7.8.0",
