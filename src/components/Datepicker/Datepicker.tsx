@@ -58,7 +58,6 @@ const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => 
     <Box
       cs={{
         display: "flex",
-        gap: 2,
         marginBottom: "spacing.sm",
         marginLeft: "spacing.sm",
         alignItems: "center",
@@ -68,7 +67,7 @@ const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => 
         Time:
       </Typography>
       <input
-        style={{width: "120px"}}
+        style={{width: "120px", marginLeft: "10px"}}
         type="time"
         name="timeInput"
         value={inputValue}
