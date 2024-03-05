@@ -6,6 +6,7 @@ import StyledDatepickerWrapper from "./Datepicker.styles";
 import Popover from "../Popover";
 import Button from "../Button";
 import Box from "../Box";
+import ClickAwayListener from "../ClickAwayListener";
 import Typography from "../Typography";
 import {customStyles} from "../../core/styleFunctions";
 import {Modifier} from "react-popper";
@@ -13,14 +14,16 @@ import {Placement} from "@popperjs/core";
 
 export interface DatepickerProps {
   defaultDate?: Date | null;
-  defaultTime?: any;
+  defaultTime?: string;
   /**
    * Callback fired when the date changes
    */
   onChange?: (date: Date | null) => void;
-  onTimeChange?: (time: any) => void;
+  onTimeChange?: (time: string) => void;
+  onClose?: () => void;
   popoverCs?: customStyles;
   isBlock?: boolean;
+  hasTime?: boolean;
   modifiers?: ReadonlyArray<Modifier<any>>;
   placement?: Placement;
   anchorEl?: React.RefObject<HTMLElement>;
@@ -35,7 +38,11 @@ const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => 
   const [inputValue, setInputValue] = useState(selectedTime);
 
   useEffect(() => {
-    setInputValue(selectedTime);
+    if (selectedTime && selectedTime.includes("NA")) {
+      setInputValue("");
+    } else {
+      setInputValue(selectedTime.substring(0, 5));
+    }
   }, [selectedTime]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,8 +89,10 @@ const Datepicker = ({
   defaultTime,
   onChange,
   onTimeChange,
+  onClose,
   popoverCs,
   isBlock = true,
+  hasTime = false,
   modifiers,
   placement = "bottom-start",
   anchorEl,
@@ -107,53 +116,87 @@ const Datepicker = ({
     if (onChange) {
       onChange(null);
     }
+
+    if (hasTime) {
+      // need seconds to update time element in the component and trigger useeffect
+      const seconds = new Date().getSeconds();
+      const todaysTime = `NA:${seconds.toString().padStart(2, "0")}`;
+      setSelectedTime(todaysTime);
+      if (onTimeChange) {
+        onTimeChange("");
+      }
+    }
   };
 
   const handleToday = () => {
     const todaysDate = new Date();
     setSelectedDate(todaysDate);
-    setSelectedTime("21:28");
+
+    const hours = todaysDate.getHours();
+    const minutes = todaysDate.getMinutes();
+    const seconds = todaysDate.getSeconds();
+
+    // need seconds to update time element in the component and trigger useeffect
+    const todaysTime = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    setSelectedTime(todaysTime);
 
     if (onChange) {
       onChange(todaysDate);
     }
+
+    if (onTimeChange && hasTime) {
+      onTimeChange(todaysTime.substring(0, 5));
+    }
+  };
+
+  const handleClickaway = () => {
+    onClose && onClose();
   };
 
   return (
-    <StyledDatepickerWrapper>
-      <Popover
-        modifiers={modifiers}
-        isBlock={isBlock}
-        anchorEl={anchorEl}
-        placement={placement}
-        cs={{
-          zIndex: 799,
-          ...popoverCs,
-        }}
-      >
-        <Box cs={{border: "1px solid #aeaeae"}}>
-          <DatePicker
-            locale="es"
-            selected={selectedDate}
-            onChange={handleDateChange}
-            inline
-          />
-          <TimePicker selectedTime={selectedTime} onTimeChange={onTimeChange} />
-        </Box>
-        <Box cs={{display: "flex", marginTop: "spacing.xxs"}}>
-          <Box cs={{display: "flex", justifyContent: "flex-start"}}>
-            <Button variant="tertiary" onClick={handleClear}>
-              Clear
-            </Button>
+    <ClickAwayListener onClickAway={handleClickaway}>
+      <StyledDatepickerWrapper>
+        <Popover
+          modifiers={modifiers}
+          isBlock={isBlock}
+          anchorEl={anchorEl}
+          placement={placement}
+          cs={{
+            zIndex: 799,
+            ...popoverCs,
+          }}
+        >
+          <Box cs={{border: "1px solid #aeaeae"}}>
+            <DatePicker
+              locale="es"
+              selected={selectedDate}
+              onChange={handleDateChange}
+              inline
+            />
+            {hasTime && (
+              <TimePicker
+                selectedTime={selectedTime}
+                onTimeChange={onTimeChange || (() => {})}
+              />
+            )}
           </Box>
-          <Box cs={{display: "flex", justifyContent: "flex-end", flexGrow: 1}}>
-            <Button variant="tertiary" onClick={handleToday}>
-              Today
-            </Button>
+          <Box cs={{display: "flex", marginTop: "spacing.xxs"}}>
+            <Box cs={{display: "flex", justifyContent: "flex-start"}}>
+              <Button variant="tertiary" onClick={handleClear}>
+                Clear
+              </Button>
+            </Box>
+            <Box cs={{display: "flex", justifyContent: "flex-end", flexGrow: 1}}>
+              <Button variant="tertiary" onClick={handleToday}>
+                Today
+              </Button>
+            </Box>
           </Box>
-        </Box>
-      </Popover>
-    </StyledDatepickerWrapper>
+        </Popover>
+      </StyledDatepickerWrapper>
+    </ClickAwayListener>
   );
 };
 

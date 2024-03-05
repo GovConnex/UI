@@ -1,6 +1,7 @@
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 import Datepicker from "./Datepicker";
+import Button from "../Button";
 import {withDesign} from "storybook-addon-designs";
 import ComponentSummary from "./ComponentSummary.mdx";
 import ReactDOMServer from "react-dom/server";
@@ -19,8 +20,32 @@ export default {
   },
 } as ComponentMeta<typeof Datepicker>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Datepicker> = (args) => <Datepicker {...args} />;
+const Template: ComponentStory<typeof Datepicker> = (args) => {
+  const [shown, setShown] = React.useState(false);
+  const buttonRef = React.useRef(null);
+
+  // override on close
+  const overriddenArgs = {
+    ...args,
+    onClose: () => {
+      setShown(false);
+    },
+  };
+
+  return (
+    <>
+      <Button
+        ref={buttonRef}
+        onClick={() => {
+          setShown(true);
+        }}
+      >
+        Show Datepicker
+      </Button>
+      {shown && <Datepicker anchorEl={buttonRef} {...overriddenArgs} />}
+    </>
+  );
+};
 
 export const Basic = Template.bind({});
 
@@ -29,4 +54,11 @@ export const WithDefaultDate = Template.bind({});
 WithDefaultDate.args = {
   defaultDate: new Date("2022-01-02"),
   defaultTime: "10:35",
+  hasTime: true,
+  onChange: (value) => {
+    console.log("date: ", value);
+  },
+  onTimeChange: (value) => {
+    console.log("time: ", value);
+  },
 };
