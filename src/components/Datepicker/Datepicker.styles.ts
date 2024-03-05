@@ -19,6 +19,19 @@ const StyledDatepickerWrapper = styled.div`
     border-bottom: 1px solid #ccc;
   }
 
+  .react-datepicker__portal .react-datepicker__current-month,
+  .react-datepicker__portal .react-datepicker-time__header {
+    font-size: 1.44rem;
+  }
+
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    margin-top: 1px;
+    color: #000;
+    font-size: 0.944rem;
+  }
+
   .react-datepicker__navigation {
     margin-left: 20px;
     margin-right: 20px;
@@ -92,7 +105,8 @@ const StyledDatepickerWrapper = styled.div`
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #f0f0f0;
+      background-color: rgb(74 131 169);
+      color: #ffffff;
     }
   }
 
@@ -106,7 +120,7 @@ const StyledDatepickerWrapper = styled.div`
   }
 
   .react-datepicker__day--keyboard-selected {
-    background-color: #2980b9;
+    background-color: #3498db;
     color: #ffffff;
   }
 `;
