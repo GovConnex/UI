@@ -35,7 +35,11 @@ interface TimePickerProps {
   onTimeChange: (time: string, date: Date | null) => void;
 }
 
-const TimePicker: React.FC<TimePickerProps> = ({selectedTime, selectedDate = null, onTimeChange}) => {
+const TimePicker: React.FC<TimePickerProps> = ({
+  selectedTime,
+  selectedDate = null,
+  onTimeChange,
+}) => {
   const [inputValue, setInputValue] = useState(selectedTime);
 
   useEffect(() => {
