@@ -19,7 +19,7 @@ export interface DatepickerProps {
    * Callback fired when the date changes
    */
   onChange?: (date: Date | null) => void;
-  onTimeChange?: (time: string) => void;
+  onTimeChange?: (time: string, date: Date | null) => void;
   onClose?: () => void;
   popoverCs?: customStyles;
   isBlock?: boolean;
@@ -30,11 +30,12 @@ export interface DatepickerProps {
 }
 
 interface TimePickerProps {
-  selectedTime: any; // Assuming selectedTime is a string in the format "HH:mm"
-  onTimeChange: (time: string) => void;
+  selectedTime: string; // Assuming selectedTime is a string in the format "HH:mm"
+  selectedDate?: Date | null;
+  onTimeChange: (time: string, date: Date | null) => void;
 }
 
-const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => {
+const TimePicker: React.FC<TimePickerProps> = ({selectedTime, selectedDate = null, onTimeChange}) => {
   const [inputValue, setInputValue] = useState(selectedTime);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => 
     setInputValue(newTime);
 
     if (onTimeChange) {
-      onTimeChange(newTime);
+      onTimeChange(newTime, selectedDate);
     }
   };
 
@@ -84,8 +85,8 @@ const TimePicker: React.FC<TimePickerProps> = ({selectedTime, onTimeChange}) => 
  *
  */
 const Datepicker = ({
-  defaultDate,
-  defaultTime,
+  defaultDate = null,
+  defaultTime = "",
   onChange,
   onTimeChange,
   onClose,
@@ -122,7 +123,7 @@ const Datepicker = ({
       const todaysTime = `NA:${seconds.toString().padStart(2, "0")}`;
       setSelectedTime(todaysTime);
       if (onTimeChange) {
-        onTimeChange("");
+        onTimeChange("", null);
       }
     }
   };
@@ -146,7 +147,7 @@ const Datepicker = ({
     }
 
     if (onTimeChange && hasTime) {
-      onTimeChange(todaysTime.substring(0, 5));
+      onTimeChange(todaysTime.substring(0, 5), todaysDate);
     }
   };
 
@@ -177,6 +178,7 @@ const Datepicker = ({
             {hasTime && (
               <TimePicker
                 selectedTime={selectedTime}
+                selectedDate={selectedDate}
                 onTimeChange={onTimeChange || (() => {})}
               />
             )}
