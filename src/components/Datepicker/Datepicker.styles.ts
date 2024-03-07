@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledDatepickerWrapper = styled.div`
+const StyledDatePickerWrapper = styled.div`
   .react-datepicker {
     border: none;
   }
@@ -125,4 +125,4 @@ const StyledDatepickerWrapper = styled.div`
   }
 `;
 
-export default StyledDatepickerWrapper;
+export default StyledDatePickerWrapper;

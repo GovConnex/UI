@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 //@ts-ignore
-import DatePicker, {registerLocale} from "react-datepicker";
+import {default as ReactDatePicker, registerLocale} from "react-datepicker";
 import enGB from "date-fns/locale/en-GB";
-import StyledDatepickerWrapper from "./Datepicker.styles";
+import StyledDatePickerWrapper from "./DatePicker.styles";
 import Popover from "../Popover";
 import Button from "../Button";
 import Box from "../Box";
@@ -12,7 +12,7 @@ import {customStyles} from "../../core/styleFunctions";
 import {Modifier} from "react-popper";
 import {Placement} from "@popperjs/core";
 
-export interface DatepickerProps {
+export interface DatePickerProps {
   defaultDate?: Date | null;
   defaultTime?: string;
   /**
@@ -27,6 +27,9 @@ export interface DatepickerProps {
   modifiers?: ReadonlyArray<Modifier<any>>;
   placement?: Placement;
   anchorEl?: React.RefObject<HTMLElement>;
+  "data-cy"?: string;
+  "data-cy-today"?: string;
+  "data-cy-clear"?: string;
 }
 
 interface TimePickerProps {
@@ -83,12 +86,12 @@ const TimePicker: React.FC<TimePickerProps> = ({
 };
 
 /**
- * `Datepicker` Describe what it does
+ * `DatePicker` Describe what it does
  *
- * Component Demo: [Datepicker](https://ui.govconnex.com/?path=/story/components-Datepicker--example)
+ * Component Demo: [DatePicker](https://ui.govconnex.com/?path=/story/components-DatePicker--example)
  *
  */
-const Datepicker = ({
+const DatePicker = ({
   defaultDate = null,
   defaultTime = "",
   onChange,
@@ -100,7 +103,10 @@ const Datepicker = ({
   modifiers,
   placement = "bottom-start",
   anchorEl,
-}: DatepickerProps) => {
+  "data-cy": dataCy = "date-picker-popover",
+  "data-cy-clear": dataCyClear = "date-picker-clear-button",
+  "data-cy-today": dataCyToday = "date-picker-today-button",
+}: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(defaultDate || null);
   const [selectedTime, setSelectedTime] = useState(defaultTime);
 
@@ -161,7 +167,7 @@ const Datepicker = ({
 
   return (
     <ClickAwayListener onClickAway={handleClickaway}>
-      <StyledDatepickerWrapper>
+      <StyledDatePickerWrapper>
         <Popover
           modifiers={modifiers}
           isBlock={isBlock}
@@ -171,9 +177,10 @@ const Datepicker = ({
             zIndex: 799,
             ...popoverCs,
           }}
+          data-cy={dataCy}
         >
           <Box cs={{border: "1px solid #aeaeae"}}>
-            <DatePicker
+            <ReactDatePicker
               locale="es"
               selected={selectedDate}
               onChange={handleDateChange}
@@ -189,20 +196,20 @@ const Datepicker = ({
           </Box>
           <Box cs={{display: "flex", marginTop: "spacing.xxs"}}>
             <Box cs={{display: "flex", justifyContent: "flex-start"}}>
-              <Button variant="tertiary" onClick={handleClear}>
+              <Button variant="tertiary" onClick={handleClear} data-cy={dataCyClear}>
                 Clear
               </Button>
             </Box>
             <Box cs={{display: "flex", justifyContent: "flex-end", flexGrow: 1}}>
-              <Button variant="tertiary" onClick={handleToday}>
+              <Button variant="tertiary" onClick={handleToday} data-cy={dataCyToday}>
                 Today
               </Button>
             </Box>
           </Box>
         </Popover>
-      </StyledDatepickerWrapper>
+      </StyledDatePickerWrapper>
     </ClickAwayListener>
   );
 };
 
-export default Datepicker;
+export default DatePicker;

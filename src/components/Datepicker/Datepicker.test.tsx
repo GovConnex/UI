@@ -1,10 +1,10 @@
 import React from "react";
 import {render} from "../test-utils";
 
-import Datepicker from "./Datepicker";
+import DatePicker from "./DatePicker";
 
-describe("Datepicker", () => {
-  test("renders the Datepicker component", () => {
-    render(<Datepicker />);
+describe("DatePicker", () => {
+  test("renders the DatePicker component", () => {
+    render(<DatePicker />);
   });
 });

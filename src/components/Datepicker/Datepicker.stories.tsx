@@ -1,6 +1,6 @@
 import React from "react";
 import {ComponentStory, ComponentMeta} from "@storybook/react";
-import Datepicker from "./Datepicker";
+import DatePicker from "./DatePicker";
 import Button from "../Button";
 import {withDesign} from "storybook-addon-designs";
 import ComponentSummary from "./ComponentSummary.mdx";
@@ -8,8 +8,8 @@ import ReactDOMServer from "react-dom/server";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components/Datepicker",
-  component: Datepicker,
+  title: "Components/DatePicker",
+  component: DatePicker,
   decorators: [withDesign],
   parameters: {
     docs: {
@@ -18,9 +18,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Datepicker>;
+} as ComponentMeta<typeof DatePicker>;
 
-const Template: ComponentStory<typeof Datepicker> = (args) => {
+const Template: ComponentStory<typeof DatePicker> = (args) => {
   const [shown, setShown] = React.useState(false);
   const buttonRef = React.useRef(null);
 
@@ -40,9 +40,9 @@ const Template: ComponentStory<typeof Datepicker> = (args) => {
           setShown(true);
         }}
       >
-        Show Datepicker
+        Show Date Picker
       </Button>
-      {shown && <Datepicker anchorEl={buttonRef} {...overriddenArgs} />}
+      {shown && <DatePicker anchorEl={buttonRef} {...overriddenArgs} />}
     </>
   );
 };
@@ -61,4 +61,7 @@ WithDefaultDate.args = {
   onTimeChange: (value) => {
     console.log("time: ", value);
   },
+  "data-cy": "popover",
+  "data-cy-clear": "clear",
+  "data-cy-today": "today",
 };
