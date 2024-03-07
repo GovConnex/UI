@@ -9,7 +9,6 @@ import Box from "../Box";
 import ClickAwayListener from "../ClickAwayListener";
 import Typography from "../Typography";
 import {customStyles} from "../../core/styleFunctions";
-import {Modifier} from "react-popper";
 import {Placement} from "@popperjs/core";
 
 export interface DatePickerProps {
@@ -22,9 +21,7 @@ export interface DatePickerProps {
   onTimeChange?: (time: string, date: Date | null) => void;
   onClose?: () => void;
   popoverCs?: customStyles;
-  isBlock?: boolean;
   hasTime?: boolean;
-  modifiers?: ReadonlyArray<Modifier<any>>;
   placement?: Placement;
   anchorEl?: React.RefObject<HTMLElement>;
   "data-cy"?: string;
@@ -98,9 +95,7 @@ const DatePicker = ({
   onTimeChange,
   onClose,
   popoverCs,
-  isBlock = true,
   hasTime = false,
-  modifiers,
   placement = "bottom-start",
   anchorEl,
   "data-cy": dataCy = "date-picker-popover",
@@ -169,8 +164,6 @@ const DatePicker = ({
     <ClickAwayListener onClickAway={handleClickaway}>
       <StyledDatePickerWrapper>
         <Popover
-          modifiers={modifiers}
-          isBlock={isBlock}
           anchorEl={anchorEl}
           placement={placement}
           cs={{
