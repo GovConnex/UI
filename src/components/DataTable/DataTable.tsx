@@ -27,6 +27,7 @@ import {
 import DataTableDataCell from "./DataTableDataCell";
 import DataTableHeaderCell from "./DataTableHeaderCell";
 import {MenuOption, MenuProps} from "../Menu/Menu";
+import {customStyles} from "../../core/styleFunctions";
 
 export interface DataTableProps {
   /**
@@ -109,6 +110,11 @@ export interface DataTableProps {
    * Padding for pagination menu to flip.
    */
   paddingForFlipPaginationMenu?: number;
+
+  /**
+   * Custom styles for inner wrapper.
+   */
+  innerWrapperCs?: customStyles;
 }
 
 export interface DataTableActionRowProps {
@@ -143,6 +149,7 @@ const DataTable = ({
   onRowClick,
   maxHeight,
   paddingForFlipPaginationMenu,
+  innerWrapperCs,
 }: DataTableProps) => {
   const manualSortBy = !!onChangeSort;
   const manualPagination = !!onPaginationChangeProp;
@@ -277,7 +284,7 @@ const DataTable = ({
   return (
     <GcxDataTableRoot className={classNames(className)}>
       <GcxDataTableWrapper fullWidth={fullWidth}>
-        <GxcDataTableInnerWrapper maxHeight={maxHeight}>
+        <GxcDataTableInnerWrapper maxHeight={maxHeight} cs={innerWrapperCs}>
           <GcxDataTable fullWidth={fullWidth} {...getTableProps()}>
             <GcxDataTableThead>
               {headerGroups.map((headerGroup: any) => (
