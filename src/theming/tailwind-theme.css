@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  color: theme("colors.contentPrimary");
+}
+
+p {
+  margin-top: theme("spacing.sm");
+  margin-bottom: theme("spacing.sm");
+}
+
+@layer components {
+  .btn {
+    @apply px-xs rounded-base h-32px flex flex-row items-center justify-center gap-xs;
+  }
+
+  .btn-primary {
+    @apply text-white bg-state-brandBase hover:bg-state-brandHover focus:outline outline-md outline-offset-lg focus:outline-borderFocus;
+  }
+
+  .btn-secondary {
+    @apply border border-borderLight bg-state-primaryBase hover:bg-state-primaryHover focus:outline outline-md outline-offset-lg focus:outline-borderFocus;
+  }
+}
