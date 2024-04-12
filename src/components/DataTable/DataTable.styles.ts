@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Icon from "../Icon";
 import Menu from "../Menu";
 import Pagination from "../Pagination";
+import {addCustomStyles} from "../../core/styleFunctions";
 
 export const GcxDataTableRoot = styled.div``;
 export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
@@ -13,9 +14,11 @@ export const GcxDataTableWrapper = styled.div<{fullWidth?: boolean}>`
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
   background: ${(p) => p.theme.primary.base.white};
 `;
-export const GxcDataTableInnerWrapper = styled.div<{maxHeight?: number}>`
+export const GxcDataTableInnerWrapper = styled.div<{maxHeight?: number; cs?: any}>`
   overflow: auto;
   max-height: ${(p) => (p.maxHeight !== undefined ? `${p.maxHeight}px` : "auto")};
+
+  ${(p) => addCustomStyles(p)};
 `;
 export const GcxDataTable = styled.table<{fullWidth?: boolean}>`
   display: table;

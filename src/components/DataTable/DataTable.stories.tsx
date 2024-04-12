@@ -459,3 +459,14 @@ WithMaxHeight.args = {
   fullWidth: true,
   maxHeight: 150,
 };
+
+export const WithInnerWrapperCs = Template.bind({});
+WithInnerWrapperCs.args = {
+  data: DATA_TABLE_DATA,
+  columns: DATA_TABLE_COLUMNS,
+  pageSize: 25,
+  page: 1,
+  numResults: 100,
+  fullWidth: true,
+  innerWrapperCs: {height: "600px", background: "red"},
+};
