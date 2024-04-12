@@ -1,0 +1,27 @@
+{
+  "name": "@govconnex/ui-tailwind",
+  "version": "0.0.2",
+  "description": "GovConnex UI - Tailwind Theme Config",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "tailwindcss -i ./tailwind-theme.css"
+  },
+  "files": [
+    "tailwind.config.js",
+    "tailwind-theme.css",
+    "tokens-output/**"
+  ],
+  "author": "GovConnex",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GovConnex/UI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GovConnex/UI/issues"
+  },
+  "homepage": "https://github.com/GovConnex/UI/tree/main/src/theming#readme"
+}

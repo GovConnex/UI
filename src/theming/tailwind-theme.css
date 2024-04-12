@@ -17,16 +17,25 @@ p {
   margin-bottom: theme("spacing.sm");
 }
 
+@page {
+  size: A4 portait;
+  margin: 1cm;
+}
+
 @layer components {
   .btn {
-    @apply px-xs rounded-base h-32px flex flex-row items-center justify-center gap-xs;
+    @apply px-xs rounded-base h-32px flex flex-row items-center justify-center gap-xs focus:outline outline-md outline-offset-lg focus:outline-borderFocus;
   }
 
   .btn-primary {
-    @apply text-white bg-state-brandBase hover:bg-state-brandHover focus:outline outline-md outline-offset-lg focus:outline-borderFocus;
+    @apply text-white bg-state-brandBase hover:bg-state-brandHover focus:bg-state-brandHover;
   }
 
   .btn-secondary {
-    @apply border border-borderLight bg-state-primaryBase hover:bg-state-primaryHover focus:outline outline-md outline-offset-lg focus:outline-borderFocus;
+    @apply border border-borderLight bg-state-primaryBase hover:bg-state-primaryHover focus:bg-state-primaryHover;
+  }
+
+  .btn-tertiary {
+    @apply text-contentPrimary hover:bg-state-primaryHover focus:bg-state-primaryHover;
   }
 }
