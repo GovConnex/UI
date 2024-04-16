@@ -5,6 +5,7 @@
   "scripts": {
     "build:tokens": "./tokens-build.sh",
     "prepublishOnly": "rm -rf dist && rollup -c",
+    "prepublishTokenOutput": "cp -R src/theming/tokens-output src/tailwind/tokens-output",
     "test": "jest --testPathIgnorePatterns \"src/puppeteer-tests/.*\" --env=jsdom",
     "test:storyshots": "yarn build && jest src/puppeteer-tests/storyshots-puppeteer.test.js --env=node --config=jest.config.js --runInBand --detectOpenHandles",
     "prestart": "yarn run build:tokens",
