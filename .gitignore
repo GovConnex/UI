@@ -5,6 +5,7 @@ storybook-static
 
 src/theming/tokens-style-dictionary
 src/theming/tokens-output
+src/tailwind/tokens-output
 
 .env
 
