@@ -61,6 +61,18 @@ IconRadio.args = {
   startAdornment: <Icon icon={faBook} />,
 };
 
+export const IconOnLabel = Template.bind({});
+
+IconOnLabel.args = {
+  variant: "card",
+  label: (
+    <>
+      <Icon icon={faBook} /> Label
+    </>
+  ),
+  description: "Description",
+};
+
 Example.parameters = {
   //  design: {
   //    type: "figma",
