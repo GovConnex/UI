@@ -4,7 +4,8 @@
   "description": "GovConnex UI - Tailwind Theme Config",
   "main": "tailwind.config.js",
   "scripts": {
-    "test": "tailwindcss -i ./tailwind-theme.css"
+    "test": "tailwindcss -i ./tailwind-theme.css",
+    "prepublishTokenOutput": "cp -R ../theming/tokens-output tokens-output"
   },
   "files": [
     "tailwind.config.js",
