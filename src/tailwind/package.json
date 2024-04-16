@@ -5,7 +5,7 @@
   "main": "tailwind.config.js",
   "scripts": {
     "test": "tailwindcss -i ./tailwind-theme.css",
-    "prepublishTokenOutput": "cp -R ../theming/tokens-output tokens-output"
+    "prepublishOnly": "cp -R ../theming/tokens-output tokens-output"
   },
   "files": [
     "tailwind.config.js",
