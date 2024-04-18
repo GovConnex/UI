@@ -169,7 +169,9 @@ const IssueCard = ({
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "mute",
                       "data-cy": "issue-card-mute",
-                      text: issue.notificationsEnabled ? "Mute Issue" : "Unmute Issue",
+                      text: issue.notificationsEnabled
+                        ? "Mute Campaign"
+                        : "Unmute Campaign",
                       startAdornment: (
                         <Icon
                           icon={
@@ -184,21 +186,21 @@ const IssueCard = ({
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "edit",
                       "data-cy": "issue-card-edit",
-                      text: "Edit Issue",
+                      text: "Edit Campaign",
                       startAdornment: <Icon icon={"pen"} />,
                       onSelect: editIssue,
                     },
                     (accessLevel === "member" || accessLevel === "admin") && {
                       id: "leave",
                       "data-cy": "issue-card-leave",
-                      text: "Leave Issue",
+                      text: "Leave Campaign",
                       startAdornment: <Icon icon={"fa-solid fa-person-to-door"} />,
                       onSelect: leaveIssue,
                     },
                     accessLevel === "admin" && {
                       id: "leave",
                       "data-cy": "issue-card-delete",
-                      text: "Delete Issue",
+                      text: "Delete Campaign",
                       startAdornment: <Icon icon={"trash"} />,
                       onSelect: deleteIssue,
                     },
