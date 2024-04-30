@@ -162,7 +162,7 @@ const IssueCard = ({
                     {
                       id: pinned ? "unpin" : "pin",
                       "data-cy": pinned ? "issue-card-unpin" : "issue-card-pin",
-                      text: pinned ? "Unpin Issue" : "Pin Issue",
+                      text: pinned ? "Unpin Campaign" : "Pin Campaign",
                       startAdornment: <Icon icon={"fa-solid fa-thumbtack"} />,
                       onSelect: togglePinned,
                     },
