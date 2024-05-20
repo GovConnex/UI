@@ -1,4 +1,5 @@
 export {default as ThemeProvider} from "./ThemeProvider";
+export {default as Dropdown} from "./Dropdown";
 export {default as Toggle} from "./Toggle";
 export {default as PopIn} from "./PopIn";
 export {default as Snackbar, PopinSnackbar as PopinSnackbar} from "./Snackbar";
