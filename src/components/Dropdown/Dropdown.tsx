@@ -11,10 +11,18 @@ import {ListItem} from "../List";
 import Chip from "../Chip";
 import {faChevronDown, faSearch} from "@fortawesome/pro-regular-svg-icons";
 
+export interface Option {
+  id: string | number;
+  text: string;
+  selected?: boolean;
+  category?: string;
+  endAdornment?: React.ReactNode;
+}
+
 export interface DropdownProps {
   label?: string;
   placeholder?: string;
-  options?: any;
+  options?: Option[];
   loading?: boolean;
   defaultValue?: React.ReactNode;
   maxWidth?: string;
@@ -113,11 +121,13 @@ const Dropdown = ({
             >
               {hasSelectedCount ? (
                 !notSelectedCount ? (
+                  // needed to disable because eslint is looking for aria attribute role
                   // eslint-disable-next-line
                   <Chip priority="low" role="primary" size="md">
                     ALL
                   </Chip>
                 ) : selectedCount ? (
+                  // needed to disable because eslint is looking for aria attribute role
                   // eslint-disable-next-line
                   <Chip priority="low" role="primary" size="md">
                     {selectedCount}
@@ -162,7 +172,7 @@ const Dropdown = ({
               padding: "0px",
               zIndex: 9,
               width: "calc(100% - 40px)",
-              maxWidth: maxWidth ? maxWidth : "40%",
+              maxWidth: maxWidth ? maxWidth : "none",
             }}
           >
             <MenuList style={{position: "relative"}}>

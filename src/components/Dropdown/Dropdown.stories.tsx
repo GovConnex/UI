@@ -46,6 +46,7 @@ export const WithSelectedOption = Template.bind({});
 WithSelectedOption.args = {
   ...Default.args,
   defaultValue: "1",
+  maxWidth: "40%",
 };
 
 export const MultipleSelect = Template.bind({});
