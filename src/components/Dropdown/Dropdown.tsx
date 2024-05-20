@@ -172,7 +172,7 @@ const Dropdown = ({
               padding: "0px",
               zIndex: 9,
               width: "calc(100% - 40px)",
-              maxWidth: maxWidth ? maxWidth : "none",
+              maxWidth: maxWidth ? maxWidth : "unset",
             }}
           >
             <MenuList style={{position: "relative"}}>
