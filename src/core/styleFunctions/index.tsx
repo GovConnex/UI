@@ -108,6 +108,11 @@ const defaultBreakpoints = {
 
 // returns true theme path
 export function getValueFromPath(theme: any, path: string) {
+  // if a url, return the url
+  if (path.includes("url")) {
+    return path;
+  }
+
   // check if value has a path
   if (path.split(".").length <= 1) {
     return path;
