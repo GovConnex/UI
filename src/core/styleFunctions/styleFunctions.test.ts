@@ -85,4 +85,41 @@ describe("addCustomStyles", () => {
       flexGrow: 1,
     });
   });
+
+  test("should handle background image with URL", () => {
+    const result = addCustomStyles({
+      cs: {backgroundImage: "url('https://example.com/bg.jpg')"},
+      theme: lightTheme,
+    });
+
+    expect(result).toEqual({
+      backgroundImage: "url('https://example.com/bg.jpg')",
+    });
+  });
+
+  test("should handle multiple background images", () => {
+    const result = addCustomStyles({
+      cs: {
+        backgroundImage:
+          "url('https://example.com/bg.jpg'), url('https://example.com/bg2.jpg')",
+      },
+      theme: lightTheme,
+    });
+
+    expect(result).toEqual({
+      backgroundImage:
+        "url('https://example.com/bg.jpg'), url('https://example.com/bg2.jpg')",
+    });
+  });
+
+  test("should return random background image value", () => {
+    const result = addCustomStyles({
+      cs: {backgroundImage: "#000"},
+      theme: lightTheme,
+    });
+
+    expect(result).toEqual({
+      backgroundImage: "#000",
+    });
+  });
 });
