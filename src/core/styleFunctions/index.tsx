@@ -29,6 +29,10 @@ type ShorthandCSS = {
   zIndex?: CSS.Properties["zIndex"] | number;
   transition?: CSS.Properties["transition"] | string;
   filter?: CSS.Properties["filter"] | string;
+
+  hover?: CSS.Properties | ShorthandCSS;
+  focus?: CSS.Properties | ShorthandCSS;
+  active?: CSS.Properties | ShorthandCSS;
 };
 
 type breakpoints = {
@@ -144,6 +148,14 @@ const experimental_passCustomStyles = (args: any) => {
       // 1) check if prop is a custom style object
       if (k === "cs" && typeof styles[k] === "object") {
         css = {...css, ...traverse(styles[k])};
+      }
+
+      // Handle hover, focus, active, disabled specifically, which are objects
+      if (k === "hover" || k === "focus" || k === "active") {
+        if (typeof styles[k] === "object") {
+          css = {...css, [":" + k]: traverse(styles[k])};
+        }
+        return;
       }
 
       // 2) check if prop is a breakpoint

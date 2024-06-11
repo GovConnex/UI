@@ -70,6 +70,46 @@ export interface ExtendedBoxProps extends BoxProps {
 }
 
 /**
+ * Box allows for adding custom styles through the `cs` prop, and also through direct props.
+ * This function separates the style props from the other regular html props like onClick, aria-label, etc.
+ */
+export function separateProps(props: ExtendedBoxProps): {
+  filteredProps: Record<string, unknown>;
+  styleProps: Record<string, unknown>;
+} {
+  return Object.keys(props).reduce(
+    (
+      acc: {filteredProps: Record<string, unknown>; styleProps: Record<string, unknown>},
+      key: string
+    ) => {
+      if (
+        key.startsWith("on") ||
+        key.startsWith("aria-") ||
+        key.startsWith("data-") ||
+        [
+          "role",
+          "tabIndex",
+          "as",
+          "href",
+          "to",
+          "ref",
+          "className",
+          "target",
+          "rel",
+        ].includes(key)
+      ) {
+        acc.filteredProps[key] = (props as any)[key];
+      } else {
+        // Assuming other props are for styling
+        acc.styleProps[key] = (props as any)[key];
+      }
+      return acc;
+    },
+    {filteredProps: {}, styleProps: {}}
+  );
+}
+
+/**
  *
  * `Box` is a extendable div component.
  *  [WARNING] experimental and does not support onClick,
@@ -85,17 +125,12 @@ export interface ExtendedBoxProps extends BoxProps {
  *
  */
 const Box = React.forwardRef<HTMLDivElement, ExtendedBoxProps>(function Box(
-  props: ExtendedBoxProps,
-  ref
+  props: ExtendedBoxProps
 ) {
-  // WARN does not pass onClick, etc to the div element
+  const {filteredProps, styleProps} = separateProps(props);
+
   return (
-    <StyledBox
-      ref={ref}
-      cs={{...props}}
-      data-cy={props["data-cy"]}
-      className={props["className"]}
-    >
+    <StyledBox cs={{...styleProps}} {...filteredProps}>
       {props.children}
     </StyledBox>
   );
