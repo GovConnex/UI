@@ -122,4 +122,70 @@ describe("addCustomStyles", () => {
       backgroundImage: "#000",
     });
   });
+
+  test("should handle hover state for a single property", () => {
+    const result = addCustomStyles({
+      cs: {hover: {color: "blue"}},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({
+      ":hover": {color: "blue"},
+    });
+  });
+
+  test("should handle hover state with multiple properties", () => {
+    const result = addCustomStyles({
+      cs: {hover: {color: "green", backgroundColor: "lightgrey"}},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({
+      ":hover": {color: "green", backgroundColor: "lightgrey"},
+    });
+  });
+
+  test("should not interfere with other pseudo-classes", () => {
+    const result = addCustomStyles({
+      cs: {active: {color: "red"}},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({
+      ":active": {color: "red"},
+    });
+  });
+
+  test("should handle nested hover within breakpoints", () => {
+    const result = addCustomStyles({
+      cs: {md: {hover: {color: "purple"}}},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({
+      "@media (min-width:600px)": {":hover": {color: "purple"}},
+    });
+  });
+
+  test("should ignore hover if not an object", () => {
+    const result = addCustomStyles({
+      cs: {hover: "color:blue;" as any},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({});
+  });
+
+  test("should handle hover with theme path", () => {
+    const result = addCustomStyles({
+      cs: {hover: {padding: "spacing.sm"}},
+      theme: lightTheme,
+    });
+    expect(result).toEqual({
+      ":hover": {padding: lightTheme.spacing.sm},
+    });
+  });
+
+  test("should ignore onClick prop and not apply it to styles", () => {
+    const result = addCustomStyles({
+      cs: {onClick: () => console.log("Clicked")} as any,
+      theme: lightTheme,
+    });
+    expect(result).not.toHaveProperty("onClick");
+  });
 });
