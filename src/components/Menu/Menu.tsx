@@ -273,4 +273,37 @@ export function ButtonMenu({menuProps, wrapperProps, ...buttonProps}: ButtonMenu
   );
 }
 
+interface MenuWrapperProps extends MenuProps {
+  children: React.ReactElement;
+  zIndex?: string;
+}
+
+export function MenuWrapper({children, zIndex, ...menuProps}: MenuWrapperProps) {
+  const [shown, setShown] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const toggleMenu = () => setShown(!shown);
+
+  const triggerElement = React.cloneElement(children, {
+    ref: anchorRef,
+    onClick: toggleMenu,
+  });
+
+  return (
+    <>
+      {shown && (
+        <Box
+          cs={{
+            position: "absolute",
+            zIndex: zIndex || "100",
+          }}
+        >
+          <Menu {...menuProps} anchorEl={anchorRef} onClose={() => setShown(false)} />
+        </Box>
+      )}
+      {triggerElement}
+    </>
+  );
+}
+
 export default Menu;
