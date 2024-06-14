@@ -32,7 +32,7 @@ export {default as BackgroundIcon} from "./BackgroundIcon";
 export {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 export {default as Input, DebouncedInput, debounce} from "./Input";
 export {default as Button} from "./Button";
-export {default as Menu, ButtonMenu, MenuWrapper} from "./Menu";
+export {default as Menu, ButtonMenu} from "./Menu";
 export {default as GridBox} from "./GridBox";
 export {default as Tabs} from "./Tabs";
 export * from "./MenuList";

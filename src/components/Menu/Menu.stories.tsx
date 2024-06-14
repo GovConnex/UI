@@ -354,20 +354,3 @@ MenuOnly.args = {
   options: filteredOptions,
 };
 
-export const MenuWrapper = Template.bind({});
-MenuWrapper.args = {
-  placement: "bottom-start",
-  textWidth: "180px",
-  hasSearch: true,
-  onSearch: (value) => {
-    console.log("searched values", value);
-  },
-  onOptionSelect: (option) => {
-    console.log(option);
-  },
-  onClose: () => {
-    console.log("closing");
-  },
-  options: filteredOptions,
-  children: <div>Custom content here</div>, // Added children prop with custom content
-};

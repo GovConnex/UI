@@ -1,1 +1,1 @@
-export {default, ButtonMenu, MenuWrapper} from "./Menu";
+export {default, ButtonMenu} from "./Menu";
