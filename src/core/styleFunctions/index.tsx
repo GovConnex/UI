@@ -38,14 +38,16 @@ type ShorthandCSS = {
 type breakpoints = {
   sm?: CSS.Properties | ShorthandCSS;
   md?: CSS.Properties | ShorthandCSS;
+  lp?: CSS.Properties | ShorthandCSS;
   lg?: CSS.Properties | ShorthandCSS;
 };
 
-type keysTypes = "sm" | "md" | "lg";
+type keysTypes = "sm" | "md" | "lp" | "lg";
 
-const values: {sm: number; md: number; lg: number} = {
-  sm: 0, // tablet
-  md: 600, // small laptop
+const values: {sm: number; md: number; lp: number; lg: number} = {
+  sm: 0, // mobile
+  md: 600, // tablet
+  lp: 960, // small laptop
   lg: 1360, // desktop 1360
 };
 
@@ -106,7 +108,7 @@ const numberToSpacingMap = {
 export type customStyles = CSS.Properties | breakpoints | ShorthandCSS;
 
 const defaultBreakpoints = {
-  keys: ["sm", "md", "lg"],
+  keys: ["sm", "md", "lp", "lg"],
   up: (key: keysTypes) => `@media (min-width:${values[key]}px)`,
 };
 
