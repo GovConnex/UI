@@ -107,4 +107,25 @@ describe("Dropdown Component", () => {
       expect(getByText("inline-loading")).toBeInTheDocument();
     });
   });
+
+  it("shows inputvalue in input if provided", async () => {
+    const {getByRole} = render(
+      <Dropdown label="Dropdown" options={options} inputValue="Super cool option" />
+    );
+    const input = getByRole("textbox");
+
+    expect(input).toHaveValue("Super cool option");
+  });
+
+  it("fires event if user types in Input if onInputChange is provided", async () => {
+    const onInputChange = jest.fn();
+    const {getByRole} = render(
+      <Dropdown label="Dropdown" options={options} onInputChange={onInputChange} />
+    );
+    const input = getByRole("textbox");
+
+    fireEvent.change(input, {target: {value: "Super cool option"}});
+
+    expect(onInputChange).toHaveBeenCalledWith(expect.anything());
+  });
 });
