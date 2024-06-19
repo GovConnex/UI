@@ -91,6 +91,25 @@ describe("Dropdown Component", () => {
     expect(onClearSelection).toHaveBeenCalledTimes(1);
   });
 
+  it("renders select all button when hasSelectAll is true", async () => {
+    const onSelectAll = jest.fn();
+    const {getByRole, getByText} = render(
+      <Dropdown
+        label="Dropdown"
+        options={options}
+        hasSelectAll
+        onSelectAll={onSelectAll}
+      />
+    );
+    const input = getByRole("textbox");
+    fireEvent.click(input);
+
+    const clearButton = getByText("Select All");
+    fireEvent.click(clearButton);
+
+    expect(onSelectAll).toHaveBeenCalledTimes(1);
+  });
+
   it("shows loading spinner when loading is true", async () => {
     const {getByText, getByRole} = render(
       <Dropdown

@@ -29,9 +29,11 @@ export interface DropdownProps {
   multipleSelect?: boolean;
   hasSelectedCount?: boolean;
   hasClearSelection?: boolean;
+  hasSelectAll?: boolean;
   hasSearch?: boolean;
   onChange?: (selectedValue: any, previouslySelected: boolean) => void;
   onClearSelection?: () => void;
+  onSelectAll?: () => void;
   error?: string;
   "data-testid"?: string;
   "data-cy"?: string;
@@ -56,9 +58,11 @@ const Dropdown = ({
   multipleSelect = false,
   hasSelectedCount = false,
   hasClearSelection = false,
+  hasSelectAll = false,
   hasSearch = false,
   onChange = () => {},
   onClearSelection = () => {},
+  onSelectAll = () => {},
   error,
   "data-testid": dataTestId,
   "data-cy": dataCy,
@@ -279,6 +283,20 @@ const Dropdown = ({
                         </Box>
                       )}
                     </Box>
+                    {hasSelectAll ? (
+                      <Box cs={{background: "white"}}>
+                        {
+                          <Button
+                            variant="secondary"
+                            isFullWidth={true}
+                            style={{display: "block", textAlign: "center"}}
+                            onClick={onSelectAll}
+                          >
+                            Select All
+                          </Button>
+                        }
+                      </Box>
+                    ) : null}
                     {hasClearSelection ? (
                       <Box cs={{background: "white"}}>
                         {
