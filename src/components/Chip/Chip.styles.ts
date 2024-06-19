@@ -69,7 +69,7 @@ const StyledChip = styled.div<{
   padding: 0 ${({theme}) => theme.spacing.xs};
   height: ${({theme, size}) => theme.spacing[size]};
   line-height: ${({theme, size}) => theme.spacing[size]};
-  border-radius: ${({theme}) => theme.borderRadius.minimal};
+  border-radius: ${({theme}) => theme.borderRadius.base};
   color: ${({theme, role, priority}) => propsToColour(theme, role, priority)};
   display: inline-flex;
   justify-content: center;
@@ -81,7 +81,7 @@ const StyledChip = styled.div<{
     props.role === "default" &&
     props.priority === "low" &&
     `
-    border: 1px solid ${props.theme.core.border.borderMedium};
+    border: 1px solid ${props.theme.core.border.borderLight};
   `}
 
   ${(props) => addCustomStyles(props)};
