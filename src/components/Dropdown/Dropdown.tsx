@@ -283,7 +283,7 @@ const Dropdown = ({
                         </Box>
                       )}
                     </Box>
-                    {hasSelectAll ? (
+                    {hasSelectAll && !hasClearSelection ? (
                       <Box cs={{background: "white"}}>
                         {
                           <Button
@@ -297,7 +297,7 @@ const Dropdown = ({
                         }
                       </Box>
                     ) : null}
-                    {hasClearSelection ? (
+                    {hasClearSelection && !hasSelectAll ? (
                       <Box cs={{background: "white"}}>
                         {
                           <Button
@@ -309,6 +309,27 @@ const Dropdown = ({
                             Clear Selection
                           </Button>
                         }
+                      </Box>
+                    ) : null}
+
+                    {hasClearSelection && hasSelectAll ? (
+                      <Box cs={{background: "white", display: "flex", gap: "spacing.xxs"}}>
+                        <Button
+                          variant="secondary"
+                          isFullWidth={true}
+                          style={{display: "block", textAlign: "center"}}
+                          onClick={onSelectAll}
+                        >
+                          Select All
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          isFullWidth={true}
+                          style={{display: "block", textAlign: "center"}}
+                          onClick={onClearSelection}
+                        >
+                          Clear
+                        </Button>
                       </Box>
                     ) : null}
                   </Box>
