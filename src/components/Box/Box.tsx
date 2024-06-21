@@ -61,6 +61,7 @@ export interface ExtendedBoxProps extends BoxProps {
   // breakpoints
   sm?: customStyles;
   md?: customStyles;
+  lp?: customStyles;
   lg?: customStyles;
 
   direction?: "row" | "column" | "row-reverse" | "column-reverse";

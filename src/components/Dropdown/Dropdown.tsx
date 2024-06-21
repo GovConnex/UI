@@ -10,12 +10,14 @@ import Popover from "../Popover";
 import {ListItem} from "../List";
 import Chip from "../Chip";
 import {faChevronDown, faSearch} from "@fortawesome/pro-regular-svg-icons";
+import {customStyles} from "../../core/styleFunctions";
 
 export interface Option {
   id: string | number;
   text: string;
   selected?: boolean;
   category?: string;
+  startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
 }
 
@@ -31,6 +33,9 @@ export interface DropdownProps {
   hasClearSelection?: boolean;
   hasSelectAll?: boolean;
   hasSearch?: boolean;
+  inputValue?: string;
+  onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  endAdornment?: React.ReactNode;
   onChange?: (selectedValue: any, previouslySelected: boolean) => void;
   onClearSelection?: () => void;
   onSelectAll?: () => void;
@@ -39,6 +44,7 @@ export interface DropdownProps {
   "data-cy"?: string;
   loadingIndicator?: React.ReactNode;
   selectedIndicator?: React.ReactNode;
+  cs?: customStyles;
 }
 
 /**
@@ -60,6 +66,9 @@ const Dropdown = ({
   hasClearSelection = false,
   hasSelectAll = false,
   hasSearch = false,
+  inputValue,
+  onInputChange,
+  endAdornment,
   onChange = () => {},
   onClearSelection = () => {},
   onSelectAll = () => {},
@@ -68,11 +77,11 @@ const Dropdown = ({
   "data-cy": dataCy,
   loadingIndicator,
   selectedIndicator,
+  cs,
 }: DropdownProps) => {
   const popRef = useRef<any>(null);
   const [showPopover, setShowPopover] = useState(false);
   // eslint-disable-next-line
-  const [value, setValue] = useState(defaultValue);
   const [searchTerm, setSearchTerm] = useState("");
   const selectedCount = [
     ...new Set(
@@ -105,59 +114,64 @@ const Dropdown = ({
         setShowPopover(false);
       }}
     >
-      <Box>
+      <Box cs={cs}>
         <Input
           data-testid={dataTestId}
           data-cy={dataCy}
           error={error}
+          onChange={onInputChange}
           onClick={() => {
             setShowPopover(true);
           }}
           endAdornment={
-            <Box
-              cs={{
-                display: "inline-flex",
-                gap: "spacing.xs",
-                alignItems: "center",
-                paddingLeft: "spacing.sm",
-                background: "white",
-              }}
-            >
-              {hasSelectedCount ? (
-                !notSelectedCount ? (
-                  // needed to disable because eslint is looking for aria attribute role
-                  // eslint-disable-next-line
-                  <Chip priority="low" role="primary" size="md">
-                    ALL
-                  </Chip>
-                ) : selectedCount ? (
-                  // needed to disable because eslint is looking for aria attribute role
-                  // eslint-disable-next-line
-                  <Chip priority="low" role="primary" size="md">
-                    {selectedCount}
-                  </Chip>
-                ) : null
-              ) : null}
-              <SvgIcon
-                icon={faChevronDown}
-                onClick={() => {
-                  setShowPopover(true);
+            endAdornment || (
+              <Box
+                cs={{
+                  display: "inline-flex",
+                  gap: "spacing.xs",
+                  alignItems: "center",
+                  paddingLeft: "spacing.sm",
+                  background: "white",
                 }}
-              />
-            </Box>
+              >
+                {hasSelectedCount ? (
+                  !notSelectedCount ? (
+                    // needed to disable because eslint is looking for aria attribute role
+                    // eslint-disable-next-line
+                    <Chip priority="low" role="primary" size="md">
+                      ALL
+                    </Chip>
+                  ) : selectedCount ? (
+                    // needed to disable because eslint is looking for aria attribute role
+                    // eslint-disable-next-line
+                    <Chip priority="low" role="primary" size="md">
+                      {selectedCount}
+                    </Chip>
+                  ) : null
+                ) : null}
+                <SvgIcon
+                  icon={faChevronDown}
+                  onClick={() => {
+                    setShowPopover(true);
+                  }}
+                />
+              </Box>
+            )
           }
           fullWidth
           ref={popRef}
           label={label}
           placeholder={placeholder}
           value={
-            multipleSelect
+            typeof inputValue === "string"
+              ? inputValue
+              : multipleSelect
               ? selectedCount
                 ? label
                 : ""
               : options?.find((item: any) => item?.id === defaultValue)?.text || ""
           }
-          readOnly={true}
+          readOnly={typeof inputValue !== "string"}
         />
         {showPopover ? (
           <Popover
@@ -239,6 +253,7 @@ const Dropdown = ({
                                   data-testid={`dropdown-option-item-${x?.id || idx}`}
                                   data-cy={`dropdown-option-item-${x?.id || idx}`}
                                   button
+                                  startAdornment={x?.startAdornment}
                                   endAdornment={
                                     x?.endAdornment ||
                                     ((multipleSelect && x?.selected) ||
