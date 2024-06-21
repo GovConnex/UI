@@ -313,7 +313,9 @@ const Dropdown = ({
                     ) : null}
 
                     {hasClearSelection && hasSelectAll ? (
-                      <Box cs={{background: "white", display: "flex", gap: "spacing.xxs"}}>
+                      <Box
+                        cs={{background: "white", display: "flex", gap: "spacing.xxs"}}
+                      >
                         <Button
                           variant="secondary"
                           isFullWidth={true}
