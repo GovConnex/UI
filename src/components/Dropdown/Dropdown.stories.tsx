@@ -118,6 +118,30 @@ WithClearSelection.args = {
   },
 };
 
+export const WithSelectAll = Template.bind({});
+WithSelectAll.args = {
+  ...Default.args,
+  maxWidth: "200px",
+  hasSelectAll: true,
+  onSelectAll: () => {
+    console.log("select all");
+  },
+};
+
+export const WithSelectAllAndClearSelection = Template.bind({});
+WithSelectAllAndClearSelection.args = {
+  ...Default.args,
+  maxWidth: "300px",
+  hasClearSelection: true,
+  hasSelectAll: true,
+  onClearSelection: () => {
+    console.log("clear selection");
+  },
+  onSelectAll: () => {
+    console.log("select all");
+  },
+};
+
 export const WithCustomEndAdornment = Template.bind({});
 WithCustomEndAdornment.args = {
   ...Default.args,

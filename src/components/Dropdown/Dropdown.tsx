@@ -31,12 +31,14 @@ export interface DropdownProps {
   multipleSelect?: boolean;
   hasSelectedCount?: boolean;
   hasClearSelection?: boolean;
+  hasSelectAll?: boolean;
   hasSearch?: boolean;
   inputValue?: string;
   onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   endAdornment?: React.ReactNode;
   onChange?: (selectedValue: any, previouslySelected: boolean) => void;
   onClearSelection?: () => void;
+  onSelectAll?: () => void;
   error?: string;
   "data-testid"?: string;
   "data-cy"?: string;
@@ -62,12 +64,14 @@ const Dropdown = ({
   multipleSelect = false,
   hasSelectedCount = false,
   hasClearSelection = false,
+  hasSelectAll = false,
   hasSearch = false,
   inputValue,
   onInputChange,
   endAdornment,
   onChange = () => {},
   onClearSelection = () => {},
+  onSelectAll = () => {},
   error,
   "data-testid": dataTestId,
   "data-cy": dataCy,
@@ -294,7 +298,21 @@ const Dropdown = ({
                         </Box>
                       )}
                     </Box>
-                    {hasClearSelection ? (
+                    {hasSelectAll && !hasClearSelection ? (
+                      <Box cs={{background: "white"}}>
+                        {
+                          <Button
+                            variant="secondary"
+                            isFullWidth={true}
+                            style={{display: "block", textAlign: "center"}}
+                            onClick={onSelectAll}
+                          >
+                            Select All
+                          </Button>
+                        }
+                      </Box>
+                    ) : null}
+                    {hasClearSelection && !hasSelectAll ? (
                       <Box cs={{background: "white"}}>
                         {
                           <Button
@@ -306,6 +324,29 @@ const Dropdown = ({
                             Clear Selection
                           </Button>
                         }
+                      </Box>
+                    ) : null}
+
+                    {hasClearSelection && hasSelectAll ? (
+                      <Box
+                        cs={{background: "white", display: "flex", gap: "spacing.xxs"}}
+                      >
+                        <Button
+                          variant="secondary"
+                          isFullWidth={true}
+                          style={{display: "block", textAlign: "center"}}
+                          onClick={onSelectAll}
+                        >
+                          Select All
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          isFullWidth={true}
+                          style={{display: "block", textAlign: "center"}}
+                          onClick={onClearSelection}
+                        >
+                          Clear
+                        </Button>
                       </Box>
                     ) : null}
                   </Box>
