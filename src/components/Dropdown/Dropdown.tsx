@@ -78,6 +78,7 @@ const Dropdown = ({
   loadingIndicator,
   selectedIndicator,
   cs,
+  ...rest
 }: DropdownProps) => {
   const popRef = useRef<any>(null);
   const [showPopover, setShowPopover] = useState(false);
@@ -120,7 +121,7 @@ const Dropdown = ({
           data-cy={dataCy}
           error={error}
           onChange={onInputChange}
-          onClick={() => {
+          onFocus={() => {
             setShowPopover(true);
           }}
           endAdornment={
@@ -172,6 +173,7 @@ const Dropdown = ({
               : options?.find((item: any) => item?.id === defaultValue)?.text || ""
           }
           readOnly={typeof inputValue !== "string"}
+          {...rest}
         />
         {showPopover ? (
           <Popover
