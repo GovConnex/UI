@@ -9,6 +9,7 @@ const StyledAdornment = styled.span<{
   squashHeight?: boolean;
   adornmentColor?: string;
   overridePositionTop?: string;
+  allowPointerEvents?: boolean;
 }>(
   ({
     theme,
@@ -18,6 +19,7 @@ const StyledAdornment = styled.span<{
     squashHeight,
     adornmentColor,
     overridePositionTop,
+    allowPointerEvents,
   }) => ({
     [position]: noPadding ? theme.spacing.xs : theme.spacing.sm,
     paddingTop: overridePositionTop
@@ -26,7 +28,7 @@ const StyledAdornment = styled.span<{
       ? "0px"
       : theme.spacing.xs,
     position: "absolute",
-    pointerEvents: squashHeight ? "auto" : "none",
+    pointerEvents: allowPointerEvents || squashHeight ? "auto" : "none",
     opacity: adornmentColor ? 1 : disabled ? 0.3 : 1,
     color: adornmentColor ? getValueFromPath(theme, adornmentColor) : "inherit",
   })

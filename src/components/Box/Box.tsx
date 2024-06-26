@@ -97,6 +97,7 @@ export function separateProps(props: ExtendedBoxProps): {
           "className",
           "target",
           "rel",
+          "for",
         ].includes(key)
       ) {
         acc.filteredProps[key] = (props as any)[key];

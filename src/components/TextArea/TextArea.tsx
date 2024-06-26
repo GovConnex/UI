@@ -59,6 +59,11 @@ export interface TextAreaProps
    * overrides the padding
    */
   overridePadding?: keyof Spacing;
+
+  /**
+   * allows pointer events on adornment
+   */
+  allowAdornmentPointerEvents?: boolean;
 }
 
 /**
@@ -79,6 +84,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     noPadding,
     adornmentColor,
     overridePadding,
+    allowAdornmentPointerEvents,
     ...rest
   } = props;
 
@@ -124,6 +130,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
             overridePositionTop={overridePositionTop}
             disabled={props.disabled || false}
             position="left"
+            allowPointerEvents={allowAdornmentPointerEvents}
           >
             {props.startAdornment}
           </StyledAdornment>
@@ -152,6 +159,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
             overridePositionTop={overridePositionTop}
             disabled={props.disabled || false}
             position="right"
+            allowPointerEvents={allowAdornmentPointerEvents}
           >
             {props.endAdornment}
           </StyledAdornment>

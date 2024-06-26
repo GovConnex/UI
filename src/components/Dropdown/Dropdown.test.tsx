@@ -26,7 +26,7 @@ describe("Dropdown Component", () => {
     );
     const input = getByRole("textbox");
 
-    fireEvent.click(input);
+    fireEvent.focus(input);
 
     await waitFor(() => {
       expect(getByText("Option 1")).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("Dropdown Component", () => {
     );
     const input = getByRole("textbox");
 
-    fireEvent.click(input);
+    fireEvent.focus(input);
     const option1 = getByText("Option 1");
     fireEvent.click(option1);
 
@@ -54,7 +54,7 @@ describe("Dropdown Component", () => {
     );
     const input = getByRole("textbox");
 
-    fireEvent.click(input);
+    fireEvent.focus(input);
     const option1 = getByText("Option 1");
     fireEvent.click(option1);
 
@@ -66,7 +66,7 @@ describe("Dropdown Component", () => {
   it("renders search input when hasSearch is true", () => {
     const {getByRole} = render(<Dropdown label="Dropdown" options={options} hasSearch />);
     const input = getByRole("textbox");
-    fireEvent.click(input);
+    fireEvent.focus(input);
 
     const searchInput = getByRole("searchbox");
     expect(searchInput).toBeInTheDocument();
@@ -83,7 +83,7 @@ describe("Dropdown Component", () => {
       />
     );
     const input = getByRole("textbox");
-    fireEvent.click(input);
+    fireEvent.focus(input);
 
     const clearButton = getByText("Clear Selection");
     fireEvent.click(clearButton);
@@ -102,7 +102,7 @@ describe("Dropdown Component", () => {
       />
     );
     const input = getByRole("textbox");
-    fireEvent.click(input);
+    fireEvent.focus(input);
 
     const clearButton = getByText("Select All");
     fireEvent.click(clearButton);
@@ -120,7 +120,7 @@ describe("Dropdown Component", () => {
       />
     );
     const input = getByRole("textbox");
-    fireEvent.click(input);
+    fireEvent.focus(input);
 
     await waitFor(() => {
       expect(getByText("inline-loading")).toBeInTheDocument();
