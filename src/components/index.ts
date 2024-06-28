@@ -35,6 +35,7 @@ export {default as Button} from "./Button";
 export {default as Menu, ButtonMenu} from "./Menu";
 export {default as GridBox} from "./GridBox";
 export {default as Tabs} from "./Tabs";
+export {Spinner} from "./Spinner/Spinner";
 export * from "./MenuList";
 export * from "./List";
 export * from "./StackedList";
