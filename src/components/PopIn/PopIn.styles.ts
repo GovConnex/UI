@@ -29,7 +29,7 @@ export const PopInContainer = styled.div<{
     `}
   visibility: ${({show}) => (show ? "visible" : "hidden")};
   opacity: ${({show}) => (show ? 1 : 0)};
-  pointer-events: ${({show}) => (show ? "auto" : "none")};
+  pointer-events: none;
   margin: 0;
   padding: 0;
   display: flex;
@@ -37,4 +37,8 @@ export const PopInContainer = styled.div<{
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+
+  & > * {
+    pointer-events: ${({show}) => (show ? "auto" : "none")};
+  }
 `;
