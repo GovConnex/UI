@@ -64,7 +64,6 @@ const colourVariants = [
   "#4CAF50",
   "#8BC34A",
   "#CDDC39",
-  "#FFEB3B",
   "#FFC107",
 ];
 
